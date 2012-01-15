@@ -1,9 +1,15 @@
-from clusterflunk.models.base import Base
-from sqlalchemy import ForeignKey
-from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy import (
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    String,
+)
 from sqlalchemy.orm import relationship
 
-class UsersModel(Base):
+from clusterflunk.models.base import Base
+
+class User(Base):
     __tablename__ = 'users'
     
     id = Column(Integer, primary_key=True)
@@ -12,16 +18,13 @@ class UsersModel(Base):
     joined = Column(DateTime)
     last_online = Column(DateTime)
 
-    auth_user = relationship(AclUsersModel, backref="user")
-    articles = relationship(ArticlesModel, backref="author")
-    founded_groups = relationship(GroupsModel, backref="author")
-    post_comments = relationship(PostCommentsModel, backref="author")
-    posts = relationship(PostsModel, backref="author")
-    solution_comments = relationship(SolutionCommentsModel, backref="author")
-    statuses = relationship(StatusModel, backref="author")
-
-    def __init__(self, **fields):
-        self.__dict__.update(fields)
+    auth_user = relationship('AclUser', backref="user")
+    articles = relationship('Article', backref="author")
+    founded_groups = relationship('StudyGroup', backref="author")
+    post_comments = relationship('PostComment', backref="author")
+    posts = relationship('Post', backref="author")
+    solution_comments = relationship('SolutionComment', backref="author")
+    statuses = relationship('Status', backref="author")
 
     def __repr__(self):
-        return "<Users('%s')>" % (self.id)
+        return "<User('%s')>" % (self.id)

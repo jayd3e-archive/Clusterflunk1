@@ -1,18 +1,22 @@
-from clusterflunk.models.base import Base
-from sqlalchemy import ForeignKey
-from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy import (
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    String,
+)
+from sqlalchemy.orm import relationship
 
-class PostCommentsModel(Base):
+from clusterflunk.models.base import Base
+
+class PostComment(Base):
     __tablename__ = 'post_comments'
-    
+
     id = Column(Integer, primary_key=True)
-    created = Column(Datetime)
-    edited = Column(Datetime)
+    created = Column(DateTime)
+    edited = Column(DateTime)
     body = Column(String(1000))
     author_id = Column(Integer, ForeignKey('users.id'))
 
-    def __init__(self, **fields):
-        self.__dict__.update(fields)
-
     def __repr__(self):
-        return "<PostComments('%s')>" % (self.id)
+        return "<PostComment('%s')>" % (self.id)

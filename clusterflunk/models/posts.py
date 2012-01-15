@@ -1,11 +1,17 @@
-from clusterflunk.models.base import Base
-from sqlalchemy import ForeignKey
-from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy import (
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    String,
+)
 from sqlalchemy.orm import relationship
 
-class PostsModel(Base):
+from clusterflunk.models.base import Base
+
+class Post(Base):
     __tablename__ = 'posts'
-    
+
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     created = Column(DateTime)
@@ -13,14 +19,11 @@ class PostsModel(Base):
     edited = Column(DateTime)
     due = Column(DateTime)
     description = Column(String(1000))
-    group_id = Column(Integer, ForeignKey('groups.id'))
+    category_id = Column(Integer, ForeignKey('categories.id'))
     author_id = Column(Integer, ForeignKey('users.id'))
 
-    solutions = relationship(SolutionsModel, backref="post")
-    comments = relationship(PostCommentsModel, backref="post")
-
-    def __init__(self, **fields):
-        self.__dict__.update(fields)
+    solutions = relationship('Solution', backref="post")
+    comments = relationship('PostComment', backref="post")
 
     def __repr__(self):
-        return "<Posts('%s')>" % (self.id)
+        return "<Post('%s')>" % (self.id)
