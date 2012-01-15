@@ -1,6 +1,7 @@
 from clusterflunk.models.base import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy.orm import relationship
 
 class SolutionCommentsModel(Base):
     __tablename__ = 'solution_comments'
@@ -9,7 +10,7 @@ class SolutionCommentsModel(Base):
     created = Column(DateTime)
     edited = Column(DateTime)
     body = Column(DateTime)
-    author = Column(Integer, ForeignKey('users.id'))
+    author_id = Column(Integer, ForeignKey('users.id'))
 
     def __init__(self, **fields):
         self.__dict__.update(fields)
