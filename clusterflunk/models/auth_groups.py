@@ -2,8 +2,8 @@ from clusterflunk.models.base import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, Date, DateTime
 
-class AclGroupsModel(Base):
-    __tablename__ = 'acl_groups'
+class AuthGroupsModel(Base):
+    __tablename__ = 'auth_groups'
     
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
@@ -12,4 +12,4 @@ class AclGroupsModel(Base):
         self.__dict__.update(fields)
 
     def __repr__(self):
-        return "<AclGroups('%s')>" % (self.id)
+        return "<AuthGroups('%s')>" % (self.id)

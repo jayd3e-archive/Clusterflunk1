@@ -2,8 +2,8 @@ from clusterflunk.models.base import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, Date, DateTime
 
-class AclUsersModel(Base):
-    __tablename__ = 'acl_users'
+class AuthUsersModel(Base):
+    __tablename__ = 'auth_users'
     
     id = Column(Integer, primary_key=True)
     username = Column(String(50))
@@ -14,4 +14,4 @@ class AclUsersModel(Base):
         self.__dict__.update(fields)
 
     def __repr__(self):
-        return "<AclUsers('%s')>" % (self.id)
+        return "<AuthUsers('%s')>" % (self.id)

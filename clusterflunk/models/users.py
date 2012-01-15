@@ -12,7 +12,7 @@ class UsersModel(Base):
     joined = Column(DateTime)
     last_online = Column(DateTime)
 
-    acl_user = relationship(AclUsersModel, backref="user")
+    auth_user = relationship(AclUsersModel, backref="user")
     articles = relationship(ArticlesModel, backref="author")
     founded_groups = relationship(GroupsModel, backref="author")
     post_comments = relationship(PostCommentsModel, backref="author")
