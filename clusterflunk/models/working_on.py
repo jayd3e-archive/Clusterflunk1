@@ -1,6 +1,7 @@
 from clusterflunk.models.base import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy.orm import relationship
 
 class WorkingOnModel(Base):
     __tablename__ = 'working_on'

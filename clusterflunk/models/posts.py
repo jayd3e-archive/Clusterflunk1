@@ -1,6 +1,7 @@
 from clusterflunk.models.base import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy.orm import relationship
 
 class PostsModel(Base):
     __tablename__ = 'posts'
@@ -12,7 +13,11 @@ class PostsModel(Base):
     edited = Column(DateTime)
     due = Column(DateTime)
     description = Column(String(1000))
-    author = Column(Integer, ForeignKey('users.id'))
+    group_id = Column(Integer, ForeignKey('groups.id'))
+    author_id = Column(Integer, ForeignKey('users.id'))
+
+    solutions = relationship(SolutionsModel, backref="post")
+    comments = relationship(PostCommentsModel, backref="post")
 
     def __init__(self, **fields):
         self.__dict__.update(fields)

@@ -8,6 +8,7 @@ class AclUsersModel(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(50))
     password = Column(String(80))
+    user_id = Column(Integer, ForeignKey('users.id'))
 
     def __init__(self, **fields):
         self.__dict__.update(fields)
