@@ -14,7 +14,10 @@ class ArticleComment(Base):
 
     id = Column(Integer, primary_key=True)
     article_id = Column(Integer, ForeignKey('articles.id'))
-    comment_id = Column(Integer, ForeignKey('users.id'))
+    comment_id = Column(Integer, ForeignKey('comments.id'))
+
+    article = relationship('Article', backref='article_comments')
+    comment = relationship('Comment', backref='article_comments')
 
     def __repr__(self):
         return "<ArticleComment('%s')>" % (self.id)

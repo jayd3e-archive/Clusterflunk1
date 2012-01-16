@@ -23,7 +23,7 @@ class PostCategory(Base):
 
     id = Column(Integer, primary_key=True)
     post_id = Column(Integer, ForeignKey('posts.id'))
-    category_id = Column(Integer, ForeignKey('category.id'))
+    category_id = Column(Integer, ForeignKey('categories.id'))
 
     def __repr__(self):
         return "<Category('%s')>" % (self.id)

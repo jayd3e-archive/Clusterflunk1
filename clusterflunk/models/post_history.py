@@ -16,12 +16,12 @@ class PostHistory(Base):
     revision = Column(Integer)
     author_id = Column(Integer, ForeignKey('users.id'))
     post_id = Column(Integer, ForeignKey('posts.id'))
-    created = Column(Datetime)
+    created = Column(DateTime)
 
     # Version controlled fields
     name = Column(String(100))
     description = Column(String(1000))
-    due = Column(Datetime)
+    due = Column(DateTime)
     active = Column(DateTime)
 
     def __repr__(self):

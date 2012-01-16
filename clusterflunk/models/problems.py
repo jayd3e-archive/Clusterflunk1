@@ -17,7 +17,7 @@ class Problem(Base):
 
     history = relationship('ProblemHistory', backref="problem")
     solutions = relationship('Solution', backref="problem")
-    comments = relationship('SolutionComment', backref="problem")
+    comments = relationship('ProblemComment', backref="problem")
 
     def __repr__(self):
         return "<Problem('%s')>" % (self.id)

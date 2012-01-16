@@ -6,6 +6,7 @@ from sqlalchemy import (
     String,
 )
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
 
@@ -13,10 +14,10 @@ class Comment(Base):
     __tablename__ = 'comments'
 
     id = Column(Integer, primary_key=True)
-    created = Column(DateTime)
-    edited = Column(DateTime)
-    body = Column(DateTime)
+    body = Column(String(1000))
     author_id = Column(Integer, ForeignKey('users.id'))
+
+    articles = association_proxy('article_comments', 'article')
 
     def __repr__(self):
         return "<Comment('%s')>" % (self.id)

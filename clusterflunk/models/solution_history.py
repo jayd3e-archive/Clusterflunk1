@@ -16,7 +16,7 @@ class SolutionHistory(Base):
     revision = Column(Integer)
     created = Column(DateTime)
     author_id = Column(Integer, ForeignKey('users.id'))
-    problem_id = Colun(Integer, ForeignKey('problems.id'))
+    solution_id = Column(Integer, ForeignKey('solutions.id'))
 
     # Version controlled fields
     body = Column(String(1000))

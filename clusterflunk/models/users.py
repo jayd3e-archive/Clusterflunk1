@@ -18,13 +18,12 @@ class User(Base):
     joined = Column(DateTime)
     last_online = Column(DateTime)
 
-    auth_user = relationship('AclUser', backref="user")
+    auth_user = relationship('AuthUser', backref="user")
     articles = relationship('Article', backref="author")
-    founded_groups = relationship('StudyGroup', backref="author")
-    post_comments = relationship('PostComment', backref="author")
     posts = relationship('Post', backref="author")
-    solution_comments = relationship('SolutionComment', backref="author")
     statuses = relationship('Status', backref="author")
+    founded_groups = relationship('StudyGroup', backref="author")
+    comments = relationship('Comment', backref="author")
 
     def __repr__(self):
         return "<User('%s')>" % (self.id)

@@ -29,7 +29,7 @@ class AuthGroup(Base):
     def __repr__(self):
         return "<AuthGroup('%s')>" % (self.id)
 
-class AuthUsersGroup(Base):
+class AuthUserGroup(Base):
     __tablename__ = 'auth_users_groups'
 
     id = Column(Integer, primary_key=True)
