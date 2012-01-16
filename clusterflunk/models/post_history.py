@@ -9,16 +9,20 @@ from sqlalchemy.orm import relationship
 
 from clusterflunk.models.base import Base
 
-class Post(Base):
-    __tablename__ = 'posts'
+class PostHistory(Base):
+    __tablename__ = 'post_history'
 
     id = Column(Integer, primary_key=True)
-    category_id = Column(Integer, ForeignKey('categories.id'))
+    revision = Column(Integer)
     author_id = Column(Integer, ForeignKey('users.id'))
+    post_id = Column(Integer, ForeignKey('posts.id'))
+    created = Column(Datetime)
 
-    history = relationship('PostHistory', backref="post")
-    problems = relationship('Problem', backref="post")
-    comments = relationship('PostComment', backref="post")
+    # Version controlled fields
+    name = Column(String(100))
+    description = Column(String(1000))
+    due = Column(Datetime)
+    active = Column(DateTime)
 
     def __repr__(self):
         return "<Post('%s')>" % (self.id)

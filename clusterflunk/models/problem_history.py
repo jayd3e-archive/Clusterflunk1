@@ -9,14 +9,17 @@ from sqlalchemy.orm import relationship
 
 from clusterflunk.models.base import Base
 
-class Article(Base):
-    __tablename__ = 'articles'
+class ProblemHistory(Base):
+    __tablename__ = 'problem_history'
 
     id = Column(Integer, primary_key=True)
+    revision = Column(Integer)
+    created = Column(DateTime)
     author_id = Column(Integer, ForeignKey('users.id'))
+    problem_id = Colun(Integer, ForeignKey('problems.id'))
 
-    history = relationship('ArticleHistory', backref="article")
-    comments = relationship('ArticleComment', backref="article")
+    # Version controlled fields
+    body = Column(String(1000))
 
     def __repr__(self):
-        return "<Article('%s')>" % (self.id)
+        return "<Problem('%s')>" % (self.id)

@@ -9,12 +9,12 @@ from sqlalchemy.orm import relationship
 
 from clusterflunk.models.base import Base
 
-class PostComment(Base):
-    __tablename__ = 'post_comments'
+class ProblemComment(Base):
+    __tablename__ = 'problem_comments'
 
     id = Column(Integer, primary_key=True)
-    post_id = Column(Integer, ForeignKey('posts.id'))
+    problem_id = Column(Integer, ForeignKey('problems.id'))
     comment_id = Column(Integer, ForeignKey('users.id'))
 
     def __repr__(self):
-        return "<PostComment('%s')>" % (self.id)
+        return "<ProblemComment('%s')>" % (self.id)
