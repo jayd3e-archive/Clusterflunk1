@@ -90,21 +90,66 @@ class TestModels(unittest.TestCase):
         self.assertEqual(comment1.articles, [article])
         self.assertEqual(comment2.articles, [article])
 
-
     def testArticleComments(self):
-        pass
+        session = self.Session()
+
+        article = Article(id=1,
+                          author_id=1)
+        comment = Comment(id=1,
+                          body="U Suk!",
+                          author_id=1)
+        article_comment = ArticleComment(article_id=1,
+                                         comment_id=1)
+        session.add(article)
+        session.add(comment)
+        session.add(article_comment)
+
+        session.flush()
+        self.assertTrue(str(article_comment).startswith('<ArticleComment'),
+                        msg="str(ArticleComment) must start with '<ArticleComment'")
+        self.assertEqual(article_comment.article, article)
+        self.assertEqual(article_comment.comment, comment)
+        self.assertIn(article_comment, comment.article_comments)
+        self.assertIn(article_comment, article.article_comments)
     
     def testArticleHistory(self):
-        pass
+        session = self.Session()
+
+        article_rev = ArticleHistory(revision=1,
+                                     created=datetime.now(),
+                                     author_id=1,
+                                     body="This is a helpful article.")
+        session.add(article_rev)
+        session.flush()
+        self.assertTrue(str(article_rev).startswith('<ArticleHistory'),
+                        msg="str(ArticleHistory) must start with '<ArticleHistory'")
     
-    def testAuthUser(self):
-        pass
-    
-    def testAuthGroup(self):
-        pass
-    
-    def testAuthUserGroup(self):
-        pass
+    def testAuth(self):
+        session = self.Session()
+
+        auth_user = AuthUser(id=1,
+                             username='jayd3e',
+                             password='secret')
+        auth_group = AuthGroup(id=1,
+                               name='admin')
+        auth_user_group = AuthUserGroup(auth_user_id=1,
+                                        auth_group_id=1)
+
+        session.add(auth_user)
+        session.add(auth_group)
+        session.add(auth_user_group)
+
+        session.flush()
+        self.assertTrue(str(auth_user).startswith('<AuthUser'),
+                        msg="str(AuthUser) must start with '<AuthUser'")
+        self.assertTrue(str(auth_group).startswith('<AuthGroup'),
+                        msg="str(AuthGroup) must start with '<AuthGroup'")
+        self.assertTrue(str(auth_user_group).startswith('<AuthUserGroup'),
+                        msg="str(AuthUserGroup) must start with '<AuthUserGroup'")
+        self.assertIn(auth_user, auth_group.auth_users)
+        self.assertIn(auth_group, auth_user.auth_groups)
+        self.assertEqual(auth_user_group.auth_user, auth_user)
+        self.assertEqual(auth_user_group.auth_group, auth_group)
     
     def testCategories(self):
         pass
