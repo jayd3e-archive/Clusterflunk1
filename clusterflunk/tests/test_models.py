@@ -30,6 +30,7 @@ from clusterflunk.models.problem_history import ProblemHistory
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comment_history import CommentHistory
 from clusterflunk.models.statuses import Status
+from clusterflunk.models.moderators import Moderator
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -502,7 +503,33 @@ class TestModels(unittest.TestCase):
         self.assertEqual(post_category.category, category)
     
     def testModerators(self):
-        pass
+        session = self.Session()
+
+        study_group = StudyGroup(id=1,
+                                 name="Physics 101",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+
+        moderator = Moderator(user_id=1,
+                              study_group_id=1)
+        
+        session.add(study_group)
+        session.add(user)
+        session.add(moderator)
+
+        session.flush()
+        self.assertTrue(str(moderator).startswith('<Moderator'),
+                        msg="str(Moderator) must start with '<Moderator'")
+        self.assertIn(user, study_group.moderators)
+        self.assertIn(study_group, user.moderated_groups)
+        self.assertEqual(moderator.user, user)
+        self.assertEqual(moderator.study_group, study_group)
     
     def testNetworks(self):
         pass

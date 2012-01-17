@@ -16,5 +16,8 @@ class Moderator(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     study_group_id = Column(Integer, ForeignKey('study_groups.id'))
 
+    user = relationship('User', backref="moderator")
+    study_group = relationship('StudyGroup', backref="moderator")
+
     def __repr__(self):
         return "<Moderator('%s')>" % (self.id)

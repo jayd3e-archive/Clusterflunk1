@@ -6,6 +6,7 @@ from sqlalchemy import (
     String,
 )
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
 
@@ -20,6 +21,7 @@ class StudyGroup(Base):
     founder_id = Column(Integer, ForeignKey('users.id'))
 
     posts = relationship('Post', backref="study_group")
+    moderators = association_proxy('moderator', 'user')
 
     def __repr__(self):
         return "<StudyGroup('%s')>" % (self.id)
