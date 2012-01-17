@@ -200,7 +200,7 @@ class TestModels(unittest.TestCase):
         comment = Comment(id=1,
                           author_id=1)
         post_comment = PostComment(post_id=1,
-                                      comment_id=1)
+                                   comment_id=1)
         session.add(post)
         session.add(comment)
         session.add(post_comment)
