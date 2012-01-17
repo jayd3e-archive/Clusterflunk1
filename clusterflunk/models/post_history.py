@@ -25,4 +25,4 @@ class PostHistory(Base):
     active = Column(DateTime)
 
     def __repr__(self):
-        return "<Post('%s')>" % (self.id)
+        return "<PostHistory('%s')>" % (self.id)

@@ -22,4 +22,4 @@ class ProblemHistory(Base):
     body = Column(String(1000))
 
     def __repr__(self):
-        return "<Problem('%s')>" % (self.id)
+        return "<ProblemHistory('%s')>" % (self.id)

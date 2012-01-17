@@ -28,6 +28,7 @@ from clusterflunk.models.problems import Problem
 from clusterflunk.models.problem_comments import ProblemComment
 from clusterflunk.models.problem_history import ProblemHistory
 from clusterflunk.models.comments import Comment
+from clusterflunk.models.comment_history import CommentHistory
 from clusterflunk.models.statuses import Status
 
 class TestModels(unittest.TestCase):
@@ -59,13 +60,10 @@ class TestModels(unittest.TestCase):
         session.add(article)
         
         comment = Comment(id=1,
-                          body="U Suk!",
                           author_id=1)
         comment1 = Comment(id=2,
-                           body="No U Suk!",
                            author_id=2)
         comment2 = Comment(id=3,
-                           body="Nope!",
                            author_id=1)
         for c in [comment, comment1, comment2]:
             session.add(c)
@@ -97,7 +95,6 @@ class TestModels(unittest.TestCase):
         article = Article(id=1,
                           author_id=1)
         comment = Comment(id=1,
-                          body="U Suk!",
                           author_id=1)
         article_comment = ArticleComment(article_id=1,
                                          comment_id=1)
@@ -153,13 +150,10 @@ class TestModels(unittest.TestCase):
         session.add(post)
         
         comment = Comment(id=1,
-                          body="U Suk!",
                           author_id=1)
         comment1 = Comment(id=2,
-                           body="No U Suk!",
                            author_id=2)
         comment2 = Comment(id=3,
-                           body="Nope!",
                            author_id=1)
         for c in [comment, comment1, comment2]:
             session.add(c)
@@ -176,7 +170,7 @@ class TestModels(unittest.TestCase):
         category = Category(id=1,
                             name='Test')
         session.add(category)
-        
+
         post_category = PostCategory(id=1,
                                      post_id=1,
                                      category_id=1)
@@ -198,34 +192,269 @@ class TestModels(unittest.TestCase):
         self.assertIn(category, post.categories)
     
     def testPostComments(self):
-        pass
+        session = self.Session()
+
+        post = Post(id=1,
+                    author_id=1,
+                    study_group_id=1)
+        comment = Comment(id=1,
+                          author_id=1)
+        post_comment = PostComment(post_id=1,
+                                      comment_id=1)
+        session.add(post)
+        session.add(comment)
+        session.add(post_comment)
+
+        session.flush()
+        self.assertTrue(str(post_comment).startswith('<PostComment'),
+                        msg="str(PostComment) must start with '<PostComment'")
+        self.assertEqual(post_comment.post, post)
+        self.assertEqual(post_comment.comment, comment)
+        self.assertIn(post_comment, comment.post_comments)
+        self.assertIn(post_comment, post.post_comments)
     
     def testPostHistory(self):
-        pass
+        session = self.Session()
+
+        post_rev = PostHistory(revision=1,
+                               created=datetime.now(),
+                               author_id=1,
+                               name="Awesome Assignment",
+                               description="This is a helpful article.",
+                               due=datetime.now(),
+                               active=datetime.now())
+        session.add(post_rev)
+        session.flush()
+        self.assertTrue(str(post_rev).startswith('<PostHistory'),
+                        msg="str(PostHistory) must start with '<PostHistory'")
 
     def testProblems(self):
-        pass
+        session = self.Session()
+        
+        problem = Problem(id=1,
+                          post_id=1)
+        
+        solution = Solution(id=1,
+                           problem_id=1,
+                           author_id=1)
+        problem.solutions.append(solution)
+
+        problem_rev1 = ProblemHistory(revision=1,
+                                      created=datetime.now(),
+                                      author_id=1,
+                                      body="This is an assignment.")
+        problem_rev2 = ProblemHistory(revision=2,
+                                      created=datetime.now(),
+                                      author_id=2,
+                                      body="This is another assignment.")
+        problem_rev3 = ProblemHistory(revision=3,
+                                      created=datetime.now(),
+                                      author_id=3,
+                                      body="This is the last assignment.")
+        for p in [problem_rev1, problem_rev2, problem_rev3]:
+            problem.history.append(p)
+        session.add(problem)
+        
+        comment = Comment(id=1,
+                          author_id=1)
+        comment1 = Comment(id=2,
+                           author_id=2)
+        comment2 = Comment(id=3,
+                           author_id=1)
+        for c in [comment, comment1, comment2]:
+            session.add(c)
+        
+        problem_comment = ProblemComment(problem_id=1,
+                                         comment_id=1)
+        problem_comment1 = ProblemComment(problem_id=1,
+                                          comment_id=2)
+        problem_comment2 = ProblemComment(problem_id=1,
+                                          comment_id=3)
+        for pc in [problem_comment, problem_comment1, problem_comment2]:
+            session.add(pc)
+
+        session.flush()
+        self.assertTrue(str(problem).startswith('<Problem'),
+                        msg="str(Problem) must start with '<Problem'")
+        self.assertIn(solution, problem.solutions)
+        self.assertEqual(problem, solution.problem)
+        self.assertEqual(problem.history, [problem_rev1, problem_rev2, problem_rev3])
+        self.assertEqual(problem_rev1.problem, problem)
+        self.assertEqual(problem_rev2.problem, problem)
+        self.assertEqual(problem_rev3.problem, problem)
+        self.assertEqual(problem.comments, [comment, comment1, comment2])
+        self.assertEqual(comment.problems, [problem])
+        self.assertEqual(comment1.problems, [problem])
+        self.assertEqual(comment2.problems, [problem])
     
     def testProblemComments(self):
-        pass
+        session = self.Session()
+
+        problem = Problem(id=1,
+                          post_id=1)
+        comment = Comment(id=1,
+                          author_id=1)
+        problem_comment = ProblemComment(problem_id=1,
+                                         comment_id=1)
+        session.add(problem)
+        session.add(comment)
+        session.add(problem_comment)
+
+        session.flush()
+        self.assertTrue(str(problem_comment).startswith('<ProblemComment'),
+                        msg="str(ProblemComment) must start with '<ProblemComment'")
+        self.assertEqual(problem_comment.problem, problem)
+        self.assertEqual(problem_comment.comment, comment)
+        self.assertIn(problem_comment, comment.problem_comments)
+        self.assertIn(problem_comment, problem.problem_comments)
 
     def testProblemHistory(self):
-        pass
+        session = self.Session()
+
+        problem_rev = ProblemHistory(revision=1,
+                                     created=datetime.now(),
+                                     author_id=1,
+                                     body="This is a problem to be solved.")
+        session.add(problem_rev)
+        session.flush()
+        self.assertTrue(str(problem_rev).startswith('<ProblemHistory'),
+                        msg="str(ProblemHistory) must start with '<ProblemHistory'")
 
     def testSolutions(self):
-        pass
+        session = self.Session()
+        
+        solution = Solution(id=1,
+                            problem_id=1,
+                            author_id=1)
+        solution_rev1 = SolutionHistory(revision=1,
+                                        created=datetime.now(),
+                                        author_id=1,
+                                        body="This is a helpful solution.")
+        solution_rev2 = SolutionHistory(revision=2,
+                                        created=datetime.now(),
+                                        author_id=2,
+                                        body="This is another helpful solution.")
+        solution_rev3 = SolutionHistory(revision=3,
+                                        created=datetime.now(),
+                                        author_id=3,
+                                        body="This is the last helpful solution.")
+        for sr in [solution_rev1, solution_rev2, solution_rev3]:
+            solution.history.append(sr)
+        session.add(solution)
+        
+        comment = Comment(id=1,
+                          author_id=1)
+        comment1 = Comment(id=2,
+                           author_id=2)
+        comment2 = Comment(id=3,
+                           author_id=1)
+        for c in [comment, comment1, comment2]:
+            session.add(c)
+        
+        solution_comment = SolutionComment(solution_id=1,
+                                           comment_id=1)
+        solution_comment1 = SolutionComment(solution_id=1,
+                                            comment_id=2)
+        solution_comment2 = SolutionComment(solution_id=1,
+                                            comment_id=3)
+        for sc in [solution_comment, solution_comment1, solution_comment2]:
+            session.add(sc)
+        
+        session.flush()
+        self.assertTrue(str(solution).startswith('<Solution'),
+                        msg="str(Solution) must start with '<Solution'")
+        self.assertEqual(solution.history, [solution_rev1, solution_rev2, solution_rev3])
+        self.assertEqual(solution_rev1.solution, solution)
+        self.assertEqual(solution_rev2.solution, solution)
+        self.assertEqual(solution_rev3.solution, solution)
+        self.assertEqual(solution.comments, [comment, comment1, comment2])
+        self.assertEqual(comment.solutions, [solution])
+        self.assertEqual(comment1.solutions, [solution])
+        self.assertEqual(comment2.solutions, [solution])
     
     def testSolutionsComments(self):
-        pass
+        session = self.Session()
+
+        solution = Solution(id=1,
+                            problem_id=1,
+                            author_id=1)
+        comment = Comment(id=1,
+                          author_id=1)
+        solution_comment = SolutionComment(solution_id=1,
+                                           comment_id=1)
+        session.add(solution)
+        session.add(comment)
+        session.add(solution_comment)
+
+        session.flush()
+        self.assertTrue(str(solution_comment).startswith('<SolutionComment'),
+                        msg="str(SolutionComment) must start with '<SolutionComment'")
+        self.assertEqual(solution_comment.solution, solution)
+        self.assertEqual(solution_comment.comment, comment)
+        self.assertIn(solution_comment, comment.solution_comments)
+        self.assertIn(solution_comment, solution.solution_comments)
     
     def testSolutionHistory(self):
-        pass
+        session = self.Session()
+
+        solution_rev = SolutionHistory(revision=1,
+                                       created=datetime.now(),
+                                       author_id=1,
+                                       body="This is a solution to a problem.")
+        session.add(solution_rev)
+        session.flush()
+        self.assertTrue(str(solution_rev).startswith('<SolutionHistory'),
+                        msg="str(SolutionHistory) must start with '<SolutionHistory'")
 
     def testComments(self):
         session = self.Session()
+
+        comment = Comment(id=1)
+
+        comment_rev1 = CommentHistory(id=1,
+                                      revision=1,
+                                      created=datetime.now(),
+                                      author_id=1,
+                                      comment_id=1,
+                                      body="U Suk!")
+        comment_rev2 = CommentHistory(id=2,
+                                      revision=2,
+                                      created=datetime.now(),
+                                      author_id=1,
+                                      comment_id=1,
+                                      body="U Suk More!")
+        comment_rev3 = CommentHistory(id=3,
+                                      revision=3,
+                                      created=datetime.now(),
+                                      author_id=1,
+                                      comment_id=1,
+                                      body="U Suk Even More!")
+        for cr in [comment_rev1, comment_rev2, comment_rev3]:
+            comment.history.append(cr)
+        
+        session.add(comment)
+
+        session.flush()
+        self.assertTrue(str(comment).startswith('<Comment'),
+                        msg="str(Comment) must start with '<Comment'")
+        self.assertEqual(comment, comment_rev1.comment)
+        self.assertEqual(comment, comment_rev2.comment)
+        self.assertEqual(comment, comment_rev3.comment)
+        self.assertEqual(comment.history, [comment_rev1, comment_rev2, comment_rev3])
     
     def testCommentHistory(self):
-        pass
+        session = self.Session()
+
+        comment_rev = CommentHistory(id=1,
+                                     revision=1,
+                                     created=datetime.now(),
+                                     author_id=1,
+                                     comment_id=1,
+                                     body="U Suk!")
+        session.add(comment_rev)
+        session.flush()
+        self.assertTrue(str(comment_rev).startswith('<CommentHistory'),
+                        msg="str(CommentHistory) must start with '<CommentHistory'")
 
     def testAuth(self):
         session = self.Session()

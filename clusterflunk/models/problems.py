@@ -6,6 +6,7 @@ from sqlalchemy import (
     String,
 )
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
 
@@ -17,7 +18,7 @@ class Problem(Base):
 
     history = relationship('ProblemHistory', backref="problem")
     solutions = relationship('Solution', backref="problem")
-    comments = relationship('ProblemComment', backref="problem")
+    comments = association_proxy('problem_comments', 'comment')
 
     def __repr__(self):
         return "<Problem('%s')>" % (self.id)
