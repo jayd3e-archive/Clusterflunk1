@@ -25,7 +25,8 @@ class PostCategory(Base):
     post_id = Column(Integer, ForeignKey('posts.id'))
     category_id = Column(Integer, ForeignKey('categories.id'))
 
-    category = relationship('Category', uselist=False)
+    category = relationship('Category')
+    post = relationship('Post', backref='post_categories')
 
     def __repr__(self):
         return "<PostCategory('%s')>" % (self.id)

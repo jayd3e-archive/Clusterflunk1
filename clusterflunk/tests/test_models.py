@@ -14,6 +14,7 @@ from clusterflunk.models.users import User
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.networks import Network
 from clusterflunk.models.categories import Category
+from clusterflunk.models.categories import PostCategory
 from clusterflunk.models.articles import Article
 from clusterflunk.models.article_history import ArticleHistory
 from clusterflunk.models.article_comments import ArticleComment
@@ -124,6 +125,108 @@ class TestModels(unittest.TestCase):
         self.assertTrue(str(article_rev).startswith('<ArticleHistory'),
                         msg="str(ArticleHistory) must start with '<ArticleHistory'")
     
+    def testPosts(self):
+        session = self.Session()
+        
+        post = Post(id=1,
+                    author_id=1,
+                    study_group_id=1)
+        
+        problem = Problem(id=1,
+                          post_id=1)
+        post.problems.append(problem)
+
+        post_rev1 = PostHistory(revision=1,
+                                created=datetime.now(),
+                                author_id=1,
+                                description="This is an assignment.")
+        post_rev2 = PostHistory(revision=2,
+                                created=datetime.now(),
+                                author_id=2,
+                                description="This is another assignment.")
+        post_rev3 = PostHistory(revision=3,
+                                created=datetime.now(),
+                                author_id=3,
+                                description="This is the last assignment.")
+        for p in [post_rev1, post_rev2, post_rev3]:
+            post.history.append(p)
+        session.add(post)
+        
+        comment = Comment(id=1,
+                          body="U Suk!",
+                          author_id=1)
+        comment1 = Comment(id=2,
+                           body="No U Suk!",
+                           author_id=2)
+        comment2 = Comment(id=3,
+                           body="Nope!",
+                           author_id=1)
+        for c in [comment, comment1, comment2]:
+            session.add(c)
+        
+        post_comment = PostComment(post_id=1,
+                                   comment_id=1)
+        post_comment1 = PostComment(post_id=1,
+                                    comment_id=2)
+        post_comment2 = PostComment(post_id=1,
+                                    comment_id=3)
+        for pc in [post_comment, post_comment1, post_comment2]:
+            session.add(pc)
+
+        category = Category(id=1,
+                            name='Test')
+        session.add(category)
+        
+        post_category = PostCategory(id=1,
+                                     post_id=1,
+                                     category_id=1)
+        post.post_categories.append(post_category)
+        
+        session.flush()
+        self.assertTrue(str(post).startswith('<Post'),
+                        msg="str(Post) must start with '<Post'")
+        self.assertIn(problem, post.problems)
+        self.assertEqual(post, problem.post)
+        self.assertEqual(post.history, [post_rev1, post_rev2, post_rev3])
+        self.assertEqual(post_rev1.post, post)
+        self.assertEqual(post_rev2.post, post)
+        self.assertEqual(post_rev3.post, post)
+        self.assertEqual(post.comments, [comment, comment1, comment2])
+        self.assertEqual(comment.posts, [post])
+        self.assertEqual(comment1.posts, [post])
+        self.assertEqual(comment2.posts, [post])
+        self.assertIn(category, post.categories)
+    
+    def testPostComments(self):
+        pass
+    
+    def testPostHistory(self):
+        pass
+
+    def testProblems(self):
+        pass
+    
+    def testProblemComments(self):
+        pass
+
+    def testProblemHistory(self):
+        pass
+
+    def testSolutions(self):
+        pass
+    
+    def testSolutionsComments(self):
+        pass
+    
+    def testSolutionHistory(self):
+        pass
+
+    def testComments(self):
+        session = self.Session()
+    
+    def testCommentHistory(self):
+        pass
+
     def testAuth(self):
         session = self.Session()
 
@@ -152,51 +255,27 @@ class TestModels(unittest.TestCase):
         self.assertEqual(auth_user_group.auth_group, auth_group)
     
     def testCategories(self):
-        pass
-    
-    def testComments(self):
-        pass
-    
-    def testCommentHistory(self):
-        pass
+        session = self.Session()
+
+        category = Category(id=1,
+                            name='Test')
+        post_category = PostCategory(id=1,
+                                     category_id=1)
+        
+        post_category.category = category
+        session.add(post_category)
+
+        session.flush()
+        self.assertTrue(str(category).startswith('<Category'),
+                        msg="str(Category) must start with '<Category'")
+        self.assertTrue(str(post_category).startswith('<PostCategory'),
+                        msg="str(PostCategory) must start with '<PostCategory'")
+        self.assertEqual(post_category.category, category)
     
     def testModerators(self):
         pass
     
     def testNetworks(self):
-        pass
-    
-    def testPosts(self):
-        pass
-    
-    def testPostComments(self):
-        pass
-    
-    def testPostHistory(self):
-        pass
-    
-    def testPosts(self):
-        pass
-    
-    def testProblems(self):
-        pass
-    
-    def testProblemComments(self):
-        pass
-
-    def testProblemHistory(self):
-        pass
-    
-    def testProblems(self):
-        pass
-    
-    def testSolutions(self):
-        pass
-    
-    def testSolutionsComments(self):
-        pass
-    
-    def testSolutionHistory(self):
         pass
     
     def testStatuses(self):

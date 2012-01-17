@@ -18,6 +18,7 @@ class Comment(Base):
     author_id = Column(Integer, ForeignKey('users.id'))
 
     articles = association_proxy('article_comments', 'article')
+    posts = association_proxy('post_comments', 'post')
 
     def __repr__(self):
         return "<Comment('%s')>" % (self.id)
