@@ -17,5 +17,8 @@ class WorkingOn(Base):
     post_id = Column(Integer, ForeignKey('posts.id'))
     when = Column(DateTime)
 
+    worker = relationship('User', backref='working_ons')
+    post = relationship('Post', backref='working_ons')
+
     def __repr__(self):
         return "<WorkingOn('%s')>" % (self.id)
