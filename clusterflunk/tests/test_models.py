@@ -32,6 +32,7 @@ from clusterflunk.models.comment_history import CommentHistory
 from clusterflunk.models.statuses import Status
 from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.subscriptions import Subscription
+from clusterflunk.models.working_on import WorkingOn
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -627,13 +628,96 @@ class TestModels(unittest.TestCase):
         session.flush()
         self.assertTrue(str(subscription).startswith('<Subscription'),
                         msg="str(Subscription) must start with '<Subscription'")
-        self.assertIn(study_group, user.subscriptions)
+        self.assertIn(study_group, user.subscribed_groups)
         self.assertIn(user, study_group.subscribers)
     
     def testUsers(self):
-        pass
+        session = self.Session()
+
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        auth_user = AuthUser(id=1,
+                             username='jayd3e',
+                             password='secret')
+        article = Article(id=1,
+                          author_id=1)
+        post = Post(id=1,
+                    author_id=1,
+                    study_group_id=1)
+        status = Status(id=1,
+                        created=datetime.now(),
+                        body="I luv studying <3",
+                        author_id=1)
+        study_group = StudyGroup(id=1,
+                                 name="My cool group",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        comment = Comment(id=1)
+
+        user.auth_user = auth_user
+        user.articles.append(article)
+        user.posts.append(post)
+        user.statuses.append(status)
+        user.founded_groups.append(study_group)
+        user.comments.append(comment)
+        session.add(user)
+
+        # Moderator of founded group
+        moderator = Moderator(user_id=1,
+                              study_group_id=1)
+        session.add(moderator)
+                            
+        # Subscribed to founded group
+        subscription = Subscription(user_id=1,
+                                    study_group_id=1)
+        session.add(subscription)
+
+        session.flush()
+        self.assertTrue(str(subscription).startswith('<Subscription'),
+                        msg="str(Subscription) must start with '<Subscription'")
+        self.assertEqual(user.auth_user, auth_user)
+        self.assertEqual(auth_user.user, user)
+        self.assertIn(article, user.articles)
+        self.assertEqual(article.author, user)
+        self.assertIn(post, user.posts)
+        self.assertEqual(post.author, user)
+        self.assertIn(status, user.statuses)
+        self.assertEqual(status.author, user)
+        self.assertIn(study_group, user.founded_groups)
+        self.assertEqual(user, study_group.author)
+        self.assertIn(comment, user.comments)
+        self.assertEqual(user, comment.author)
+        self.assertIn(study_group, user.subscribed_groups)
+        self.assertIn(user, study_group.subscribers)
+        self.assertIn(user, study_group.moderators)
+        self.assertIn(study_group, user.moderated_groups)
 
     def testWorkingOn(self):
-        pass
+        session = self.Session()
 
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        post = Post(id=1,
+                    author_id=1,
+                    study_group_id=1)
+        working_on = WorkingOn(id=1,
+                               worker_id=1,
+                               post_id=1)
+        
+        session.add(user)
+        session.add(post)
+        session.add(working_on)
+        
+        session.flush()
+        self.assertTrue(str(working_on).startswith('<WorkingOn'),
+                        msg="str(WorkingOn) must start with '<WorkingOn'")
+        self.assertIn(post, user.working_on)
+        self.assertEqual(working_on.worker, user)
+        self.assertEqual(working_on.post, post)
     
