@@ -8,7 +8,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 
-from clusterflunk.models.base import Base
+from .base import Base
 
 class User(Base):
     __tablename__ = 'users'
