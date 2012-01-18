@@ -12,7 +12,7 @@ entry_points = """
 """
 
 requires = [
-    'pyramid',
+    'pyramid>=1.3a5',
     'pyramid_debugtoolbar',
     'sqlalchemy',
     'psycopg2',
@@ -21,11 +21,19 @@ requires = [
     'waitress',
 ]
 
+tests_require = requires + [
+    'nose',
+    'webtest',
+    'selenium',
+    'requests',
+]
+
 setup(name='Clusterflunk',
       version='0.1dev',
       description='',
       long_description=README + '\n\n' + CHANGES,
       install_requires=requires,
+      tests_require=tests_require,
       url='http://localhost',
       packages=['clusterflunk'],
       test_suite='clusterflunk.tests',
