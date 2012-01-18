@@ -20,7 +20,8 @@ class StudyGroup(Base):
     network_id = Column(Integer, ForeignKey('networks.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
 
-    posts = relationship('Post', backref="study_group")
+    founder = relationship('User', backref='founded_groups')
+    posts = relationship('Post', backref='study_group')
     moderators = association_proxy('moderator', 'user')
     subscribers = association_proxy('subscription', 'user')
 

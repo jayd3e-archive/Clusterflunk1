@@ -16,6 +16,7 @@ class Article(Base):
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey('users.id'))
 
+    author = relationship('User', backref='articles')
     history = relationship('ArticleHistory', backref="article")
     comments = association_proxy('article_comments', 'comment')
 

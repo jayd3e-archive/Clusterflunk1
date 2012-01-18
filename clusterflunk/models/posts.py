@@ -17,10 +17,29 @@ class Post(Base):
     author_id = Column(Integer, ForeignKey('users.id'))
     study_group_id = Column(Integer, ForeignKey('study_groups.id'))
 
-    history = relationship('PostHistory', backref="post")
-    problems = relationship('Problem', backref="post")
+    author = relationship('User', backref='posts')
+    history = relationship('PostHistory', backref='post')
+    problems = relationship('Problem', backref='post')
     comments = association_proxy('post_comments', 'comment')
     categories = association_proxy('post_categories', 'category')
 
     def __repr__(self):
         return "<Post('%s')>" % (self.id)
+
+class PostHistory(Base):
+    __tablename__ = 'post_history'
+
+    id = Column(Integer, primary_key=True)
+    revision = Column(Integer)
+    author_id = Column(Integer, ForeignKey('users.id'))
+    post_id = Column(Integer, ForeignKey('posts.id'))
+    created = Column(DateTime)
+
+    # Version controlled fields
+    name = Column(String(100))
+    description = Column(String(1000))
+    due = Column(DateTime)
+    active = Column(DateTime)
+
+    def __repr__(self):
+        return "<PostHistory('%s')>" % (self.id)
