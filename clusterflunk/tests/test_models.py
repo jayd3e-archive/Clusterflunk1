@@ -7,28 +7,40 @@ from sqlalchemy import create_engine
 
 # Models
 from clusterflunk.models.base import Base
-from clusterflunk.models.auth import AuthUser
-from clusterflunk.models.auth import AuthGroup
-from clusterflunk.models.auth import AuthUserGroup
+from clusterflunk.models.auth import (
+    AuthUser,
+    AuthGroup,
+    AuthUserGroup,
+)
 from clusterflunk.models.users import User
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.networks import Network
 from clusterflunk.models.categories import Category
 from clusterflunk.models.categories import PostCategory
-from clusterflunk.models.articles import Article
-from clusterflunk.models.article_history import ArticleHistory
-from clusterflunk.models.article_comments import ArticleComment
-from clusterflunk.models.posts import Post
-from clusterflunk.models.post_comments import PostComment
-from clusterflunk.models.post_history import PostHistory
-from clusterflunk.models.solutions import Solution
-from clusterflunk.models.solution_comments import SolutionComment
-from clusterflunk.models.solution_history import SolutionHistory
-from clusterflunk.models.problems import Problem
-from clusterflunk.models.problem_comments import ProblemComment
-from clusterflunk.models.problem_history import ProblemHistory
-from clusterflunk.models.comments import Comment
-from clusterflunk.models.comment_history import CommentHistory
+from clusterflunk.models.articles import (
+    Article,
+    ArticleHistory,
+    ArticleComment,
+)
+from clusterflunk.models.posts import (
+    Post,
+    PostComment,
+    PostHistory,
+)
+from clusterflunk.models.solutions import (
+    Solution,
+    SolutionComment,
+    SolutionHistory,
+)
+from clusterflunk.models.problems import (
+    Problem,
+    ProblemComment,
+    ProblemHistory,
+)
+from clusterflunk.models.comments import (
+    Comment,
+    CommentHistory,
+)
 from clusterflunk.models.statuses import Status
 from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.subscriptions import Subscription

@@ -1,14 +1,22 @@
 from pyramid.config import Configurator
+from pyramid.authorization import ACLAuthorizationPolicy
+
+from clusterflunk.security import (
+    AuthenticationPolicy,
+    root_factory,
+)
 
 def main(global_config, **settings):
-        '''Main config function'''
-        config = Configurator(settings=settings,
-                              root_factory=Site,
-                              request_factory=D2Request)
-                          
-        config.scan('clusterflunk')
-        return config.make_wsgi_app()
-
-if __name__ == '__main__':
-    from paste.httpserver import serve
-    serve(main(), host="0.0.0.0", port="5015")
+    '''Main config function'''
+    authn_policy = AuthenticationPolicy(settings)
+    authz_policy = ACLAuthorizationPolicy()
+    config = Configurator(
+        settings=settings,
+        authentication_policy=authn_policy,
+        authorization_policy=authz_policy,
+        root_factory=root_factory,
+    )
+    config.add_route('api.login', '/api/login')
+    config.add_route('api.logout', '/api/logout')
+    config.scan('clusterflunk.views')
+    return config.make_wsgi_app()
