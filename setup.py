@@ -7,15 +7,19 @@ README = open(os.path.join(here, 'README')).read()
 CHANGES = open(os.path.join(here, 'CHANGES')).read()
 
 entry_points = """
-      [paste.app_factory]
-      main = clusterflunk:main
-      """
+    [paste.app_factory]
+    main = clusterflunk:main
+"""
 
-requires = ['pyramid',
-            'pyramid_debugtoolbar',
-            'sqlalchemy',
-            'psycopg2',
-            'alembic']
+requires = [
+    'pyramid',
+    'pyramid_debugtoolbar',
+    'sqlalchemy',
+    'psycopg2',
+    'alembic',
+    'colander',
+    'waitress',
+]
 
 setup(name='Clusterflunk',
       version='0.1dev',
