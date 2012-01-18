@@ -26,6 +26,7 @@ class User(Base):
     founded_groups = relationship('StudyGroup', backref="author")
     comments = relationship('Comment', backref="author")
     moderated_groups = association_proxy('moderator', 'study_group')
+    subscriptions = association_proxy('subscription', 'study_group')
 
     def __repr__(self):
         return "<User('%s')>" % (self.id)

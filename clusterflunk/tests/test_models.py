@@ -31,6 +31,7 @@ from clusterflunk.models.comments import Comment
 from clusterflunk.models.comment_history import CommentHistory
 from clusterflunk.models.statuses import Status
 from clusterflunk.models.moderators import Moderator
+from clusterflunk.models.subscriptions import Subscription
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -561,13 +562,73 @@ class TestModels(unittest.TestCase):
 
     
     def testStatuses(self):
-        pass
+        session = self.Session()
+
+        status = Status(id=1,
+                        created=datetime.now(),
+                        body="I luv studying <3",
+                        author_id=1)
+        
+        session.add(status)
+        self.assertTrue(str(status).startswith('<Status'),
+                        msg="str(Status) must start with '<Status'")
     
     def testStudyGroups(self):
-        pass
+        session = self.Session()
+
+        study_group = StudyGroup(id=1,
+                                 name="My cool group",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        post = Post(id=1,
+                    author_id=1,
+                    study_group_id=1)
+        study_group.posts.append(post)
+        
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        session.add(user)
+
+        moderator = Moderator(user_id=1,
+                              study_group_id=1)
+        study_group.moderator.append(moderator)
+
+        session.add(study_group)
+        session.flush()
+        self.assertTrue(str(study_group).startswith('<StudyGroup'),
+                        msg="str(StudyGroup) must start with '<StudyGroup'")
+        self.assertIn(post, study_group.posts)
+        self.assertEqual(post.study_group, study_group)
+        self.assertIn(user, study_group.moderators)
+        self.assertIn(study_group, user.moderated_groups)
     
     def testSubscriptions(self):
-        pass
+        session = self.Session()
+
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        study_group = StudyGroup(id=1,
+                                 name="My cool group",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        subscription = Subscription(user_id=1,
+                                    study_group_id=1)
+        
+        session.add(study_group)
+        session.add(user)
+        session.add(subscription)
+
+        session.flush()
+        self.assertTrue(str(subscription).startswith('<Subscription'),
+                        msg="str(Subscription) must start with '<Subscription'")
+        self.assertIn(study_group, user.subscriptions)
+        self.assertIn(user, study_group.subscribers)
     
     def testUsers(self):
         pass
