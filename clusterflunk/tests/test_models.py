@@ -532,7 +532,33 @@ class TestModels(unittest.TestCase):
         self.assertEqual(moderator.study_group, study_group)
     
     def testNetworks(self):
-        pass
+        session = self.Session()
+
+        network = Network(id=1,
+                          name="Uni of Iowa",
+                          created=datetime.now())
+        session.add(network)
+
+        study_group1 = StudyGroup(id=1,
+                                  name="Class of Physics",
+                                  network_id=1)
+        study_group2 = StudyGroup(id=2,
+                                  name="Class of Math",
+                                  network_id=1)
+        study_group3 = StudyGroup(id=3,
+                                  name="Small Study Group",
+                                  network_id=1)
+        for sg in [study_group1, study_group2, study_group3]:
+            session.add(sg)
+        
+        session.flush()
+        self.assertTrue(str(network).startswith('<Network'),
+                        msg="str(Network) must start with '<Network'")
+        self.assertEqual(network.study_groups, [study_group1, study_group2, study_group3])
+        self.assertEqual(network, study_group1.network)
+        self.assertEqual(network, study_group2.network)
+        self.assertEqual(network, study_group3.network)
+
     
     def testStatuses(self):
         pass
