@@ -9,10 +9,10 @@ from pyramid.view import view_config
     request_method='POST',
     renderer='json')
 def login_view(request):
-    username = request.POST.get('username')
+    login = request.POST.get('login')
     password = request.POST.get('password')
-    if username == 'admin' and password == 'admin':
-        userid = username
+    if login == 'admin' and password == 'admin':
+        userid = login
         headers = remember(request, userid)
         request.response.headerlist += headers
         return {
