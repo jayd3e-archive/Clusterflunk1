@@ -14,15 +14,15 @@ class Article(Base):
     __tablename__ = 'articles'
 
     id = Column(Integer, primary_key=True)
-    author_id = Column(Integer, ForeignKey('users.id'))
+    founder_id = Column(Integer, ForeignKey('users.id'))
 
-    author = relationship('User', backref='articles')
+    founder = relationship('User', backref="articles")
     history = relationship('ArticleHistory', backref="article")
     comments = association_proxy('article_comments', 'comment')
 
     def __repr__(self):
         return "<Article('%s', '%s')>" % (self.id,
-                                          self.author_id)
+                                          self.founder_id)
 
 class ArticleHistory(Base):
     __tablename__ = 'article_history'
@@ -35,6 +35,9 @@ class ArticleHistory(Base):
 
     # Version controlled fields
     body = Column(String(1000))
+
+    # Relationships
+    author = relationship('User', backref='article_revs')
 
     def __repr__(self):
         return "<ArticleHistory('%s', '%s', '%s', '%s', '%s')>" % (

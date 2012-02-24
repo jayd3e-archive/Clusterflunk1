@@ -22,7 +22,6 @@ class User(Base):
     auth_user = relationship('AuthUser', backref='user', uselist=False)
     moderated_groups = association_proxy('moderator', 'study_group')
     subscribed_groups = association_proxy('subscription', 'study_group')
-    working_on = association_proxy('working_ons', 'post')
 
     def __repr__(self):
         return "<User('%s')>" % (self.id)

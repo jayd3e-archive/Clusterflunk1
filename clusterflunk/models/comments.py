@@ -6,6 +6,7 @@ from sqlalchemy import (
     String,
 )
 from sqlalchemy.orm import relationship
+from sqlalchemy.orm import backref
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
@@ -14,14 +15,14 @@ class Comment(Base):
     __tablename__ = 'comments'
 
     id = Column(Integer, primary_key=True)
-    author_id = Column(Integer, ForeignKey('users.id'))
+    parent_id = Column(Integer, ForeignKey('comments.id'))
+    founder_id = Column(Integer, ForeignKey('users.id'))
 
-    author = relationship('User', backref='comments')
-    history = relationship('CommentHistory', backref='comment')
-    articles = association_proxy('article_comments', 'article')
-    posts = association_proxy('post_comments', 'post')
-    problems = association_proxy('problem_comments', 'problem')
-    solutions = association_proxy('solution_comments', 'solution')
+    founder = relationship('User', backref="comments")
+    history = relationship('CommentHistory', backref="comment")
+    replies = relationship('Comment', backref=backref("parent_comment", remote_side=id))
+    articles = association_proxy('article_comments', "article")
+    posts = association_proxy('post_comments', "post")
 
     def __repr__(self):
         return "<Comment('%s')>" % (self.id)
@@ -37,6 +38,9 @@ class CommentHistory(Base):
 
     # Version controlled fields
     body = Column(String(1000))
+
+    # Relationships
+    author = relationship('User', backref='comment_revs')
 
     def __repr__(self):
         return "<CommentHistory('%s')>" % (self.id)

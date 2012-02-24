@@ -14,12 +14,11 @@ class Post(Base):
     __tablename__ = 'posts'
 
     id = Column(Integer, primary_key=True)
-    author_id = Column(Integer, ForeignKey('users.id'))
     study_group_id = Column(Integer, ForeignKey('study_groups.id'))
+    founder_id = Column(Integer, ForeignKey('users.id'))
 
-    author = relationship('User', backref='posts')
+    founder = relationship('User', backref="posts")
     history = relationship('PostHistory', backref='post')
-    problems = relationship('Problem', backref='post')
     comments = association_proxy('post_comments', 'comment')
     categories = association_proxy('post_categories', 'category')
 
@@ -40,6 +39,9 @@ class PostHistory(Base):
     description = Column(String(1000))
     due = Column(DateTime)
     active = Column(DateTime)
+
+    # Relationships
+    author = relationship('User', backref='post_revs')
 
     def __repr__(self):
         return "<PostHistory('%s')>" % (self.id)

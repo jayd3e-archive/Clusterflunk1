@@ -17,15 +17,11 @@ requires = [
     'sqlalchemy',
     'psycopg2',
     'alembic',
-    'colander',
     'waitress',
 ]
 
 tests_require = requires + [
     'nose',
-    'webtest',
-    'selenium',
-    'requests',
 ]
 
 setup(name='Clusterflunk',
