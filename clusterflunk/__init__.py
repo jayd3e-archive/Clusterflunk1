@@ -17,7 +17,7 @@ def main(global_config, **settings):
         root_factory=root_factory,
     )
     config.add_static_view('static', 'clusterflunk:static/')
-    config.add_route('home', '/')
+    config.add_route('index', '/')
     config.add_route('api.login', '/api/login')
     config.add_route('api.logout', '/api/logout')
     config.scan('clusterflunk.views')
