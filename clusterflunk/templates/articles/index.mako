@@ -1,9 +1,9 @@
-<%inherit file="layouts/base.mako"/>
-<%namespace name="util_side" file="utilities/side.mako"/>
+<%inherit file="../layouts/base.mako"/>
+<%namespace name="util_side" file="../utilities/side.mako"/>
 
 <%def name="body()">
     <div class="body_main centered">
-        <h1>HW</h1>
+        <h1>Articles</h1>
     </div>
 </%def>
 

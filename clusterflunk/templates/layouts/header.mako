@@ -5,20 +5,28 @@
         </div>
         <div class="main_nav">
             <ul>
-                <li id="groups"></li>
-                <li id="articles"></li>
+                <li>
+                    <a href="/groups">
+                        <div id="groups"></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/articles">
+                        <div id="articles"></div>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="side_nav">
             <ul>
                 <li>
-                    <a class="light" href="#">logout</a>
+                    <a class="light" href="/logout">logout</a>
                 </li>
                 <li>
                     <a class="light" href="#">network</a>
                 </li>
                 <li id="username">
-                    <a class="light" href="#">jayd3e</a>
+                    <a class="light" href="#">${user.username}</a>
                 </li>
                 <li id="avatar">
                     <a href="">

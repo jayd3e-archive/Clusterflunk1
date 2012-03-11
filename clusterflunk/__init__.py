@@ -1,6 +1,8 @@
 from pyramid.config import Configurator
 from pyramid.authentication import SessionAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
+from pyramid.httpexceptions import HTTPNotFound
+from pyramid.httpexceptions import HTTPForbidden
 from clusterflunk.models.base import initializeBase
 from clusterflunk.models.articles import Article
 from clusterflunk.models.auth import AuthUser
@@ -22,6 +24,8 @@ from clusterflunk.models.users import User
 from clusterflunk.resources import Site
 from clusterflunk.request import ClusterflunkRequest
 from clusterflunk.security import groupfinder
+from clusterflunk.exceptions import notFound
+from clusterflunk.exceptions import forbidden
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker
 
@@ -48,13 +52,28 @@ def main(global_config, **settings):
     config.include('pyramid_debugtoolbar')
 
     # Security
-    config.set_default_permission('everyone')
+    config.set_default_permission('logged_in')
 
     config.add_static_view(name='static', path='clusterflunk:static')
-                        
-    config.add_route('index', '/')            
+                                   
     #Handler Root Routes
+    config.add_route('index', '/') 
+    config.add_route('login', '/login')
+    config.add_route('register', '/register') 
+    config.add_route('logout', '/logout')
+    config.add_route('groups', '/groups')
+    config.add_route('articles', '/articles')
+
     #Handler Action Routes
+
+    #Exception Views
+    config.add_view(notFound,
+                    context=HTTPNotFound,
+                    permission='__no_permission_required__',
+                    renderer='exceptions/not_found.mako')
+    config.add_view(forbidden,
+                    context=HTTPForbidden,
+                    permission='__no_permission_required__')
                       
     config.scan('clusterflunk')
     return config.make_wsgi_app()

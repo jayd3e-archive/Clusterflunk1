@@ -1,5 +1,4 @@
-<%namespace name="header" file="header.mako"/>
-<%namespace name="footer" file="footer.mako"/>
+<%namespace name="header" file="index_header.mako"/>
 <!-- base.mako --> 
 <!DOCTYPE html>
 <html>
@@ -10,17 +9,11 @@
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
     </head>
     <body>
-        <div class="header">
+        <div class="index_header">
             ${header.header(here)}
         </div>
-        <div class="body">
-            <div class="side">
-                ${self.side()}
-            </div>
+        <div class="index_body">
             ${self.body()}
-        </div>
-        <div class="footer">
-            ${footer.footer()}
         </div>
     </body>
 </html>

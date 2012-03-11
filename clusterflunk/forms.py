@@ -1,3 +1,13 @@
+from wtforms import Form,\
+                    SelectField,\
+                    TextField,\
+                    IntegerField,\
+                    PasswordField,\
+                    TextAreaField,\
+                    validators
+from wtforms.validators import ValidationError
+from clusterflunk.models.users import User
+
 class LoginForm(Form):
     username = TextField('Username',
                          [validators.Length(min=4, max=50),
@@ -29,6 +39,6 @@ class RegisterForm(Form):
             raise ValidationError('The passwords do not match.')
     
     def validate_username(form, field):
-        username_ok = form.db.query(UserModel).filter_by(username=field.data).first()
+        username_ok = form.db.query(User).filter_by(username=field.data).first()
         if username_ok is not None:
             raise ValidationError('That username is already taken.')
