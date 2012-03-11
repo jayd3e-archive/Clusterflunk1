@@ -18,7 +18,8 @@ requires = [
     'psycopg2',
     'alembic',
     'waitress',
-    'pyramid_beaker'
+    'pyramid_beaker',
+    'WTForms'
 ]
 
 tests_require = requires + [
