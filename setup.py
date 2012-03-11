@@ -18,6 +18,7 @@ requires = [
     'psycopg2',
     'alembic',
     'waitress',
+    'pyramid_beaker'
 ]
 
 tests_require = requires + [

@@ -1,0 +1,78 @@
+.centered {
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #2B2E2E;
+    height: 40px;
+}
+
+.header_main {
+    width: 960px;
+}
+
+.logo {
+    padding-top: 12px;
+    display: block;
+    float: left;
+}
+
+.main_nav {
+    display: block;
+    float: left;
+    margin-left: 10px;
+    padding-top: 8px;
+}
+
+.main_nav li {
+    float: left;
+    margin-right: 5px;
+}
+
+.main_nav #groups {
+    background-image: url('../img/icons.png');
+    width: 23px;
+    height: 21px;
+}
+
+.main_nav #articles {
+    background-image: url('../img/icons.png');
+    width: 17px;
+    height: 21px;
+    background-position: -23px 0px;
+}
+
+
+.main_nav #groups:hover {
+    background-position: 0px -21px;
+    cursor: pointer;
+}
+
+.main_nav #articles:hover {
+    background-position: -23px -21px;
+    cursor: pointer;
+}
+
+.side_nav {
+    float: right;
+    height: 40px;
+}
+
+.side_nav li {
+    float: right;
+    padding-top: 11px;
+}
+
+.side_nav li a {
+    padding-right: 5px;
+}
+
+.side_nav #avatar {
+    width: 22px;
+    height: 21px;
+    padding-top: 9px;
+}
+
+.side_nav #username {
+    padding-left: 10px;
+}

@@ -10,15 +10,11 @@
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
     </head>
     <body>
-        <div class="centered">
-            <div class="header">
-                ${header.header(here)}
-            </div>
+        <div class="header">
+            ${header.header(here)}
         </div>
-        <div class="centered">
-            <div class="body">
-                ${self.body()}
-            </div>
+        <div class="body">
+            ${self.body()}
         </div>
         <div class="footer">
             ${footer.footer()}
