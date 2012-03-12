@@ -301,9 +301,7 @@ class TestModels(unittest.TestCase):
     def testAuth(self):
         session = self.Session()
 
-        auth_user = AuthUser(id=1,
-                             username='jayd3e',
-                             password='secret')
+        auth_user = AuthUser('jayd3e', 'secret')
         auth_group = AuthGroup(id=1,
                                name='admin')
         auth_user_group = AuthUserGroup(auth_user_id=1,
@@ -478,9 +476,7 @@ class TestModels(unittest.TestCase):
                     email="jd.dallago@gmail.com",
                     joined=datetime.now(),
                     last_online=datetime.now())
-        auth_user = AuthUser(id=1,
-                             username='jayd3e',
-                             password='secret')
+        auth_user = AuthUser('jayd3e', 'secret')
         article = Article(id=1,
                           founder_id=1)
         post = Post(id=1,
