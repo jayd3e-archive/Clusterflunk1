@@ -34,7 +34,7 @@ from clusterflunk.models.comments import (
 from clusterflunk.models.statuses import Status
 from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.subscriptions import Subscription
-from clusterflunk.models.working_on import WorkingOn
+from clusterflunk.models.votes import Vote
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -529,3 +529,38 @@ class TestModels(unittest.TestCase):
         self.assertIn(user, study_group.subscribers)
         self.assertIn(user, study_group.moderators)
         self.assertIn(study_group, user.moderated_groups)
+
+    def testVotes(self):
+        pass
+        session = self.Session()
+
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        study_group = StudyGroup(id=1,
+                                 name="My cool group",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        post = Post(id=1,
+                    founder_id=1,
+                    study_group_id=1)
+        #upvote
+        vote = Vote(id=1,
+                    user_id=1,
+                    post_id=1,
+                    vote=1)
+        
+        session.add(study_group)
+        session.add(user)
+        session.add(post)
+        session.add(vote)
+
+        session.flush()
+        self.assertTrue(str(vote).startswith('<Vote'),
+                        msg="str(Vote) must start with '<Vote'")
+        self.assertIn(vote, user.votes)
+        self.assertEqual(user, vote.user)
+        self.assertIn(vote, post.votes)
+        self.assertEqual(post, vote.post)

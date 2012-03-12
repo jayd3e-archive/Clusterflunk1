@@ -13,9 +13,9 @@ from clusterflunk.models.base import Base
 class Post(Base):
     __tablename__ = 'posts'
 
-    id = Column(Integer, primary_key=True)
     study_group_id = Column(Integer, ForeignKey('study_groups.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
+    score = Column(Integer(100), default=0)
 
     founder = relationship('User', backref="posts")
     history = relationship('PostHistory', backref='post')
@@ -28,7 +28,6 @@ class Post(Base):
 class PostHistory(Base):
     __tablename__ = 'post_history'
 
-    id = Column(Integer, primary_key=True)
     revision = Column(Integer)
     author_id = Column(Integer, ForeignKey('users.id'))
     post_id = Column(Integer, ForeignKey('posts.id'))
@@ -49,7 +48,6 @@ class PostHistory(Base):
 class PostComment(Base):
     __tablename__ = 'post_comments'
 
-    id = Column(Integer, primary_key=True)
     post_id = Column(Integer, ForeignKey('posts.id'))
     comment_id = Column(Integer, ForeignKey('comments.id'))
 

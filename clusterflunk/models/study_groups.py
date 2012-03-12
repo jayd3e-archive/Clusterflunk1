@@ -13,7 +13,6 @@ from clusterflunk.models.base import Base
 class StudyGroup(Base):
     __tablename__ = 'study_groups'
 
-    id = Column(Integer, primary_key=True)
     name = Column(String(100))
     created = Column(DateTime)
     edited = Column(DateTime)

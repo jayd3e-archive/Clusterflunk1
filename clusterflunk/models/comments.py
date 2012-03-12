@@ -30,7 +30,6 @@ class Comment(Base):
 class CommentHistory(Base):
     __tablename__ = 'comment_history'
 
-    id = Column(Integer, primary_key=True)
     revision = Column(Integer)
     created = Column(DateTime)
     author_id = Column(Integer, ForeignKey('users.id'))

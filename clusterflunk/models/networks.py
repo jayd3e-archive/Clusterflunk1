@@ -12,7 +12,6 @@ from clusterflunk.models.base import Base
 class Network(Base):
     __tablename__ = 'networks'
 
-    id = Column(Integer, primary_key=True)
     name = Column(String(100))
     created = Column(DateTime)
 

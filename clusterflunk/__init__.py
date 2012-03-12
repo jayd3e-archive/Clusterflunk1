@@ -21,6 +21,7 @@ from clusterflunk.models.statuses import Status
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.users import User
+from clusterflunk.models.votes import Vote
 from clusterflunk.resources import Site
 from clusterflunk.request import ClusterflunkRequest
 from clusterflunk.security import groupfinder

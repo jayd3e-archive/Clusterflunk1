@@ -19,10 +19,10 @@ class Vote(Base):
     post_id = Column(Integer, ForeignKey('posts.id'))
     vote = Column(Integer(1))
 
-    users = relationship(User,
-                         backref="votes")
-    posts = relationship(Post,
-                         backref="votes")
+    user = relationship(User,
+                        backref="votes")
+    post = relationship(Post,
+                        backref="votes")
     
     def __repr__(self):
         return "<Vote('%s')>" % (self.id)
