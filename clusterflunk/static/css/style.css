@@ -26,6 +26,39 @@ body {
 
 /*
 *
+* Shapes
+*
+*/
+
+.arrow_up {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #2B2E2E;
+    margin-bottom: 4px;
+}
+
+.arrow_up:hover {
+    border-bottom-color: #05C;
+    cursor: pointer;
+}
+
+.arrow_down {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2B2E2E;
+}
+
+.arrow_down:hover {
+    border-top-color: #05C;
+    cursor: pointer;
+}
+
+/*
+*
 * Header
 *
 */
@@ -45,7 +78,7 @@ body {
     height: 200px;
 }
 
-.logo {
+.logo_container {
     margin-left: 5px;
     padding-top: 12px;
     display: block;
@@ -130,11 +163,11 @@ body {
     padding: 5px;
 }
 
-.groups {
+.groups, .posts {
     padding-top: 5px;
 }
 
-.group {
+.group, .post {
     padding-top: 2px;
     padding-bottom: 2px;
 }

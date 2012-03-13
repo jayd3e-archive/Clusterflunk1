@@ -31,3 +31,18 @@ a.dark {
 a.dark:hover {
     color: #005580;
 }
+
+/*
+*
+* Header
+*
+*/
+
+.logo {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #BEEB9F;
+}

@@ -7,6 +7,16 @@ from clusterflunk.models.posts import Post
     permission='view')
 def index(request):
     db = request.db
+    user = request.user
 
-    posts = db.query(Post).all()
+    study_group_ids = []
+    for study_group in user.subscribed_groups:
+        study_group_ids.append(study_group.id)
+    
+    if study_group_ids:
+        query = db.query(Post).filter(Post.study_group_id.in_(study_group_ids))
+        query = query.order_by(Post.created)
+        posts = query.all()
+    else:
+        posts = []
     return {'posts':posts}
