@@ -1,6 +1,7 @@
 from pyramid.config import Configurator
 from pyramid.authentication import SessionAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
+from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.httpexceptions import HTTPNotFound
 from pyramid.httpexceptions import HTTPForbidden
 from clusterflunk.models.base import initializeBase
@@ -22,6 +23,7 @@ from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.users import User
 from clusterflunk.models.votes import Vote
+from clusterflunk.models.memberships import Membership
 from clusterflunk.resources import Site
 from clusterflunk.request import ClusterflunkRequest
 from clusterflunk.security import groupfinder
@@ -42,14 +44,15 @@ def main(global_config, **settings):
     
     authentication_policy = SessionAuthenticationPolicy(callback=groupfinder)
     authorization_policy = ACLAuthorizationPolicy()
+    session_factory = UnencryptedCookieSessionFactoryConfig('1h209asf093nf930fni23f0fb29401', cookie_max_age=3600)
     config = Configurator(settings=settings,
                           root_factory=Site,
                           request_factory=ClusterflunkRequest,
                           authentication_policy=authentication_policy,
-                          authorization_policy=authorization_policy)
+                          authorization_policy=authorization_policy,
+                          session_factory=session_factory)
     
     # Includes
-    config.include('pyramid_beaker')
     config.include('pyramid_debugtoolbar')
 
     # Security
