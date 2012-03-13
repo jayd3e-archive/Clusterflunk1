@@ -9,10 +9,14 @@ from clusterflunk.models.memberships import Membership
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.posts import Post
 from clusterflunk.models.subscriptions import Subscription
+from clusterflunk.models.articles import Article
+from clusterflunk.models.articles import ArticleHistory
 
 def data():
     num_of_groups = 3
     num_of_posts = 10
+    num_of_articles = 10
+    num_of_histories = 5
 
     engine = create_engine('postgresql+psycopg2://jayd3e:sharp7&7@localhost/clusterflunk')
     Session = sessionmaker(bind=engine, autocommit=True)
@@ -54,6 +58,18 @@ def data():
                     founder_id=1,
                     study_group_id=random.randint(1, num_of_groups))
         session.add(post)
+
+    for i in range(num_of_articles + 1):
+        article = Article(id=int(i),
+                          founder_id=1,
+                          created=datetime.now())
+        for j in range(num_of_histories + 1):
+            article_rev = ArticleHistory(revision=int(j),
+                                         author_id=1,
+                                         article_id=int(i),
+                                         created=datetime.now())
+            article.history.append(article_rev)
+        session.add(article)
     
     session.flush()
 
