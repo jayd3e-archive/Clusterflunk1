@@ -21,3 +21,13 @@ a.light {
 a.light:hover {
     color: #FFF;
 }
+
+a.dark {
+    color: #08C;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+a.dark:hover {
+    color: #005580;
+}

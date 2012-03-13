@@ -1,5 +1,4 @@
 from pyramid.view import view_config
-from clusterflunk.models.group import Group
 
 @view_config(
     route_name='groups',
@@ -7,5 +6,9 @@ from clusterflunk.models.group import Group
     permission='view')
 def index(request):
     db = request.db
-    groups = db.query(Group).filter_by(network_id=)
-    return {'groups':groups}
+    user = request.user
+
+    study_groups = []
+    for membership in user.memberships:
+        study_groups.extend(membership.study_groups)
+    return {'groups':study_groups}

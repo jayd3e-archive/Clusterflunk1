@@ -7,9 +7,11 @@
         <div class="groups">
             % for group in groups:
                 <div class="group">
-                    <a href="">${group.name}</a>    
+                    <a class="dark" href="/groups/${group.id}">${group.name}</a>
+                    <button class="button-small">subscribe</button> 
                 </div>
             % endfor
+            <div class="clear"></div>
         </div>
     </div>
 </%def>
