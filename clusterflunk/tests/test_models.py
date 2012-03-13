@@ -35,6 +35,7 @@ from clusterflunk.models.statuses import Status
 from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.votes import Vote
+from clusterflunk.models.memberships import Membership
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -531,7 +532,6 @@ class TestModels(unittest.TestCase):
         self.assertIn(study_group, user.moderated_groups)
 
     def testVotes(self):
-        pass
         session = self.Session()
 
         user = User(id=1,
@@ -564,3 +564,30 @@ class TestModels(unittest.TestCase):
         self.assertEqual(user, vote.user)
         self.assertIn(vote, post.votes)
         self.assertEqual(post, vote.post)
+
+    def testMemberships(self):
+        session = self.Session()
+
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        network = Network(id=1,
+                          name="Uni of Iowa",
+                          created=datetime.now())
+        membership = Membership(id=1,
+                                user_id=1,
+                                network_id=1)
+        
+        session.add(user)
+        session.add(network)
+        session.add(membership)
+
+        session.flush()
+        self.assertTrue(str(membership).startswith('<Membership'),
+                        msg="str(Membership) must start with '<Membership'")
+        self.assertIn(network, user.memberships)
+        self.assertEqual(network, membership.network)
+        self.assertIn(user, network.members)
+        self.assertEqual(user, membership.user)
