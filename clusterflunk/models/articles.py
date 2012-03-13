@@ -13,6 +13,7 @@ from clusterflunk.models.base import Base
 class Article(Base):
     __tablename__ = 'articles'
 
+    created = Column(DateTime)
     founder_id = Column(Integer, ForeignKey('users.id'))
 
     founder = relationship('User', backref="articles")
@@ -32,6 +33,7 @@ class ArticleHistory(Base):
     article_id = Column(Integer, ForeignKey('articles.id'))
 
     # Version controlled fields
+    title = Column(String(100))
     body = Column(String(1000))
 
     # Relationships
