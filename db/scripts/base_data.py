@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -6,8 +7,13 @@ from clusterflunk.models.users import User
 from clusterflunk.models.auth import AuthUser
 from clusterflunk.models.memberships import Membership
 from clusterflunk.models.study_groups import StudyGroup
+from clusterflunk.models.posts import Post
+from clusterflunk.models.subscriptions import Subscription
 
 def data():
+    num_of_groups = 3
+    num_of_posts = 10
+
     engine = create_engine('postgresql+psycopg2://jayd3e:sharp7&7@localhost/clusterflunk')
     Session = sessionmaker(bind=engine, autocommit=True)
     session = Session()
@@ -16,22 +22,6 @@ def data():
                       name="Uni of Iowa",
                       created=datetime.now())
     session.add(network)
-
-    study_group0 = StudyGroup(id=1,
-                              name="Physics 101",
-                              network_id=1,
-                              created=datetime.now(),
-                              edited=datetime.now())
-    study_group1 = StudyGroup(id=2,
-                              name="Physics 102",
-                              network_id=1,
-                              created=datetime.now(),
-                              edited=datetime.now())
-    study_group2 = StudyGroup(id=3,
-                              name="Physics 103",
-                              network_id=1,
-                              created=datetime.now(),
-                              edited=datetime.now())
 
     user = User(id=1,
                 username="jayd3e",
@@ -47,8 +37,23 @@ def data():
                             network_id=1)
     session.add(membership)
     
-    for group in [study_group0, study_group1, study_group2]:
-        session.add(group)
+    for i in range(num_of_groups + 1):
+        study_group = StudyGroup(id=int(i),
+                                 name="Physics 10" + str(i),
+                                 network_id=1,
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        subscription = Subscription(user_id=1,
+                                    study_group_id=int(i))
+        session.add(subscription)
+        session.add(study_group)
+
+    for i in range(num_of_posts + 1):
+        post = Post(id=int(i),
+                    title="Post #" + str(i),
+                    founder_id=1,
+                    study_group_id=random.randint(1, num_of_groups))
+        session.add(post)
     
     session.flush()
 
