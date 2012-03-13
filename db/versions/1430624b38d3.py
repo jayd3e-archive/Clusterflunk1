@@ -20,8 +20,8 @@ def upgrade():
         sa.Column('user_id', sa.Integer(), nullable=True),
         sa.Column('post_id', sa.Integer(), nullable=True),
         sa.Column('vote', sa.Integer(), nullable=True),
-        sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
-        sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+        sa.ForeignKeyConstraint(['post_id'], ['posts.id']),
+        sa.ForeignKeyConstraint(['user_id'], ['users.id']),
         sa.PrimaryKeyConstraint('id')
     )
     op.add_column(u'posts', sa.Column('score', sa.Integer(), nullable=True))

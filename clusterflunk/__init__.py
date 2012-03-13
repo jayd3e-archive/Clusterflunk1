@@ -71,7 +71,7 @@ def main(global_config, **settings):
     config.add_view(notFound,
                     context=HTTPNotFound,
                     permission='__no_permission_required__',
-                    renderer='exceptions/not_found.mako')
+                    renderer='clusterflunk:templates/exceptions/not_found.mako')
     config.add_view(forbidden,
                     context=HTTPForbidden,
                     permission='__no_permission_required__')
