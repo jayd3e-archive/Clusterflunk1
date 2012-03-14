@@ -11,6 +11,7 @@ from clusterflunk.models.posts import Post
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.articles import Article
 from clusterflunk.models.articles import ArticleHistory
+from clusterflunk.models.posts import PostHistory
 
 def data():
     num_of_groups = 3
@@ -57,6 +58,14 @@ def data():
                     title="Post #" + str(i),
                     founder_id=1,
                     study_group_id=random.randint(1, num_of_groups))
+        for j in range(num_of_histories + 1):
+            post_rev = PostHistory(revision=int(j),
+                                   author_id=1,
+                                   post_id=int(i),
+                                   created=datetime.now(),
+                                   name="Post #" + str(i) + str(j),
+                                   description="This is a description.  Version #" + str(j))
+            post.history.append(post_rev)
         session.add(post)
 
     for i in range(num_of_articles + 1):
