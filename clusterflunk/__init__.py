@@ -69,6 +69,8 @@ def main(global_config, **settings):
     config.add_route('articles', '/articles')
 
     #Handler Action Routes
+    config.add_route('subscribe_to_group', '/groups/{group_id}/subscribe')
+    config.add_route('unsubscribe_to_group', '/groups/{group_id}/unsubscribe')
 
     #Exception Views
     config.add_view(notFound,

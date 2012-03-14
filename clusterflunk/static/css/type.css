@@ -46,3 +46,14 @@ a.dark:hover {
 .logo:hover {
     color: #BEEB9F;
 }
+
+/*
+*
+* Body
+*
+*/
+
+.categories ul li, .categories ul li a {
+    color: #08C;
+    font-size: 12px;
+}
