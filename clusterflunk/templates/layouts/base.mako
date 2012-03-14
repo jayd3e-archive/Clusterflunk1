@@ -5,9 +5,17 @@
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/reset.css')}" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/style.css')}" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/type.css')}" />
+
+        <!-- Third-Party Libraries -->
+        <script src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>
+        <script src="${request.static_url('clusterflunk:static/js/libs/underscore.js')}"></script>
+        <script src="${request.static_url('clusterflunk:static/js/libs/backbone.js')}"></script>
+
+        <!-- The Frontend -->
+        <script src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
     </head>
     <body>
         <div class="header">

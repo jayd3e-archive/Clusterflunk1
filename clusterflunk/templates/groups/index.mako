@@ -21,9 +21,17 @@
                 <div class="group">
                     <a class="dark" href="/groups/${group.id}">${group.name}</a>
                     % if group in user.subscribed_groups:
-                        <button class="button-small-negative">unsubscribe</button>
+                        <button
+                            id="${group.id}" 
+                            class="button-small-negative">
+                                unsubscribe
+                        </button>
                     % else:
-                        <button class="button-small-positive">subscribe</button> 
+                        <button
+                            id="${group.id}"
+                            class="button-small-positive">
+                                subscribe
+                        </button> 
                     % endif
                 </div>
             % endfor
