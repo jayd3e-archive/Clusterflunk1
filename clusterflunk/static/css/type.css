@@ -12,6 +12,11 @@ h1.dark {
     font-size: 15px;
 }
 
+h1.blue {
+    color: #08C;
+    font-size: 16px;
+}
+
 a.light {
     color: #BEEB9F;
     font-size: 12px;
@@ -53,7 +58,7 @@ a.dark:hover {
 *
 */
 
-.categories ul li, .categories ul li a {
+.categories ul li, .categories ul li Arial {
     color: #08C;
     font-size: 12px;
 }
