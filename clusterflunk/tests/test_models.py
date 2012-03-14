@@ -240,14 +240,14 @@ class TestModels(unittest.TestCase):
         #
 
         comment1 = Comment(id=1,
-                          parent_id=None,
-                          founder_id=1)
+                           parent_id=None,
+                           founder_id=1)
         comment2 = Comment(id=2,
-                          parent_id=1,
-                          founder_id=1)
+                           parent_id=1,
+                           founder_id=1)
         comment3 = Comment(id=3,
-                          parent_id=2,
-                          founder_id=1)
+                           parent_id=2,
+                           founder_id=1)
 
         comment_rev1 = CommentHistory(id=1,
                                       revision=1,
