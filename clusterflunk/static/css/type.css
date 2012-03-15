@@ -1,4 +1,4 @@
-h1, a {
+h1, a, div {
     font-family: Arial;
 }
 
@@ -61,4 +61,15 @@ a.dark:hover {
 .categories ul li, .categories ul li Arial {
     color: #08C;
     font-size: 12px;
+}
+
+.post {
+    color: #2B2E2E;
+    font-size: 12px;
+}
+
+.comment {
+    color: #2B2E2E;
+    font-size: 12px;
+    font-family: Arial;
 }
