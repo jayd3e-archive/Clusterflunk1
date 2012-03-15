@@ -185,8 +185,16 @@ body {
 }
 
 .comment {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.child {
+    padding-top: 10px;
+}
+
+.children {
+    padding-left: 30px;
 }
 
 /*

@@ -16,12 +16,28 @@ from clusterflunk.models.posts import PostHistory
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
 
+def reply(session, id):
+    comment = Comment(parent_id=id,
+                      founder_id=1)
+    session.add(comment)
+    session.flush()
+    comment_rev = CommentHistory(revision=1,
+                                 created=datetime.now(),
+                                 author_id=1,
+                                 comment_id=comment.id,
+                                 body="This is branch with parent_comment=" + str(id) + " comment=" + str(comment.id))
+    session.add(comment_rev)
+
+    if random.randint(0, 1) == 1:
+        reply(session, comment.id)
+
 def data():
     num_of_groups = 3
     num_of_posts = 10
     num_of_articles = 10
     num_of_histories = 5
     num_of_comments = 5
+    num_of_replies = 5
 
     engine = create_engine('postgresql+psycopg2://jayd3e:sharp7&7@localhost/clusterflunk')
     Session = sessionmaker(bind=engine, autocommit=True)
@@ -87,6 +103,9 @@ def data():
                                          body="U Suk!")
             session.add(post_comment)
             session.add(comment_rev)
+            
+            for l in range(num_of_replies + 1):
+                reply(session, comment.id)
 
     for i in range(num_of_articles + 1):
         article = Article(id=int(i),

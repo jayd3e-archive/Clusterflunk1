@@ -1,5 +1,6 @@
 <%inherit file="../layouts/base.mako"/>
 <%namespace name="util_side" file="../utilities/side.mako"/>
+<%namespace name="children" file="children.mako"/>
 
 <%def name="body()">
     <div class="body_main centered">
@@ -14,6 +15,7 @@
                         last_rev = len(comment.history) - 1
                     %>
                     ${comment.history[last_rev].body}
+                    ${children.children(comment)}
                 </div>
             % endfor
         </div>
