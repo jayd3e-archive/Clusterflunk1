@@ -8,16 +8,20 @@ from clusterflunk.models.auth import AuthUser
 from clusterflunk.models.memberships import Membership
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.posts import Post
+from clusterflunk.models.posts import PostComment
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.articles import Article
 from clusterflunk.models.articles import ArticleHistory
 from clusterflunk.models.posts import PostHistory
+from clusterflunk.models.comments import Comment
+from clusterflunk.models.comments import CommentHistory
 
 def data():
     num_of_groups = 3
     num_of_posts = 10
     num_of_articles = 10
     num_of_histories = 5
+    num_of_comments = 5
 
     engine = create_engine('postgresql+psycopg2://jayd3e:sharp7&7@localhost/clusterflunk')
     Session = sessionmaker(bind=engine, autocommit=True)
@@ -58,6 +62,8 @@ def data():
                     title="Post #" + str(i),
                     founder_id=1,
                     study_group_id=random.randint(1, num_of_groups))
+        session.add(post)
+        session.flush()
         for j in range(num_of_histories + 1):
             post_rev = PostHistory(revision=int(j),
                                    author_id=1,
@@ -66,7 +72,21 @@ def data():
                                    name="Post #" + str(i) + str(j),
                                    description="This is a description.  Version #" + str(j))
             post.history.append(post_rev)
-        session.add(post)
+        
+        for k in range(num_of_comments + 1):
+            comment = Comment(parent_id=None,
+                              founder_id=1)
+            session.add(comment)
+            session.flush()
+            post_comment = PostComment(post_id=int(i),
+                                       comment_id=comment.id)
+            comment_rev = CommentHistory(revision=1,
+                                         created=datetime.now(),
+                                         author_id=1,
+                                         comment_id=comment.id,
+                                         body="U Suk!")
+            session.add(post_comment)
+            session.add(comment_rev)
 
     for i in range(num_of_articles + 1):
         article = Article(id=int(i),
