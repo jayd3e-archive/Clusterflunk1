@@ -7,7 +7,7 @@
         <div class="articles">
         % for article in articles:
             <div class="article">
-                <a class="dark" href="/article/${article.id}">Article #${article.id}</a>
+                <a class="dark" href="/articles/${article.id}">Article #${article.id}</a>
             </div>
         % endfor
         </div>

@@ -28,7 +28,7 @@
                     <a class="light" href="#">network</a>
                 </li>
                 <li id="username">
-                    <a class="light" href="#">${user.username}</a>
+                    <a class="light" href="/profile">${user.username}</a>
                 </li>
                 <li id="avatar">
                     <a href="">

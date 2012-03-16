@@ -73,3 +73,24 @@ a.dark:hover {
     font-size: 12px;
     font-family: Arial;
 }
+
+.article {
+    color: #2B2E2E;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+.network {
+    color: #2E2B2E;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+.settings h1 {
+    color: #05C;
+}
+
+.group_view h1 {
+    color: #05C;
+    font-family: Arial;
+}

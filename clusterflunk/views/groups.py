@@ -1,4 +1,5 @@
 from pyramid.view import view_config
+from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.subscriptions import Subscription
 
 @view_config(
@@ -18,6 +19,18 @@ def index(request):
         for subscription in user.subscribed_groups:
             study_groups.append(subscription)
     return {'groups':study_groups}
+
+@view_config(
+    route_name='groups_view',
+    renderer='clusterflunk:templates/groups/view.mako',
+    permission='view')
+def view(request):
+    db = request.db
+    user = request.user
+    _id = request.matchdict.get('group_id')
+
+    group = db.query(StudyGroup).filter_by(id=_id).first()
+    return {'group':group}
 
 @view_config(
     route_name='subscribe_to_group',

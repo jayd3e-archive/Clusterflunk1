@@ -60,16 +60,19 @@ def main(global_config, **settings):
 
     config.add_static_view(name='static', path='clusterflunk:static')
                                    
-    #Handler Root Routes
+    #View Root Routes
     config.add_route('index', '/') 
     config.add_route('login', '/login')
     config.add_route('register', '/register') 
     config.add_route('logout', '/logout')
     config.add_route('groups', '/groups')
     config.add_route('articles', '/articles')
+    config.add_route('profile', '/profile')
 
-    #Handler Action Routes
+    #View Action Routes
     config.add_route('posts_view', '/posts/{post_id}')
+    config.add_route('articles_view', '/articles/{article_id}')
+    config.add_route('groups_view', '/groups/{group_id}')
     config.add_route('subscribe_to_group', '/groups/{group_id}/subscribe')
     config.add_route('unsubscribe_to_group', '/groups/{group_id}/unsubscribe')
 

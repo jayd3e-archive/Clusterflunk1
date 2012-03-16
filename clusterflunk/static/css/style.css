@@ -197,6 +197,26 @@ body {
     padding-left: 30px;
 }
 
+.profile_pic {
+    padding-top: 5px;
+    padding-left: 5px;
+    float: left;
+}
+
+.network {
+    float: left;
+}
+
+.settings {
+    padding-top: 5px;
+    padding-left: 5px;
+    float: left;
+}
+
+.settings h1 {
+    padding-bottom: 5px;
+}
+
 /*
 *
 * Interface Elements
