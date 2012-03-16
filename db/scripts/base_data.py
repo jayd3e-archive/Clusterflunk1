@@ -16,8 +16,8 @@ from clusterflunk.models.posts import PostHistory
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
 
-def reply(session, id):
-    comment = Comment(parent_id=id,
+def reply(session, _id):
+    comment = Comment(parent_id=_id,
                       founder_id=1)
     session.add(comment)
     session.flush()
@@ -25,7 +25,7 @@ def reply(session, id):
                                  created=datetime.now(),
                                  author_id=1,
                                  comment_id=comment.id,
-                                 body="This is branch with parent_comment=" + str(id) + " comment=" + str(comment.id))
+                                 body="This is branch with parent_comment=" + str(_id) + " comment=" + str(comment.id))
     session.add(comment_rev)
 
     if random.randint(0, 1) == 1:
@@ -112,7 +112,10 @@ def data():
                           founder_id=1,
                           created=datetime.now())
         for j in range(num_of_histories + 1):
-            article_rev = ArticleHistory(revision=int(j),
+            article_rev = ArticleHistory(title="Awesome Title",
+                                         body="This explains a super complicated \
+                                         topic.  And is revision " + str(j),
+                                         revision=int(j),
                                          author_id=1,
                                          article_id=int(i),
                                          created=datetime.now())
