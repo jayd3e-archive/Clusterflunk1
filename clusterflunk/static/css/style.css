@@ -216,6 +216,12 @@ body {
     padding-bottom: 5px;
 }
 
+.reply textarea {
+    width: 500px;
+    height: 100px;
+    display: block;
+}
+
 /*
 *
 * Interface Elements

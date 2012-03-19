@@ -5,7 +5,7 @@
 <%def name="body()">
     <script id="reply" type="handlebars-template">
         <div class="reply">
-            <input name="added_reply" type="text"/>
+            <textarea name="added_reply"></textarea>
             <input name="submit" type="submit"/>
         </div>
     </script>
