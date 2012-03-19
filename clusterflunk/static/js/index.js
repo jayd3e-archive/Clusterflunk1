@@ -21,7 +21,8 @@ jQuery(function($) {
     var Router = Backbone.Router.extend({
         routes: {
             "groups?category=*category": "groups_category",
-            "groups": "groups"
+            "groups": "groups",
+            "posts/:post_id": "posts_view"
         },
 
         groups: function() {
@@ -82,6 +83,25 @@ jQuery(function($) {
                 $('.group button').click(remove_button);
             }
 
+        },
+
+        posts_view: function(post_id) {
+            /*
+            *
+            * Add a reply input box under the comment
+            *
+            */
+
+            add_reply = function(event) {
+                $(".reply").remove(); // Remove all other replies
+                link = $(event.target);
+                comment = link.closest("div.post_actions");
+                source   = $("#reply").html();
+                template = Handlebars.compile(source);
+                $(template()).insertAfter(comment);
+            }
+
+            $('.add_reply').click(add_reply);
         }
     });
 

@@ -7,6 +7,13 @@
                         last_rev = len(comment.history) - 1
                     %>
                     ${child.history[last_rev].body}
+                    <div class="post_actions">
+                        <ul>
+                            <li>
+                                <a class="add_reply">add comment</a>
+                            </li>
+                        </ul>
+                    </div>
                     ${children(child)}
                 </div>
             % endfor
