@@ -14,9 +14,26 @@ var clusterflunk = {
     app: _.extend({}, Backbone.Events)
 };
 
+/*
+*
+* Called at run-time
+*
+*/
 jQuery(function($) {
     // Imports
     var app = clusterflunk.app;
+
+    /*
+    *
+    * Utilities
+    *
+    */
+
+    /*
+    *
+    * Main Router
+    *
+    */
 
     var Router = Backbone.Router.extend({
         routes: {
@@ -86,6 +103,38 @@ jQuery(function($) {
         },
 
         posts_view: function(post_id) {
+
+            /*
+            *
+            * Submit a reply
+            *
+            */
+
+            submit_reply = function(event) {
+                button = $(event.target);
+                button.disabled = true;
+                form = button.parent();
+
+                post_id = form.children("input#post_id").val();
+                parent_id = form.children("input#parent_id").val();
+                reply = form.children("textarea#reply").val();
+
+                data = {post_id : post_id,
+                        parent_id : parent_id,
+                        reply : reply}
+
+                $.ajax({
+                    type: "POST",
+                    data: data,
+                    url: "/posts/" + post_id,
+                    success: function() {
+                        $(".reply").remove(); // Remove all other replies
+                    }
+                });
+
+                return false;
+            }
+
             /*
             *
             * Add a reply input box under the comment
@@ -95,13 +144,25 @@ jQuery(function($) {
             add_reply = function(event) {
                 $(".reply").remove(); // Remove all other replies
                 link = $(event.target);
-                comment = link.closest("div.post_actions");
+                post_actions = link.closest("div.post_actions");
+                comment = link.closest("div.comment");
+                id = comment.attr("id");
+                id = id.split("_")
+                post_id = id[1];
+                parent_id = id[2];
+
                 source   = $("#reply").html();
                 template = Handlebars.compile(source);
-                $(template()).insertAfter(comment);
+                $(template({post_id:post_id, parent_id:parent_id})).insertAfter(post_actions);
+
+                // Add the event to submit the reply
+                $('input#submit').click(submit_reply);
+
+                return false;
             }
 
             $('.add_reply').click(add_reply);
+
         }
     });
 

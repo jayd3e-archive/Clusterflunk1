@@ -5,14 +5,18 @@
 <%def name="body()">
     <script id="reply" type="handlebars-template">
         <div class="reply">
-            <textarea name="added_reply"></textarea>
-            <input name="submit" type="submit"/>
+            <form id="reply_form" method="POST" action="">
+                <input id="post_id" name="post_id" type="hidden" value="{{post_id}}"/>
+                <input id="parent_id" name="parent_id" type="hidden" value="{{parent_id}}"/>
+                <textarea id="reply" name="reply"></textarea>
+                <input id="submit" name="submit" type="submit"/>
+            </form>
         </div>
     </script>
 
     <div class="body_main centered">
         <h1 class="blue">${post.title}</h1>
-        <div class="post">
+        <div class="post" id="post_${post.id}_">
             ${post.history[latest_rev].description}
         </div>
         <div class="post_actions">
@@ -24,7 +28,7 @@
         </div>
         <div class="comments">
             % for comment in post.comments:
-                <div class="comment">
+                <div class="comment" id="comment_${post.id}_${comment.id}">
                     <%
                         last_rev = len(comment.history) - 1
                     %>
@@ -36,7 +40,7 @@
                             </li>
                         </ul>
                     </div>
-                    ${children.children(comment)}
+                    ${children.children(comment, post.id)}
                 </div>
             % endfor
         </div>
