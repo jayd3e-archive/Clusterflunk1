@@ -2,7 +2,7 @@
     % if comment.replies:
         <div class="children">
             % for child in comment.replies:
-                <div class="child" id="child_${post.id}_${comment.id}">
+                <div class="child" id="child_${post_id}_${child.id}">
                     <%
                         last_rev = len(comment.history) - 1
                     %>

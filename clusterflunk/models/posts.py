@@ -53,8 +53,8 @@ class PostComment(Base):
     post_id = Column(Integer, ForeignKey('posts.id'))
     comment_id = Column(Integer, ForeignKey('comments.id'))
 
-    post = relationship('Post', backref='post_comments')
-    comment = relationship('Comment', backref='post_comments')
+    post = relationship('Post', backref='post_comments', uselist=False)
+    comment = relationship('Comment', backref='post_comments', uselist=False)
 
     def __repr__(self):
         return "<PostComment('%s')>" % (self.id)

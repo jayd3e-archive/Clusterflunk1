@@ -18,11 +18,11 @@ class Comment(Base):
     parent_id = Column(Integer, ForeignKey('comments.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
 
-    founder = relationship('User', backref="comments")
-    history = relationship('CommentHistory', backref="comment")
-    replies = relationship('Comment', backref=backref("parent_comment", remote_side=id))
-    articles = association_proxy('article_comments', "article")
-    posts = association_proxy('post_comments', "post")
+    founder = relationship('User', backref='comments')
+    history = relationship('CommentHistory', backref='comment')
+    replies = relationship('Comment', backref=backref('parent_comment', remote_side=id))
+    articles = association_proxy('article_comments', 'article')
+    posts = association_proxy('post_comments', 'post')
 
     def __repr__(self):
         return "<Comment('%s')>" % (self.id)

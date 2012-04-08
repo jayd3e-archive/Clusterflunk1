@@ -4,6 +4,7 @@ from clusterflunk.models.posts import Post
 @view_config(
     route_name='posts_view',
     renderer='clusterflunk:templates/posts/view.mako',
+    request_method='GET',
     permission='view')
 def view(request):
     db = request.db

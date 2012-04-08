@@ -25,6 +25,18 @@ jQuery(function($) {
 
     /*
     *
+    * Templates
+    *
+    */
+
+    reply_source = $("#reply").html();
+    reply_template = Handlebars.compile(reply_source);
+
+    comment_source = $("#comment").html();
+    comment_template = Handlebars.compile(comment_source);
+
+    /*
+    *
     * Utilities
     *
     */
@@ -114,21 +126,26 @@ jQuery(function($) {
                 button = $(event.target);
                 button.disabled = true;
                 form = button.parent();
+                parent = form.closest(".child, .comment, .post");
+                children = parent.children(".children, .comments")
 
                 post_id = form.children("input#post_id").val();
                 parent_id = form.children("input#parent_id").val();
-                reply = form.children("textarea#reply").val();
+                body = form.children("textarea#body").val();
 
                 data = {post_id : post_id,
                         parent_id : parent_id,
-                        reply : reply}
+                        body : body}
 
                 $.ajax({
-                    type: "POST",
+                  type: "POST",
                     data: data,
-                    url: "/posts/" + post_id,
-                    success: function() {
+                    url: "/comments/" + post_id,
+                    success: function(data) {
                         $(".reply").remove(); // Remove all other replies
+                        
+                        context = {id : data['id'], post_id : data['post_id'], body : data['body']};
+                        $(children).append(comment_template(context));
                     }
                 });
 
@@ -145,15 +162,15 @@ jQuery(function($) {
                 $(".reply").remove(); // Remove all other replies
                 link = $(event.target);
                 post_actions = link.closest("div.post_actions");
-                comment = link.closest("div.comment");
+                comment = post_actions.parent();
+
                 id = comment.attr("id");
                 id = id.split("_")
                 post_id = id[1];
                 parent_id = id[2];
 
-                source   = $("#reply").html();
-                template = Handlebars.compile(source);
-                $(template({post_id:post_id, parent_id:parent_id})).insertAfter(post_actions);
+                context = {post_id : post_id, parent_id : parent_id};
+                $(reply_template(context)).insertAfter(post_actions);
 
                 // Add the event to submit the reply
                 $('input#submit').click(submit_reply);
