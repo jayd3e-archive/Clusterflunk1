@@ -118,6 +118,32 @@ jQuery(function($) {
 
             /*
             *
+            * Add a reply input box under the comment
+            *
+            */
+
+            add_reply = function(event) {
+                $(".reply").remove(); // Remove all other replies
+                link = $(event.target);
+                post_actions = link.closest("div.post_actions");
+                comment = post_actions.parent();
+
+                id = comment.attr("id");
+                id = id.split("_")
+                post_id = id[1];
+                parent_id = id[2];
+
+                context = {post_id : post_id, parent_id : parent_id};
+                $(reply_template(context)).insertAfter(post_actions);
+
+                // Add the event to submit the reply
+                $('input#submit').click(submit_reply);
+
+                return false;
+            }
+
+            /*
+            *
             * Submit a reply
             *
             */
@@ -146,6 +172,7 @@ jQuery(function($) {
                         
                         context = {id : data['id'], post_id : data['post_id'], body : data['body']};
                         $(children).append(comment_template(context));
+                        $(children).find('.add_reply').click(add_reply);
                     }
                 });
 
@@ -154,29 +181,9 @@ jQuery(function($) {
 
             /*
             *
-            * Add a reply input box under the comment
+            * Bind Events
             *
             */
-
-            add_reply = function(event) {
-                $(".reply").remove(); // Remove all other replies
-                link = $(event.target);
-                post_actions = link.closest("div.post_actions");
-                comment = post_actions.parent();
-
-                id = comment.attr("id");
-                id = id.split("_")
-                post_id = id[1];
-                parent_id = id[2];
-
-                context = {post_id : post_id, parent_id : parent_id};
-                $(reply_template(context)).insertAfter(post_actions);
-
-                // Add the event to submit the reply
-                $('input#submit').click(submit_reply);
-
-                return false;
-            }
 
             $('.add_reply').click(add_reply);
 

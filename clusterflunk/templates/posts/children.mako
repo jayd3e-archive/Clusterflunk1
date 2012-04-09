@@ -1,6 +1,6 @@
 <%def name="children(comment, post_id)">
-    % if comment.replies:
-        <div class="children">
+    <div class="children">
+        % if comment.replies:
             % for child in comment.replies:
                 <div class="child" id="child_${post_id}_${child.id}">
                     <%
@@ -17,6 +17,6 @@
                     ${children(child, post_id)}
                 </div>
             % endfor
-        </div>
-    % endif
+        % endif
+    </div>
 </%def>
