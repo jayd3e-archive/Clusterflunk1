@@ -37,6 +37,17 @@ a.dark:hover {
     color: #005580;
 }
 
+a.blue {
+    font-size: 12px;
+    color: #08C;
+    text-decoration: none;
+}
+
+a.blue:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /*
 *
 * Header
@@ -86,6 +97,11 @@ a.dark:hover {
     font-family: Arial;
 }
 
+.status {
+    color: #2B2E2E;
+    font-size: 12px;
+}
+
 .settings h1 {
     color: #05C;
 }
@@ -93,15 +109,4 @@ a.dark:hover {
 .group_view h1 {
     color: #08C;
     font-family: Arial;
-}
-
-.add_reply {
-    font-size: 12px;
-    color: #08C;
-    text-decoration: none;
-}
-
-.add_reply:hover {
-    text-decoration: underline;
-    cursor: pointer;
 }

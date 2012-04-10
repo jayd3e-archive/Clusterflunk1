@@ -2,15 +2,34 @@
 <%namespace name="util_side" file="utilities/side.mako"/>
 
 <%def name="body()">
+    <script id="status" type="handlebars-template">
+        <div class="status">
+            <div class="author">
+                <a class="blue" href="/profile/{{username}}">
+                    {{username}}
+                </a>
+            </div>
+            {{body}}
+        </div>
+    </script>
+    
     <div class="body_main centered">
-        <h1>HW</h1>
-        <div class="posts">
-            % for post in posts:
-                <%
-                    latest_rev = len(post.history) - 1
-                %>
-                <div class="post">
-                    <a class="dark" href="/posts/${post.id}">${post.history[latest_rev].name}</a>
+        <h1>Feed</h1>
+        <div class="status">
+            <form id="status_form" method="POST" action="">
+                <textarea id="status" name="status">Ask something crazy!</textarea>
+                <input class="status_submit" id="submit" name="submit" type="submit"/>
+            </form>
+        </div>
+        <div class="statuses">
+            % for status in statuses:
+                <div class="status">
+                    <div class="author">
+                        <a class="blue" href="/profile/${status.author.username}">
+                            ${status.author.username}
+                        </a>
+                    </div>
+                    ${status.body}
                 </div>
             % endfor
         </div>

@@ -15,6 +15,14 @@ from clusterflunk.models.articles import ArticleHistory
 from clusterflunk.models.posts import PostHistory
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
+from clusterflunk.models.statuses import Status
+from clusterflunk.models.broadcasts import Broadcast
+
+statuses = ['I love studying <3',
+            'How do I do this hard problem?',
+            'Can anyone else in this group solve problem 1A?',
+            'Anyone done with the circuits hw yet?',
+            'How do you interpret this piece of art?']
 
 def reply(session, _id):
     comment = Comment(parent_id=_id,
@@ -38,9 +46,10 @@ def data():
     num_of_histories = 5
     num_of_comments = 5
     num_of_replies = 5
+    num_of_statuses = 5
 
     engine = create_engine('postgresql+psycopg2://jayd3e:sharp7&7@localhost/clusterflunk')
-    Session = sessionmaker(bind=engine, autocommit=True)
+    Session = sessionmaker(bind=engine)
     session = Session()
 
     network = Network(id=1,
@@ -72,6 +81,21 @@ def data():
                                     study_group_id=int(i))
         session.add(subscription)
         session.add(study_group)
+
+        for j in range(num_of_statuses + 1):
+            status_len = len(statuses)
+            status_num = random.randint(0, status_len - 1)
+            status = Status(created=datetime.now(),
+                            body=statuses[status_num],
+                            author_id=1)
+            session.add(status)
+            session.flush()
+
+            broadcast = Broadcast(status_id=status.id,
+                                  study_group_id=int(i))
+            session.add(broadcast)
+        
+        session.flush()
 
     for i in range(num_of_posts + 1):
         post = Post(id=int(i),
@@ -123,6 +147,7 @@ def data():
         session.add(article)
     
     session.flush()
+    session.commit()
 
 if __name__ == '__main__':
     data()

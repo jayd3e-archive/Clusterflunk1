@@ -10,7 +10,7 @@
                     <div class="post_actions">
                         <ul>
                             <li>
-                                <a class="add_reply">add comment</a>
+                                <a class="blue">add comment</a>
                             </li>
                         </ul>
                     </div>

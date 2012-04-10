@@ -35,6 +35,9 @@ jQuery(function($) {
     comment_source = $("#comment").html();
     comment_template = Handlebars.compile(comment_source);
 
+    status_source = $("#status").html();
+    status_template = Handlebars.compile(status_source);
+
     /*
     *
     * Utilities
@@ -49,9 +52,50 @@ jQuery(function($) {
 
     var Router = Backbone.Router.extend({
         routes: {
+            "": "index",
             "groups?category=*category": "groups_category",
             "groups": "groups",
             "posts/:post_id": "posts_view"
+        },
+
+        index: function() {
+            
+            /*
+            *
+            * Submit a status
+            *
+            */
+
+            submit_status = function(event) {
+                button = $(event.target);
+                form = button.parent();
+                body_main = form.closest(".body_main");
+                statuses = body_main.children(".statuses");
+
+                status = form.children("textarea#status").val();
+
+                data = {status : status}
+
+                $.ajax({
+                  type: "POST",
+                    data: data,
+                    url: "/statuses",
+                    success: function(data) {
+                        context = {username : data['username'], body : data['body']};
+                        $(statuses).prepend(status_template(context));
+                    }
+                });
+
+                return false;
+            }
+
+            /*
+            *
+            * Bind Events
+            *
+            */
+
+            $('.status_submit').click(submit_status);  
         },
 
         groups: function() {
@@ -186,7 +230,6 @@ jQuery(function($) {
             */
 
             $('.add_reply').click(add_reply);
-
         }
     });
 

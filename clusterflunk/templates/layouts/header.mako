@@ -8,13 +8,18 @@
         <div class="main_nav">
             <ul>
                 <li>
-                    <a href="/groups">
-                        <div id="groups"></div>
+                    <a class="light" href="/posts">
+                        hw
                     </a>
                 </li>
                 <li>
-                    <a href="/articles">
-                        <div id="articles"></div>
+                    <a class="light" href="/groups">
+                        groups
+                    </a>
+                </li>
+                <li>
+                    <a class="light" href="/articles">
+                        articles
                     </a>
                 </li>
             </ul>

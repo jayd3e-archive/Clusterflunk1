@@ -1,5 +1,7 @@
 from pyramid.view import view_config
-from clusterflunk.models.posts import Post
+from clusterflunk.models.statuses import Status
+from clusterflunk.models.study_groups import StudyGroup
+from clusterflunk.models.broadcasts import Broadcast
 
 @view_config(
     route_name='index',
@@ -12,11 +14,13 @@ def index(request):
     study_group_ids = []
     for study_group in user.subscribed_groups:
         study_group_ids.append(study_group.id)
-    
+
     if study_group_ids:
-        query = db.query(Post).filter(Post.study_group_id.in_(study_group_ids))
-        query = query.order_by(Post.created)
-        posts = query.all()
+        query = db.query(Status).join(Broadcast, Status.id==Broadcast.status_id). \
+                                 join(StudyGroup, Broadcast.study_group_id==StudyGroup.id). \
+                                 filter(StudyGroup.id.in_(study_group_ids))
+        statuses = query.all()
     else:
-        posts = []
-    return {'posts':posts}
+        statuses = []
+    
+    return {'statuses' : statuses}

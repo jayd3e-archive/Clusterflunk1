@@ -24,6 +24,7 @@ from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.users import User
 from clusterflunk.models.votes import Vote
 from clusterflunk.models.memberships import Membership
+from clusterflunk.models.broadcasts import Broadcast
 from clusterflunk.resources import Site
 from clusterflunk.request import ClusterflunkRequest
 from clusterflunk.security import groupfinder
@@ -65,8 +66,10 @@ def main(global_config, **settings):
     config.add_route('login', '/login')
     config.add_route('register', '/register') 
     config.add_route('logout', '/logout')
+    config.add_route('posts', '/posts')
     config.add_route('groups', '/groups')
     config.add_route('articles', '/articles')
+    config.add_route('statuses', '/statuses')
     config.add_route('profile', '/profile')
 
     #View Action Routes

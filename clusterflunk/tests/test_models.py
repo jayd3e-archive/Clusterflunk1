@@ -36,6 +36,7 @@ from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.votes import Vote
 from clusterflunk.models.memberships import Membership
+from clusterflunk.models.broadcasts import Broadcast
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -591,3 +592,30 @@ class TestModels(unittest.TestCase):
         self.assertEqual(network, membership.network)
         self.assertIn(user, network.members)
         self.assertEqual(user, membership.user)
+
+    def testBroadcasts(self):
+        session = self.Session()
+
+        status = Status(id=1,
+                        created=datetime.now(),
+                        body="I luv studying <3",
+                        author_id=1)
+        study_group = StudyGroup(id=1,
+                                 name="My cool group",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        broadcast = Broadcast(id=1,
+                              status_id=1,
+                              study_group_id=1)
+        
+        session.add(status)
+        session.add(study_group)
+        session.add(broadcast)
+
+        session.flush()
+        self.assertTrue(str(broadcast).startswith('<Broadcast'),
+                        msg="str(Broadcast) must start with '<Broadcast'")
+        self.assertIn(status, study_group.statuses)
+        self.assertIn(study_group, status.study_groups)
+        self.assertEqual(status, broadcast.status)
+        self.assertEqual(study_group, broadcast.study_group)

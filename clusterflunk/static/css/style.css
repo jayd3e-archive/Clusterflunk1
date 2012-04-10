@@ -89,35 +89,12 @@ body {
     display: block;
     float: left;
     margin-left: 10px;
-    padding-top: 8px;
+    padding-top: 11px;
 }
 
 .main_nav li {
     float: left;
     margin-right: 5px;
-}
-
-.main_nav #groups {
-    background-image: url('../img/icons.png');
-    width: 23px;
-    height: 21px;
-}
-
-.main_nav #articles {
-    background-image: url('../img/icons.png');
-    width: 17px;
-    height: 21px;
-    background-position: -23px 0px;
-}
-
-.main_nav #groups:hover {
-    background-position: 0px -21px;
-    cursor: pointer;
-}
-
-.main_nav #articles:hover {
-    background-position: -23px -21px;
-    cursor: pointer;
 }
 
 .side_nav {
@@ -220,6 +197,20 @@ body {
     width: 500px;
     height: 100px;
     display: block;
+}
+
+.status {
+    padding-top: 5px;
+}
+
+.status textarea {
+    width: 635px;
+    height: 60px;
+    display: block;
+}
+
+.status #status_form #submit {
+    margin-top: 5px;
 }
 
 /*
