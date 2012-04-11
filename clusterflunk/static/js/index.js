@@ -91,11 +91,35 @@ jQuery(function($) {
 
             /*
             *
+            * Once the "chosen_groups_container" is blurred, re-add the click event
+            *
+            */
+
+            blur_choose_group = function(event) {
+                $('.chosen_groups_container').unbind('blur');
+            }
+
+            /*
+            *
+            * Once the "chosen_groups_container" is clicked, create an input box
+            *
+            */
+
+            choose_group = function(event) {
+                $('#choose_group').html('<input type="text" name="group"/>');
+                $('.chosen_groups_container').unbind('click');
+                $('.chosen_groups_container').blur(blur_choose_group);
+                $("#choose_group input").focus();
+            }
+
+            /*
+            *
             * Bind Events
             *
             */
 
-            $('.status_submit').click(submit_status);  
+            $('.status_submit').click(submit_status);
+            $('.chosen_groups_container').click(choose_group);  
         },
 
         groups: function() {

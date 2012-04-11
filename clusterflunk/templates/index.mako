@@ -18,6 +18,12 @@
         <div class="status">
             <form id="status_form" method="POST" action="">
                 <textarea id="status" name="status">Ask something crazy!</textarea>
+                <div class="chosen_groups_container">
+                    <div class="chosen_groups">
+                    </div>
+                    <div id="choose_group">
+                    </div>
+                </div>
                 <input class="status_submit" id="submit" name="submit" type="submit"/>
             </form>
         </div>
