@@ -96,7 +96,6 @@ jQuery(function($) {
             */
 
             blur_choose_group = function(event) {
-                $('.chosen_groups_container').unbind('blur');
             }
 
             /*
@@ -106,10 +105,7 @@ jQuery(function($) {
             */
 
             choose_group = function(event) {
-                $('#choose_group').html('<input type="text" name="group"/>');
-                $('.chosen_groups_container').unbind('click');
-                $('.chosen_groups_container').blur(blur_choose_group);
-                $("#choose_group input").focus();
+                $("#choose_group_input").focus();
             }
 
             /*
@@ -119,7 +115,19 @@ jQuery(function($) {
             */
 
             $('.status_submit').click(submit_status);
-            $('.chosen_groups_container').click(choose_group);  
+            $('.chosen_groups_container').click(choose_group);
+            $("#choose_group_input").autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/groups?s=" + request.term,
+                        success: function( data ) {
+                            
+                        }
+                    });
+                },
+                select: function( event, ui ) {
+                },
+            });
         },
 
         groups: function() {

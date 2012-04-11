@@ -11,6 +11,7 @@
 
         <!-- Third-Party Libraries -->
         <script src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>
+        <script src="${request.static_url('clusterflunk:static/js/libs/jquery-ui-1.8.16.custom.js')}"></script>
         <script src="${request.static_url('clusterflunk:static/js/libs/underscore.js')}"></script>
         <script src="${request.static_url('clusterflunk:static/js/libs/backbone.js')}"></script>
         <script src="${request.static_url('clusterflunk:static/js/libs/handlebars.js')}"></script>

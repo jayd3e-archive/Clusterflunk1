@@ -33,6 +33,17 @@ def view(request):
     return {'group':group}
 
 @view_config(
+    route_name='groups',
+    renderer='json',
+    permission='view',
+    request_param='s')
+def search(request):
+    db = request.db
+    user = request.user
+    
+    return {}
+
+@view_config(
     route_name='subscribe_to_group',
     renderer='json',
     permission='view')

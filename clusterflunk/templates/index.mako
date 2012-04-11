@@ -19,10 +19,21 @@
             <form id="status_form" method="POST" action="">
                 <textarea id="status" name="status">Ask something crazy!</textarea>
                 <div class="chosen_groups_container">
-                    <div class="chosen_groups">
+                    <ul class="chosen_groups">
+                        <li class="chosen_group">
+                            Physics 2
+                        </li>
+                        <li class="chosen_group">
+                            Your Mom
+                        </li>
+                        <li class="chosen_group">
+                            Math 4
+                        </li>
+                    </ul>
+                    <div class="choose_group" id="choose_group">
+                        <input id="choose_group_input" type="text" name="group"/>
                     </div>
-                    <div id="choose_group">
-                    </div>
+                    <div class="clear"></div>
                 </div>
                 <input class="status_submit" id="submit" name="submit" type="submit"/>
             </form>
