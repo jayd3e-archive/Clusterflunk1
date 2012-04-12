@@ -117,15 +117,15 @@ jQuery(function($) {
             $('.status_submit').click(submit_status);
             $('.chosen_groups_container').click(choose_group);
             $("#choose_group_input").autocomplete({
-                source: function( request, response ) {
+                source: function(request, response) {
                     $.ajax({
                         url: "/groups?s=" + request.term,
-                        success: function( data ) {
+                        success: function(data) {
                             
                         }
                     });
                 },
-                select: function( event, ui ) {
+                select: function(event, ui) {
                 },
             });
         },

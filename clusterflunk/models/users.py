@@ -23,5 +23,11 @@ class User(Base):
     subscribed_groups = association_proxy('subscription', 'study_group')
     memberships = association_proxy('membership', 'network')
 
+    def get_study_group_ids(self):
+        study_group_ids = []
+        for study_group in self.subscribed_groups:
+            study_group_ids.append(study_group.id)
+        return study_group_ids
+
     def __repr__(self):
         return "<User('%s')>" % (self.id)

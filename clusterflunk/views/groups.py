@@ -1,4 +1,5 @@
 from pyramid.view import view_config
+from clusterflunk.models.users import User
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.subscriptions import Subscription
 
@@ -40,8 +41,19 @@ def view(request):
 def search(request):
     db = request.db
     user = request.user
-    
-    return {}
+    s = request.GET['s']
+    study_group_ids = user.get_study_group_ids()
+
+    groups_json = []
+    groups = db.query(StudyGroup).join(Subscription, StudyGroup.id==Subscription.study_group_id). \
+                                 join(User, Subscription.user_id==User.id). \
+                                 filter(StudyGroup.id.in_(study_group_ids)). \
+                                 filter(StudyGroup.name.like('%' + s + '%'))
+    for group in groups:
+        groups_json.append({
+            'name' : group.name
+        })
+    return groups_json
 
 @view_config(
     route_name='subscribe_to_group',

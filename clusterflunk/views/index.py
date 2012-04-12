@@ -10,10 +10,7 @@ from clusterflunk.models.broadcasts import Broadcast
 def index(request):
     db = request.db
     user = request.user
-
-    study_group_ids = []
-    for study_group in user.subscribed_groups:
-        study_group_ids.append(study_group.id)
+    study_group_ids = user.get_study_group_ids()
 
     if study_group_ids:
         query = db.query(Status).join(Broadcast, Status.id==Broadcast.status_id). \
