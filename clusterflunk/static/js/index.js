@@ -88,11 +88,25 @@ jQuery(function($) {
 
             /*
             *
+            * Once the "chosen_groups_container" is blurred, replace the input
+            * box with a link.
+            *
+            */
+
+            blur_choose_group = function(event) {
+                $("#choose_group_input").hide();
+                $("#choose_group_link").show();
+            }
+
+            /*
+            *
             * Once the "chosen_groups_container" is clicked, create an input box
             *
             */
 
             choose_group = function(event) {
+                $("#choose_group_link").hide();
+                $("#choose_group_input").show();
                 $("#choose_group_input").focus();
             }
 
@@ -104,6 +118,7 @@ jQuery(function($) {
 
             $('.status_submit').click(submit_status);
             $('.chosen_groups_container').click(choose_group);
+            $('#choose_group_input').blur(blur_choose_group);
             $("#choose_group_input").autocomplete({
                 source: function(request, response) {
                     $.ajax({
@@ -122,7 +137,7 @@ jQuery(function($) {
                     context = {label : ui.item['label']};
                     $(".chosen_groups li").last().before(chosen_group_template(context));
                     $("#choose_group_input").val('');
-                    $("#choose_group_input").focus();
+                    $('.chosen_groups_container').click();
                     return false;
                 },
             });

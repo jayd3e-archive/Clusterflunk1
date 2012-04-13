@@ -215,7 +215,6 @@ body {
 
 .chosen_groups_container {
     width: 639px;
-    min-height: 20px;
     border: 1px solid #DDD;
     margin-top: 5px;
 }
@@ -237,10 +236,17 @@ li.choose_group {
     background-color: #FFF;
 }
 
+.choose_group_link {
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-bottom: 3px;
+}
+
 .choose_group input {
     float: left;
     border: none;
     outline: none;
+    display: none;
 }
 
 /*
