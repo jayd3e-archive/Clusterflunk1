@@ -215,17 +215,9 @@ body {
 
 .chosen_groups_container {
     width: 639px;
-    height: 20px;
+    min-height: 20px;
     border: 1px solid #DDD;
     margin-top: 5px;
-}
-
-.chosen_groups_container input {
-    border: none;
-}
-
-.chosen_groups_container input:focus {
-    outline: none;
 }
 
 .chosen_groups {
@@ -240,8 +232,15 @@ body {
     background-color: #BEEB9F;
 }
 
-.choose_group {
+li.choose_group {
+    margin: 0;
+    background-color: #FFF;
+}
+
+.choose_group input {
     float: left;
+    border: none;
+    outline: none;
 }
 
 /*

@@ -12,6 +12,10 @@
             {{body}}
         </div>
     </script>
+
+    <script id="chosen_group" type="handlebars-template">
+        <li class="chosen_group">{{label}}</li>
+    </script>
     
     <div class="body_main centered">
         <h1>Feed</h1>
@@ -20,19 +24,11 @@
                 <textarea id="status" name="status">Ask something crazy!</textarea>
                 <div class="chosen_groups_container">
                     <ul class="chosen_groups">
-                        <li class="chosen_group">
-                            Physics 2
+                        <li class="choose_group" id="choose_group">
+                            <input id="choose_group_input" type="text" name="group"/>
                         </li>
-                        <li class="chosen_group">
-                            Your Mom
-                        </li>
-                        <li class="chosen_group">
-                            Math 4
-                        </li>
+                        <div class="clear"></div>
                     </ul>
-                    <div class="choose_group" id="choose_group">
-                        <input id="choose_group_input" type="text" name="group"/>
-                    </div>
                     <div class="clear"></div>
                 </div>
                 <input class="status_submit" id="submit" name="submit" type="submit"/>

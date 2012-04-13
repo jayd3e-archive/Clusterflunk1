@@ -25,21 +25,6 @@ jQuery(function($) {
 
     /*
     *
-    * Templates
-    *
-    */
-
-    reply_source = $("#reply").html();
-    reply_template = Handlebars.compile(reply_source);
-
-    comment_source = $("#comment").html();
-    comment_template = Handlebars.compile(comment_source);
-
-    status_source = $("#status").html();
-    status_template = Handlebars.compile(status_source);
-
-    /*
-    *
     * Utilities
     *
     */
@@ -59,6 +44,18 @@ jQuery(function($) {
         },
 
         index: function() {
+
+            /*
+            *
+            * Templates
+            *
+            */
+
+            status_source = $("#status").html();
+            status_template = Handlebars.compile(status_source);
+
+            chosen_group_source = $("#chosen_group").html();
+            chosen_group_template = Handlebars.compile(chosen_group_source);
             
             /*
             *
@@ -91,15 +88,6 @@ jQuery(function($) {
 
             /*
             *
-            * Once the "chosen_groups_container" is blurred, re-add the click event
-            *
-            */
-
-            blur_choose_group = function(event) {
-            }
-
-            /*
-            *
             * Once the "chosen_groups_container" is clicked, create an input box
             *
             */
@@ -121,22 +109,35 @@ jQuery(function($) {
                     $.ajax({
                         url: "/groups?s=" + request.term,
                         success: function(data) {
-                            
+                            response($.map(data, function(group) {
+                               return {
+                                   label: group.name,
+                                   value: group.name
+                               } 
+                            }));
                         }
                     });
                 },
                 select: function(event, ui) {
+                    context = {label : ui.item['label']};
+                    $(".chosen_groups li").last().before(chosen_group_template(context));
+                    $("#choose_group_input").val('');
+                    $("#choose_group_input").focus();
+                    return false;
                 },
             });
         },
 
         groups: function() {
+
             /*
             *
             * Subscribed/Unsubscribe Buttons
             *
             */
+
             function toggle_subscription(event) {
+
                 function toggle_button_class(data) {
                     if (data['status'] == 'unsubscribed') {
                         $(event.target).removeClass("button-small-negative");
@@ -179,6 +180,7 @@ jQuery(function($) {
             * Remove button when clicked on the 'mine' page.
             *
             */
+
             function remove_button(event) {
                 group = $(event.target.parentNode);
                 group.remove();
@@ -191,6 +193,18 @@ jQuery(function($) {
         },
 
         posts_view: function(post_id) {
+
+            /*
+            *
+            * Templates
+            *
+            */
+
+            reply_source = $("#reply").html();
+            reply_template = Handlebars.compile(reply_source);
+
+            comment_source = $("#comment").html();
+            comment_template = Handlebars.compile(comment_source);
 
             /*
             *
