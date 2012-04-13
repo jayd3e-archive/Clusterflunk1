@@ -47,6 +47,24 @@ jQuery(function($) {
 
             /*
             *
+            * Local Vars
+            *
+            */
+            available_groups = []
+            chosen_groups = []
+
+            /*
+            *
+            * Local Functions
+            *
+            */
+
+            add_group = function(group) {
+                chosen_groups.push(group);
+            }
+
+            /*
+            *
             * Templates
             *
             */
@@ -88,7 +106,7 @@ jQuery(function($) {
 
             /*
             *
-            * Once the "chosen_groups_container" is clicked, create an input box
+            * Once the "chosen_groups_container" is clicked, focus the input box
             *
             */
 
@@ -109,11 +127,20 @@ jQuery(function($) {
                     $.ajax({
                         url: "/groups?s=" + request.term,
                         success: function(data) {
+
+                            available_groups = [];
                             response($.map(data, function(group) {
+                               
+                               available_group = {
+                                   id : group.id,
+                                   name : group.name
+                               };
+                               available_groups.push(available_group);
+
                                return {
                                    label: group.name,
                                    value: group.name
-                               } 
+                               }
                             }));
                         }
                     });
@@ -121,6 +148,17 @@ jQuery(function($) {
                 select: function(event, ui) {
                     context = {label : ui.item['label']};
                     $(".chosen_groups li").last().before(chosen_group_template(context));
+
+                    item = {}
+                    $.each(available_groups, function(index, group) {
+                        if (group['name'] == ui.item['label']) {
+                            item = group;
+                            return;
+                        }
+                    });
+                    group = {id : item['id'], name : item['name']};
+                    add_group(group);
+
                     $("#choose_group_input").val('');
                     $('#choose_group_input').focus();
                     return false;

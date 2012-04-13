@@ -242,6 +242,18 @@ li.choose_group {
     outline: none;
 }
 
+.ui-autocomplete {
+    background-color: #FFF;
+    width: 100px;
+    padding: 3px;
+    border: 1px solid #BEEB9F;
+}
+
+.ui-autocomplete li:hover {
+    cursor: pointer;
+    background-color: #BEEB9F;
+}
+
 /*
 *
 * Interface Elements

@@ -51,6 +51,7 @@ def search(request):
                                  filter(StudyGroup.name.like('%' + s + '%'))
     for group in groups:
         groups_json.append({
+            'id' : group.id,
             'name' : group.name
         })
     return groups_json
