@@ -236,17 +236,10 @@ li.choose_group {
     background-color: #FFF;
 }
 
-.choose_group_link {
-    padding-top: 4px;
-    padding-left: 4px;
-    padding-bottom: 3px;
-}
-
 .choose_group input {
     float: left;
     border: none;
     outline: none;
-    display: none;
 }
 
 /*

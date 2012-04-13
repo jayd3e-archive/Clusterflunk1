@@ -25,9 +25,6 @@
                 <div class="chosen_groups_container">
                     <ul class="chosen_groups">
                         <li class="choose_group" id="choose_group">
-                            <div class="choose_group_link" id="choose_group_link">
-                                <a class="blue" href="#">Add Groups</a>
-                            </div>
                             <input id="choose_group_input" type="text" name="group"/>
                         </li>
                         <div class="clear"></div>
