@@ -1,9 +1,9 @@
 <%def name="header(here)">
     <div class="header_main centered">
         <div class="logo_container">
-            <h1 class="light">
-                <a class="logo" href="/">Clusterflunk</a>
-            </h1>
+            <a href="/">
+                <div class="logo"></div>
+            </a>
         </div>
         <div class="main_nav">
             <ul>

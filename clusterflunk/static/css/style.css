@@ -78,9 +78,20 @@ body {
     height: 200px;
 }
 
+.logo {
+    height: 18px;
+    width: 110px;
+    background-image: url('../img/clusterflunk_logo.png');
+    background-size: 110px 18px;
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
 .logo_container {
     margin-left: 5px;
-    padding-top: 12px;
+    padding-top: 10px;
     display: block;
     float: left;
 }
