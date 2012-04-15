@@ -242,12 +242,12 @@ body {
     background-color: #BEEB9F;
 }
 
-li.choose_group {
+li.chosen_groups, li.chosen_groups_input {
     margin: 0;
     background-color: #FFF;
 }
 
-.choose_group input {
+.chosen_groups_input input {
     float: left;
     border: none;
     outline: none;

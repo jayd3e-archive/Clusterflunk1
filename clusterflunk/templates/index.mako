@@ -2,7 +2,7 @@
 <%namespace name="util_side" file="utilities/side.mako"/>
 
 <%def name="body()">
-    <script id="status" type="handlebars-template">
+    <script id="status_template" type="handlebars-template">
         <div class="status">
             <div class="author">
                 <a class="blue" href="/profile/{{username}}">
@@ -13,7 +13,7 @@
         </div>
     </script>
 
-    <script id="chosen_group" type="handlebars-template">
+    <script id="chosen_group_template" type="handlebars-template">
         <li class="chosen_group">{{label}}</li>
     </script>
     
@@ -24,7 +24,7 @@
                 <textarea id="status" name="status">Ask something crazy!</textarea>
                 <div class="chosen_groups_container">
                     <ul class="chosen_groups">
-                        <li class="choose_group" id="choose_group">
+                        <li class="chosen_groups_input" id="chosen_groups_input">
                             <input id="choose_group_input" type="text" name="group"/>
                         </li>
                         <div class="clear"></div>

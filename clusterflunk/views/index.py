@@ -1,4 +1,5 @@
 from pyramid.view import view_config
+from sqlalchemy.sql.expression import desc
 from clusterflunk.models.statuses import Status
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.broadcasts import Broadcast
@@ -15,7 +16,8 @@ def index(request):
     if study_group_ids:
         query = db.query(Status).join(Broadcast, Status.id==Broadcast.status_id). \
                                  join(StudyGroup, Broadcast.study_group_id==StudyGroup.id). \
-                                 filter(StudyGroup.id.in_(study_group_ids))
+                                 filter(StudyGroup.id.in_(study_group_ids)). \
+                                 order_by(desc(Status.created))
         statuses = query.all()
     else:
         statuses = []

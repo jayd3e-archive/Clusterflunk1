@@ -16,6 +16,15 @@ var clusterflunk = {
 
 /*
 *
+* jQuery Settings
+*
+*/
+$.ajaxSetup({
+  traditional: true
+});
+
+/*
+*
 * Called at run-time
 *
 */
@@ -69,10 +78,10 @@ jQuery(function($) {
             *
             */
 
-            status_source = $("#status").html();
+            status_source = $("#status_template").html();
             status_template = Handlebars.compile(status_source);
 
-            chosen_group_source = $("#chosen_group").html();
+            chosen_group_source = $("#chosen_group_template").html();
             chosen_group_template = Handlebars.compile(chosen_group_source);
             
             /*
@@ -89,7 +98,11 @@ jQuery(function($) {
 
                 status = form.children("textarea#status").val();
 
-                data = {status : status}
+                chosen_group_ids = []
+                $.each(chosen_groups, function(index, chosen_group) {
+                    chosen_group_ids.push(chosen_group.id)
+                });
+                data = {status : status, chosen_groups : chosen_group_ids}
 
                 $.ajax({
                   type: "POST",
@@ -100,6 +113,9 @@ jQuery(function($) {
                         $(statuses).prepend(status_template(context));
                     }
                 });
+
+                $('.chosen_group').remove();
+                $("#status").val("Ask something crazy!");
 
                 return false;
             }
@@ -147,7 +163,7 @@ jQuery(function($) {
                 },
                 select: function(event, ui) {
                     context = {label : ui.item['label']};
-                    $(".chosen_groups li").last().before(chosen_group_template(context));
+                    $("#chosen_groups_input").before(chosen_group_template(context));
 
                     item = {}
                     $.each(available_groups, function(index, group) {
