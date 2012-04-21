@@ -110,3 +110,11 @@ a.blue:hover {
     color: #08C;
     font-family: Arial;
 }
+
+.create_group_link {
+    text-decoration: none;
+}
+
+.invite {
+    font-size: 12px;
+}

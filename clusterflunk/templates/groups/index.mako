@@ -3,7 +3,15 @@
 
 <%def name="body()">
     <div class="body_main centered">
-        <h1>Groups</h1>
+        <div class="main_heading float_left">
+            <h1>Groups</h1>
+        </div>
+        <ul class="buttons">
+            <a class="create_group_link" href="/groups/create">
+                <div id="create_group" class="button button-small-positive">create</div>
+            </a>
+        </ul>
+        <div class="clear"></div>
         <div class="categories">
             <ul>
                 <li>

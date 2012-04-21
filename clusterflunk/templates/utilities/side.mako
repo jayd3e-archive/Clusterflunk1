@@ -1,3 +1,5 @@
 <%def name="due()">
-    <h1>Watchlist</h1>
+    <div class="main_heading">
+        <h1>Watchlist</h1>
+    </div>
 </%def>

@@ -3,7 +3,9 @@
 
 <%def name="body()">
     <div class="body_main centered">
-        <h1>HW</h1>
+        <div class="main_heading">
+            <h1>HW</h1>
+        </div>
         <div class="posts">
             % for post in posts:
                 <%

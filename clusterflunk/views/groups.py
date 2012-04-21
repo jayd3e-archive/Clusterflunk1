@@ -22,6 +22,19 @@ def index(request):
     return {'groups':study_groups}
 
 @view_config(
+    route_name='groups_create',
+    renderer='clusterflunk:templates/groups/create.mako',
+    permission='view')
+def create(request):
+    db = request.db
+    user = request.user
+
+    if request.POST.get('submit', False):
+        pass
+
+    return {}
+
+@view_config(
     route_name='groups_view',
     renderer='clusterflunk:templates/groups/view.mako',
     permission='view')

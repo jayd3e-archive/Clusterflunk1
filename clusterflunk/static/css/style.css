@@ -147,7 +147,7 @@ body {
 .side {
     float: right;
     width: 300px;
-    padding: 5px;
+    padding: 5px 5px 5px 15px;
 }
 
 .groups, .posts, .articles{
@@ -157,10 +157,6 @@ body {
 .group, .post, .article {
     padding-top: 2px;
     padding-bottom: 2px;
-}
-
-.categories {
-    padding-top: 5px;
 }
 
 .categories ul li {
@@ -224,17 +220,17 @@ body {
     margin-top: 5px;
 }
 
-.chosen_groups_container {
+.chosen_groups_container, .invites_container {
     width: 639px;
     border: 1px solid #DDD;
     margin-top: 5px;
 }
 
-.chosen_groups {
+.chosen_groups, .invites {
     float: left;
 }
 
-.chosen_groups li {
+.chosen_groups li, .invites li {
     display: inline;
     float: left;
     margin-top: 4px;
@@ -242,15 +238,38 @@ body {
     background-color: #BEEB9F;
 }
 
-li.chosen_groups, li.chosen_groups_input {
+li.chosen_groups, li.chosen_groups_input,
+li.invites, li.invites_input {
     margin: 0;
     background-color: #FFF;
 }
 
-.chosen_groups_input input {
+.chosen_groups_input input, .invites_input input {
     float: left;
     border: none;
     outline: none;
+}
+
+.main_heading {
+    padding-top: 6px;
+}
+
+.buttons {
+    float: right;
+}
+
+.create_group .group_name {
+    padding: 2px;
+    border: 1px solid #DDD;
+}
+
+.create_group .group_name, .create_group .invites {
+    width: 635px;
+}
+
+.create_group .group_description {
+    width: 635px;
+    height: 200px;
 }
 
 .ui-autocomplete {
@@ -270,6 +289,10 @@ li.chosen_groups, li.chosen_groups_input {
 * Interface Elements
 *
 */
+
+form input, form textarea {
+    display: block;
+}
 
 .button-small-positive {
     color: #FFF;

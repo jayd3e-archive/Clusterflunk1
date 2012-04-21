@@ -3,7 +3,9 @@
 
 <%def name="body()">
     <div class="body_main centered">
-        <h1>Articles</h1>
+        <div class="main_heading">
+            <h1>Articles</h1>
+        </div>
         <div class="articles">
         % for article in articles:
             <div class="article">

@@ -49,6 +49,7 @@ jQuery(function($) {
             "": "index",
             "groups?category=*category": "groups_category",
             "groups": "groups",
+            "groups/create": "groups_create",
             "posts/:post_id": "posts_view"
         },
 
@@ -105,7 +106,7 @@ jQuery(function($) {
                 data = {status : status, chosen_groups : chosen_group_ids}
 
                 $.ajax({
-                  type: "POST",
+                    type: "POST",
                     data: data,
                     url: "/statuses",
                     success: function(data) {
@@ -143,7 +144,6 @@ jQuery(function($) {
                     $.ajax({
                         url: "/groups?s=" + request.term,
                         success: function(data) {
-
                             available_groups = [];
                             response($.map(data, function(group) {
                                
@@ -162,9 +162,6 @@ jQuery(function($) {
                     });
                 },
                 select: function(event, ui) {
-                    context = {label : ui.item['label']};
-                    $("#chosen_groups_input").before(chosen_group_template(context));
-
                     item = {}
                     $.each(available_groups, function(index, group) {
                         if (group['name'] == ui.item['label']) {
@@ -175,6 +172,8 @@ jQuery(function($) {
                     group = {id : item['id'], name : item['name']};
                     add_group(group);
 
+                    context = {label : ui.item['label']};
+                    $("#chosen_groups_input").before(chosen_group_template(context));
                     $("#choose_group_input").val('');
                     $('#choose_group_input').focus();
                     return false;
@@ -223,7 +222,114 @@ jQuery(function($) {
                 }
             }
 
+            /*
+            *
+            * Link to the 'Create Group' page
+            *
+            */
+
+            function group_link(event) {
+                $("#create_group_form").submit();
+            }
+
+            /*
+            *
+            * Bind Events
+            *
+            */
+
             $('.group button').click(toggle_subscription);
+            $('#create_group').click(group_link);
+        },
+
+        groups_create: function() {
+
+            /*
+            *
+            * Local Vars
+            *
+            */
+            available_users = []
+            invites = []
+
+            /*
+            *
+            * Templates
+            *
+            */
+
+            invite_source = $("#invite_template").html();
+            invite_template = Handlebars.compile(invite_source);
+
+            /*
+            *
+            * Local Functions
+            *
+            */
+
+            add_user = function(user) {
+                invites.push(user);
+            }
+
+            /*
+            *
+            * Once the "invites_container" is clicked, focus the input box
+            *
+            */
+
+            invites = function(event) {
+                $("#invite_input").focus();
+            }
+
+
+            /*
+            *
+            * Bind Events
+            *
+            */
+
+            $('.invites_container').click(invites);
+            $("#invite_input").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "/users?s=" + request.term,
+                        success: function(data) {
+                            invites = [];
+                            response($.map(data, function(user) {
+                               
+                               available_user = {
+                                   id : user.id,
+                                   username : user.username
+                               };
+                               available_users.push(available_user);
+
+                               return {
+                                   label: user.username,
+                                   value: user.username
+                               }
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    item = {}
+                    $.each(available_users, function(index, user) {
+                        if (user['username'] == ui.item['label']) {
+                            item = user;
+                            return;
+                        }
+                    });
+
+                    user = {id : item['id'], name : item['username']};
+                    add_user(user);
+
+                    context = {label : item['username'], id : item['id']};
+                    $("#invite_input").before(invite_template(context));
+                    $("#invite_input").val('');
+                    $('#invite_input').focus();
+                    return false;
+                },
+            });
         },
 
         groups_category: function(category) {

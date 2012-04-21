@@ -18,7 +18,9 @@
     </script>
     
     <div class="body_main centered">
-        <h1>Feed</h1>
+        <div class="main_heading">
+            <h1>Feed</h1>
+        </div>
         <div class="status">
             <form id="status_form" method="POST" action="">
                 <textarea id="status" name="status">Ask something crazy!</textarea>
