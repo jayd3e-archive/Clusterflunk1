@@ -14,6 +14,7 @@ class StudyGroup(Base):
     __tablename__ = 'study_groups'
 
     name = Column(String(100))
+    description = Column(String(500))
     created = Column(DateTime)
     edited = Column(DateTime)
     network_id = Column(Integer, ForeignKey('networks.id'))

@@ -15,8 +15,8 @@
         </div>
         <div class="create_group">
             <form class="create_group_form" action="" method="POST">
-                <input class="group_name" name="name" type="text"/>
-                <textarea class="group_description" name="description"></textarea>
+                ${ group_create_form.name(class_="group_name") }
+                ${ group_create_form.description(class_="group_description") }
                 <div class="invites_container">
                     <ul class="invites">
                         <li class="invites_input" id="invites_input">

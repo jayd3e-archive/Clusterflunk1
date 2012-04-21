@@ -1,4 +1,7 @@
+from datetime import datetime
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
+from clusterflunk.forms import CreateGroupForm
 from clusterflunk.models.users import User
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.subscriptions import Subscription
@@ -29,10 +32,24 @@ def create(request):
     db = request.db
     user = request.user
 
-    if request.POST.get('submit', False):
-        pass
+    group_create_form = CreateGroupForm(request.POST)
 
-    return {}
+    if request.method == 'POST' and \
+        'submit' in request.POST and \
+        group_create_form.validate():
+        name = group_create_form.name.data
+        description = group_create_form.description.data
+
+        study_group = StudyGroup(name=name,
+                                 description=description,
+                                 created=datetime.now(),
+                                 edited=datetime.now(),
+                                 network_id=1)
+        db.add(study_group)
+        db.flush()
+        return HTTPFound(location="/groups")
+        
+    return {'group_create_form':group_create_form}
 
 @view_config(
     route_name='groups_view',

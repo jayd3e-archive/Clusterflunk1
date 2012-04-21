@@ -42,3 +42,13 @@ class RegisterForm(Form):
         username_ok = form.db.query(User).filter_by(username=field.data).first()
         if username_ok is not None:
             raise ValidationError('That username is already taken.')
+
+class CreateGroupForm(Form):
+    name = TextField('Name',
+                     [validators.Length(min=4, max=50),
+                     validators.required()],
+                     default="Name")
+    description = TextAreaField('Description',
+                                [validators.Length(min=4, max=50),
+                                validators.required()],
+                                default="Description")
