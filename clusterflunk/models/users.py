@@ -22,6 +22,7 @@ class User(Base):
     moderated_groups = association_proxy('moderator', 'study_group')
     subscribed_groups = association_proxy('subscription', 'study_group')
     memberships = association_proxy('membership', 'network')
+    notifications = association_proxy('notification', 'notification_item')
 
     def get_study_group_ids(self):
         study_group_ids = []

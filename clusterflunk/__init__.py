@@ -15,6 +15,9 @@ from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
 from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.networks import Network
+from clusterflunk.models.notifications import Notification
+from clusterflunk.models.notifications import NotificationItem
+from clusterflunk.models.notifications import GroupInviteNotification
 from clusterflunk.models.posts import Post
 from clusterflunk.models.posts import PostHistory
 from clusterflunk.models.posts import PostComment

@@ -37,6 +37,11 @@ from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.votes import Vote
 from clusterflunk.models.memberships import Membership
 from clusterflunk.models.broadcasts import Broadcast
+from clusterflunk.models.notifications import (
+    Notification,
+    NotificationItem,
+    GroupInviteNotification
+)
 
 class TestModels(unittest.TestCase):
     def setUp(self):
@@ -619,3 +624,44 @@ class TestModels(unittest.TestCase):
         self.assertIn(study_group, status.study_groups)
         self.assertEqual(status, broadcast.status)
         self.assertEqual(study_group, broadcast.study_group)
+
+    def testGroupInviteNotifications(self):
+        session = self.Session()
+
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        study_group = StudyGroup(id=1,
+                                 name="My cool group",
+                                 created=datetime.now(),
+                                 edited=datetime.now())
+        session.add(user)
+        session.add(study_group)
+
+        group_invite_notification = GroupInviteNotification(created=datetime.now(),
+                                                            discriminator="group_invite",
+                                                            user_id=1,
+                                                            study_group_id=1)
+        session.add(group_invite_notification)
+        session.flush()
+
+        notification = Notification(user_id=1,
+                                    notification_item_id=group_invite_notification.id)
+        session.add(notification)
+        session.flush()
+        self.assertTrue(str(notification).startswith('<Notification'),
+                        msg="str(Notification) must start with '<Notification'")
+
+        notification_item = NotificationItem(created=datetime.now(),
+                                             discriminator="group_invite")
+        self.assertTrue(str(notification_item).startswith('<NotificationItem'),
+                        msg="str(NotificationItem) must start with '<NotificationItem'")
+        
+        self.assertTrue(str(group_invite_notification).startswith('<GroupInviteNotification'),
+                        msg="str(GroupInviteNotification) must start with '<GroupInviteNotification'")
+        self.assertIn(group_invite_notification, user.notifications)
+        self.assertEqual(user, notification.user)
+        self.assertEqual(user, group_invite_notification.inviter)
+        self.assertEqual(study_group, group_invite_notification.study_group)
