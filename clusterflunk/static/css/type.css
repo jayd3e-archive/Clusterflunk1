@@ -48,6 +48,12 @@ a.blue:hover {
     cursor: pointer;
 }
 
+a.white {
+    color: #FFF;
+    font-size: 12px;
+    text-decoration: none;
+}
+
 /*
 *
 * Header

@@ -5,6 +5,10 @@ from clusterflunk.forms import CreateGroupForm
 from clusterflunk.models.users import User
 from clusterflunk.models.study_groups import StudyGroup
 from clusterflunk.models.subscriptions import Subscription
+from clusterflunk.models.notifications import (
+    GroupInviteNotification,
+    Notification
+)
 
 @view_config(
     route_name='groups',
@@ -46,6 +50,18 @@ def create(request):
                                  edited=datetime.now(),
                                  network_id=1)
         db.add(study_group)
+
+        group_invite_notification = GroupInviteNotification(created=datetime.now(),
+                                                            discriminator="group_invite",
+                                                            user_id=user.id,
+                                                            study_group=study_group)
+        db.add(group_invite_notification)
+        for invite in request.POST['invites']:
+            notification = Notification(user_id=user.id,
+                                        notification_item=group_invite_notification)
+
+            db.add(notification)
+
         db.flush()
         return HTTPFound(location="/groups")
         

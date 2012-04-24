@@ -133,6 +133,30 @@ body {
     padding-left: 10px;
 }
 
+.highlight {
+    padding: 0px 4px 4px 4px;
+    background-color: #434242;
+    border-radius: 3px;
+}
+
+.highlight:hover {
+    background-color: #ebebeb;
+}
+
+.highlight:hover a.white {
+    color: #000;
+    cursor: pointer;
+}
+
+.notifications_list {
+    position: absolute;
+    top: 45px;
+    left: 125px;
+    background-color: #2B2E2E;
+    border-radius: 3px;
+    width: 200px;
+}
+
 /*
 *
 *  BODY

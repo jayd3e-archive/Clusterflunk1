@@ -8,6 +8,22 @@
         <div class="main_nav">
             <ul>
                 <li>
+                    <div class="highlight">
+                        <a class="white" href="/posts">
+                            notifications
+                        </a>
+                    </div>
+                    <div class="notifications_list">
+                        <ul>
+                            % for notification in notifications:
+                                <li>
+                                    ${notification.id}
+                                </li>
+                            % endfor
+                        </ul>
+                    </div>
+                </li>
+                <li>
                     <a class="light" href="/posts">
                         hw
                     </a>
