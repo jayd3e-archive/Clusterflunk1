@@ -30,7 +30,9 @@
     </script>
 
     <div class="body_main centered">
-        <h1 class="blue">${post.title}</h1>
+        <div class="main_heading">
+            <h1 class="blue">${post.title}</h1>
+        </div>
         <div class="post" id="post_${post.id}_">
             ${post.history[latest_rev].description}
             <div class="post_actions">
