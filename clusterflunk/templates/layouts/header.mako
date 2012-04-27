@@ -1,3 +1,5 @@
+<%namespace name="header_utils" file="../utilities/header.mako"/>
+
 <%def name="header(here)">
     <div class="header_main centered">
         <div class="logo_container">
@@ -8,16 +10,16 @@
         <div class="main_nav">
             <ul>
                 <li>
-                    <div class="highlight">
-                        <a class="white" href="/posts">
+                    <div id="notifications_button" class="highlight">
+                        <a class="white" href="#">
                             notifications
                         </a>
                     </div>
-                    <div class="notifications_list">
+                    <div id="notifications_list" class="notifications_list">
                         <ul>
                             % for notification in notifications:
                                 <li>
-                                    ${notification.id}
+                                    ${header_utils.print_notification(notification)}
                                 </li>
                             % endfor
                         </ul>

@@ -141,11 +141,11 @@ body {
 
 .highlight:hover {
     background-color: #ebebeb;
+    cursor: pointer;
 }
 
-.highlight:hover a.white {
-    color: #000;
-    cursor: pointer;
+.active {
+    background-color: #ebebeb;
 }
 
 .notifications_list {
@@ -155,6 +155,17 @@ body {
     background-color: #2B2E2E;
     border-radius: 3px;
     width: 200px;
+    padding: 5px;
+    display: none;
+}
+
+.notifications_list ul {
+    float: left;
+}
+
+.notifications_list ul li {
+    float: left;
+    display: block;
 }
 
 /*

@@ -124,3 +124,16 @@ a.white {
 .invite {
     font-size: 12px;
 }
+
+.highlight:hover a.white {
+    color: #000;
+}
+
+.active a.white {
+    color: #000;
+}
+
+.notification div {
+    color: #FFF;
+    font-size: 12px;
+}

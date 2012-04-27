@@ -7,6 +7,6 @@ def add_globals(event):
     db = event['request'].db
     event['user'] = user
 
-    notifications = user.notifications
-
-    event['notifications'] = notifications
+    if user:
+        notifications = user.notifications
+        event['notifications'] = notifications

@@ -34,9 +34,26 @@ jQuery(function($) {
 
     /*
     *
-    * Utilities
+    * Global Behaviors
     *
     */
+    notification_button = function() {
+        $("#notifications_list").toggle();
+        if ($("#notifications_button").hasClass("active")) {
+            $("#notifications_button").removeClass("active");
+        }
+        else {
+            $("#notifications_button").addClass("active");
+        }
+    }
+
+    /*
+    *
+    * Global Events
+    *
+    */
+    $("#notifications_button").click(notification_button);
+
 
     /*
     *
