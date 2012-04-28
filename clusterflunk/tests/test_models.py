@@ -43,7 +43,8 @@ from clusterflunk.models.broadcasts import Broadcast
 from clusterflunk.models.notifications import (
     Notification,
     NotificationItem,
-    GroupInviteNotification
+    GroupInviteNotification,
+    StatusCommentNotification
 )
 
 class TestModels(unittest.TestCase):
@@ -691,3 +692,45 @@ class TestModels(unittest.TestCase):
         self.assertEqual(user, notification.user)
         self.assertEqual(user, group_invite_notification.inviter)
         self.assertEqual(study_group, group_invite_notification.study_group)
+
+    def testStatusCommentNotifications(self):
+        session = self.Session()
+
+        user = User(id=1,
+                    username="jayd3e",
+                    email="jd.dallago@gmail.com",
+                    joined=datetime.now(),
+                    last_online=datetime.now())
+        status = Status(id=1,
+                        created=datetime.now(),
+                        body="I luv studying <3",
+                        author_id=1)
+        comment = Comment(id=1,
+                          founder_id=1)
+        status_comment = StatusComment(status_id=1,
+                                       comment_id=1)
+        session.add(user)
+        session.add(status)
+        session.add(comment)
+        session.add(status_comment)
+        session.flush()
+
+        status_comment_notification = StatusCommentNotification(created=datetime.now(),
+                                                                discriminator="status_comment",
+                                                                user_id=user.id,
+                                                                comment_id=comment.id,
+                                                                status_id=status.id)
+        session.add(status_comment_notification)
+        session.flush()
+
+        notification = Notification(user_id=user.id,
+                                    notification_item_id=status_comment_notification.id)
+        session.add(notification)
+        session.flush()
+        self.assertTrue(str(status_comment_notification).startswith('<StatusCommentNotification'),
+                        msg="str(StatusCommentNotification) must start with '<StatusCommentNotification'")
+        self.assertIn(status_comment_notification, user.notifications)
+        self.assertEqual(user, notification.user)
+        self.assertEqual(user, status_comment_notification.commenter)
+        self.assertEqual(comment, status_comment_notification.comment)
+        self.assertEqual(status, status_comment_notification.status)
