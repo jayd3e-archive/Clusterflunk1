@@ -23,6 +23,7 @@ class Comment(Base):
     replies = relationship('Comment', backref=backref('parent_comment', remote_side=id))
     articles = association_proxy('article_comments', 'article')
     posts = association_proxy('post_comments', 'post')
+    statuses = association_proxy('status_comments', 'status')
 
     def __repr__(self):
         return "<Comment('%s')>" % (self.id)

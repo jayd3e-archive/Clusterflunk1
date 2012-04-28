@@ -101,6 +101,12 @@ jQuery(function($) {
 
             chosen_group_source = $("#chosen_group_template").html();
             chosen_group_template = Handlebars.compile(chosen_group_source);
+
+            reply_source = $("#reply").html();
+            reply_template = Handlebars.compile(reply_source);
+
+            status_comment_source = $("#status_comment").html();
+            status_comment_template = Handlebars.compile(status_comment_source);
             
             /*
             *
@@ -114,13 +120,13 @@ jQuery(function($) {
                 body_main = form.closest(".body_main");
                 statuses = body_main.children(".statuses");
 
-                status = form.children("textarea#status").val();
+                status_value = form.children("textarea#status").val();
 
                 chosen_group_ids = []
                 $.each(chosen_groups, function(index, chosen_group) {
                     chosen_group_ids.push(chosen_group.id)
                 });
-                data = {status : status, chosen_groups : chosen_group_ids}
+                data = {status : status_value, chosen_groups : chosen_group_ids}
 
                 $.ajax({
                     type: "POST",
@@ -146,6 +152,66 @@ jQuery(function($) {
 
             choose_group = function(event) {
                 $("#choose_group_input").focus();
+            }
+
+            /*
+            *
+            * Add a reply input box under the status
+            *
+            */
+
+            add_reply = function(event) {
+                $(".reply").remove(); // Remove all other replies
+                link = $(event.target);
+                status_actions = link.closest("div.status_actions");
+                status_div = status_actions.parent();
+
+                id = status_div.attr("id");
+                id = id.split("_");
+                status_id = id[1];
+
+                context = {status_id : status_id};
+                $(reply_template(context)).insertAfter(status_actions);
+
+                // Add the event to submit the reply
+                $('input#submit').click(submit_reply);
+
+                return false;
+            }
+
+            /*
+            *
+            * Submit a reply
+            *
+            */
+
+            submit_reply = function(event) {
+                button = $(event.target);
+                button.disabled = true;
+                form = button.parent();
+                parent = form.closest(".status");
+                children = parent.find(".status_comments");
+
+                status_id = form.children("input#status_id").val();
+                body = form.children("textarea#body").val();
+
+                data = {status_id : status_id,
+                        body : body}
+
+                $.ajax({
+                  type: "POST",
+                    data: data,
+                    url: "/comments/status/" + status_id,
+                    success: function(data) {
+                        $(".reply").remove(); // Remove all other replies
+                        
+                        context = {id : data['id'], body : data['body']};
+                        $(children).append(status_comment_template(context));
+                        $(children).find('.add_reply').click(add_reply);
+                    }
+                });
+
+                return false;
             }
 
             /*
@@ -196,6 +262,7 @@ jQuery(function($) {
                     return false;
                 },
             });
+            $('.add_reply').click(add_reply);
         },
 
         groups: function() {
@@ -433,7 +500,7 @@ jQuery(function($) {
                 $.ajax({
                   type: "POST",
                     data: data,
-                    url: "/comments/" + post_id,
+                    url: "/comments/post/" + post_id,
                     success: function(data) {
                         $(".reply").remove(); // Remove all other replies
                         

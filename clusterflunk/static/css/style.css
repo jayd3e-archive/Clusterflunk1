@@ -199,12 +199,15 @@ body {
     padding-right: 5px;
 }
 
-.post {
-}
-
 .comment {
     padding-top: 10px;
     padding-bottom: 15px;
+}
+
+.status_comment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
 }
 
 .child {

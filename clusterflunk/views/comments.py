@@ -2,14 +2,15 @@ from pyramid.view import view_config
 from datetime import datetime
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
-from clusterflunk.models.posts import PostHistory
+from clusterflunk.models.posts import PostComment
+from clusterflunk.models.statuses import StatusComment
 
 @view_config(
-    route_name='comments_view',
+    route_name='comments_post_view',
     renderer='json',
     request_method='POST',
     permission='view')
-def add(request):
+def post_add(request):
     db = request.db
     user = request.user
 
@@ -50,4 +51,33 @@ def add(request):
     db.flush()
     return {'id':comment.id,
             'post_id':0,
+            'body':comment.history[0].body}
+
+@view_config(
+    route_name='comments_status_view',
+    renderer='json',
+    request_method='POST',
+    permission='view')
+def status_add(request):
+    db = request.db
+    user = request.user
+
+    status_id = request.POST['status_id']
+    body = request.POST['body']
+
+    comment_rev = CommentHistory(revision=1,
+                                 created=datetime.now(),
+                                 author_id=user.id,
+                                 body=body)
+    comment = Comment(founder_id=user.id,
+                      history=[comment_rev])
+    
+    db.add(comment)
+    db.flush()
+
+    status_comment = StatusComment(status_id=status_id,
+                                   comment_id=comment.id)
+    db.add(status_comment)
+    db.flush()
+    return {'id':comment.id,
             'body':comment.history[0].body}

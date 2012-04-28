@@ -31,7 +31,10 @@ from clusterflunk.models.comments import (
     Comment,
     CommentHistory,
 )
-from clusterflunk.models.statuses import Status
+from clusterflunk.models.statuses import (
+    Status,
+    StatusComment
+)
 from clusterflunk.models.moderators import Moderator
 from clusterflunk.models.subscriptions import Subscription
 from clusterflunk.models.votes import Vote
@@ -417,6 +420,29 @@ class TestModels(unittest.TestCase):
         session.add(status)
         self.assertTrue(str(status).startswith('<Status'),
                         msg="str(Status) must start with '<Status'")
+
+    def testStatusComments(self):
+        session = self.Session()
+
+        status = Status(id=1,
+                        created=datetime.now(),
+                        body="I luv studying <3",
+                        author_id=1)
+        comment = Comment(id=1,
+                          founder_id=1)
+        status_comment = StatusComment(status_id=1,
+                                       comment_id=1)
+        session.add(status)
+        session.add(comment)
+        session.add(status_comment)
+
+        session.flush()
+        self.assertTrue(str(status_comment).startswith('<StatusComment'),
+                        msg="str(StatusComment) must start with '<StatusComment'")
+        self.assertEqual(status_comment.status, status)
+        self.assertEqual(status_comment.comment, comment)
+        self.assertIn(status_comment, comment.status_comments)
+        self.assertIn(status_comment, status.status_comments)
     
     def testStudyGroups(self):
         session = self.Session()
