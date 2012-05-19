@@ -27,60 +27,63 @@ All of the constructive discussions, all of the written work, and the failed tes
 looked at again. Don't you think that the students next year could have used all of that material? Or more importantly,
 don't you think that YOU could have used last years material :).
  
-All of this speculation about our current methods of completing the age old task of “homework” has motivated me to attempt
-to come up with a better system. Very simply put, this site will allow students to “collaborate and discuss their homework.”
-Without delving into any specifics, I need help from everyone finding the best ways to accomplish that one simple goal.
-This may involve students showing examples, asking questions, explaining complicated topics through articles/guides, posting
-test-prep materials and class summaries, uploading resources or linking to other sites.
+All of this speculation about our current methods of completing the age old task of “homework” has motivated me to 
+attempt to come up with a better system. Very simply put, this site will allow students to “collaborate and discuss 
+their homework.” Without delving into any specifics, I need help from everyone finding the best ways to accomplish that
+one simple goal. This may involve students showing examples, asking questions, explaining complicated topics through 
+articles/guides, posting test-prep materials and class summaries, uploading resources or linking to other sites.
  
 Previous Attempts:
 ------------------
-So I have tried making this site twice now. Both attempts have failed, due to one reason. I didn't do enough planning/design
-work before starting the project, and would spend a great deal of time spinning my wheels on what the site was suppose to DO
-and HOW it was going to do it. To avoid this problem this time, I decided that it would be a good idea to do a rediculous
-amount of planning before starting the project, so that when I get to the point where I start coding it, I will know exactly
-how EVERY SINGLE PAGE will function and look.
+So I have tried making this site twice now. Both attempts have failed, due to one reason. I didn't do enough
+planning/design work before starting the project, and would spend a great deal of time spinning my wheels on what the
+site was suppose to DO and HOW it was going to do it. To avoid this problem this time, I decided that it would be a good
+idea to do a rediculous amount of planning before starting the project, so that when I get to the point where I start
+coding it, I will know exactly how EVERY SINGLE PAGE will function and look.
  
 “Ok......where do I come in?”:
 ------------------------------
-I'm making this site for each one of you, and with any luck many more. So this time around, I thought to myself, why not actually
-talk to the people the site is going to be for. I need to know what you guys want this site to be and more importantly, what you
-want it to do. The first step in this process is coming up with a monolithic list of possible features that the site will have. I
-have compiled a list of the features I have in my head right now below. Tell me what you think of the list, and also give me some
-suggestions as to what else this site should be able to do. This is just a brainstorming session, so the sky is the limit. I really
-want to see how long we can make this list. As people make suggestions, I will update my feature list.
+I'm making this site for each one of you, and with any luck many more. So this time around, I thought to myself, why not
+actually talk to the people the site is going to be for. I need to know what you guys want this site to be and more
+importantly, what you want it to do. The first step in this process is coming up with a monolithic list of possible
+features that the site will have. I have compiled a list of the features I have in my head right now below. Tell me what
+you think of the list, and also give me some suggestions as to what else this site should be able to do. This is just a
+brainstorming session, so the sky is the limit. I really want to see how long we can make this list. As people make
+suggestions, I will update my feature list.
  
 Feature List:
 -------------
 Base Features-
 -Store user-specific data, such as names, genders, e-mails, and other profile-related information(limited information).
 -Allow users to join a "network" for their specific school or multiple networks if they so choose.
--Allow users to create/delete groups public and private within their network. Groups can represent small study groups, a discussion
-group of 10-20 people, or even an entire class, made up of 300-400 people. Private groups can be used to do things like have your
-friends proof-read a paper.
--Allow users to add “post” to each group, thus creating a "tide" page. This post could be an assignment, a test, a project, a lab, or any other obligation that
+-Allow users to create/delete groups public and private within their network. Groups can represent small study groups, 
+a discussion group of 10-20 people, or even an entire class, made up of 300-400 people. Private groups can be used to do
+things like have your friends proof-read a paper.
+-Allow users to add “post” to each group, thus creating a "tide" page. This post could be an assignment, a test, a
+project, a lab, or any other obligation that
 a student might have.
 -Each post will have meta-data attached to it, such as the due date of the post.
 -Allow users to attach resources to a post. This could be a word document of some kind, a pdf, or an excel file.
 -Allow users to propose a "solution" to a post.
--Allow users to comment on every element of the "solution".  This includes the post, the solution, and even specific lines in the solution.
+-Allow users to comment on every element of the "solution".  This includes the post, the solution, and even specific
+lines in the solution.
 -Allow users to search all posts on every network in all public(not private) groups.
--Allow users to write articles on specific topics. “Articles” are basically for people who may want to write more extensively about a
-particular topic to teach to other students. Students will be able to link to various articles from all over the site to explain topics,
-thus reducing the amount of times a common topic has to be explained.
+-Allow users to write articles on specific topics. “Articles” are basically for people who may want to write more
+extensively about a particular topic to teach to other students. Students will be able to link to various articles from
+all over the site to explain topics, thus reducing the amount of times a common topic has to be explained.
 -Allow users to comment on articles.
 -A feed/timeline to show all of the activity going on in the groups you are subscribed to.
 
 Suggested Features:
 -------------------
--A whitelist(friend’s list/blacklist) where people can add people who they want to hear more from, and not see the people they don’t
-want to hear from.
+-A whitelist(friend’s list/blacklist) where people can add people who they want to hear more from, and not see the people
+they don’t want to hear from.
 
 Development Schedule:
 ---------------------
 High Level:
-5 months for development of two products, the website(clusterflunk.com) and a mobile application(for as many platforms as possible in the timeframe).
-3 months for testing/quality assurance of the two deliverable products.
+5 months for development of two products, the website(clusterflunk.com) and a mobile application(for as many platforms
+as possible in the timeframe). 3 months for testing/quality assurance of the two deliverable products.
 RELEASE DATE: 8/16/12
 
 Low Level:
@@ -98,7 +101,8 @@ Agenda Page(advanced calendar)
 Groups Page(add/remove groups from your profile) - Reverse mechanic of Google+ adding groups
 Articles Page - Creating/Deleting/Editing your articles.  Featured articles in a group(highest rated ones etc.)
 Tide Page
-Write library for textareas, that handles all input to the site.  So we can eventually allow users to insert math/science symbols
+Write library for textareas, that handles all input to the site.  So we can eventually allow users to insert math/science
+symbols
 Testing
 Write tests for models
 Write tests for view code
@@ -126,7 +130,8 @@ Different stylesheet
 INSTALL
 -------
 1. Untar this --> http://pypi.python.org/packages/source/v/virtualenv/virtualenv-1.7.tar.gz#md5=dcc105e5a3907a9dcaa978f813a4f526
-2. cd into it and type `python setup.py install`.  This will install a console script into your system python to allow you to use virtualenv.
+2. cd into it and type `python setup.py install`.  This will install a console script into your system python to allow
+you to use virtualenv.
 3. Make a directory to keep your Python install in.
 4. wget http://www.python.org/ftp/python/2.7/Python-2.7.tgz, and untar it.
 5. ./configure, make, make install
