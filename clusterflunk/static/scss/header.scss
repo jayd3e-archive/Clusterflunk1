@@ -14,7 +14,7 @@
 
 .notifications_button {
 	padding: 4px 4px 4px 4px;
-    background-color: $notificationsBGColor;
+    background-color: $notificationsButtonBGColor;
     border-radius: 3px;
     margin: 4px 5px 0px 5px;
 
@@ -37,13 +37,15 @@
 .notifications_list {
 	    position: absolute;
 	    top: 50px;
-	    left: 145px;
+	    left: 110px;
 	    background-color: $notificationsBGColor;
 	    border-radius: 3px;
 	    width: 300px;
 	    padding: 5px;
 	    display: none;
 	    z-index: 1000;
+	    border: 1px solid rgba(0, 0, 0, 0.2);
+	    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 
 	    ul {
 	    	float: left;
@@ -52,5 +54,12 @@
 	    		float: left;
     			display: block;
 	    	}
+	    }
+
+	    .up_arrow {
+	    	@include up_arrow($notificationsBGColor, 10px);
+	    	position: absolute;
+	    	top: -10px;
+	    	left: 36px;
 	    }
 }
