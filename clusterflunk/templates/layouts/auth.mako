@@ -8,7 +8,9 @@
     </head>
     <body>
         <div class="main">
-            ${self.page()}
+            <div class="auth_container">
+                ${self.page()}
+            </div>
         </div>
     </body>
 </html>
