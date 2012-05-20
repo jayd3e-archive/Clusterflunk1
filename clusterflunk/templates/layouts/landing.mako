@@ -3,17 +3,12 @@
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/slicknasty/css/bootstrap.css')}" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/bootstrap.css')}" />
     </head>
     <body>
         <div class="main">
-            <div class="container">
-                <div class="page">
-                    ${self.page()}
-                </div>
-            </div>
+            ${self.page()}
         </div>
     </body>
 </html>

@@ -2,18 +2,14 @@
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
 <%def name="page()">
-    <div class="body_main centered">
-        <div class="main_heading">
-            <h1>Articles</h1>
-        </div>
-        <div class="articles">
-        % for article in articles:
-            <div class="article">
-                <a class="dark" href="/articles/${article.id}">Article #${article.id}</a>
-            </div>
-        % endfor
-        </div>
-    </div>
+        <h1>Articles</h1>
+        <ul class="articles">
+            % for article in articles:
+                <li class="article">
+                    <a href="/articles/${article.id}">Article #${article.id}</a>
+                </li>
+            % endfor
+        </ul>
 </%def>
 
 <%def name="aside()">
