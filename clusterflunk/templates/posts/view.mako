@@ -2,7 +2,7 @@
 <%namespace name="util_side" file="../utilities/side.mako"/>
 <%namespace name="children" file="children.mako"/>
 
-<%def name="body()">
+<%def name="page()">
     <script id="reply" type="handlebars-template">
         <div class="reply">
             <form id="reply_form" method="POST" action="">
@@ -64,6 +64,6 @@
     </div>
 </%def>
 
-<%def name="side()">
+<%def name="aside()">
     ${util_side.due()}
 </%def>

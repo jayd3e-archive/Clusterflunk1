@@ -1,0 +1,269 @@
+/*
+*
+* Header
+*
+*/
+
+.logo {
+    background-image: url("../img/clusterflunk_logo.png");
+}
+
+.highlight {
+    background-color: #434242;
+    padding: 3px;
+    border-radius: 3px;
+    color: #000;
+    margin-top: 6px;
+    margin-right: 5px;
+
+    &:hover {
+        background-color: #ebebeb;
+        cursor: pointer;
+    }
+}
+
+.active {
+    background-color: #ebebeb;
+
+    a.white {
+        color: #000;
+    }
+}
+
+.notifications_list {
+    position: absolute;
+    top: 47px;
+    left: 125px;
+    background-color: #2B2E2E;
+    border-radius: 3px;
+    width: 300px;
+    padding: 5px;
+    display: none;
+    z-index: 1000;
+
+    ul {
+        float: left;
+
+        li {
+            float: left;
+            display: block;
+        }
+    }
+}
+
+.notification {
+    div {
+        color: #FFF;
+        font-size: 12px;
+    }
+}
+
+/*
+*
+*  BODY
+*
+*/
+
+.groups, .posts, .articles{
+    padding-top: 5px;
+}
+
+.group, .post, .article {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.post {
+    color: #2B2E2E;
+    font-size: 12px;
+}
+
+.article {
+    color: #2B2E2E;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+.group_view {
+    h1 {
+        color: #08C;
+        font-family: Arial;
+    }
+}
+
+.categories {
+    ul {
+        li {
+            float: left;
+            padding-right: 5px;
+            color: #08C;
+            font-size: 12px;
+        }
+    }
+}
+
+.comment {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    color: #2B2E2E;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+.status_comment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.child {
+    padding-top: 10px;
+}
+
+.children {
+    padding-left: 30px;
+}
+
+.profile_pic {
+    padding-top: 5px;
+    padding-left: 5px;
+    float: left;
+}
+
+.network {
+    float: left;
+    color: #2E2B2E;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+.settings {
+    padding-top: 5px;
+    padding-left: 5px;
+    float: left;
+
+    h1 {
+        color: #05C;
+        padding-bottom: 5px;
+    }
+}
+
+.reply {
+    textarea {
+        width: 500px;
+        height: 100px;
+        display: block;
+    }
+}
+
+.status {
+    padding-top: 5px;
+    color: #2B2E2E;
+    font-size: 12px;
+}
+
+.status {
+    textarea {
+        width: 635px;
+        height: 60px;
+        display: block;
+    }
+}
+
+.status {
+    #status_form {
+        #submit {
+            margin-top: 5px;
+        }
+    }
+}
+
+.invite {
+    font-size: 12px;
+}
+
+.chosen_groups_container, .invites_container {
+    width: 639px;
+    border: 1px solid #DDD;
+    margin-top: 5px;
+}
+
+.chosen_groups, .invites {
+    float: left;
+}
+
+.chosen_groups, .invites {
+    li {
+        display: inline;
+        float: left;
+        margin-top: 4px;
+        margin-left: 4px;
+        background-color: #BEEB9F;
+    }
+}
+
+.chosen_groups, .chosen_groups_input,
+.invites, .invites_input {
+    margin: 0;
+    background-color: #FFF;
+}
+
+.chosen_groups_input, .invites_input {
+    input {
+        float: left;
+        border: none;
+        outline: none;
+    }
+}
+
+.buttons {
+    float: right;
+}
+
+.create_group .group_name {
+    padding: 2px;
+    border: 1px solid #DDD;
+}
+
+.create_group .group_name, .create_group .invites {
+    width: 635px;
+}
+
+.create_group {
+    .group_description {
+        width: 635px;
+        height: 200px;
+    }
+}
+
+.create_group_link {
+    text-decoration: none;
+}
+
+.ui-autocomplete {
+    background-color: #FFF;
+    width: 100px;
+    padding: 3px;
+    border: 1px solid #BEEB9F;
+}
+
+.ui-autocomplete {
+    li {
+        &:hover {
+            cursor: pointer;
+            background-color: #BEEB9F;
+        }
+    }
+}
+
+/*
+*
+* Interface Elements
+*
+*/
+
+form {
+    input, textarea {
+        display: block;
+    }
+}

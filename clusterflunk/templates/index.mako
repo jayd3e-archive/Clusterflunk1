@@ -1,7 +1,7 @@
 <%inherit file="layouts/base.mako"/>
 <%namespace name="util_side" file="utilities/side.mako"/>
 
-<%def name="body()">
+<%def name="page()">
     <script id="status_template" type="handlebars-template">
         <div class="status">
             <div class="author">
@@ -84,6 +84,6 @@
     </div>
 </%def>
 
-<%def name="side()">
+<%def name="aside()">
     ${util_side.due()}
 </%def>

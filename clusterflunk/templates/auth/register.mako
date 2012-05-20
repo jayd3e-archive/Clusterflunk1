@@ -1,7 +1,7 @@
 <%inherit file="../layouts/index_base.mako"/>
 <%namespace name="util_error" file="../utilities/error.mako"/>
 
-<%def name="body()">
+<%def name="page()">
     <div class="body_main centered">
         <form method="POST" action="">
             <div class="register">

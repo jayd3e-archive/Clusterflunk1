@@ -1,7 +1,7 @@
 <%inherit file="../layouts/base.mako"/>
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
-<%def name="body()">
+<%def name="page()">
     <div class="body_main centered">
         <%
             last_rev = len(article.history) - 1
@@ -13,6 +13,6 @@
     </div>
 </%def>
 
-<%def name="side()">
+<%def name="aside()">
     ${util_side.due()}
 </%def>

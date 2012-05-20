@@ -3,7 +3,7 @@ import os
 from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, 'README')).read()
+README = open(os.path.join(here, 'README.md')).read()
 CHANGES = open(os.path.join(here, 'CHANGES')).read()
 
 entry_points = """
@@ -12,7 +12,7 @@ entry_points = """
 """
 
 requires = [
-    'pyramid>=1.3a5',
+    'pyramid==1.3',
     'pyramid_debugtoolbar',
     'sqlalchemy',
     'psycopg2',
