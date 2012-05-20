@@ -1,0 +1,56 @@
+.logo {
+	background-image: url('../img/clusterflunk_logo.png');
+}
+
+.nav {
+	li {
+		> a {
+			font-family: "IconicFill";
+			font-size: 14px; // Overriding SlickNasty
+			padding: 10px 5px; // Overriding SlickNasty
+		}
+	}
+}
+
+.notifications_button {
+	padding: 4px 4px 4px 4px;
+    background-color: $notificationsBGColor;
+    border-radius: 3px;
+    margin: 4px 5px 0px 5px;
+
+    a {
+    	color: #FFF;
+    	font-family: "IconicFill";
+		font-size: 14px;
+    }
+
+	&:hover {
+		background-color: $notificationsHoverBGColor;
+    	cursor: pointer;
+
+    	a {
+    		color: $FColor;
+    	}
+	}
+}
+
+.notifications_list {
+	    position: absolute;
+	    top: 50px;
+	    left: 145px;
+	    background-color: $notificationsBGColor;
+	    border-radius: 3px;
+	    width: 300px;
+	    padding: 5px;
+	    display: none;
+	    z-index: 1000;
+
+	    ul {
+	    	float: left;
+
+	    	li {
+	    		float: left;
+    			display: block;
+	    	}
+	    }
+}

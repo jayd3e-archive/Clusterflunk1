@@ -5,10 +5,8 @@
     </div>
     <ul class="nav">
         <li>
-            <div id="notifications_button" class="highlight">
-                <a class="white" href="#">
-                    notifications
-                </a>
+            <div id="notifications_button" class="notifications_button">
+                <a href="#">&#xe007;</a>
             </div>
             <div id="notifications_list" class="notifications_list">
                 <ul>
@@ -21,13 +19,13 @@
             </div>
         </li>
         <li>
-            <a class="light" href="/posts">hw</a>
+            <a href="/posts">&#xe005;</a>
         </li>
         <li>
-            <a href="/groups">groups</a>
+            <a href="/groups">&#xe062;</a>
         </li>
         <li>
-            <a href="/articles">articles</a>
+            <a href="/articles">&#xe000;</a>
         </li>
     </ul>
     <div class="search">
