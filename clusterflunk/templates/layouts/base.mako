@@ -5,9 +5,8 @@
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/reset.css')}" />
-        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/style.css')}" />
-        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/type.css')}" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/slicknasty/css/bootstrap.css')}" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/bootstrap.css')}" />
 
         <!-- Third-Party Libraries -->
         <script src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>
@@ -20,14 +19,22 @@
         <script src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
     </head>
     <body>
-        <div class="header">
-            ${header.header(here)}
-        </div>
-        <div class="body">
-            <div class="side">
-                ${self.side()}
+        <div class="top">
+            <div class="container">
+                <div class="header">
+                    ${header.header(here)}
+                </div>
             </div>
-            ${self.body()}
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="page">
+                    ${self.page()}
+                </div>
+                <div class="aside">
+                    ${self.aside()}
+                </div>
+            </div>
         </div>
         <div class="footer">
             ${footer.footer()}

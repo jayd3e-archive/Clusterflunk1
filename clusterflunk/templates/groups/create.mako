@@ -1,7 +1,7 @@
 <%inherit file="../layouts/base.mako"/>
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
-<%def name="body()">
+<%def name="page()">
     <script id="invite_template" type="handlebars-template">
         <li class="invite">
             <input type="hidden" name="invites" value="{{id}}"/>
@@ -32,6 +32,6 @@
     </div>
 </%def>
 
-<%def name="side()">
+<%def name="aside()">
     ${util_side.due()}
 </%def>

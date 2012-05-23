@@ -1,7 +1,7 @@
 <%inherit file="../layouts/base.mako"/>
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
-<%def name="body()">
+<%def name="page()">
     <div class="body_main centered">
         <div class="main_heading">
             <h1>HW</h1>
@@ -19,6 +19,6 @@
     </div>
 </%def>
 
-<%def name="side()">
+<%def name="aside()">
     ${util_side.due()}
 </%def>
