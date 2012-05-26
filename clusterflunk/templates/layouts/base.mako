@@ -22,25 +22,21 @@
         <script src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
     </head>
     <body>
-        <div class="top">
-            <div class="container">
-                <div class="header">
-                    ${header.header(here)}
-                </div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="container">
-                <div class="page">
+        <div id="wrap">
+            <header id="header">
+                ${header.header(here)}
+            </header>
+            <div id="page">
+                <article>
                     ${self.page()}
-                </div>
-                <div class="aside">
+                </article>
+                <aside>
                     ${self.aside()}
-                </div>
+                </aside>
             </div>
-        </div>
-        <div class="footer">
-            ${footer.footer()}
+            <footer id="footer">
+                ${footer.footer()}
+            </footer>
         </div>
     </body>
 </html>

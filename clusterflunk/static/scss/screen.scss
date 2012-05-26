@@ -1,8 +1,38 @@
-  // This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
-
-// To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
 
-// Import all the default blueprint modules so that we can access their mixins.
-@import "blueprint";
+// Blueprint
+@import "blueprint/buttons";
+@import "blueprint/colors";
+@import "blueprint/form";
+@import "blueprint/interaction";
+@import "blueprint/typography";
+@import "blueprint/utilities";
+
+// Compass
+@import "compass";
+
+// Partials
+@import "partials/header";
+@import "partials/page";
+@import "partials/footer";
+
+// Fonts
+@import "fonts/iconic/iconic_fill";
+
+body {
+    margin: 0 auto;
+    max-width: 1500px;
+    min-width: 960px;
+    background-color: $clusterflunk-background-color;
+    @include blueprint-typography(true);
+}
+
+form {
+    @include blueprint-form;
+}
+
+#wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -1,14 +1,12 @@
 <%namespace name="header_utils" file="../utilities/header.mako"/>
 
 <%def name="header(here)">
-    <div>
-    </div>
-    <ul>
+    <div id="logo"></div>
+    <ul id="main_nav">
         <li>
-            <div id="notifications_button" class="notifications_button">
-                <a href="#">&#xe007;</a>
-            </div>
-            <div id="notifications_list" class="notifications_list">
+            <a id="notifications_button" href="#">&#xe007;</a>
+            <div id="notifications">
+                <div class="up_arrow"></div>
                 <ul>
                     % for notification in notifications:
                         <li>
@@ -16,8 +14,6 @@
                         </li>
                     % endfor
                 </ul>
-                <div class="up_arrow">
-                </div>
             </div>
         </li>
         <li>
@@ -30,10 +26,10 @@
             <a href="/articles">&#xe000;</a>
         </li>
     </ul>
-    <div class="search">
+    <div id="search">
         <input type="text" name="search"/><button>&#xe074;</button>
     </div>
-    <ul class="account">
+    <ul id="account">
         <li>
             <a href="/logout">sign out</a>
         </li>
