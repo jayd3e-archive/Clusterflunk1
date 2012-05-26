@@ -1,0 +1,3 @@
+[submodule "clusterflunk/static/scss/slicknasty"]
+	path = clusterflunk/static/scss/slicknasty
+	url = git@github.com:Clusterflunk/SlickNasty.git
