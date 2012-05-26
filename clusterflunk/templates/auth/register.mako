@@ -3,7 +3,7 @@
 
 <%def name="page()">
     <h1>Register</h1>
-    <form method="POST" action="">
+    <form class="basic" method="POST" action="">
         ${ register_form.username() }
         ${ util_error.error(register_form, 'username') }
 

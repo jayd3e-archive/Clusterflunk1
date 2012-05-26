@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/bootstrap.css')}" />
     </head>
     <body>
-        <div class="main">
+        <div id="main">
             <div class="auth_container">
                 ${self.page()}
             </div>

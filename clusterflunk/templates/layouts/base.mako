@@ -1,15 +1,12 @@
-s<%namespace name="header" file="header.mako"/>
+<%namespace name="header" file="header.mako"/>
 <%namespace name="footer" file="footer.mako"/>
 <!-- base.mako --> 
 <!DOCTYPE html>
 <html>
     <head>
         <title></title>
-        <link href="${request.static_url('clusterflunk:static/css/screen.css')}" media="screen, projection" rel="stylesheet" type="text/css" />
-        <link href="${request.static_url('clusterflunk:static/css/print.css')}" media="print" rel="stylesheet" type="text/css" />
-        <!--[if lt IE 8]>
-          <link href="${request.static_url('clusterflunk:static/css/ie.css')}" media="screen, projection" rel="stylesheet" type="text/css" />
-        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/slicknasty/css/bootstrap.css')}" />
+        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/bootstrap.css')}" />
 
         <!-- Third-Party Libraries -->
         <script src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>
@@ -22,21 +19,22 @@ s<%namespace name="header" file="header.mako"/>
         <script src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
     </head>
     <body>
-        <div id="wrap">
-            <header id="header">
-                ${header.header(here)}
-            </header>
-            <div id="page">
-                <article>
-                    ${self.page()}
+        <div id="top">
+            <div class="container">
+                <header id="header">
+                    ${header.header(here)}
+                </header>
+            </div>
+        </div>
+        <div id="main">
+            <div class="container">
+                <article id="page">
+                    ${ self.page() }
                 </article>
-                <aside>
-                    ${self.aside()}
+                <aside id="aside">
+                    ${ self.aside() }
                 </aside>
             </div>
-            <footer id="footer">
-                ${footer.footer()}
-            </footer>
         </div>
     </body>
 </html>

@@ -2,7 +2,7 @@
 
 <%def name="header(here)">
     <div id="logo"></div>
-    <ul id="main_nav">
+    <ul id="main_nav" class="horiz-nav">
         <li>
             <a id="notifications_button" href="#">&#xe007;</a>
             <div id="notifications">
