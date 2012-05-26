@@ -11,9 +11,9 @@ class ClusterflunkRequest(Request):
     
     @reify
     def user(self):
-    	session = self.db
-    	user_id = unauthenticated_userid(self)
-    	if user_id is not None:
+        session = self.db
+        user_id = unauthenticated_userid(self)
+        if user_id is not None:
              # this should return None if the user doesn't exist
              # in the database
              return session.query(User).filter_by(id=user_id).first()
