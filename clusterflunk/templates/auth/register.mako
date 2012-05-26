@@ -15,6 +15,6 @@
         
         ${ register_form.repeat_password() }
         ${ util_error.error(register_form, 'repeat_password') }
-        <input class="submit" type="submit" name="submit" value="Register"/>
+        <input type="submit" name="submit" value="Register"/>
     </form>
 </%def>

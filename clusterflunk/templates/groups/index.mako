@@ -3,15 +3,14 @@
 
 <%def name="page()">
     <div class="body_main centered">
-        <div class="main_heading float_left">
+        <div class="main_heading">
             <h1>Groups</h1>
         </div>
-        <ul class="buttons">
+        <ul>
             <a class="create_group_link" href="/groups/create">
                 <div id="create_group" class="button button-small-positive">create</div>
             </a>
         </ul>
-        <div class="clear"></div>
         <div class="categories">
             <ul>
                 <li>
@@ -22,28 +21,22 @@
                     <a href="/groups?category=mine">mine</a>
                 </li>
             </ul>
-            <div class="clear"></div>
         </div>
         <div class="groups">
             % for group in groups:
                 <div class="group">
-                    <a class="dark" href="/groups/${group.id}">${group.name}</a>
+                    <a href="/groups/${group.id}">${group.name}</a>
                     % if group in user.subscribed_groups:
-                        <button
-                            id="${group.id}" 
-                            class="button-small-negative">
+                        <button id="${group.id}">
                                 unsubscribe
                         </button>
                     % else:
-                        <button
-                            id="${group.id}"
-                            class="button-small-positive">
+                        <button id="${group.id}">
                                 subscribe
                         </button> 
                     % endif
                 </div>
             % endfor
-            <div class="clear"></div>
         </div>
     </div>
 </%def>

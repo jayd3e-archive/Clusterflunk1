@@ -13,7 +13,6 @@
                     ${network.name}
                 </div>
             % endfor
-            <div class="clear"></div>
         </div>
     </div>
 </%def>

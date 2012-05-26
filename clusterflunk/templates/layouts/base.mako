@@ -5,8 +5,11 @@
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/slicknasty/css/bootstrap.css')}" />
-        <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/bootstrap.css')}" />
+        <link href="${request.static_url('clusterflunk:static/css/screen.css')}" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="${request.static_url('clusterflunk:static/css/print.css')}" media="print" rel="stylesheet" type="text/css" />
+        <!--[if lt IE 8]>
+          <link href="${request.static_url('clusterflunk:static/css/ie.css')}" media="screen, projection" rel="stylesheet" type="text/css" />
+        <![endif]-->
 
         <!-- Third-Party Libraries -->
         <script src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>

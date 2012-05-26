@@ -1,9 +1,9 @@
 <%namespace name="header_utils" file="../utilities/header.mako"/>
 
 <%def name="header(here)">
-    <div class="logo">
+    <div>
     </div>
-    <ul class="nav">
+    <ul>
         <li>
             <div id="notifications_button" class="notifications_button">
                 <a href="#">&#xe007;</a>

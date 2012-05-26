@@ -5,7 +5,7 @@
     <script id="status_template" type="handlebars-template">
         <div class="status">
             <div class="author">
-                <a class="blue" href="/profile/{{username}}">
+                <a href="/profile/{{username}}">
                     {{username}}
                 </a>
             </div>
@@ -45,9 +45,7 @@
                         <li class="chosen_groups_input" id="chosen_groups_input">
                             <input id="choose_group_input" type="text" name="group"/>
                         </li>
-                        <div class="clear"></div>
                     </ul>
-                    <div class="clear"></div>
                 </div>
                 <input class="status_submit" id="submit" name="submit" type="submit"/>
             </form>
@@ -56,7 +54,7 @@
             % for status in statuses:
                 <div id="status_${status.id}" class="status">
                     <div class="author">
-                        <a class="blue" href="/profile/${status.author.username}">
+                        <a href="/profile/${status.author.username}">
                             ${status.author.username}
                         </a>
                     </div>
@@ -64,7 +62,7 @@
                     <div class="status_actions">
                         <ul>
                             <li>
-                                <a class="blue add_reply">add comment</a>
+                                <a class="add_reply">add comment</a>
                             </li>
                         </ul>
                     </div>
