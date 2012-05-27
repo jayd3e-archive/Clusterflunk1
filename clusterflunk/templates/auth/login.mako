@@ -12,6 +12,6 @@
         ${ login_form.password() }
         ${ util_error.error(login_form, 'password') }
         
-        <input type="submit" name="submit" value="Login"/>
+        <input class="light" type="submit" name="submit" value="Login"/>
     </form>
 </%def>

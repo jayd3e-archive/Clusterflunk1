@@ -19,7 +19,7 @@
                     <input id="invite_input" type="text" name="invite"/>
                 </li>
             </ul>
-            <input id="create_group_submit" name="submit" type="submit" />
+            <input class="dark" id="create_group_submit" name="submit" type="submit" />
         </form>
     </div>
 </%def>

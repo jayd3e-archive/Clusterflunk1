@@ -6,7 +6,7 @@
                     <%
                         last_rev = len(comment.history) - 1
                     %>
-                    ${child.history[last_rev].body}
+                    <span>${child.history[last_rev].body}</span>
                     <div class="post_actions">
                         <ul>
                             <li>

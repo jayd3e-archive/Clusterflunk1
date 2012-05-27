@@ -23,7 +23,7 @@
                 <div class="group">
                     <a href="/groups/${group.id}">${group.name}</a>
                     % if group in user.subscribed_groups:
-                        <button class="default" id="${group.id}">
+                        <button class="dark" id="${group.id}">
                                 unsubscribe
                         </button>
                     % else:
