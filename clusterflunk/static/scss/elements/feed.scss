@@ -1,0 +1,41 @@
+#feed {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    #statuses {
+
+        .status_comments {
+            padding-left: 20px;
+        }
+    }
+
+    form.basic {
+        margin-bottom: 0px;
+
+        #status {
+            width: $clusterflunk-status-input-width;
+        }
+
+        #chosen_groups_container {
+            width: $clusterflunk-status-input-width;
+            height: 16px;
+            border: 1px solid silver;
+            background-color: #FFF;
+            padding: 8px;
+            margin-bottom: 5px;
+
+            #chosen_groups {
+
+                li {
+                    #choose_group_input {
+                        padding: 0px;
+                        margin: 0px;
+                        border: 0px;
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+
+}
