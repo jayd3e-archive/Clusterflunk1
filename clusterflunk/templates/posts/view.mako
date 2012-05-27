@@ -29,10 +29,8 @@
         </div>
     </script>
 
-    <div class="body_main centered">
-        <div class="main_heading">
-            <h1>${post.title}</h1>
-        </div>
+    <div id="post_view">
+        <h1>${post.title}</h1>
         <div class="post" id="post_${post.id}_">
             ${post.history[latest_rev].description}
             <div class="post_actions">
@@ -42,24 +40,24 @@
                     </li>
                 </ul>
             </div>
-            <div class="comments">
-                % for comment in post.comments:
-                    <div class="comment" id="comment_${post.id}_${comment.id}">
-                        <%
-                            last_rev = len(comment.history) - 1
-                        %>
-                        ${comment.history[last_rev].body}
-                        <div class="post_actions">
-                            <ul>
-                                <li>
-                                    <a class="add_reply">add comment</a>
-                                </li>
-                            </ul>
-                        </div>
-                        ${children.children(comment, post.id)}
+        </div>
+        <div class="comments">
+            % for comment in post.comments:
+                <div class="comment" id="comment_${post.id}_${comment.id}">
+                    <%
+                        last_rev = len(comment.history) - 1
+                    %>
+                    ${comment.history[last_rev].body}
+                    <div class="post_actions">
+                        <ul>
+                            <li>
+                                <a class="add_reply">add comment</a>
+                            </li>
+                        </ul>
                     </div>
-                % endfor
-            </div>
+                    ${children.children(comment, post.id)}
+                </div>
+            % endfor
         </div>
     </div>
 </%def>

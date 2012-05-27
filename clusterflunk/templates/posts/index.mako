@@ -2,10 +2,8 @@
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
 <%def name="page()">
-    <div class="body_main centered">
-        <div class="main_heading">
-            <h1>HW</h1>
-        </div>
+    <div class="post_index">
+        <h1>HW</h1>
         <div class="posts">
             % for post in posts:
                 <%

@@ -38,7 +38,7 @@ jQuery(function($) {
     *
     */
     notification_button = function() {
-        $("#notifications_list").toggle();
+        $("#notifications").toggle();
         if ($("#notifications_button").hasClass("active")) {
             $("#notifications_button").removeClass("active");
         }
@@ -277,13 +277,13 @@ jQuery(function($) {
 
                 function toggle_button_class(data) {
                     if (data['status'] == 'unsubscribed') {
-                        $(event.target).removeClass("button-small-negative");
-                        $(event.target).addClass("button-small-positive");
+                        $(event.target).removeClass("default");
+                        $(event.target).addClass("primary");
                         $(event.target).text("subscribe");
                     }
                     else if (data['status'] == 'subscribed') {
-                        $(event.target).removeClass("button-small-positive");
-                        $(event.target).addClass("button-small-negative");
+                        $(event.target).removeClass("primary");
+                        $(event.target).addClass("default");
                         $(event.target).text("unsubscribe");
                     }
                 }
@@ -291,10 +291,10 @@ jQuery(function($) {
                 group_id = parseInt(event.target.id);
                 if (group_id != undefined) {
 
-                    if ($(event.target).hasClass("button-small-positive")) {
+                    if ($(event.target).hasClass("primary")) {
                         cmd = "subscribe";
                     }
-                    else if ($(event.target).hasClass("button-small-negative")) {
+                    else if ($(event.target).hasClass("default")) {
                         cmd = "unsubscribe";
                     }
 

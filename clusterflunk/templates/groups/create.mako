@@ -9,24 +9,18 @@
         </li>
     </script>
 
-    <div class="body_main centered">
-        <div>
-            <h1>Create a Group</h1>
-        </div>
-        <div>
-            <form action="" method="POST">
-                ${ group_create_form.name(class_="group_name") }
-                ${ group_create_form.description(class_="group_description") }
-                <div>
-                    <ul>
-                        <li id="invites_input">
-                            <input id="invite_input" type="text" name="invite"/>
-                        </li>
-                    </ul>
-                </div>
-                <input id="create_group_submit" name="submit" type="submit" />
-            </form>
-        </div>
+    <div id="group_create">
+        <h1>Create a Group</h1>
+        <form class="basic" action="" method="POST">
+            ${ group_create_form.name(class_="group_name") }
+            ${ group_create_form.description(class_="group_description") }
+            <ul class="invites">
+                <li id="invites_input">
+                    <input id="invite_input" type="text" name="invite"/>
+                </li>
+            </ul>
+            <input id="create_group_submit" name="submit" type="submit" />
+        </form>
     </div>
 </%def>
 

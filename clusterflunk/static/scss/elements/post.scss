@@ -1,0 +1,32 @@
+#post_index {
+    
+}
+
+#post_view {
+
+    .post {
+        margin-bottom: 10px;
+    }
+
+    .comments {
+
+        // First comment
+        > .comment {
+            margin-bottom: 15px;
+        }
+
+        .comment {
+
+        }
+    }
+
+    .children {
+        margin-left: 30px;
+        margin-bottom: 5px;
+
+        .child {
+
+        }
+    }
+
+}

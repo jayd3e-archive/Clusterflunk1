@@ -19,7 +19,7 @@
 
     <script id="reply" type="handlebars-template">
         <div class="reply">
-            <form id="reply_form" method="POST" action="">
+            <form class="basic" id="reply_form" method="POST" action="">
                 <input id="status_id" name="parent_id" type="hidden" value="{{status_id}}"/>
                 <textarea id="body" name="body"></textarea>
                 <input id="submit" name="submit" type="submit"/>
@@ -38,7 +38,7 @@
             <h1>Feed</h1>
         </div>
         <div class="status">
-            <form id="status_form" method="POST" action="">
+            <form class="basic" id="status_form" method="POST" action="">
                 <textarea id="status" name="status">Ask something crazy!</textarea>
                 <div class="chosen_groups_container">
                     <ul class="chosen_groups">

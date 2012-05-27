@@ -5,7 +5,15 @@
 *
 */
 
-@import "vars.scss";
-@import "../slicknasty/scss/core/mixins.scss";
-@import "header.scss";
-@import "articles.scss";
+@import "vars";
+@import "../slicknasty/scss/core/mixins";
+@import "header";
+@import "articles";
+
+// Elements
+@import "elements/status";
+@import "elements/post";
+@import "elements/group";
+@import "elements/common";
+
+// Pages

@@ -2,10 +2,8 @@
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
 <%def name="page()">
-    <div class="body_main centered">
-        <div class="group_view">
-            <h1>${group.name}</h1>
-        </div>
+    <div class="group_view">
+        <h1>${group.name}</h1>
     </div>
 </%def>
 
