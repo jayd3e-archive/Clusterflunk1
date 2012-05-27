@@ -45,7 +45,7 @@ jQuery(function($) {
         else {
             $("#notifications_button").addClass("active");
         }
-    }
+    };
 
     /*
     *
@@ -77,8 +77,8 @@ jQuery(function($) {
             * Local Vars
             *
             */
-            available_groups = []
-            chosen_groups = []
+            available_groups = [];
+            chosen_groups = [];
 
             /*
             *
@@ -88,7 +88,7 @@ jQuery(function($) {
 
             add_group = function(group) {
                 chosen_groups.push(group);
-            }
+            };
 
             /*
             *
@@ -117,23 +117,23 @@ jQuery(function($) {
             submit_status = function(event) {
                 button = $(event.target);
                 form = button.parent();
-                body_main = form.closest(".body_main");
-                statuses = body_main.children(".statuses");
+                feed = form.closest("#feed");
+                statuses = feed.children(".statuses");
 
-                status_value = form.children("textarea#status").val();
+                status_value = form.children("#status").val();
 
-                chosen_group_ids = []
+                chosen_group_ids = [];
                 $.each(chosen_groups, function(index, chosen_group) {
-                    chosen_group_ids.push(chosen_group.id)
+                    chosen_group_ids.push(chosen_group.id);
                 });
-                data = {status : status_value, chosen_groups : chosen_group_ids}
+                data = {status : status_value, chosen_groups : chosen_group_ids};
 
                 $.ajax({
                     type: "POST",
                     data: data,
                     url: "/statuses",
                     success: function(data) {
-                        context = {username : data['username'], body : data['body']};
+                        context = {username : data.username, body : data.body};
                         $(statuses).prepend(status_template(context));
                     }
                 });
@@ -142,7 +142,7 @@ jQuery(function($) {
                 $("#status").val("Ask something crazy!");
 
                 return false;
-            }
+            };
 
             /*
             *
@@ -152,7 +152,7 @@ jQuery(function($) {
 
             choose_group = function(event) {
                 $("#choose_group_input").focus();
-            }
+            };
 
             /*
             *
@@ -177,7 +177,7 @@ jQuery(function($) {
                 $('input#submit').click(submit_reply);
 
                 return false;
-            }
+            };
 
             /*
             *
@@ -196,7 +196,7 @@ jQuery(function($) {
                 body = form.children("textarea#body").val();
 
                 data = {status_id : status_id,
-                        body : body}
+                        body : body};
 
                 $.ajax({
                   type: "POST",
@@ -205,14 +205,14 @@ jQuery(function($) {
                     success: function(data) {
                         $(".reply").remove(); // Remove all other replies
                         
-                        context = {id : data['id'], body : data['body']};
+                        context = {id : data.id, body : data.body};
                         $(children).append(status_comment_template(context));
                         $(children).find('.add_reply').click(add_reply);
                     }
                 });
 
                 return false;
-            }
+            };
 
             /*
             *
@@ -220,8 +220,8 @@ jQuery(function($) {
             *
             */
 
-            $('.status_submit').click(submit_status);
-            $('.chosen_groups_container').click(choose_group);
+            $('#status_submit').click(submit_status);
+            $('#chosen_groups_container').click(choose_group);
             $("#choose_group_input").autocomplete({
                 source: function(request, response) {
                     $.ajax({
@@ -239,28 +239,28 @@ jQuery(function($) {
                                return {
                                    label: group.name,
                                    value: group.name
-                               }
+                               };
                             }));
                         }
                     });
                 },
                 select: function(event, ui) {
-                    item = {}
+                    item = {};
                     $.each(available_groups, function(index, group) {
-                        if (group['name'] == ui.item['label']) {
+                        if (group.name == ui.item.label) {
                             item = group;
                             return;
                         }
                     });
-                    group = {id : item['id'], name : item['name']};
+                    group = {id : item.id, name : item.name};
                     add_group(group);
 
-                    context = {label : ui.item['label']};
+                    context = {label : ui.item.label};
                     $("#chosen_groups_input").before(chosen_group_template(context));
                     $("#choose_group_input").val('');
                     $('#choose_group_input').focus();
                     return false;
-                },
+                }
             });
             $('.add_reply').click(add_reply);
         },
@@ -276,25 +276,25 @@ jQuery(function($) {
             function toggle_subscription(event) {
 
                 function toggle_button_class(data) {
-                    if (data['status'] == 'unsubscribed') {
-                        $(event.target).removeClass("default");
+                    if (data.status == 'unsubscribed') {
+                        $(event.target).removeClass("dark");
                         $(event.target).addClass("primary");
                         $(event.target).text("subscribe");
                     }
-                    else if (data['status'] == 'subscribed') {
+                    else if (data.status == 'subscribed') {
                         $(event.target).removeClass("primary");
-                        $(event.target).addClass("default");
+                        $(event.target).addClass("dark");
                         $(event.target).text("unsubscribe");
                     }
                 }
 
-                group_id = parseInt(event.target.id);
-                if (group_id != undefined) {
+                group_id = parseInt(event.target.id, 10);
+                if (group_id !== undefined) {
 
                     if ($(event.target).hasClass("primary")) {
                         cmd = "subscribe";
                     }
-                    else if ($(event.target).hasClass("default")) {
+                    else if ($(event.target).hasClass("dark")) {
                         cmd = "unsubscribe";
                     }
 
@@ -333,8 +333,8 @@ jQuery(function($) {
             * Local Vars
             *
             */
-            available_users = []
-            invites = []
+            available_users = [];
+            invites = [];
 
             /*
             *
@@ -353,7 +353,7 @@ jQuery(function($) {
 
             add_user = function(user) {
                 invites.push(user);
-            }
+            };
 
             /*
             *
@@ -363,7 +363,7 @@ jQuery(function($) {
 
             invites = function(event) {
                 $("#invite_input").focus();
-            }
+            };
 
 
             /*
@@ -390,29 +390,29 @@ jQuery(function($) {
                                return {
                                    label: user.username,
                                    value: user.username
-                               }
+                               };
                             }));
                         }
                     });
                 },
                 select: function(event, ui) {
-                    item = {}
+                    item = {};
                     $.each(available_users, function(index, user) {
-                        if (user['username'] == ui.item['label']) {
+                        if (user.username == ui.item.label) {
                             item = user;
                             return;
                         }
                     });
 
-                    user = {id : item['id'], name : item['username']};
+                    user = {id : item.id, name : item.username};
                     add_user(user);
 
-                    context = {label : item['username'], id : item['id']};
+                    context = {label : item.username, id : item.id};
                     $("#invite_input").before(invite_template(context));
                     $("#invite_input").val('');
                     $('#invite_input').focus();
                     return false;
-                },
+                }
             });
         },
 
@@ -463,7 +463,7 @@ jQuery(function($) {
                 comment = post_actions.parent();
 
                 id = comment.attr("id");
-                id = id.split("_")
+                id = id.split("_");
                 post_id = id[1];
                 parent_id = id[2];
 
@@ -474,7 +474,7 @@ jQuery(function($) {
                 $('input#submit').click(submit_reply);
 
                 return false;
-            }
+            };
 
             /*
             *
@@ -487,7 +487,7 @@ jQuery(function($) {
                 button.disabled = true;
                 form = button.parent();
                 parent = form.closest(".child, .comment, .post");
-                children = parent.children(".children, .comments")
+                children = parent.children(".children, .comments");
 
                 post_id = form.children("input#post_id").val();
                 parent_id = form.children("input#parent_id").val();
@@ -495,7 +495,7 @@ jQuery(function($) {
 
                 data = {post_id : post_id,
                         parent_id : parent_id,
-                        body : body}
+                        body : body};
 
                 $.ajax({
                   type: "POST",
@@ -504,14 +504,14 @@ jQuery(function($) {
                     success: function(data) {
                         $(".reply").remove(); // Remove all other replies
                         
-                        context = {id : data['id'], post_id : data['post_id'], body : data['body']};
+                        context = {id : data.id, post_id : data.post_id, body : data.body};
                         $(children).append(comment_template(context));
                         $(children).find('.add_reply').click(add_reply);
                     }
                 });
 
                 return false;
-            }
+            };
 
             /*
             *
