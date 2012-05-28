@@ -102,6 +102,15 @@
             chosen_groups.bind("add", this.append_chosen_group, this);
         },
 
+        reset: function() {
+            // Clean everything up
+            this.$("#status").val("Ask something crazy!");
+            this.$("#choose_group_input").val("");
+            this.$("#chosen_groups .chosen_group").remove();
+            this.$("#available_groups").empty();
+            this.$("#available_groups").hide();
+        },
+
         focus_chosen_groups_input: function() {
             $("#choose_group_input").focus();
         },
@@ -120,6 +129,7 @@
                 $("#statuses").prepend(status_template(context));
             }});
 
+            this.reset();
             // So the form doesn't get submited
             return false;
         },

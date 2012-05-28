@@ -20,16 +20,16 @@
         </ul>
         <div id="groups">
             % for group in groups:
-                <div class="group">
-                    <a href="/groups/${group.id}">${group.name}</a>
+                <div class="group" id="group_${group.id}">
+                    <a class="group_name" href="/groups/${group.id}">${group.name}</a>
                     % if group in user.subscribed_groups:
-                        <button class="dark" id="${group.id}">
-                                unsubscribe
+                        <button class="dark">
+                            unsubscribe
                         </button>
                     % else:
-                        <button class="primary" id="${group.id}">
-                                subscribe
-                        </button> 
+                        <button class="primary">
+                            subscribe
+                        </button>
                     % endif
                 </div>
             % endfor

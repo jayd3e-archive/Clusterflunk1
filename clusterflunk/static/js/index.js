@@ -32,7 +32,7 @@ $.ajaxSetup({
 *
 */
 
-jQuery(function() {
+$(function() {
     // Imports
     var app = clusterflunk.app;
 
@@ -45,7 +45,8 @@ jQuery(function() {
     var Router = Backbone.Router.extend({
 
         routes: {
-            "": "index"
+            "": "index",
+            "groups": "groups"
         },
 
         initialize: function(options) {
@@ -77,6 +78,11 @@ jQuery(function() {
         index: function() {
             var Feed = clusterflunk.module("feed");
             var feed = new Feed.Views.FeedView();
+        },
+
+        groups: function() {
+            var Group = clusterflunk.module("group");
+            var group = new Group.Views.GroupListView();
         }
 
     });
