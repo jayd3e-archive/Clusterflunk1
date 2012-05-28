@@ -5,16 +5,25 @@
     <script id="status_template" type="handlebars-template">
         <div class="status">
             <div class="author">
-                <a href="/profile/{{username}}">
-                    {{username}}
-                </a>
+                <a href="/profile/{{username}}">{{ username }}</a>
             </div>
-            {{body}}
+            <span>{{ body }}</span>
+            <div class="status_actions">
+                <ul>
+                    <li>
+                        <a class="add_reply">add comment</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </script>
 
     <script id="chosen_group_template" type="handlebars-template">
-        <li class="chosen_group">{{label}}</li>
+        {{ name }}
+    </script>
+
+    <script id="available_group_template" type="handlebars-template">
+        {{ name }}
     </script>
 
     <script id="reply" type="handlebars-template">
@@ -29,30 +38,28 @@
 
     <script id="status_comment" type="handlebars-template">
         <div class="status_comment">
-            {{body}}
+            {{ body }}
         </div>
     </script>
-    
+
     <div id="feed">
         <h1>Feed</h1>
-        <form class="basic" id="status_form" method="POST" action="">
+        <form class="basic" id="status_form" method="POST" action="" autocomplete="off">
             <textarea id="status" name="status">Ask something crazy!</textarea>
-            <div id="chosen_groups_container">
-                <ul id="chosen_groups">
-                    <li>
-                        <input id="choose_group_input" type="text" name="group"/>
-                    </li>
-                </ul>
-            </div>
-            <input class="dark" id="status_submit" name="submit" type="submit"/>
+            <ul id="chosen_groups">
+                <li>
+                    <input id="choose_group_input" type="text" name="group"/>
+                </li>
+            </ul>
+            <ul id="available_groups">
+            </ul>
+            <button class="dark" id="status_submit">submit</button>
         </form>
         <div id="statuses">
             % for status in statuses:
                 <div id="status_${status.id}" class="status">
                     <div class="author">
-                        <a href="/profile/${status.author.username}">
-                            ${status.author.username}
-                        </a>
+                        <a href="/profile/${status.author.username}">${status.author.username}</a>
                     </div>
                     <span>${status.body}</span>
                     <div class="status_actions">

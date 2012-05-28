@@ -1,6 +1,7 @@
 from pyramid.view import view_config
 from clusterflunk.models.posts import Post
 
+
 @view_config(
     route_name='posts',
     renderer='clusterflunk:templates/posts/index.mako',
@@ -18,8 +19,9 @@ def index(request):
         posts = query.all()
     else:
         posts = []
-    
-    return {'posts' : posts}
+
+    return {'posts': posts}
+
 
 @view_config(
     route_name='posts_view',
@@ -28,7 +30,6 @@ def index(request):
     permission='view')
 def view(request):
     db = request.db
-    user = request.user
     post_id = request.matchdict.get('post_id')
 
     post = db.query(Post).filter_by(id=post_id).first()

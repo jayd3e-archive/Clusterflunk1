@@ -3,6 +3,7 @@ from pyramid.view import view_config
 from clusterflunk.models.statuses import Status
 from clusterflunk.models.broadcasts import Broadcast
 
+
 @view_config(
     route_name='statuses',
     renderer='json',
@@ -11,12 +12,12 @@ from clusterflunk.models.broadcasts import Broadcast
 def add(request):
     db = request.db
     user = request.user
-    
-    chosen_groups = request.POST.getall('chosen_groups')
-    status = request.POST['status']
+
+    chosen_groups = request.json_body['chosen_groups']
+    body = request.json_body['body']
 
     status = Status(created=datetime.now(),
-                    body=status,
+                    body=body,
                     author_id=user.id)
     db.add(status)
     db.flush()
@@ -27,6 +28,6 @@ def add(request):
         db.add(broadcast)
 
     db.flush()
-    return {'id':status.id,
-            'body':status.body,
-            'username':user.username}
+    return {'id': status.id,
+            'body': status.body,
+            'username': user.username}

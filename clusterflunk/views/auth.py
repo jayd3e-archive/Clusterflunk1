@@ -8,6 +8,7 @@ from clusterflunk.forms import RegisterForm
 from clusterflunk.models.users import User
 from clusterflunk.models.auth import AuthUser
 
+
 @view_config(route_name='login', renderer='clusterflunk:templates/auth/login.mako', permission='everyone')
 def login(request):
     title = "Login"
@@ -26,9 +27,10 @@ def login(request):
             return HTTPFound(location="/")
         else:
             login_form.errors['password'] = ['Incorrect password.']
-    
-    return {'title':title,
-            'login_form':login_form}
+
+    return {'title': title,
+            'login_form': login_form}
+
 
 @view_config(route_name='register', renderer='clusterflunk:templates/auth/register.mako', permission='everyone')
 def register(request):
@@ -41,7 +43,7 @@ def register(request):
         username = register_form.username.data
         email = register_form.email.data
         password = register_form.password.data
-        
+
         # Add user
         user = User(username=username,
                     email=email,
@@ -50,16 +52,17 @@ def register(request):
         # Add auth user
         auth_user = AuthUser(username, password)
         user.auth_user = auth_user
-        
+
         db.add(user)
         db.flush()
 
         remember(request, auth_user.user.id)
         return HTTPFound(location="/")
 
-    return {'title':title,
-            'register_form':register_form}
-    
+    return {'title': title,
+            'register_form': register_form}
+
+
 @view_config(route_name='logout', permission='everyone')
 def logout(request):
     forget(request)

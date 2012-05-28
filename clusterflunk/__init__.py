@@ -38,6 +38,7 @@ from clusterflunk.exceptions import forbidden
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker
 
+
 def main(global_config, **settings):
     '''Main config function'''
     engine = engine_from_config(settings, 'sqlalchemy.')
@@ -47,7 +48,7 @@ def main(global_config, **settings):
     # the moment.  Remove it once I have pyramid_tm & zope.sqlalchemy implemented.
     maker = sessionmaker(bind=engine, autocommit=True)
     settings['db.sessionmaker'] = maker
-    
+
     authentication_policy = SessionAuthenticationPolicy(callback=groupfinder)
     authorization_policy = ACLAuthorizationPolicy()
     session_factory = UnencryptedCookieSessionFactoryConfig('1h209asf093nf930fni23f0fb29401', cookie_max_age=3600)
@@ -57,19 +58,19 @@ def main(global_config, **settings):
                           authentication_policy=authentication_policy,
                           authorization_policy=authorization_policy,
                           session_factory=session_factory)
-    
+
     # Includes
-    config.include('pyramid_debugtoolbar')
+    # config.include('pyramid_debugtoolbar')
 
     # Security
     config.set_default_permission('logged_in')
 
     config.add_static_view(name='static', path='clusterflunk:static')
-                                   
+
     #View Root Routes
-    config.add_route('index', '/') 
+    config.add_route('index', '/')
     config.add_route('login', '/login')
-    config.add_route('register', '/register') 
+    config.add_route('register', '/register')
     config.add_route('logout', '/logout')
     config.add_route('posts', '/posts')
     config.add_route('users', '/users')
@@ -96,6 +97,6 @@ def main(global_config, **settings):
     config.add_view(forbidden,
                     context=HTTPForbidden,
                     permission='__no_permission_required__')
-                      
+
     config.scan('clusterflunk')
     return config.make_wsgi_app()

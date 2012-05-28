@@ -1,22 +1,12 @@
 <%namespace name="header" file="header.mako"/>
 <%namespace name="footer" file="footer.mako"/>
-<!-- base.mako --> 
+<!-- base.mako -->
 <!DOCTYPE html>
 <html>
     <head>
         <title></title>
         <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/slicknasty/css/bootstrap.css')}" />
         <link rel="stylesheet" type="text/css" href="${request.static_url('clusterflunk:static/css/bootstrap.css')}" />
-
-        <!-- Third-Party Libraries -->
-        <script src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>
-        <script src="${request.static_url('clusterflunk:static/js/libs/jquery-ui-1.8.16.custom.js')}"></script>
-        <script src="${request.static_url('clusterflunk:static/js/libs/underscore.js')}"></script>
-        <script src="${request.static_url('clusterflunk:static/js/libs/backbone.js')}"></script>
-        <script src="${request.static_url('clusterflunk:static/js/libs/handlebars.js')}"></script>
-
-        <!-- The Frontend -->
-        <script src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
     </head>
     <body>
         <div id="top">
@@ -37,4 +27,18 @@
             </div>
         </div>
     </body>
+    <!-- Third-Party Libraries -->
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/jquery-1.7.1.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/underscore.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/backbone.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/handlebars.js')}"></script>
+
+    <!-- The Frontend -->
+    <!-- Main App -->
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
+
+    <!-- Modules -->
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/group.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/status.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/feed.js')}"></script>
 </html>

@@ -10,7 +10,7 @@
         <div class="networks">
             % for network in user.memberships:
                 <div class="network">
-                    ${network.name}
+                    <span>${network.name}</span>
                 </div>
             % endfor
         </div>

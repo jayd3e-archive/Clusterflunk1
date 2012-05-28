@@ -54,3 +54,4 @@ env/
 *egg_info/
 *egg/
 clusterflunk/static/css
+*-ck.js
