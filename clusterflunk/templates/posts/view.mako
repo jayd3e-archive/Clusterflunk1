@@ -6,10 +6,10 @@
     <script id="reply" type="handlebars-template">
         <div class="reply">
             <form class="basic" id="reply_form" method="POST" action="">
-                <input id="post_id" name="post_id" type="hidden" value="{{post_id}}"/>
-                <input id="parent_id" name="parent_id" type="hidden" value="{{parent_id}}"/>
-                <textarea id="body" name="body"></textarea>
-                <input class="dark" id="submit" name="submit" type="submit"/>
+                <input name="post_id" type="hidden" value="{{post_id}}"/>
+                <input name="parent_id" type="hidden" value="{{parent_id}}"/>
+                <textarea  name="body"></textarea>
+                <input class="dark" name="submit" type="submit"/>
             </form>
         </div>
     </script>

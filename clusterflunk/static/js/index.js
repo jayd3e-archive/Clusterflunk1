@@ -33,7 +33,6 @@ $.ajaxSetup({
 */
 
 $(function() {
-    // Imports
     var app = clusterflunk.app;
 
     /*
@@ -46,7 +45,8 @@ $(function() {
 
         routes: {
             "": "index",
-            "groups": "groups"
+            "groups": "groups",
+            "groups?category=*category": "groups"
         },
 
         initialize: function(options) {

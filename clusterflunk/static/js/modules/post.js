@@ -1,4 +1,4 @@
-(function(Module) {
+(function(Post) {
 
     /*
     *
@@ -18,4 +18,4 @@
     *
     */
 
-})(clusterflunk.module("module"));
+})(clusterflunk.module("post"));

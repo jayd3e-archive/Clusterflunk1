@@ -12,6 +12,7 @@ from clusterflunk.models.notifications import (
     StatusCommentNotification
 )
 
+
 @view_config(
     route_name='comments_post_view',
     renderer='json',
@@ -54,11 +55,12 @@ def post_add(request):
                                      body=body)
         db.add(post_comment)
         db.add(comment_rev)
-    
+
     db.flush()
-    return {'id':comment.id,
-            'post_id':0,
-            'body':comment.history[0].body}
+    return {'id': comment.id,
+            'post_id': 0,
+            'body': comment.history[0].body}
+
 
 @view_config(
     route_name='comments_status_view',
@@ -79,14 +81,14 @@ def status_add(request):
                                  body=body)
     comment = Comment(founder_id=user.id,
                       history=[comment_rev])
-    
+
     db.add(comment)
     db.flush()
 
     status_comment = StatusComment(status_id=status_id,
                                    comment_id=comment.id)
     db.add(status_comment)
-    
+
     # Create a notification, that can be sent to users who need to know about a
     # status being commented on.
     status_comment_notification = StatusCommentNotification(created=datetime.now(),
@@ -101,5 +103,5 @@ def status_add(request):
     db.add(status_comment_notification)
     db.add(notification)
     db.flush()
-    return {'id':comment.id,
-            'body':comment.history[0].body}
+    return {'id': comment.id,
+            'body': comment.history[0].body}
