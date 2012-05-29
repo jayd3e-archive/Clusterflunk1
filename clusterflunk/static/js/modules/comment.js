@@ -6,11 +6,11 @@
     *
     */
 
-    parse_comment = function (comment) {
-        var id = comment.attr("id");
+    Comment.Parsers.PostComment = function (comment) {
+        var id = $(comment).attr("id");
         id = id.split("_");
-        var post_id = id[1];
-        var parent_id = id[2];
+        var post_id = id[2];
+        var parent_id = id[3];
 
         return {post_id: post_id, parent_id: parent_id};
     };
@@ -21,7 +21,7 @@
     *
     */
 
-    var reply_source = $("#reply_template").html();
+    var reply_source = $("#reply").html();
     var reply_template = Handlebars.compile(reply_source);
 
     /*
@@ -50,26 +50,50 @@
     *
     */
 
-    Comment.Views.CommentView = Backbone.Model.extend({
+    Comment.Views.PostCommentView = Backbone.View.extend({
 
         tagName: "div",
-        className: "comment",
+        className: "post_comment",
 
-        events: {
-            "click .add_reply": "prompt"
+        initialize: function() {
+            // Hack to get around the fact that jQuery.delegate() doesn't
+            // accept the ("parent > child") selector
+            method = _.bind(this.prompt, this);
+            this.$el.children(".actions").delegate('.add_reply', 'click', method);
+
+            children = this.$el.children(".post_children").children(".post_child");
+            $.each(children, function(index, child) {
+                var attrs = Comment.Parsers.PostComment(child);
+                var model = new Comment.PostCommentModel(attrs);
+                new Comment.Views.PostChildView({el: child, model: model});
+            });
         },
 
         prompt: function(event) {
-            post_actions = this.$el.children(".post_actions");
-            $(reply_template()).insertAfter(post_actions);
+            actions = this.$el.children(".actions");
+            context =  {post_id: this.model.get("post_id"),
+                        parent_id: this.model.get("parent_id")};
+            var reply = $(reply_template(context)).insertAfter(actions);
+
+            // Same hack here as above
+            method = _.bind(this.persist, this);
+            reply.delegate('.submit:button', 'click', method);
             return false;
+        },
+
+        persist: function() {
+            return false;
+        },
+
+        remove_prompt: function() {
+
         }
 
     });
 
-    Comment.Views.ChildView = Comment.Views.CommentView.extend({
+    Comment.Views.PostChildView = Comment.Views.PostCommentView.extend({
 
-        className: "child"
+        className: "post_child",
 
     });
 

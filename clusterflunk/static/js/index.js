@@ -7,7 +7,7 @@ var clusterflunk = {
                 return modules[name];
             }
 
-            return modules[name] = { Views: {} };
+            return modules[name] = { Views: {}, Parsers: {} };
         };
     }(),
 
@@ -46,7 +46,8 @@ $(function() {
         routes: {
             "": "index",
             "groups": "groups",
-            "groups?category=*category": "groups"
+            "groups?category=*category": "groups",
+            "posts/:id": "posts"
         },
 
         initialize: function(options) {
@@ -83,6 +84,11 @@ $(function() {
         groups: function() {
             var Group = clusterflunk.module("group");
             var group = new Group.Views.GroupListView();
+        },
+
+        posts: function(id) {
+            var Post = clusterflunk.module("post");
+            var post = new Post.Views.PostTreeView();
         }
 
     });

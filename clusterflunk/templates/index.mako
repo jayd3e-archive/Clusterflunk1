@@ -8,13 +8,11 @@
                 <a href="/profile/{{username}}">{{ username }}</a>
             </div>
             <span>{{ body }}</span>
-            <div class="status_actions">
-                <ul>
-                    <li>
-                        <a class="add_reply">add comment</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="actions">
+                <li>
+                    <a class="add_reply">add comment</a>
+                </li>
+            </ul>
         </div>
     </script>
 
@@ -62,13 +60,11 @@
                         <a href="/profile/${status.author.username}">${status.author.username}</a>
                     </div>
                     <span>${status.body}</span>
-                    <div class="status_actions">
-                        <ul>
-                            <li>
-                                <a class="add_reply">add comment</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="actions">
+                        <li>
+                            <a class="add_reply">add comment</a>
+                        </li>
+                    </ul>
                     <div class="status_comments">
                         % for comment in status.comments:
                             <div class="status_comment">

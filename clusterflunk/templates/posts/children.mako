@@ -1,19 +1,17 @@
 <%def name="children(comment, post_id)">
-    <div class="children">
+    <div class="post_children">
         % if comment.replies:
             % for child in comment.replies:
-                <div class="child" id="child_${post_id}_${child.id}">
+                <div class="post_child" id="child_${post_id}_${child.id}">
                     <%
                         last_rev = len(comment.history) - 1
                     %>
                     <span>${child.history[last_rev].body}</span>
-                    <div class="post_actions">
-                        <ul>
-                            <li>
-                                <a class="add_reply">add comment</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="actions">
+                        <li>
+                            <a class="add_reply">add comment</a>
+                        </li>
+                    </ul>
                     ${children(child, post_id)}
                 </div>
             % endfor

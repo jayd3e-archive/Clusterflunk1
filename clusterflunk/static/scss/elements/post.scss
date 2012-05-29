@@ -1,34 +1,38 @@
 #post_index {
-    
+
 }
 
 #post_view {
 
     form.basic {
         margin-bottom: 0px;
+
+        .dark {
+            display: block;
+        }
     }
 
     .post {
         margin-bottom: 10px;
     }
 
-    .comments {
+    .post_comments {
 
         // First comment
-        > .comment {
+        > .post_comment {
             margin-bottom: 15px;
         }
 
-        .comment {
+        .post_comment {
 
         }
     }
 
-    .children {
+    .post_children {
         margin-left: 30px;
         margin-bottom: 5px;
 
-        .child {
+        .post_child {
 
         }
     }
