@@ -50,23 +50,39 @@
     *
     */
 
+    Comment.Views.PostCommentsView = Backbone.View.extend({
+
+        initialize: function() {
+            post_comments = this.$el.children(".post_comment");
+            $.each(post_comments, function(index, post_comment) {
+                var attrs = Comment.Parsers.PostComment(post_comment);
+                var model = new Comment.PostCommentModel(attrs);
+                new Comment.Views.PostCommentView({el: post_comment, model: model});
+            });
+        }
+
+    });
+
     Comment.Views.PostCommentView = Backbone.View.extend({
 
         tagName: "div",
         className: "post_comment",
 
         initialize: function() {
-            // Hack to get around the fact that jQuery.delegate() doesn't
-            // accept the ("parent > child") selector
+            /*
+            * Hack to get around the fact that jQuery.delegate() doesn't
+            * accept the ("parent > child") selector
+            * The equivalent of
+            * event = {
+            *      "click > .actions .add_reply": "prompt"
+            * }
+            */
+
             method = _.bind(this.prompt, this);
             this.$el.children(".actions").delegate('.add_reply', 'click', method);
 
-            children = this.$el.children(".post_children").children(".post_child");
-            $.each(children, function(index, child) {
-                var attrs = Comment.Parsers.PostComment(child);
-                var model = new Comment.PostCommentModel(attrs);
-                new Comment.Views.PostChildView({el: child, model: model});
-            });
+            post_children = this.$el.children(".post_children");
+            new Comment.Views.PostChildrenView({el: post_children});
         },
 
         prompt: function(event) {
@@ -75,7 +91,7 @@
                         parent_id: this.model.get("parent_id")};
             var reply = $(reply_template(context)).insertAfter(actions);
 
-            // Same hack here as above
+            // Same hack as above
             method = _.bind(this.persist, this);
             reply.delegate('.submit:button', 'click', method);
             return false;
@@ -91,9 +107,22 @@
 
     });
 
+    Comment.Views.PostChildrenView = Backbone.View.extend({
+
+        initialize: function() {
+            children = this.$el.children(".post_child");
+            $.each(children, function(index, child) {
+                var attrs = Comment.Parsers.PostComment(child);
+                var model = new Comment.PostCommentModel(attrs);
+                new Comment.Views.PostChildView({el: child, model: model});
+            });
+        }
+
+    });
+
     Comment.Views.PostChildView = Comment.Views.PostCommentView.extend({
 
-        className: "post_child",
+        className: "post_child"
 
     });
 

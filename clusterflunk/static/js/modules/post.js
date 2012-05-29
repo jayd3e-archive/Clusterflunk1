@@ -31,12 +31,8 @@
         el: $("#post_view"),
 
         initialize: function() {
-            post_comments = this.$(".post_comment");
-            $.each(post_comments, function(index, post_comment) {
-                var attrs = Comment.Parsers.PostComment(post_comment);
-                var model = new Comment.PostCommentModel(attrs);
-                new Comment.Views.PostCommentView({el: post_comment, model: model});
-            });
+            post_comments = this.$el.children(".post_comments");
+            new Comment.Views.PostCommentsView({el: post_comments});
         }
 
     });
