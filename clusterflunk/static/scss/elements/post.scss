@@ -15,26 +15,20 @@
     .post {
         margin-bottom: 10px;
     }
+}
 
-    .post_comments {
+.post_comment {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
-        // First comment
-        > .post_comment {
-            margin-bottom: 15px;
-        }
+.post_comments > .post_comment {
+    margin-left: 30px;
+}
 
-        .post_comment {
+.post_comment_tree {
 
-        }
+    > .post_comment {
+        margin-bottom: 20px;
     }
-
-    .post_children {
-        margin-left: 30px;
-        margin-bottom: 5px;
-
-        .post_child {
-
-        }
-    }
-
 }

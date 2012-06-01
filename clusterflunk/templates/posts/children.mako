@@ -1,8 +1,8 @@
 <%def name="children(comment, post_id)">
-    <div class="post_children">
+    <div class="post_comments">
         % if comment.replies:
             % for child in comment.replies:
-                <div class="post_child" id="child_${post_id}_${child.id}">
+                <div class="post_comment" id="post_comment_${post_id}_${child.id}">
                     <%
                         last_rev = len(comment.history) - 1
                     %>

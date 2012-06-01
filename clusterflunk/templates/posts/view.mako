@@ -37,7 +37,7 @@
                 </li>
             </ul>
         </div>
-        <div class="post_comments">
+        <div class="post_comment_tree">
             % for comment in post.comments:
                 <div class="post_comment" id="post_comment_${post.id}_${comment.id}">
                     <%
