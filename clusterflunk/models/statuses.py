@@ -5,10 +5,11 @@ from sqlalchemy import (
     Integer,
     String,
 )
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
+
 
 class Status(Base):
     __tablename__ = 'statuses'
@@ -24,14 +25,15 @@ class Status(Base):
     def __repr__(self):
         return "<Status('%s')>" % (self.id)
 
+
 class StatusComment(Base):
     __tablename__ = 'status_comments'
 
     status_id = Column(Integer, ForeignKey('statuses.id'))
     comment_id = Column(Integer, ForeignKey('comments.id'))
 
-    status = relationship('Status', backref='status_comments', uselist=False)
-    comment = relationship('Comment', backref='status_comments', uselist=False)
+    status = relationship('Status', backref='status_comments')
+    comment = relationship('Comment', backref=backref('status_comment', uselist=False))
 
     def __repr__(self):
         return "<StatusComment('%s')>" % (self.id)

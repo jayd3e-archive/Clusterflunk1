@@ -9,7 +9,7 @@
                     <span>${child.history[last_rev].body}</span>
                     <ul class="actions">
                         <li>
-                            <a class="add_reply">add comment</a>
+                            <a class="add_comment">add comment</a>
                         </li>
                     </ul>
                     ${children(child, post_id)}

@@ -5,10 +5,11 @@ from sqlalchemy import (
     Integer,
     String,
 )
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
+
 
 class Article(Base):
     __tablename__ = 'articles'
@@ -23,6 +24,7 @@ class Article(Base):
     def __repr__(self):
         return "<Article('%s', '%s')>" % (self.id,
                                           self.founder_id)
+
 
 class ArticleHistory(Base):
     __tablename__ = 'article_history'
@@ -47,6 +49,7 @@ class ArticleHistory(Base):
             self.author_id,
             self.article_id)
 
+
 class ArticleComment(Base):
     __tablename__ = 'article_comments'
 
@@ -54,7 +57,7 @@ class ArticleComment(Base):
     comment_id = Column(Integer, ForeignKey('comments.id'))
 
     article = relationship('Article', backref='article_comments')
-    comment = relationship('Comment', backref='article_comments')
+    comment = relationship('Comment', backref=backref('article_comment', uselist=False))
 
     def __repr__(self):
         return "<ArticleComment('%s')>" % (self.id)

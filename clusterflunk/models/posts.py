@@ -5,10 +5,11 @@ from sqlalchemy import (
     Integer,
     String,
 )
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
+
 
 class Post(Base):
     __tablename__ = 'posts'
@@ -26,6 +27,7 @@ class Post(Base):
 
     def __repr__(self):
         return "<Post('%s')>" % (self.id)
+
 
 class PostHistory(Base):
     __tablename__ = 'post_history'
@@ -47,14 +49,15 @@ class PostHistory(Base):
     def __repr__(self):
         return "<PostHistory('%s')>" % (self.id)
 
+
 class PostComment(Base):
     __tablename__ = 'post_comments'
 
     post_id = Column(Integer, ForeignKey('posts.id'))
     comment_id = Column(Integer, ForeignKey('comments.id'))
 
-    post = relationship('Post', backref='post_comments', uselist=False)
-    comment = relationship('Comment', backref='post_comments', uselist=False)
+    post = relationship('Post', backref='post_comments')
+    comment = relationship('Comment', backref=backref('post_comment', uselist=False))
 
     def __repr__(self):
         return "<PostComment('%s')>" % (self.id)

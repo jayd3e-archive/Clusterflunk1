@@ -22,9 +22,9 @@ def post_add(request):
     db = request.db
     user = request.user
 
-    post_id = request.POST['post_id']
-    parent_id = request.POST['parent_id']
-    body = request.POST['body']
+    post_id = request.json_body['post_id']
+    parent_id = request.json_body['parent_id']
+    body = request.json_body['body']
 
     # Replying to a comment
     if parent_id:
@@ -58,7 +58,8 @@ def post_add(request):
 
     db.flush()
     return {'id': comment.id,
-            'post_id': 0,
+            'post_id': post_id,
+            'parent_id': comment.parent_id,
             'body': comment.history[0].body}
 
 
@@ -71,8 +72,8 @@ def status_add(request):
     db = request.db
     user = request.user
 
-    status_id = request.POST['status_id']
-    body = request.POST['body']
+    status_id = request.json_body['status_id']
+    body = request.json_body['body']
     status = db.query(Status).filter_by(id=status_id).first()
 
     comment_rev = CommentHistory(revision=1,

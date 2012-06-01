@@ -5,7 +5,7 @@
 <%def name="page()">
     <script id="reply" type="handlebars-template">
         <div class="reply">
-            <form class="basic" id="reply_form" method="POST" action="">
+            <form class="basic reply_form" method="POST" action="">
                 <input name="post_id" type="hidden" value="{{post_id}}"/>
                 <input name="parent_id" type="hidden" value="{{parent_id}}"/>
                 <textarea name="body"></textarea>
@@ -15,14 +15,14 @@
     </script>
 
     <script id="comment" type="handlebars-template">
-        <div class="child" id="child_{{post_id}}_{{id}}">
-            {{body}}
+        <div class="post_comments" id="child_{{post_id}}_{{id}}">
+            <span>{{body}}</span>
             <ul class="actions">
                 <li>
-                    <a class="add_reply">add comment</a>
+                    <a class="add_comment">add comment</a>
                 </li>
             </ul>
-            <div class="children">
+            <div class="post_comments">
             </div>
         </div>
     </script>
@@ -46,7 +46,7 @@
                     <span>${comment.history[last_rev].body}</span>
                     <ul class="actions">
                         <li>
-                            <a class="add_reply">add comment</a>
+                            <a class="add_comment">add comment</a>
                         </li>
                     </ul>
                     ${children.children(comment, post.id)}

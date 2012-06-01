@@ -1,5 +1,3 @@
-import os
-import base64
 import unittest
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
@@ -47,16 +45,17 @@ from clusterflunk.models.notifications import (
     StatusCommentNotification
 )
 
+
 class TestModels(unittest.TestCase):
     def setUp(self):
         engine = create_engine('sqlite://')
         Base.metadata.bind = engine
         Base.metadata.create_all(engine)
         self.Session = sessionmaker(bind=engine)
-    
+
     def testArticles(self):
         session = self.Session()
-        
+
         article = Article(id=1,
                           founder_id=1)
         article_rev1 = ArticleHistory(revision=1,
@@ -74,7 +73,7 @@ class TestModels(unittest.TestCase):
         for ar in [article_rev1, article_rev2, article_rev3]:
             article.history.append(ar)
         session.add(article)
-        
+
         comment = Comment(id=1,
                           founder_id=1)
         comment1 = Comment(id=2,
@@ -83,7 +82,7 @@ class TestModels(unittest.TestCase):
                            founder_id=1)
         for c in [comment, comment1, comment2]:
             session.add(c)
-        
+
         article_comment = ArticleComment(article_id=1,
                                          comment_id=1)
         article_comment1 = ArticleComment(article_id=1,
@@ -92,7 +91,7 @@ class TestModels(unittest.TestCase):
                                           comment_id=3)
         for ac in [article_comment, article_comment1, article_comment2]:
             session.add(ac)
-        
+
         session.flush()
         self.assertTrue(str(article).startswith('<Article'),
                         msg="str(Article) must start with '<Article'")
@@ -101,9 +100,9 @@ class TestModels(unittest.TestCase):
         self.assertEqual(article_rev2.article, article)
         self.assertEqual(article_rev3.article, article)
         self.assertEqual(article.comments, [comment, comment1, comment2])
-        self.assertEqual(comment.articles, [article])
-        self.assertEqual(comment1.articles, [article])
-        self.assertEqual(comment2.articles, [article])
+        self.assertEqual(comment.article, article)
+        self.assertEqual(comment1.article, article)
+        self.assertEqual(comment2.article, article)
 
     def testArticleComments(self):
         session = self.Session()
@@ -123,9 +122,9 @@ class TestModels(unittest.TestCase):
                         msg="str(ArticleComment) must start with '<ArticleComment'")
         self.assertEqual(article_comment.article, article)
         self.assertEqual(article_comment.comment, comment)
-        self.assertIn(article_comment, comment.article_comments)
+        self.assertEqual(article_comment, comment.article_comment)
         self.assertIn(article_comment, article.article_comments)
-    
+
     def testArticleHistory(self):
         session = self.Session()
 
@@ -137,10 +136,10 @@ class TestModels(unittest.TestCase):
         session.flush()
         self.assertTrue(str(article_rev).startswith('<ArticleHistory'),
                         msg="str(ArticleHistory) must start with '<ArticleHistory'")
-    
+
     def testPosts(self):
         session = self.Session()
-        
+
         post = Post(id=1,
                     founder_id=1,
                     study_group_id=1)
@@ -160,7 +159,7 @@ class TestModels(unittest.TestCase):
         for p in [post_rev1, post_rev2, post_rev3]:
             post.history.append(p)
         session.add(post)
-        
+
         comment = Comment(id=1,
                           founder_id=1)
         comment1 = Comment(id=2,
@@ -169,7 +168,7 @@ class TestModels(unittest.TestCase):
                            founder_id=1)
         for c in [comment, comment1, comment2]:
             session.add(c)
-        
+
         post_comment = PostComment(post_id=1,
                                    comment_id=1)
         post_comment1 = PostComment(post_id=1,
@@ -187,7 +186,7 @@ class TestModels(unittest.TestCase):
                                      post_id=1,
                                      category_id=1)
         post.post_categories.append(post_category)
-        
+
         session.flush()
         self.assertTrue(str(post).startswith('<Post'),
                         msg="str(Post) must start with '<Post'")
@@ -196,11 +195,11 @@ class TestModels(unittest.TestCase):
         self.assertEqual(post_rev2.post, post)
         self.assertEqual(post_rev3.post, post)
         self.assertEqual(post.comments, [comment, comment1, comment2])
-        self.assertEqual(comment.posts, [post])
-        self.assertEqual(comment1.posts, [post])
-        self.assertEqual(comment2.posts, [post])
+        self.assertEqual(comment.post, post)
+        self.assertEqual(comment1.post, post)
+        self.assertEqual(comment2.post, post)
         self.assertIn(category, post.categories)
-    
+
     def testPostComments(self):
         session = self.Session()
 
@@ -220,9 +219,9 @@ class TestModels(unittest.TestCase):
                         msg="str(PostComment) must start with '<PostComment'")
         self.assertEqual(post_comment.post, post)
         self.assertEqual(post_comment.comment, comment)
-        self.assertIn(post_comment, comment.post_comments)
+        self.assertEqual(post_comment, comment.post_comment)
         self.assertIn(post_comment, post.post_comments)
-    
+
     def testPostHistory(self):
         session = self.Session()
 
@@ -279,7 +278,7 @@ class TestModels(unittest.TestCase):
                                       body="U Suk Even More!")
         for cr in [comment_rev1, comment_rev2, comment_rev3]:
             comment1.history.append(cr)
-        
+
         session.add(comment1)
         session.add(comment2)
         session.add(comment3)
@@ -294,7 +293,7 @@ class TestModels(unittest.TestCase):
         self.assertEqual(comment1.replies, [comment2])
         self.assertEqual(comment2.replies, [comment3])
         self.assertEqual(comment2.parent_comment, comment1)
-    
+
     def testCommentHistory(self):
         session = self.Session()
 
@@ -333,7 +332,7 @@ class TestModels(unittest.TestCase):
         self.assertIn(auth_group, auth_user.auth_groups)
         self.assertEqual(auth_user_group.auth_user, auth_user)
         self.assertEqual(auth_user_group.auth_group, auth_group)
-    
+
     def testCategories(self):
         session = self.Session()
 
@@ -341,7 +340,7 @@ class TestModels(unittest.TestCase):
                             name='Test')
         post_category = PostCategory(id=1,
                                      category_id=1)
-        
+
         post_category.category = category
         session.add(post_category)
 
@@ -351,7 +350,7 @@ class TestModels(unittest.TestCase):
         self.assertTrue(str(post_category).startswith('<PostCategory'),
                         msg="str(PostCategory) must start with '<PostCategory'")
         self.assertEqual(post_category.category, category)
-    
+
     def testModerators(self):
         session = self.Session()
 
@@ -359,7 +358,7 @@ class TestModels(unittest.TestCase):
                                  name="Physics 101",
                                  created=datetime.now(),
                                  edited=datetime.now())
-        
+
         user = User(id=1,
                     username="jayd3e",
                     email="jd.dallago@gmail.com",
@@ -368,7 +367,7 @@ class TestModels(unittest.TestCase):
 
         moderator = Moderator(user_id=1,
                               study_group_id=1)
-        
+
         session.add(study_group)
         session.add(user)
         session.add(moderator)
@@ -380,7 +379,7 @@ class TestModels(unittest.TestCase):
         self.assertIn(study_group, user.moderated_groups)
         self.assertEqual(moderator.user, user)
         self.assertEqual(moderator.study_group, study_group)
-    
+
     def testNetworks(self):
         session = self.Session()
 
@@ -400,7 +399,7 @@ class TestModels(unittest.TestCase):
                                   network_id=1)
         for sg in [study_group1, study_group2, study_group3]:
             session.add(sg)
-        
+
         session.flush()
         self.assertTrue(str(network).startswith('<Network'),
                         msg="str(Network) must start with '<Network'")
@@ -409,7 +408,6 @@ class TestModels(unittest.TestCase):
         self.assertEqual(network, study_group2.network)
         self.assertEqual(network, study_group3.network)
 
-    
     def testStatuses(self):
         session = self.Session()
 
@@ -417,7 +415,7 @@ class TestModels(unittest.TestCase):
                         created=datetime.now(),
                         body="I luv studying <3",
                         author_id=1)
-        
+
         session.add(status)
         self.assertTrue(str(status).startswith('<Status'),
                         msg="str(Status) must start with '<Status'")
@@ -442,9 +440,9 @@ class TestModels(unittest.TestCase):
                         msg="str(StatusComment) must start with '<StatusComment'")
         self.assertEqual(status_comment.status, status)
         self.assertEqual(status_comment.comment, comment)
-        self.assertIn(status_comment, comment.status_comments)
+        self.assertEqual(status_comment, comment.status_comment)
         self.assertIn(status_comment, status.status_comments)
-    
+
     def testStudyGroups(self):
         session = self.Session()
 
@@ -456,7 +454,7 @@ class TestModels(unittest.TestCase):
                     founder_id=1,
                     study_group_id=1)
         study_group.posts.append(post)
-        
+
         user = User(id=1,
                     username="jayd3e",
                     email="jd.dallago@gmail.com",
@@ -476,7 +474,7 @@ class TestModels(unittest.TestCase):
         self.assertEqual(post.study_group, study_group)
         self.assertIn(user, study_group.moderators)
         self.assertIn(study_group, user.moderated_groups)
-    
+
     def testSubscriptions(self):
         session = self.Session()
 
@@ -491,7 +489,7 @@ class TestModels(unittest.TestCase):
                                  edited=datetime.now())
         subscription = Subscription(user_id=1,
                                     study_group_id=1)
-        
+
         session.add(study_group)
         session.add(user)
         session.add(subscription)
@@ -501,7 +499,7 @@ class TestModels(unittest.TestCase):
                         msg="str(Subscription) must start with '<Subscription'")
         self.assertIn(study_group, user.subscribed_groups)
         self.assertIn(user, study_group.subscribers)
-    
+
     def testUsers(self):
         session = self.Session()
 
@@ -538,7 +536,7 @@ class TestModels(unittest.TestCase):
         moderator = Moderator(user_id=1,
                               study_group_id=1)
         session.add(moderator)
-                            
+
         # Subscribed to founded group
         subscription = Subscription(user_id=1,
                                     study_group_id=1)
@@ -584,7 +582,7 @@ class TestModels(unittest.TestCase):
                     user_id=1,
                     post_id=1,
                     vote=1)
-        
+
         session.add(study_group)
         session.add(user)
         session.add(post)
@@ -612,7 +610,7 @@ class TestModels(unittest.TestCase):
         membership = Membership(id=1,
                                 user_id=1,
                                 network_id=1)
-        
+
         session.add(user)
         session.add(network)
         session.add(membership)
@@ -639,7 +637,7 @@ class TestModels(unittest.TestCase):
         broadcast = Broadcast(id=1,
                               status_id=1,
                               study_group_id=1)
-        
+
         session.add(status)
         session.add(study_group)
         session.add(broadcast)
@@ -685,7 +683,7 @@ class TestModels(unittest.TestCase):
                                              discriminator="group_invite")
         self.assertTrue(str(notification_item).startswith('<NotificationItem'),
                         msg="str(NotificationItem) must start with '<NotificationItem'")
-        
+
         self.assertTrue(str(group_invite_notification).startswith('<GroupInviteNotification'),
                         msg="str(GroupInviteNotification) must start with '<GroupInviteNotification'")
         self.assertIn(group_invite_notification, user.notifications)

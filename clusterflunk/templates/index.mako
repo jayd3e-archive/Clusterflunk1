@@ -10,7 +10,7 @@
             <span>{{ body }}</span>
             <ul class="actions">
                 <li>
-                    <a class="add_reply">add comment</a>
+                    <a class="add_comment">add comment</a>
                 </li>
             </ul>
         </div>
@@ -62,7 +62,7 @@
                     <span>${status.body}</span>
                     <ul class="actions">
                         <li>
-                            <a class="add_reply">add comment</a>
+                            <a class="add_comment">add comment</a>
                         </li>
                     </ul>
                     <div class="status_comments">
