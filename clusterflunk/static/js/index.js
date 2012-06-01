@@ -88,7 +88,7 @@ $(function() {
 
         posts: function(id) {
             var Post = clusterflunk.module("post");
-            var post = new Post.Views.PostTreeView();
+            var post = new Post.Views.PostView();
         }
 
     });

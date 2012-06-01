@@ -21,10 +21,10 @@
     *
     */
 
-    var reply_source = $("#reply").html();
-    var reply_template = Handlebars.compile(reply_source);
-    var comment_source = $("#comment").html();
-    var comment_template = Handlebars.compile(comment_source);
+    var post_comment_form_source = $("#post_comment_form").html();
+    var post_comment_form_template = Handlebars.compile(post_comment_form_source);
+    var post_comment_source = $("#post_comment").html();
+    var post_comment_template = Handlebars.compile(post_comment_source);
 
     /*
     *
@@ -51,27 +51,6 @@
     * Views
     *
     */
-
-    Comment.Views.PostCommentsView = Backbone.View.extend({
-
-        tagName: "div",
-        className: "post_comments",
-
-        initialize: function() {
-            post_comments = this.$el.children(".post_comment");
-            $.each(post_comments, function(index, post_comment) {
-                var attrs = Comment.Parsers.PostComment(post_comment);
-                var model = new Comment.PostCommentModel(attrs);
-                new Comment.Views.PostCommentView({el: post_comment, model: model});
-            });
-        },
-
-        add_one: function(post_comment) {
-            post_comment = post_comment.render();
-            this.$el.append(post_comment.el);
-        }
-
-    });
 
     Comment.Views.PostCommentView = Backbone.View.extend({
 
@@ -101,48 +80,65 @@
                         post_id: this.model.get('post_id'),
                         parent_id: this.model.get('parent_id'),
                         body: this.model.get('body') };
-            content = comment_template(context);
+            content = post_comment_template(context);
             this.$el.html(content);
             return this;
         },
 
         prompt: function(event) {
-            if (!this.$(".reply").length) {
+            if (!this.$(".post_comment_form").length) {
                 actions = this.$el.children(".actions");
                 context =  {post_id: this.model.get("post_id"),
                             parent_id: this.model.get("parent_id")};
-                var reply = $(reply_template(context)).insertAfter(actions);
+                var post_comment_form = $(post_comment_form_template(context)).insertAfter(actions);
 
                 // Same hack as above
                 method = _.bind(this.persist, this);
-                reply.delegate('.submit:button', 'click', method);
+                post_comment_form.delegate('.submit:button', 'click', method);
             }
             return false;
         },
 
         persist: function(event) {
-            reply_form = this.$el.children(".reply").find(".reply_form");
+            var comment_form = this.$el.children(".post_comment_form");
 
-            post_id = reply_form.find("input[name|='post_id']").val();
-            parent_id = reply_form.find("input[name|='parent_id']").val();
-            body = reply_form.find("textarea[name|='body']").val();
+            var post_id = comment_form.find("input[name|='post_id']").val();
+            var parent_id = comment_form.find("input[name|='parent_id']").val();
+            var body = comment_form.find("textarea[name|='body']").val();
 
-            model = new Comment.PostCommentModel({post_id: post_id,
-                                                  parent_id: parent_id,
-                                                  body: body});
+            var model = new Comment.PostCommentModel({post_id: post_id,
+                                                      parent_id: parent_id,
+                                                      body: body});
 
-            that = this;
+            var that = this;
             model.save({}, {success: function(model, response) {
-                that.$el.children(".reply").remove();
-                post_comment = new Comment.Views.PostCommentView({model: model});
-                that.post_comments.add_one(post_comment);
+                that.$el.children(".post_comment_form").remove();
+                var post_comment = new Comment.Views.PostCommentView({model: model});
+                that.post_comments.add_comment(post_comment);
             }});
 
             return false;
+        }
+
+    });
+
+    Comment.Views.PostCommentsView = Backbone.View.extend({
+
+        tagName: "div",
+        className: "post_comments",
+
+        initialize: function() {
+            var post_comments = this.$el.children(".post_comment");
+            $.each(post_comments, function(index, post_comment) {
+                var attrs = Comment.Parsers.PostComment(post_comment);
+                var model = new Comment.PostCommentModel(attrs);
+                new Comment.Views.PostCommentView({el: post_comment, model: model});
+            });
         },
 
-        remove_prompt: function() {
-
+        add_comment: function(post_comment) {
+            post_comment = post_comment.render();
+            this.$el.append(post_comment.el);
         }
 
     });
