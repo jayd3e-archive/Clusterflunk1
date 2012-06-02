@@ -15,6 +15,15 @@
         return {post_id: post_id, comment_id: comment_id};
     };
 
+    Comment.Parsers.StatusComment = function (comment) {
+        var id = $(comment).attr("id");
+        id = id.split("_");
+        var status_id = id[2];
+        var comment_id = id[3];
+
+        return {status_id: status_id, comment_id: comment_id};
+    };
+
     /*
     *
     * Templates

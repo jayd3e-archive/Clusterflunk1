@@ -67,7 +67,7 @@
                     </ul>
                     <div class="status_comments">
                         % for comment in status.comments:
-                            <div class="status_comment">
+                            <div class="status_comment_${status.id}_${comment.id}">
                                 <%
                                     last_rev = len(comment.history) - 1
                                 %>

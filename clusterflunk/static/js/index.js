@@ -78,7 +78,9 @@ $(function() {
 
         index: function() {
             var Feed = clusterflunk.module("feed");
+            var Status = clusterflunk.module("status");
             var feed = new Feed.Views.FeedView();
+            var statuses = new Status.Views.Statuses();
         },
 
         groups: function() {
