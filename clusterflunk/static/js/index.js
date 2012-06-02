@@ -7,7 +7,7 @@ var clusterflunk = {
                 return modules[name];
             }
 
-            return modules[name] = { Views: {}, Parsers: {} };
+            return modules[name] = { Views: {}, Models: {}, Parsers: {} };
         };
     }(),
 
@@ -79,18 +79,18 @@ $(function() {
         index: function() {
             var Feed = clusterflunk.module("feed");
             var Status = clusterflunk.module("status");
-            var feed = new Feed.Views.FeedView();
+            var feed = new Feed.Views.Feed();
             var statuses = new Status.Views.Statuses();
         },
 
         groups: function() {
             var Group = clusterflunk.module("group");
-            var group = new Group.Views.GroupListView();
+            var group = new Group.Views.GroupList();
         },
 
         posts: function(id) {
             var Post = clusterflunk.module("post");
-            var post = new Post.Views.PostView();
+            var post = new Post.Views.Post();
         }
 
     });

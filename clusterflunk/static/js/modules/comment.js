@@ -43,11 +43,11 @@
     *
     */
 
-    Comment.PostCommentModel = Backbone.Model.extend({
+    Comment.Models.PostComment = Backbone.Model.extend({
         url: "/comments/post"
     });
 
-    Comment.StatusCommentModel = Backbone.Model.extend({
+    Comment.Models.StatusComment = Backbone.Model.extend({
         url: "/comments/status"
     });
 
@@ -83,7 +83,7 @@
             status_comments = this.$el.children(".status_comment");
             $.each(status_comments, function(index, status_comment) {
                 attrs = Comment.Parsers.StatusComment(status_comment);
-                model = new Comment.StatusCommentModel(attrs);
+                model = new Comment.Models.StatusComment(attrs);
                 new Comment.Views.StatusComment({el: status_comment, model: model});
             });
         },
@@ -93,7 +93,7 @@
         }
     });
 
-    Comment.Views.PostCommentView = Backbone.View.extend({
+    Comment.Views.PostComment = Backbone.View.extend({
 
         tagName: "div",
         className: "post_comment",
@@ -105,7 +105,7 @@
 
         initialize: function() {
             post_comments = this.$el.children(".post_comments");
-            this.post_comments = new Comment.Views.PostCommentsView({el: post_comments});
+            this.post_comments = new Comment.Views.PostComments({el: post_comments});
         },
 
         render: function() {
@@ -139,14 +139,14 @@
             var parent_id = comment_form.find("input[name|='parent_id']").val();
             var body = comment_form.find("textarea[name|='body']").val();
 
-            var model = new Comment.PostCommentModel({post_id: post_id,
+            var model = new Comment.Models.PostComment({post_id: post_id,
                                                       parent_id: parent_id,
                                                       body: body});
 
             var that = this;
             model.save({}, {success: function(model, response) {
                 that.$el.children(".post_comment_form").remove();
-                var post_comment = new Comment.Views.PostCommentView({model: model});
+                var post_comment = new Comment.Views.PostComment({model: model});
                 that.post_comments.add_comment(post_comment);
             }});
 
@@ -155,7 +155,7 @@
 
     });
 
-    Comment.Views.PostCommentsView = Backbone.View.extend({
+    Comment.Views.PostComments = Backbone.View.extend({
 
         tagName: "div",
         className: "post_comments",
@@ -164,8 +164,8 @@
             var post_comments = this.$el.children(".post_comment");
             $.each(post_comments, function(index, post_comment) {
                 var attrs = Comment.Parsers.PostComment(post_comment);
-                var model = new Comment.PostCommentModel(attrs);
-                new Comment.Views.PostCommentView({el: post_comment, model: model});
+                var model = new Comment.Models.PostComment(attrs);
+                new Comment.Views.PostComment({el: post_comment, model: model});
             });
         },
 

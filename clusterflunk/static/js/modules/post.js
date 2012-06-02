@@ -47,7 +47,7 @@
     *
     */
 
-    Post.Views.PostView = Backbone.View.extend({
+    Post.Views.Post = Backbone.View.extend({
 
         el: $("#post_view"),
         post_tree_view: undefined, // The list of top tier comments
@@ -63,7 +63,7 @@
             this.model = new Post.Model(attrs);
 
             post_comments = this.$el.children(".post_comment_tree");
-            this.post_comment_tree = new Comment.Views.PostCommentsView({el: post_comments});
+            this.post_comment_tree = new Comment.Views.PostComments({el: post_comments});
         },
 
         prompt: function(event) {
@@ -82,14 +82,14 @@
             var post_id = comment_form.find("input[name|='post_id']").val();
             var body = comment_form.find("textarea[name|='body']").val();
 
-            var model = new Comment.PostCommentModel({post_id: post_id,
+            var model = new Comment.Models.PostComment({post_id: post_id,
                                                       parent_id: "",
                                                       body: body});
 
             var that = this;
             model.save({}, {success: function(model, response) {
                 that.$(".post .post_comment_form").remove();
-                var post_comment = new Comment.Views.PostCommentView({model: model});
+                var post_comment = new Comment.Views.PostComment({model: model});
                 that.add_comment(post_comment);
             }});
 

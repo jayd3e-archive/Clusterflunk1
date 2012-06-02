@@ -88,7 +88,7 @@
             var status_id = comment_form.find("input[name|='status_id']").val();
             var body = comment_form.find("textarea[name|='body']").val();
 
-            var model = new Comment.StatusCommentModel({status_id: status_id,
+            var model = new Comment.Models.StatusComment({status_id: status_id,
                                                         body: body});
 
             var that = this;

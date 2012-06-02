@@ -154,7 +154,7 @@
 
     });
 
-    Feed.Views.FeedView = Backbone.View.extend({
+    Feed.Views.Feed = Backbone.View.extend({
 
         el: $("#feed"),
 

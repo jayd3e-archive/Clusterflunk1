@@ -40,7 +40,7 @@
     <!-- Modules -->
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/comment.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/post.js')}"></script>
-    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/feed.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/group.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/status.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/feed.js')}"></script>
 </html>

@@ -6,8 +6,8 @@
     */
 
     // Given a DOM object that represents a group, will parse out
-    // all information for the DOM to create a Model.
-    parse_group = function (group) {
+    // all information from the DOM to create a Model.
+    Group.Parsers.Group = function (group) {
         // id
         var parts = group.id.split("_");
         var group_id = parts[1];
@@ -43,7 +43,7 @@
     *
     */
 
-    Group.Views.GroupCondensedView = Backbone.View.extend({
+    Group.Views.GroupCondensed = Backbone.View.extend({
 
         events: {
             "click .group button.primary": "subscribe",
@@ -76,7 +76,7 @@
 
     });
 
-    Group.Views.GroupListView = Backbone.View.extend({
+    Group.Views.GroupList = Backbone.View.extend({
 
         el: $("#groups"),
 
@@ -84,10 +84,10 @@
             that = this;
             var groups = this.$(".group");
             $.each(groups, function(index, group) {
-                attrs = parse_group(group);
+                attrs = Group.Parsers.Group(group);
                 model = new Group.Model(attrs);
                 var options = {el: group, model: model};
-                new Group.Views.GroupCondensedView(options);
+                new Group.Views.GroupCondensed(options);
             });
         }
 
