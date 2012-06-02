@@ -29,7 +29,7 @@
 
     <div id="post_view">
         <h1>${post.title}</h1>
-        <div class="post" id="post_${post.id}_">
+        <div class="post" id="post_${post.id}">
             <span>${post.history[latest_rev].description}</span>
             <ul class="actions">
                 <li>

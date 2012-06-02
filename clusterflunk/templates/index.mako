@@ -24,11 +24,11 @@
         {{ name }}
     </script>
 
-    <script id="reply" type="handlebars-template">
-        <div class="reply">
-            <form class="basic" id="reply_form" method="POST" action="">
-                <input id="status_id" name="parent_id" type="hidden" value="{{status_id}}"/>
-                <textarea id="body" name="body"></textarea>
+    <script id="status_comment_form" type="handlebars-template">
+        <div class="status_comment_form">
+            <form class="basic" method="POST" action="">
+                <input name="status_id" type="hidden" value="{{status_id}}"/>
+                <textarea name="body"></textarea>
                 <input class="dark" name="submit" type="submit"/>
             </form>
         </div>
@@ -55,7 +55,7 @@
         </form>
         <div id="statuses">
             % for status in statuses:
-                <div id="status_${status.id}" class="status">
+                <div class="status" id="status_${status.id}">
                     <div class="author">
                         <a href="/profile/${status.author.username}">${status.author.username}</a>
                     </div>

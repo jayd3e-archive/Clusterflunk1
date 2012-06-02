@@ -120,9 +120,11 @@
         },
 
         submit: function() {
-            status_val = $("#status").val();
-            chosen_group_ids = chosen_groups.pluck("id");
-            status_model = new Status.Model({body: status_val, chosen_groups: chosen_group_ids});
+            var status_val = $("#status").val();
+            var chosen_group_ids = chosen_groups.pluck("id");
+            var status_model = new Status.Model({body: status_val,
+                                                 chosen_groups: chosen_group_ids});
+
             status_model.save({}, {success: function(model, response) {
                 context = {username: model.get('username'),
                            body: model.get('body')};

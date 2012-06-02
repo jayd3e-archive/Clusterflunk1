@@ -10,9 +10,9 @@
         var id = $(comment).attr("id");
         id = id.split("_");
         var post_id = id[2];
-        var parent_id = id[3];
+        var comment_id = id[3];
 
-        return {post_id: post_id, parent_id: parent_id};
+        return {post_id: post_id, comment_id: comment_id};
     };
 
     /*
@@ -57,20 +57,12 @@
         tagName: "div",
         className: "post_comment",
         post_comments: undefined, // The PostComments contained in this PostComment
+        events: {
+            "click .add_comment": "prompt",
+            "click .submit:button": "persist"
+        },
 
         initialize: function() {
-            /*
-            * Hack to get around the fact that jQuery.delegate() doesn't
-            * accept the ("parent > child") selector
-            * The equivalent of
-            * event = {
-            *      "click > .actions .add_reply": "prompt"
-            * }
-            */
-
-            method = _.bind(this.prompt, this);
-            this.$el.children(".actions").delegate('.add_comment', 'click', method);
-
             post_comments = this.$el.children(".post_comments");
             this.post_comments = new Comment.Views.PostCommentsView({el: post_comments});
         },
@@ -86,20 +78,20 @@
         },
 
         prompt: function(event) {
-            if (!this.$(".post_comment_form").length) {
+            event.stopPropagation();
+
+            if (!this.$("> .post_comment_form").length) {
                 actions = this.$el.children(".actions");
                 context =  {post_id: this.model.get("post_id"),
-                            parent_id: this.model.get("parent_id")};
-                var post_comment_form = $(post_comment_form_template(context)).insertAfter(actions);
-
-                // Same hack as above
-                method = _.bind(this.persist, this);
-                post_comment_form.delegate('.submit:button', 'click', method);
+                            parent_id: this.model.get("comment_id")};
+                $(post_comment_form_template(context)).insertAfter(actions);
             }
             return false;
         },
 
         persist: function(event) {
+            event.stopPropagation();
+
             var comment_form = this.$el.children(".post_comment_form");
 
             var post_id = comment_form.find("input[name|='post_id']").val();
