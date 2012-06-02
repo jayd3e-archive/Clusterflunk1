@@ -15,15 +15,13 @@
     </script>
 
     <script id="post_comment" type="handlebars-template">
-        <div class="post_comment" id="post_comment_{{post_id}}_{{id}}">
-            <span>{{body}}</span>
-            <ul class="actions">
-                <li>
-                    <a class="add_comment">add comment</a>
-                </li>
-            </ul>
-            <div class="post_comments">
-            </div>
+        <span>{{body}}</span>
+        <ul class="actions">
+            <li>
+                <a class="add_comment">add comment</a>
+            </li>
+        </ul>
+        <div class="post_comments">
         </div>
     </script>
 

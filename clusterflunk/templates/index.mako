@@ -3,17 +3,15 @@
 
 <%def name="page()">
     <script id="status_template" type="handlebars-template">
-        <div class="status">
-            <div class="author">
-                <a href="/profile/{{username}}">{{ username }}</a>
-            </div>
-            <span>{{ body }}</span>
-            <ul class="actions">
-                <li>
-                    <a class="add_comment">add comment</a>
-                </li>
-            </ul>
+        <div class="author">
+            <a href="/profile/{{username}}">{{ username }}</a>
         </div>
+        <span>{{ body }}</span>
+        <ul class="actions">
+            <li>
+                <a class="add_comment">add comment</a>
+            </li>
+        </ul>
     </script>
 
     <script id="chosen_group_template" type="handlebars-template">
@@ -35,9 +33,7 @@
     </script>
 
     <script id="status_comment" type="handlebars-template">
-        <div class="status_comment" id="status_comment_{{ status_id }}_{{ comment_id }}">
-            <span>{{ body }}</span>
-        </div>
+        <span>{{ body }}</span>
     </script>
 
     <div id="feed">

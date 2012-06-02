@@ -12,7 +12,7 @@
         var post_id = id[2];
         var comment_id = id[3];
 
-        return {post_id: post_id, comment_id: comment_id};
+        return {post_id: post_id, id: comment_id};
     };
 
     Comment.Parsers.StatusComment = function (comment) {
@@ -21,7 +21,7 @@
         var status_id = id[2];
         var comment_id = id[3];
 
-        return {status_id: status_id, comment_id: comment_id};
+        return {status_id: status_id, id: comment_id};
     };
 
     /*
@@ -67,10 +67,12 @@
         tagName: "div",
         className: "status_comment",
 
+        attributes : function () {
+            return { id : "status_comment_" + this.model.get("status_id") + "_" + this.model.get("id") };
+        },
+
         render: function() {
-            context = {body: this.model.get('body'),
-                       status_id: this.model.get("status_id"),
-                       comment_id: this.model.get("id")};
+            context = {body: this.model.get('body')};
             this.$el.html(status_comment_template(context));
             return this;
         }
@@ -103,16 +105,17 @@
             "click button[name|='submit']": "persist"
         },
 
+        attributes : function () {
+            return { id : "post_comment_" + this.model.get("post_id") + "_" + this.model.get("id") };
+        },
+
         initialize: function() {
             post_comments = this.$el.children(".post_comments");
             this.post_comments = new Comment.Views.PostComments({el: post_comments});
         },
 
         render: function() {
-            context = { id: this.model.get('id'),
-                        post_id: this.model.get('post_id'),
-                        parent_id: this.model.get('parent_id'),
-                        body: this.model.get('body') };
+            context = { body: this.model.get('body') };
             content = post_comment_template(context);
             this.$el.html(content);
             return this;
@@ -124,7 +127,7 @@
             if (!this.$("> .post_comment_form").length) {
                 actions = this.$el.children(".actions");
                 context =  {post_id: this.model.get("post_id"),
-                            parent_id: this.model.get("comment_id")};
+                            parent_id: this.model.get("id")};
                 $(post_comment_form_template(context)).insertAfter(actions);
             }
             return false;
@@ -140,8 +143,8 @@
             var body = comment_form.find("textarea[name|='body']").val();
 
             var model = new Comment.Models.PostComment({post_id: post_id,
-                                                      parent_id: parent_id,
-                                                      body: body});
+                                                        parent_id: parent_id,
+                                                        body: body});
 
             var that = this;
             model.save({}, {success: function(model, response) {

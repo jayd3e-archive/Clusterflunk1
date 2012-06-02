@@ -29,6 +29,8 @@
 
     var status_comment_form_source = $("#status_comment_form").html();
     var status_comment_form_template = Handlebars.compile(status_comment_form_source);
+    var status_source = $("#status_template").html();
+    var status_template = Handlebars.compile(status_source);
 
     /*
     *
@@ -71,6 +73,13 @@
         initialize: function() {
             status_comments = this.$el.children(".status_comments");
             this.status_comments = new Comment.Views.StatusComments({el: status_comments});
+        },
+
+        render: function() {
+            context = {username: this.model.get("username"),
+                       body: this.model.get("body")};
+            this.$el.html(status_template(context));
+            return this;
         },
 
         prompt: function() {

@@ -18,8 +18,6 @@
     var available_group_template = Handlebars.compile(available_group_source);
     var chosen_group_source = $("#chosen_group_template").html();
     var chosen_group_template = Handlebars.compile(chosen_group_source);
-    var status_source = $("#status_template").html();
-    var status_template = Handlebars.compile(status_source);
 
     /*
     *
@@ -103,6 +101,10 @@
         },
 
         reset: function() {
+            // Reset collections
+            available_groups.reset();
+            chosen_groups.reset();
+
             // Clean everything up
             this.$("#status").val("Ask something crazy!");
             this.$("#choose_group_input").val("");
@@ -125,10 +127,14 @@
             var status_model = new Status.Model({body: status_val,
                                                  chosen_groups: chosen_group_ids});
 
+            that = this;
             status_model.save({}, {success: function(model, response) {
-                context = {username: model.get('username'),
-                           body: model.get('body')};
-                $("#statuses").prepend(status_template(context));
+                attrs = {username: model.get('username'),
+                         body: model.get('body')};
+
+                model = new Status.Model(attrs);
+                status_view = new Status.Views.Status({model: model});
+                that.add_status(status_view);
             }});
 
             this.reset();
@@ -150,6 +156,10 @@
             this.$("#available_groups").empty();
             available_groups.each(this.append_available_group);
             this.$("#available_groups").show();
+        },
+
+        add_status: function(status_view) {
+            $("#statuses").prepend(status_view.render().el);
         }
 
     });
