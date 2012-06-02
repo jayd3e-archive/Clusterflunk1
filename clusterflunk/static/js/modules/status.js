@@ -1,6 +1,14 @@
 (function(Status) {
     /*
     *
+    * Dependencies
+    *
+    */
+
+    Comment = clusterflunk.module("comment");
+
+    /*
+    *
     * Utilities
     *
     */
@@ -56,12 +64,13 @@
     Status.Views.Status = Backbone.View.extend({
         className: "status",
         events: {
-            "click .add_comment": "prompt"
+            "click .add_comment": "prompt",
+            "click button[name|='submit']": "persist"
         },
 
         initialize: function() {
             status_comments = this.$el.children(".status_comments");
-            this.status_comments = new Status.Views.StatusComments({el: status_comments});
+            this.status_comments = new Comment.Views.StatusComments({el: status_comments});
         },
 
         prompt: function() {
@@ -71,24 +80,30 @@
                 $(status_comment_form_template(context)).insertAfter(actions);
             }
             return false;
+        },
+
+        persist: function() {
+            var comment_form = this.$(".status_comment_form");
+
+            var status_id = comment_form.find("input[name|='status_id']").val();
+            var body = comment_form.find("textarea[name|='body']").val();
+
+            var model = new Comment.StatusCommentModel({status_id: status_id,
+                                                        body: body});
+
+            var that = this;
+            model.save({}, {success: function(model, response) {
+                that.$(".status_comment_form").remove();
+                var status_comment = new Comment.Views.StatusComment({model: model});
+                that.add_comment(status_comment);
+            }});
+
+            return false;
+        },
+
+        add_comment: function(status_comment) {
+            this.status_comments.add_comment(status_comment);
         }
-    });
-
-    Status.Views.StatusComments = Backbone.View.extend({
-        className: "status_comments",
-
-        initialize: function() {
-            status_comments = this.$el.children(".status_comment");
-            $.each(status_comments, function(index, status_comment) {
-                attrs = Comment.Parsers.StatusComment(status_comment);
-                model = Comment.StatusCommentModel(attrs);
-                new StatusComment({el: status_comment, model: model});
-            });
-        }
-    });
-
-    Status.Views.StatusComment = Backbone.View.extend({
-        className: "status_comment"
     });
 
 })(clusterflunk.module("status"));

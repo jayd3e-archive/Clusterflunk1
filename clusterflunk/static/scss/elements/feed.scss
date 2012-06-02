@@ -4,8 +4,18 @@
 
     #statuses {
 
-        .status_comments {
-            padding-left: 20px;
+        .status {
+
+            form.basic {
+
+                .dark {
+                    display: block;
+                }
+            }
+
+            .status_comments {
+                padding-left: 20px;
+            }
         }
     }
 

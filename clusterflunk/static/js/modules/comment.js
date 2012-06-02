@@ -34,6 +34,8 @@
     var post_comment_form_template = Handlebars.compile(post_comment_form_source);
     var post_comment_source = $("#post_comment").html();
     var post_comment_template = Handlebars.compile(post_comment_source);
+    var status_comment_source = $("#status_comment").html();
+    var status_comment_template = Handlebars.compile(status_comment_source);
 
     /*
     *
@@ -61,6 +63,36 @@
     *
     */
 
+    Comment.Views.StatusComment = Backbone.View.extend({
+        tagName: "div",
+        className: "status_comment",
+
+        render: function() {
+            context = {body: this.model.get('body'),
+                       status_id: this.model.get("status_id"),
+                       comment_id: this.model.get("id")};
+            this.$el.html(status_comment_template(context));
+            return this;
+        }
+    });
+
+    Comment.Views.StatusComments = Backbone.View.extend({
+        className: "status_comments",
+
+        initialize: function() {
+            status_comments = this.$el.children(".status_comment");
+            $.each(status_comments, function(index, status_comment) {
+                attrs = Comment.Parsers.StatusComment(status_comment);
+                model = new Comment.StatusCommentModel(attrs);
+                new Comment.Views.StatusComment({el: status_comment, model: model});
+            });
+        },
+
+        add_comment: function(status_comment) {
+            this.$el.append(status_comment.render().el);
+        }
+    });
+
     Comment.Views.PostCommentView = Backbone.View.extend({
 
         tagName: "div",
@@ -68,7 +100,7 @@
         post_comments: undefined, // The PostComments contained in this PostComment
         events: {
             "click .add_comment": "prompt",
-            "click .submit:button": "persist"
+            "click button[name|='submit']": "persist"
         },
 
         initialize: function() {
@@ -138,8 +170,7 @@
         },
 
         add_comment: function(post_comment) {
-            post_comment = post_comment.render();
-            this.$el.append(post_comment.el);
+            this.$el.append(post_comment.render().el);
         }
 
     });

@@ -14,7 +14,7 @@ from clusterflunk.models.notifications import (
 
 
 @view_config(
-    route_name='comments_post_view',
+    route_name='comments_post',
     renderer='json',
     request_method='POST',
     permission='view')
@@ -64,7 +64,7 @@ def post_add(request):
 
 
 @view_config(
-    route_name='comments_status_view',
+    route_name='comments_status',
     renderer='json',
     request_method='POST',
     permission='view')
@@ -105,4 +105,5 @@ def status_add(request):
     db.add(notification)
     db.flush()
     return {'id': comment.id,
-            'body': comment.history[0].body}
+            'body': comment.history[0].body,
+            'status_id': status_id}

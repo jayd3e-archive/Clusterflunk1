@@ -9,7 +9,7 @@
                 <input name="post_id" type="hidden" value="{{post_id}}"/>
                 <input name="parent_id" type="hidden" value="{{parent_id}}"/>
                 <textarea name="body"></textarea>
-                <button class="dark submit">submit</button>
+                <button class="dark" name="submit">submit</button>
             </form>
         </div>
     </script>

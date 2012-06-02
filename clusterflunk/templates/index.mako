@@ -29,14 +29,14 @@
             <form class="basic" method="POST" action="">
                 <input name="status_id" type="hidden" value="{{status_id}}"/>
                 <textarea name="body"></textarea>
-                <input class="dark" name="submit" type="submit"/>
+                <button class="dark" name="submit">submit</button>
             </form>
         </div>
     </script>
 
     <script id="status_comment" type="handlebars-template">
-        <div class="status_comment">
-            {{ body }}
+        <div class="status_comment" id="status_comment_{{ status_id }}_{{ comment_id }}">
+            <span>{{ body }}</span>
         </div>
     </script>
 
@@ -67,7 +67,7 @@
                     </ul>
                     <div class="status_comments">
                         % for comment in status.comments:
-                            <div class="status_comment_${status.id}_${comment.id}">
+                            <div class="status_comment" id="status_comment_${status.id}_${comment.id}">
                                 <%
                                     last_rev = len(comment.history) - 1
                                 %>

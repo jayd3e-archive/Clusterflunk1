@@ -78,8 +78,8 @@ def main(global_config, **settings):
     config.add_route('articles', '/articles')
     config.add_route('statuses', '/statuses')
     config.add_route('profile', '/profile')
-    config.add_route('comments_post_view', '/comments/post')
-    config.add_route('comments_status_view', '/comments/status')
+    config.add_route('comments_post', '/comments/post')
+    config.add_route('comments_status', '/comments/status')
 
     #View Action Routes
     config.add_route('posts_view', '/posts/{post_id}')

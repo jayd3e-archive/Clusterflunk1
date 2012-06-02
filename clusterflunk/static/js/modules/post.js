@@ -53,7 +53,7 @@
         post_tree_view: undefined, // The list of top tier comments
         events: {
             "click .post .add_comment": "prompt",
-            "click .post .submit:button": "persist"
+            "click .post button[name|='submit']": "persist"
         },
 
         initialize: function() {
