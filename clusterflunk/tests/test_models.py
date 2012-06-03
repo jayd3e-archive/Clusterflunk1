@@ -31,6 +31,7 @@ from clusterflunk.models.comments import (
 )
 from clusterflunk.models.statuses import (
     Status,
+    StatusHistory,
     StatusComment
 )
 from clusterflunk.models.moderators import Moderator
@@ -414,11 +415,33 @@ class TestModels(unittest.TestCase):
         status = Status(id=1,
                         created=datetime.now(),
                         body="I luv studying <3",
-                        author_id=1)
+                        founder_id=1)
 
         session.add(status)
         self.assertTrue(str(status).startswith('<Status'),
                         msg="str(Status) must start with '<Status'")
+
+    def testStatusHistory(self):
+        session = self.Session()
+
+        status = Status(id=1,
+                        created=datetime.now(),
+                        body="I luv studying <3",
+                        founder_id=1)
+
+        status_rev = StatusHistory(revision=1,
+                                   created=datetime.now(),
+                                   author_id=1,
+                                   status_id=1,
+                                   body="This is a status.")
+
+        status.history.append(status_rev)
+        session.add(status)
+        session.flush()
+        self.assertTrue(str(status_rev).startswith('<StatusHistory'),
+                        msg="str(StatusHistory) must start with '<StatusHistory'")
+        self.assertEqual(status_rev.status, status)
+        self.assertEqual(status.history, [status_rev])
 
     def testStatusComments(self):
         session = self.Session()
@@ -426,7 +449,7 @@ class TestModels(unittest.TestCase):
         status = Status(id=1,
                         created=datetime.now(),
                         body="I luv studying <3",
-                        author_id=1)
+                        founder_id=1)
         comment = Comment(id=1,
                           founder_id=1)
         status_comment = StatusComment(status_id=1,
@@ -517,7 +540,7 @@ class TestModels(unittest.TestCase):
         status = Status(id=1,
                         created=datetime.now(),
                         body="I luv studying <3",
-                        author_id=1)
+                        founder_id=1)
         study_group = StudyGroup(id=1,
                                  name="My cool group",
                                  created=datetime.now(),
@@ -552,7 +575,7 @@ class TestModels(unittest.TestCase):
         self.assertIn(post, user.posts)
         self.assertEqual(post.founder, user)
         self.assertIn(status, user.statuses)
-        self.assertEqual(status.author, user)
+        self.assertEqual(status.founder, user)
         self.assertIn(study_group, user.founded_groups)
         self.assertEqual(user, study_group.founder)
         self.assertIn(comment, user.comments)
@@ -629,7 +652,7 @@ class TestModels(unittest.TestCase):
         status = Status(id=1,
                         created=datetime.now(),
                         body="I luv studying <3",
-                        author_id=1)
+                        founder_id=1)
         study_group = StudyGroup(id=1,
                                  name="My cool group",
                                  created=datetime.now(),
@@ -702,7 +725,7 @@ class TestModels(unittest.TestCase):
         status = Status(id=1,
                         created=datetime.now(),
                         body="I luv studying <3",
-                        author_id=1)
+                        founder_id=1)
         comment = Comment(id=1,
                           founder_id=1)
         status_comment = StatusComment(status_id=1,
