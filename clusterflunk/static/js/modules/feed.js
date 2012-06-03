@@ -129,10 +129,6 @@
 
             that = this;
             status_model.save({}, {success: function(model, response) {
-                attrs = {username: model.get('username'),
-                         body: model.get('body')};
-
-                model = new Status.Model(attrs);
                 status_view = new Status.Views.Status({model: model});
                 that.add_status(status_view);
             }});

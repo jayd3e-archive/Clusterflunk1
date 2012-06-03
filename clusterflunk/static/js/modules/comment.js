@@ -30,11 +30,11 @@
     *
     */
 
-    var post_comment_form_source = $("#post_comment_form").html();
+    var post_comment_form_source = $("#post_comment_form_template").html();
     var post_comment_form_template = Handlebars.compile(post_comment_form_source);
-    var post_comment_source = $("#post_comment").html();
+    var post_comment_source = $("#post_comment_template").html();
     var post_comment_template = Handlebars.compile(post_comment_source);
-    var status_comment_source = $("#status_comment").html();
+    var status_comment_source = $("#status_comment_template").html();
     var status_comment_template = Handlebars.compile(status_comment_source);
 
     /*

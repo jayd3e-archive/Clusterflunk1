@@ -3,7 +3,7 @@
 <%namespace name="children" file="children.mako"/>
 
 <%def name="page()">
-    <script id="post_comment_form" type="handlebars-template">
+    <script id="post_comment_form_template" type="handlebars-template">
         <div class="post_comment_form">
             <form class="basic" method="POST" action="">
                 <input name="post_id" type="hidden" value="{{post_id}}"/>
@@ -14,7 +14,7 @@
         </div>
     </script>
 
-    <script id="post_comment" type="handlebars-template">
+    <script id="post_comment_template" type="handlebars-template">
         <span>{{body}}</span>
         <ul class="actions">
             <li>

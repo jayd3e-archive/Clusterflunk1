@@ -38,7 +38,7 @@
     *
     */
 
-    var post_comment_form_source = $("#post_comment_form").html();
+    var post_comment_form_source = $("#post_comment_form_template").html();
     var post_comment_form_template = Handlebars.compile(post_comment_form_source);
 
     /*
@@ -83,8 +83,8 @@
             var body = comment_form.find("textarea[name|='body']").val();
 
             var model = new Comment.Models.PostComment({post_id: post_id,
-                                                      parent_id: "",
-                                                      body: body});
+                                                        parent_id: "",
+                                                        body: body});
 
             var that = this;
             model.save({}, {success: function(model, response) {

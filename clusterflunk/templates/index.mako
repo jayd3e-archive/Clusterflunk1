@@ -12,6 +12,7 @@
                 <a class="add_comment">add comment</a>
             </li>
         </ul>
+        <div class="status_comments"></div>
     </script>
 
     <script id="chosen_group_template" type="handlebars-template">
@@ -22,7 +23,7 @@
         {{ name }}
     </script>
 
-    <script id="status_comment_form" type="handlebars-template">
+    <script id="status_comment_form_template" type="handlebars-template">
         <div class="status_comment_form">
             <form class="basic" method="POST" action="">
                 <input name="status_id" type="hidden" value="{{status_id}}"/>
@@ -32,7 +33,7 @@
         </div>
     </script>
 
-    <script id="status_comment" type="handlebars-template">
+    <script id="status_comment_template" type="handlebars-template">
         <span>{{ body }}</span>
     </script>
 
