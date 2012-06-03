@@ -74,6 +74,9 @@ $(function() {
             */
 
             $("#notifications_button").click(notification_button);
+            $("#main_nav li > a").tipsy({
+                opacity: 0.9
+            });
         },
 
         index: function() {

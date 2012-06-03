@@ -12,7 +12,7 @@
                 <a href="/profile/${notification.inviter.username}">
                     ${notification.inviter.username}
                 </a>
-                invited you to 
+                invited you to
                 <a href="/groups/${notification.study_group.id}">
                     ${notification.study_group.name}
                 </a>

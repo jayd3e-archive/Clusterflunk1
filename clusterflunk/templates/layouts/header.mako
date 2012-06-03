@@ -4,7 +4,7 @@
     <a href="/" id="logo"></a>
     <ul id="main_nav">
         <li>
-            <a id="notifications_button" href="#">&#xe007;</a>
+            <a id="notifications_button" href="#" original-title="notifications">&#xe007;</a>
             <div id="notifications">
                 <div class="up_arrow"></div>
                 <ul>
@@ -17,13 +17,13 @@
             </div>
         </li>
         <li>
-            <a href="/posts">&#xe005;</a>
+            <a href="/posts" original-title="posts">&#xe005;</a>
         </li>
         <li>
-            <a href="/groups">&#xe062;</a>
+            <a href="/groups" original-title="groups">&#xe062;</a>
         </li>
         <li>
-            <a href="/articles">&#xe000;</a>
+            <a href="/articles" original-title="articles">&#xe000;</a>
         </li>
     </ul>
     <div id="search">
