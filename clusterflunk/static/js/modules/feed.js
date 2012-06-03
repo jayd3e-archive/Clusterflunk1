@@ -131,11 +131,18 @@
             status_model.save({}, {success: function(model, response) {
                 status_view = new Status.Views.Status({model: model});
                 that.add_status(status_view);
+                that.reset();
+            },
+            error: function(model, response) {
+                that.error(response);
             }});
 
-            this.reset();
             // So the form doesn't get submited
             return false;
+        },
+
+        error: function(msg) {
+            this.$(".error").show().html(msg);
         },
 
         append_available_group: function(group) {

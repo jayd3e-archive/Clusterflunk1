@@ -22,6 +22,15 @@
     form.basic {
         margin-bottom: 0px;
 
+        .error {
+            display: none;
+            @include baseFont;
+            padding: 9px;
+            width: $clusterflunk-status-input-width;
+            background-color: #D95C56;
+            color: #FFF;
+        }
+
         #status {
             width: $clusterflunk-status-input-width;
         }

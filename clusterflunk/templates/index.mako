@@ -40,6 +40,7 @@
     <div id="feed">
         <h1>Feed</h1>
         <form class="basic" id="status_form" method="POST" action="" autocomplete="off">
+            <div class="error"></div>
             <textarea id="status" name="status">Ask something crazy!</textarea>
             <ul id="chosen_groups">
                 <li>

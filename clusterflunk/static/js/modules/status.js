@@ -40,7 +40,12 @@
 
     Status.Model = Backbone.Model.extend({
 
-        urlRoot: "statuses"
+        urlRoot: "statuses",
+        validate: function(attrs) {
+            if (attrs.body.length < 50) {
+                return "Don't worry about being long-winded.  Your status has to be more than 50 characters.";
+            }
+        }
 
     });
 
@@ -105,11 +110,13 @@
                                                           body: body});
 
             var that = this;
-            model.save({}, {success: function(model, response) {
-                that.$(".status_comment_form").remove();
-                var status_comment = new Comment.Views.StatusComment({model: model});
-                that.add_comment(status_comment);
-            }});
+            model.save({}, {
+                success: function(model, response) {
+                    that.$(".status_comment_form").remove();
+                    var status_comment = new Comment.Views.StatusComment({model: model});
+                    that.add_comment(status_comment);
+                }
+            });
 
             return false;
         },

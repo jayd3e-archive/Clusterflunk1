@@ -130,6 +130,7 @@
                             parent_id: this.model.get("id")};
                 $(post_comment_form_template(context)).insertAfter(actions);
             }
+
             return false;
         },
 
