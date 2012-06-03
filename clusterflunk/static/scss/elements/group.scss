@@ -22,13 +22,20 @@
         width: $clusterflunk-form-input-width;
     }
 
-    .invites {
+    form.basic {
+        margin-bottom: 0px;
 
-        #invite_input {
-            padding: 0px;
-            margin: 0px;
-            border: 0px;
-            display: inline;
+        .error {
+            display: none;
+            @include baseFont;
+            padding: 9px;
+            width: $clusterflunk-status-input-width;
+            background-color: #D95C56;
+            color: #FFF;
+        }
+
+        #group_create_submit {
+            margin-top: 5px;
         }
     }
 }

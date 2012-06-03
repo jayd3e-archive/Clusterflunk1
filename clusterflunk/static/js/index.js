@@ -46,6 +46,7 @@ $(function() {
         routes: {
             "": "index",
             "groups": "groups",
+            "groups/create": "groups_create",
             "groups?category=*category": "groups",
             "posts/:id": "posts"
         },
@@ -89,6 +90,11 @@ $(function() {
         groups: function() {
             var Group = clusterflunk.module("group");
             var group = new Group.Views.GroupList();
+        },
+
+        groups_create: function() {
+            var Group = clusterflunk.module("group");
+            var group = new Group.Views.GroupCreate();
         },
 
         posts: function(id) {

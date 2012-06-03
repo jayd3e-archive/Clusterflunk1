@@ -39,6 +39,7 @@
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/index.js')}"></script>
 
     <!-- Modules -->
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/user.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/comment.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/post.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/modules/group.js')}"></script>

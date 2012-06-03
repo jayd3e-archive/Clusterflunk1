@@ -37,9 +37,7 @@ def create(request):
 
     group_create_form = CreateGroupForm(request.POST)
 
-    if request.method == 'POST' and \
-        'submit' in request.POST and \
-        group_create_form.validate():
+    if request.method == 'POST' and group_create_form.validate():
         name = group_create_form.name.data
         description = group_create_form.description.data
 
