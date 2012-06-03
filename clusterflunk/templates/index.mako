@@ -5,6 +5,7 @@
     <script id="status_template" type="handlebars-template">
         <div class="author">
             <a href="/profile/{{username}}">{{ username }}</a>
+            <span class="metadata">{{ created_timedelta }}</span>
         </div>
         <span>{{ body }}</span>
         <ul class="actions">
@@ -35,6 +36,8 @@
 
     <script id="status_comment_template" type="handlebars-template">
         <span>{{ body }}</span>
+        <a href="/profile/{{ username }}">{{ username }}</a>
+        <span class="metadata">{{ created_timedelta }}</span>
     </script>
 
     <div id="feed">

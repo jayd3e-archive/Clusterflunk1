@@ -28,31 +28,32 @@ def post_add(request):
 
     # Replying to a comment
     if parent_id:
+        comment_rev = CommentHistory(revision=1,
+                                     created=datetime.now(),
+                                     author_id=user.id,
+                                     body=body)
         comment = Comment(parent_id=parent_id,
-                          founder_id=user.id)
-        db.add(comment)
-        db.flush()
+                          founder_id=user.id,
+                          created=datetime.now(),
+                          history=[comment_rev])
 
+        db.add(comment)
+    # Replying to a post
+    else:
         comment_rev = CommentHistory(revision=1,
                                      created=datetime.now(),
                                      author_id=user.id,
                                      comment_id=comment.id,
                                      body=body)
-        db.add(comment_rev)
-    # Replying to a post
-    else:
         comment = Comment(parent_id=None,
-                          founder_id=user.id)
+                          founder_id=user.id,
+                          created=datetime.now(),
+                          history=[comment_rev])
         db.add(comment)
         db.flush()
 
         post_comment = PostComment(post_id=post_id,
                                    comment_id=comment.id)
-        comment_rev = CommentHistory(revision=1,
-                                     created=datetime.now(),
-                                     author_id=user.id,
-                                     comment_id=comment.id,
-                                     body=body)
         db.add(post_comment)
         db.add(comment_rev)
 
@@ -81,7 +82,8 @@ def status_add(request):
                                  author_id=user.id,
                                  body=body)
     comment = Comment(founder_id=user.id,
-                      history=[comment_rev])
+                      history=[comment_rev],
+                      created=datetime.now())
 
     db.add(comment)
     db.flush()
@@ -106,4 +108,6 @@ def status_add(request):
     db.flush()
     return {'id': comment.id,
             'body': comment.history[0].body,
-            'status_id': status_id}
+            'status_id': status_id,
+            'created_timedelta': comment.created_timedelta,
+            'username': comment.history[0].author.username}

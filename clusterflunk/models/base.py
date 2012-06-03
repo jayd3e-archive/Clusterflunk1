@@ -11,7 +11,7 @@ class Base(object):
 
     @property
     def created_timedelta(self):
-        if self.created:
+        if hasattr(self, 'created'):
             return get_timedelta_string(self.created)
         else:
             return None

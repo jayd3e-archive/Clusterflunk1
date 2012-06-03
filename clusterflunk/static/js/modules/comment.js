@@ -72,7 +72,9 @@
         },
 
         render: function() {
-            context = {body: this.model.get('body')};
+            context = {body: this.model.get('body'),
+                       created_timedelta: this.model.get('created_timedelta'),
+                       username: this.model.get('username')};
             this.$el.html(status_comment_template(context));
             return this;
         }

@@ -17,6 +17,8 @@ def get_timedelta_string(dt):
         unit = "minute"
     else:
         num = timedelt.seconds
+        if num == 0:
+            return "just created"
         unit = "second"
 
     plural = ""

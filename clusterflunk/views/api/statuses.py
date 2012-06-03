@@ -39,4 +39,5 @@ def add(request):
     db.flush()
     return {'id': status.id,
             'body': status.history[0].body,
-            'username': user.username}
+            'username': user.username,
+            'created_timedelta': status.created_timedelta}

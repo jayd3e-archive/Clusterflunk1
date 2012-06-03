@@ -89,7 +89,8 @@
 
         render: function() {
             context = {username: this.model.get("username"),
-                       body: this.model.get("body")};
+                       body: this.model.get("body"),
+                       created_timedelta: this.model.get("created_timedelta")};
             this.$el.html(status_template(context));
             return this;
         },
