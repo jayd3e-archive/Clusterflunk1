@@ -16,6 +16,7 @@ from clusterflunk.models.posts import PostHistory
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
 from clusterflunk.models.statuses import Status
+from clusterflunk.models.statuses import StatusHistory
 from clusterflunk.models.broadcasts import Broadcast
 
 statuses = ['I love studying <3',
@@ -23,6 +24,7 @@ statuses = ['I love studying <3',
             'Can anyone else in this group solve problem 1A?',
             'Anyone done with the circuits hw yet?',
             'How do you interpret this piece of art?']
+
 
 def reply(session, _id):
     comment = Comment(parent_id=_id,
@@ -38,6 +40,7 @@ def reply(session, _id):
 
     if random.randint(0, 1) == 1:
         reply(session, comment.id)
+
 
 def data():
     num_of_groups = 3
@@ -70,7 +73,7 @@ def data():
                             user_id=1,
                             network_id=1)
     session.add(membership)
-    
+
     for i in range(num_of_groups + 1):
         study_group = StudyGroup(id=int(i),
                                  name="Physics 10" + str(i),
@@ -83,18 +86,25 @@ def data():
         session.add(study_group)
 
         for j in range(num_of_statuses + 1):
-            status_len = len(statuses)
-            status_num = random.randint(0, status_len - 1)
             status = Status(created=datetime.now(),
-                            body=statuses[status_num],
-                            author_id=1)
+                            founder_id=1)
             session.add(status)
             session.flush()
+            for k in range(num_of_histories + 1):
+                status_len = len(statuses)
+                status_num = random.randint(0, status_len - 1)
+
+                status_rev = StatusHistory(revision=int(k),
+                                           author_id=1,
+                                           status_id=status.id,
+                                           created=datetime.now(),
+                                           body=statuses[status_num])
+                status.history.append(status_rev)
 
             broadcast = Broadcast(status_id=status.id,
                                   study_group_id=int(i))
             session.add(broadcast)
-        
+
         session.flush()
 
     for i in range(num_of_posts + 1):
@@ -107,18 +117,18 @@ def data():
         for j in range(num_of_histories + 1):
             post_rev = PostHistory(revision=int(j),
                                    author_id=1,
-                                   post_id=int(i),
+                                   post_id=post.id,
                                    created=datetime.now(),
                                    name="Post #" + str(i) + str(j),
                                    description="This is a description.  Version #" + str(j))
             post.history.append(post_rev)
-        
+
         for k in range(num_of_comments + 1):
             comment = Comment(parent_id=None,
                               founder_id=1)
             session.add(comment)
             session.flush()
-            post_comment = PostComment(post_id=int(i),
+            post_comment = PostComment(post_id=post.id,
                                        comment_id=comment.id)
             comment_rev = CommentHistory(revision=1,
                                          created=datetime.now(),
@@ -127,7 +137,7 @@ def data():
                                          body="U Suk!")
             session.add(post_comment)
             session.add(comment_rev)
-            
+
             for l in range(num_of_replies + 1):
                 reply(session, comment.id)
 
@@ -145,7 +155,7 @@ def data():
                                          created=datetime.now())
             article.history.append(article_rev)
         session.add(article)
-    
+
     session.flush()
     session.commit()
 

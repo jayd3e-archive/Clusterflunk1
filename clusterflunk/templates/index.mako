@@ -54,10 +54,14 @@
         <div id="statuses">
             % for status in statuses:
                 <div class="status" id="status_${status.id}">
+                    <%
+                        last_status_rev = len(status.history) - 1
+                        status_rev = status.history[last_status_rev]
+                    %>
                     <div class="author">
-                        <a href="/profile/${status.author.username}">${status.author.username}</a>
+                        <a href="/profile/${status_rev.author.username}">${status_rev.author.username}</a>
                     </div>
-                    <span>${status.body}</span>
+                    <span>${status_rev.body}</span>
                     <ul class="actions">
                         <li>
                             <a class="add_comment">add comment</a>
@@ -67,12 +71,12 @@
                         % for comment in status.comments:
                             <div class="status_comment" id="status_comment_${status.id}_${comment.id}">
                                 <%
-                                    last_rev = len(comment.history) - 1
+                                    last_comment_rev = len(comment.history) - 1
                                 %>
                                 <div class="author">
                                     <a href="/profile/${status.author.username}">${comment.author.username}</a>
                                 </div>
-                                <span>${comment.history[last_rev].body}</span>
+                                <span>${comment.history[last_comment_rev].body}</span>
                             </div>
                         % endfor
                     </div>
