@@ -6,9 +6,9 @@ from sqlalchemy import (
     String,
 )
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
+
 
 class Notification(Base):
     __tablename__ = 'notifications'
@@ -22,6 +22,7 @@ class Notification(Base):
     def __repr__(self):
         return "<Notification('%s')>" % (self.id)
 
+
 class NotificationItem(Base):
     __tablename__ = 'notification_items'
 
@@ -33,6 +34,7 @@ class NotificationItem(Base):
     def __repr__(self):
         return "<NotificationItem('%s')>" % (self.id)
 
+
 class GroupInviteNotification(NotificationItem):
     __tablename__ = 'group_invite_notifications'
 
@@ -40,12 +42,13 @@ class GroupInviteNotification(NotificationItem):
     user_id = Column(Integer, ForeignKey('users.id'))
     study_group_id = Column(Integer, ForeignKey('study_groups.id'))
     __mapper_args__ = {'polymorphic_identity': 'group_invite'}
-    
+
     inviter = relationship('User')
     study_group = relationship('StudyGroup')
 
     def __repr__(self):
         return "<GroupInviteNotification('%s')>" % (self.id)
+
 
 class StatusCommentNotification(NotificationItem):
     __tablename__ = 'status_comment_notifications'
@@ -55,7 +58,7 @@ class StatusCommentNotification(NotificationItem):
     comment_id = Column(Integer, ForeignKey('comments.id'))
     status_id = Column(Integer, ForeignKey('statuses.id'))
     __mapper_args__ = {'polymorphic_identity': 'status_comment'}
-    
+
     commenter = relationship('User')
     comment = relationship('Comment')
     status = relationship('Status')

@@ -4,3 +4,13 @@
     top: 5px;
     z-index: 100;
 }
+
+.metadata {
+    @include baseFont;
+    color: #666;
+    font-size: 11px;
+}
+
+.author {
+    display: block;
+}

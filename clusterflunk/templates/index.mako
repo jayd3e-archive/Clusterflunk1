@@ -60,6 +60,7 @@
                     %>
                     <div class="author">
                         <a href="/profile/${status_rev.author.username}">${status_rev.author.username}</a>
+                        <span class="metadata">${status_rev.created_timedelta}</span>
                     </div>
                     <span>${status_rev.body}</span>
                     <ul class="actions">
@@ -72,11 +73,11 @@
                             <div class="status_comment" id="status_comment_${status.id}_${comment.id}">
                                 <%
                                     last_comment_rev = len(comment.history) - 1
+                                    comment_rev = comment.history[last_comment_rev]
                                 %>
-                                <div class="author">
-                                    <a href="/profile/${status.author.username}">${comment.author.username}</a>
-                                </div>
-                                <span>${comment.history[last_comment_rev].body}</span>
+                                <span>${comment_rev.body}</span> -
+                                <a href="/profile/${comment_rev.author.username}">${comment_rev.author.username}</a>
+                                <span class="metadata">${comment_rev.created_timedelta}</span>
                             </div>
                         % endfor
                     </div>

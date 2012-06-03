@@ -1,13 +1,12 @@
 from sqlalchemy import (
     Column,
-    DateTime,
     ForeignKey,
-    Integer,
-    String,
+    Integer
 )
 from sqlalchemy.orm import relationship
 
 from clusterflunk.models.base import Base
+
 
 class Moderator(Base):
     __tablename__ = 'moderators'

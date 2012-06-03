@@ -1,14 +1,13 @@
 from sqlalchemy import (
     Column,
     DateTime,
-    ForeignKey,
-    Integer,
     String,
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
+
 
 class Network(Base):
     __tablename__ = 'networks'
