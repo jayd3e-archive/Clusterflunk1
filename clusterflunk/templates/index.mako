@@ -69,6 +69,9 @@
                                 <%
                                     last_rev = len(comment.history) - 1
                                 %>
+                                <div class="author">
+                                    <a href="/profile/${status.author.username}">${comment.author.username}</a>
+                                </div>
                                 <span>${comment.history[last_rev].body}</span>
                             </div>
                         % endfor
