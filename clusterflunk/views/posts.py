@@ -36,3 +36,14 @@ def view(request):
     latest_rev = len(post.history) - 1
     return {'post': post,
             'latest_rev': latest_rev}
+
+
+@view_config(
+    route_name='posts_create',
+    renderer='clusterflunk:templates/posts/create.mako',
+    request_method='GET',
+    permission='view')
+def create(request):
+    db = request.db
+
+    return {}

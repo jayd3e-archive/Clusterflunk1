@@ -2,8 +2,14 @@
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
 <%def name="page()">
-    <div class="group_view">
+    <div id="group_view">
         <h1>${group.name}</h1>
+        <ul id="page_actions">
+            <li>
+                <a class="primary" href="/posts/create">Create Post</a>
+            </li>
+        </ul>
+        <p>${group.description}</p>
     </div>
 </%def>
 
