@@ -14,12 +14,14 @@
         <form class="basic" action="" method="POST">
             ${ group_create_form.name(class_="group_name") }
             ${ group_create_form.description(class_="group_description") }
-            <ul class="invites">
-                <li id="invites_input">
-                    <input id="invite_input" type="text" name="invite"/>
+            <ul class="chosens">
+                <li>
+                    <input class="choose_input" type="text" name="group"/>
                 </li>
             </ul>
-            <input class="dark" id="create_group_submit" name="submit" type="submit" />
+            <ul class="availables">
+            </ul>
+            <button class="dark" id="status_submit">submit</button>
         </form>
     </div>
 </%def>

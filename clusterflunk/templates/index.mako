@@ -45,12 +45,12 @@
         <form class="basic" id="status_form" method="POST" action="" autocomplete="off">
             <div class="error"></div>
             <textarea id="status" name="status">Ask something crazy!</textarea>
-            <ul id="chosen_groups">
+            <ul class="chosens">
                 <li>
-                    <input id="choose_group_input" type="text" name="group"/>
+                    <input class="choose_input" type="text" name="group"/>
                 </li>
             </ul>
-            <ul id="available_groups">
+            <ul class="availables">
             </ul>
             <button class="dark" id="status_submit">submit</button>
         </form>

@@ -39,55 +39,6 @@
             margin-top: 5px;
         }
 
-        #chosen_groups {
-            width: $clusterflunk-status-input-width + 12px;
-            border: 1px solid silver;
-            background-color: #FFF;
-            padding: 2px;
-            overflow: auto;
-
-            li.chosen_group {
-                padding-top: 6px;
-            }
-
-            li {
-                font-size: 16px;
-                font-family: $slicknasty-sans-font-family;
-                color: $slicknasty-f-color;
-                float: left;
-                padding: 5px;
-
-                #choose_group_input {
-                    padding: 0px;
-                    margin: 0px;
-                    border: 0px;
-                    display: inline;
-                }
-            }
-        }
-
-        #available_groups {
-            display:none;
-            width: $clusterflunk-status-input-width;
-            border: 1px solid silver;
-            border-top: 0px;
-            background-color: #FFF;
-            padding: 8px;
-            overflow: auto;
-
-            .available_group {
-                background-color: #FFF;
-                width: 150px;
-                padding: 5px 0px;
-                float: left;
-                @include baseFont;
-
-                &:hover {
-                    color: $slicknasty-f-color;
-                    cursor: pointer;
-                }
-            }
-        }
     }
 
 }

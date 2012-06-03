@@ -28,7 +28,7 @@
     var AvailableGroups = Backbone.Collection.extend({
         model: Group.Model,
         url: function () {
-            return "/groups?s=" + $("#choose_group_input").val();
+            return "/groups?s=" + $(".chosens .choose_input").val();
         }
     });
 
@@ -53,7 +53,7 @@
 
     Feed.Views.ChosenGroup = Backbone.View.extend({
         tagName: "li",
-        className: "chosen_group",
+        className: "chosen",
 
         render: function() {
             context = { name: this.model.get('name') };
@@ -66,7 +66,7 @@
 
     Feed.Views.AvailableGroup = Backbone.View.extend({
         tagName: "li",
-        className: "available_group",
+        className: "available",
 
         events: {
             "click": "pick"
@@ -90,8 +90,8 @@
         el: $("#status_form"),
 
         events: {
-            "click #chosen_groups": "focus_chosen_groups_input",
-            "keyup #choose_group_input": "get_available_groups",
+            "click .chosens": "focus_chosen_groups_input",
+            "keyup .chosens .choose_input": "get_available_groups",
             "click #status_submit": "submit"
         },
 
@@ -108,14 +108,14 @@
             // Clean everything up
             this.$(".error").hide();
             this.$("#status").val("Ask something crazy!");
-            this.$("#choose_group_input").val("");
-            this.$("#chosen_groups .chosen_group").remove();
-            this.$("#available_groups").empty();
-            this.$("#available_groups").hide();
+            this.$(".chosens .choose_input").val("");
+            this.$(".chosens .chosen").remove();
+            this.$(".availables").empty();
+            this.$(".availables").hide();
         },
 
         focus_chosen_groups_input: function() {
-            $("#choose_group_input").focus();
+            $(".chosens .choose_input").focus();
         },
 
         get_available_groups: function() {
@@ -148,18 +148,18 @@
 
         append_available_group: function(group) {
             available_group = new Feed.Views.AvailableGroup({model: group});
-            this.$("#available_groups").append(available_group.render().el);
+            this.$(".availables").append(available_group.render().el);
         },
 
         append_chosen_group: function(group) {
             chosen_group = new Feed.Views.ChosenGroup({model: group});
-            this.$("#chosen_groups").prepend(chosen_group.render().el);
+            this.$(".chosens").prepend(chosen_group.render().el);
         },
 
         render_all_available_groups: function() {
-            this.$("#available_groups").empty();
+            this.$(".availables").empty();
             available_groups.each(this.append_available_group);
-            this.$("#available_groups").show();
+            this.$(".availables").show();
         },
 
         add_status: function(status_view) {
