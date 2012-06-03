@@ -117,7 +117,9 @@
         },
 
         render: function() {
-            context = { body: this.model.get('body') };
+            context = {body: this.model.get('body'),
+                       username: this.model.get('username'),
+                       created_timedelta: this.model.get('created_timedelta')};
             content = post_comment_template(context);
             this.$el.html(content);
             return this;

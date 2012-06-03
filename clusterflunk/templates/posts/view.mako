@@ -15,6 +15,10 @@
     </script>
 
     <script id="post_comment_template" type="handlebars-template">
+        <div class="author">
+            <a href="/profile/{{ username }}">{{ username }}</a>
+            <span class="metadata">{{ created_timedelta }}</span>
+        </div>
         <span>{{body}}</span>
         <ul class="actions">
             <li>
@@ -32,7 +36,7 @@
         %>
         <h1>${post.title}</h1>
         <span class="metadata">created by <a href="/profile/${post_rev.author.username}">${post_rev.author.username}</a>
-        on ${post.created_timedelta}</span>
+        ${post.created_timedelta}</span>
         <div class="post" id="post_${post.id}">
             <span>${post_rev.description}</span>
             <ul class="actions">

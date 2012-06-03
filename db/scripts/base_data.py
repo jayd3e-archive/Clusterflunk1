@@ -28,7 +28,8 @@ statuses = ['I love studying <3',
 
 def reply(session, _id):
     comment = Comment(parent_id=_id,
-                      founder_id=1)
+                      founder_id=1,
+                      created=datetime.now())
     session.add(comment)
     session.flush()
     comment_rev = CommentHistory(revision=1,
@@ -111,7 +112,8 @@ def data():
         post = Post(id=int(i),
                     title="Post #" + str(i),
                     founder_id=1,
-                    study_group_id=random.randint(1, num_of_groups))
+                    study_group_id=random.randint(1, num_of_groups),
+                    created=datetime.now())
         session.add(post)
         session.flush()
         for j in range(num_of_histories + 1):
@@ -125,7 +127,8 @@ def data():
 
         for k in range(num_of_comments + 1):
             comment = Comment(parent_id=None,
-                              founder_id=1)
+                              founder_id=1,
+                              created=datetime.now())
             session.add(comment)
             session.flush()
             post_comment = PostComment(post_id=post.id,

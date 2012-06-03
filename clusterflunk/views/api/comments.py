@@ -61,7 +61,9 @@ def post_add(request):
     return {'id': comment.id,
             'post_id': post_id,
             'parent_id': comment.parent_id,
-            'body': comment.history[0].body}
+            'body': comment.history[0].body,
+            'created_timedelta': comment.created_timedelta,
+            'username': comment.founder.username}
 
 
 @view_config(
