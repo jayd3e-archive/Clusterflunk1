@@ -106,6 +106,7 @@
             chosen_groups.reset();
 
             // Clean everything up
+            this.$(".error").hide();
             this.$("#status").val("Ask something crazy!");
             this.$("#choose_group_input").val("");
             this.$("#chosen_groups .chosen_group").remove();

@@ -1,6 +1,9 @@
 from datetime import datetime
 from pyramid.view import view_config
-from clusterflunk.models.statuses import Status
+from clusterflunk.models.statuses import (
+    Status,
+    StatusHistory
+)
 from clusterflunk.models.broadcasts import Broadcast
 
 
@@ -17,8 +20,14 @@ def add(request):
     body = request.json_body['body']
 
     status = Status(created=datetime.now(),
-                    body=body,
-                    author_id=user.id)
+                    founder_id=user.id)
+    status_rev = StatusHistory(revision=1,
+                               author_id=user.id,
+                               status_id=status.id,
+                               created=datetime.now(),
+                               body=body)
+
+    status.history.append(status_rev)
     db.add(status)
     db.flush()
 
@@ -29,5 +38,5 @@ def add(request):
 
     db.flush()
     return {'id': status.id,
-            'body': status.body,
+            'body': status.history[0].body,
             'username': user.username}

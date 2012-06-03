@@ -98,7 +98,7 @@ def status_add(request):
                                                             comment_id=comment.id,
                                                             status_id=status_id)
     # Notify the creator of the status that their status has been commented on.
-    notification = Notification(user_id=status.author.id,
+    notification = Notification(user_id=status.founder.id,
                                 notification_item=status_comment_notification)
 
     db.add(status_comment_notification)

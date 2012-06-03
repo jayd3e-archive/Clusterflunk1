@@ -45,6 +45,9 @@
             if (attrs.body.length < 50) {
                 return "Don't worry about being long-winded.  Your status has to be more than 50 characters.";
             }
+            else if (attrs.chosen_groups.length === 0) {
+                return "If you want anyone to see your status, you're going to have to add some groups.";
+            }
         }
 
     });
