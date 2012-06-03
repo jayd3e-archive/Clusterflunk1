@@ -15,7 +15,6 @@ class Status(Base):
     __tablename__ = 'statuses'
 
     created = Column(DateTime)
-    body = Column(String(1000))
     founder_id = Column(Integer, ForeignKey('users.id'))
 
     founder = relationship('User', backref='statuses')

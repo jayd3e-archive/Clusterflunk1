@@ -414,7 +414,6 @@ class TestModels(unittest.TestCase):
 
         status = Status(id=1,
                         created=datetime.now(),
-                        body="I luv studying <3",
                         founder_id=1)
 
         session.add(status)
@@ -426,7 +425,6 @@ class TestModels(unittest.TestCase):
 
         status = Status(id=1,
                         created=datetime.now(),
-                        body="I luv studying <3",
                         founder_id=1)
 
         status_rev = StatusHistory(revision=1,
@@ -448,7 +446,6 @@ class TestModels(unittest.TestCase):
 
         status = Status(id=1,
                         created=datetime.now(),
-                        body="I luv studying <3",
                         founder_id=1)
         comment = Comment(id=1,
                           founder_id=1)
@@ -539,7 +536,6 @@ class TestModels(unittest.TestCase):
                     study_group_id=1)
         status = Status(id=1,
                         created=datetime.now(),
-                        body="I luv studying <3",
                         founder_id=1)
         study_group = StudyGroup(id=1,
                                  name="My cool group",
@@ -651,7 +647,6 @@ class TestModels(unittest.TestCase):
 
         status = Status(id=1,
                         created=datetime.now(),
-                        body="I luv studying <3",
                         founder_id=1)
         study_group = StudyGroup(id=1,
                                  name="My cool group",
@@ -724,7 +719,6 @@ class TestModels(unittest.TestCase):
                     last_online=datetime.now())
         status = Status(id=1,
                         created=datetime.now(),
-                        body="I luv studying <3",
                         founder_id=1)
         comment = Comment(id=1,
                           founder_id=1)
