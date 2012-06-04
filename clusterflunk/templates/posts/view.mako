@@ -34,9 +34,14 @@
             last_rev = len(post.history) - 1
             post_rev = post.history[last_rev]
         %>
-        <h1>${post.title}</h1>
-        <span class="metadata">created by <a href="/profile/${post_rev.author.username}">${post_rev.author.username}</a>
-        ${post.created_timedelta}</span>
+        <h1>${post_rev.name}</h1>
+        <span class="metadata">
+            created in
+            <a href="/group/${post.study_group.id}">${post.study_group.name}</a>
+            by
+            <a href="/profile/${post_rev.author.username}">${post_rev.author.username}</a>
+            ${post.created_timedelta}
+        </span>
         <div class="post" id="post_${post.id}">
             <span>${post_rev.description}</span>
             <ul class="actions">

@@ -28,6 +28,22 @@ def index(request):
 
 
 @view_config(
+    route_name='groups_view',
+    renderer='clusterflunk:templates/groups/view.mako',
+    permission='view')
+def view(request):
+    db = request.db
+    user = request.user
+    _id = request.matchdict.get('group_id')
+
+    subscribed_group_ids = [g.id for g in user.subscribed_groups]
+
+    group = db.query(StudyGroup).filter_by(id=_id).first()
+    return {'group': group,
+            'subscribed_group_ids': subscribed_group_ids}
+
+
+@view_config(
     route_name='groups_create',
     renderer='clusterflunk:templates/groups/create.mako',
     permission='view')
@@ -45,6 +61,7 @@ def create(request):
                                  description=description,
                                  created=datetime.now(),
                                  edited=datetime.now(),
+                                 founder_id=user.id,
                                  network_id=1)
         db.add(study_group)
 

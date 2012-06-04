@@ -8,6 +8,7 @@ from wtforms import Form,\
 from wtforms.validators import ValidationError
 from clusterflunk.models.users import User
 
+
 class LoginForm(Form):
     username = TextField('Username',
                          [validators.Length(min=4, max=50),
@@ -15,6 +16,7 @@ class LoginForm(Form):
                          default="Username")
     password = PasswordField('Password',
                              [validators.required()])
+
 
 class RegisterForm(Form):
     def __init__(form, db, *args, **kwargs):
@@ -33,15 +35,16 @@ class RegisterForm(Form):
                              [validators.required()])
     repeat_password = PasswordField('Repeat Password',
                                     [validators.required()])
-    
+
     def validate_repeat_password(form, field):
         if form.password.data != field.data:
             raise ValidationError('The passwords do not match.')
-    
+
     def validate_username(form, field):
         username_ok = form.db.query(User).filter_by(username=field.data).first()
         if username_ok is not None:
             raise ValidationError('That username is already taken.')
+
 
 class CreateGroupForm(Form):
     name = TextField('Name',
@@ -52,3 +55,15 @@ class CreateGroupForm(Form):
                                 [validators.Length(min=4, max=50),
                                 validators.required()],
                                 default="Description")
+
+
+class CreatePostForm(Form):
+    name = TextField('Name',
+                     [validators.Length(min=4, max=50),
+                     validators.required()],
+                     default="Name")
+    description = TextAreaField('Description',
+                                [validators.Length(min=4, max=50),
+                                validators.required()],
+                                default="Description")
+    study_group = SelectField('StudyGroup', coerce=int)

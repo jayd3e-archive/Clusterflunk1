@@ -1,5 +1,11 @@
+from datetime import datetime
 from pyramid.view import view_config
-from clusterflunk.models.posts import Post
+from pyramid.httpexceptions import HTTPFound
+from clusterflunk.models.posts import (
+    Post,
+    PostHistory
+)
+from clusterflunk.forms import CreatePostForm
 
 
 @view_config(
@@ -41,9 +47,34 @@ def view(request):
 @view_config(
     route_name='posts_create',
     renderer='clusterflunk:templates/posts/create.mako',
-    request_method='GET',
     permission='view')
 def create(request):
     db = request.db
+    user = request.user
 
-    return {}
+    study_group_choices = [(g.id, g.name) for g in user.subscribed_groups]
+
+    post_create_form = CreatePostForm(request.POST)
+    post_create_form.study_group.choices = study_group_choices
+    if 'study_group' in request.GET:
+        post_create_form.study_group.data = int(request.GET['study_group'])
+
+    if request.method == 'POST' and post_create_form.validate():
+        name = post_create_form.name.data
+        description = post_create_form.description.data
+        study_group_id = post_create_form.study_group.data
+
+        post_rev = PostHistory(revision=1,
+                               author=user,
+                               created=datetime.now(),
+                               name=name,
+                               description=description)
+        post = Post(created=datetime.now(),
+                    founder=user,
+                    history=[post_rev],
+                    study_group_id=study_group_id)
+        db.add(post)
+        db.flush()
+        return HTTPFound(location="/posts/%s" % str(post.id))
+
+    return {'post_create_form': post_create_form}

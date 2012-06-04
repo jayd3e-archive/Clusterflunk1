@@ -68,3 +68,53 @@
         }
     }
 }
+
+@mixin create_pages {
+    .name {
+        margin-top: 2px;
+        margin-bottom: 1px;
+        padding: 3px;
+        color: $slicknasty-headings-color;
+        font-family: $slicknasty-sans-font-family;
+        font-weight: $slicknasty-headings-font-weight;
+        font-size: 24px;
+    }
+
+    .description {
+        margin: 2px 0px 0px 0px;
+        padding: 3px;
+        font-size: 13px;
+        height: 200px;
+    }
+
+    .metadata {
+        margin-left: 4px;
+    }
+
+    .name, .description {
+        width: $clusterflunk-form-input-width + 9px;
+        border: 1px solid #FFF;
+        display: block;
+
+        &:focus {
+            border: 1px dotted #94C4F4;
+        }
+    }
+
+    form.basic {
+        margin-bottom: 0px;
+
+        .error {
+            display: none;
+            @include baseFont;
+            padding: 9px;
+            width: $clusterflunk-status-input-width;
+            background-color: #D95C56;
+            color: #FFF;
+        }
+
+        #create_submit {
+            margin-top: 5px;
+        }
+    }
+}

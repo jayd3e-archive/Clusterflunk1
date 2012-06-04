@@ -80,7 +80,8 @@ def data():
                                  name="Physics 10" + str(i),
                                  network_id=1,
                                  created=datetime.now(),
-                                 edited=datetime.now())
+                                 edited=datetime.now(),
+                                 founder_id=1)
         subscription = Subscription(user_id=1,
                                     study_group_id=int(i))
         session.add(subscription)
@@ -110,7 +111,6 @@ def data():
 
     for i in range(num_of_posts + 1):
         post = Post(id=int(i),
-                    title="Post #" + str(i),
                     founder_id=1,
                     study_group_id=random.randint(1, num_of_groups),
                     created=datetime.now())

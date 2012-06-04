@@ -43,7 +43,6 @@ def post_add(request):
         comment_rev = CommentHistory(revision=1,
                                      created=datetime.now(),
                                      author_id=user.id,
-                                     comment_id=comment.id,
                                      body=body)
         comment = Comment(parent_id=None,
                           founder_id=user.id,

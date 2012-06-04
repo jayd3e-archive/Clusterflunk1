@@ -18,28 +18,14 @@
 
 #group_view {
     position: relative;
+
+    .group {
+        margin-bottom: 10px;
+    }
 }
 
 #group_create {
+    position: relative;
 
-    .group_name, .group_description {
-        width: $clusterflunk-form-input-width;
-    }
-
-    form.basic {
-        margin-bottom: 0px;
-
-        .error {
-            display: none;
-            @include baseFont;
-            padding: 9px;
-            width: $clusterflunk-status-input-width;
-            background-color: #D95C56;
-            color: #FFF;
-        }
-
-        #group_create_submit {
-            margin-top: 5px;
-        }
-    }
+    @include create_pages;
 }

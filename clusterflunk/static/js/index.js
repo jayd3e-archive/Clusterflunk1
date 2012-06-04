@@ -48,6 +48,7 @@ $(function() {
             "groups": "groups",
             "groups/create": "groups_create",
             "groups?category=*category": "groups",
+            "posts/create*query": "post_create",
             "posts/:id": "posts"
         },
 
@@ -95,6 +96,9 @@ $(function() {
         groups_create: function() {
             var Group = clusterflunk.module("group");
             var group = new Group.Views.GroupCreate();
+        },
+
+        posts_create: function() {
         },
 
         posts: function(id) {

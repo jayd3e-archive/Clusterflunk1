@@ -14,7 +14,6 @@ from clusterflunk.models.base import Base
 class Post(Base):
     __tablename__ = 'posts'
 
-    title = Column(String(100))
     study_group_id = Column(Integer, ForeignKey('study_groups.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
     score = Column(Integer(100), default=0)

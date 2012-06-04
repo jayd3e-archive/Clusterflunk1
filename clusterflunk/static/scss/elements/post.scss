@@ -17,6 +17,12 @@
     }
 }
 
+#post_create {
+    position: relative;
+
+    @include create_pages;
+}
+
 .post_comment {
     margin-top: 5px;
     margin-bottom: 5px;

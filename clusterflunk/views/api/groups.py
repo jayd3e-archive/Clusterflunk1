@@ -5,18 +5,6 @@ from clusterflunk.models.users import User
 
 
 @view_config(
-    route_name='groups_view',
-    renderer='clusterflunk:templates/groups/view.mako',
-    permission='view')
-def view(request):
-    db = request.db
-    _id = request.matchdict.get('group_id')
-
-    group = db.query(StudyGroup).filter_by(id=_id).first()
-    return {'group': group}
-
-
-@view_config(
     route_name='groups',
     renderer='json',
     permission='view',
