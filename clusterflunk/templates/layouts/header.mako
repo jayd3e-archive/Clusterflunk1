@@ -27,7 +27,7 @@
         </li>
     </ul>
     <div id="search">
-        <input type="text" name="search"/><button>&#xe074;</button>
+        <input type="text" name="search" autocomplete="off"/><button>&#xe074;</button>
     </div>
     <ul id="account">
         <li>

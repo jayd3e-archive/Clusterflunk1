@@ -13,13 +13,13 @@
 
     <div id="group_create">
         <h1>Create a Group</h1>
-        <form class="basic" action="" method="POST" autocomplete="off">
+        <form class="basic" action="" method="POST">
             <div class="error"></div>
             ${ group_create_form.name(class_="group_name") }
             ${ group_create_form.description(class_="group_description") }
             <ul class="chosens">
                 <li>
-                    <input class="choose_input" type="text" name="user"/>
+                    <input class="choose_input" type="text" name="user" autocomplete="off"/>
                 </li>
             </ul>
             <ul class="availables">

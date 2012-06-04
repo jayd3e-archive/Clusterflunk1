@@ -6,7 +6,7 @@
         <h1>Groups</h1>
         <ul id="page_actions">
             <li>
-                <a class="primary" href="/groups/create">Create</a>
+                <a class="primary" href="/groups/create">Create Group</a>
             </li>
         </ul>
         <ul id="categories" class="horiz-list">

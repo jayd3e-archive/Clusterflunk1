@@ -2,8 +2,13 @@
 <%namespace name="util_side" file="../utilities/side.mako"/>
 
 <%def name="page()">
-    <div class="post_index">
+    <div id="post_index">
         <h1>HW</h1>
+        <ul id="page_actions">
+            <li>
+                <a class="primary" href="/posts/create">Create Post</a>
+            </li>
+        </ul>
         <div class="posts">
             % for post in posts:
                 <%
