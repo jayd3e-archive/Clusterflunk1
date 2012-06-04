@@ -40,7 +40,7 @@
         <h1>${post_rev.name}</h1>
         <span class="metadata">
             created in
-            <a href="/group/${post.study_group.id}">${post.study_group.name}</a>
+            <a href="/groups/${post.study_group.id}">${post.study_group.name}</a>
             by
             <a href="/profile/${post_rev.author.username}">${post_rev.author.username}</a>
             ${post.created_timedelta}

@@ -18,7 +18,9 @@
                     <img class="thumbnail" src="/static/img/thumbnail.png"/>
                     <a class="post_name" href="/posts/${post.id}">${post.history[latest_rev].name}</a>
                     <span class="metadata">
-                        created by
+                        created in
+                        <a href="/groups/${post.study_group.id}">${post.study_group.name}</a>
+                        by
                         <a href="/profile/${post.founder.username}">${post.founder.username}</a>
                         ${post.created_timedelta}
                     </span>
