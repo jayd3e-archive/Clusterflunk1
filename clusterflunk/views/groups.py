@@ -65,16 +65,17 @@ def create(request):
                                  network_id=1)
         db.add(study_group)
 
-        group_invite_notification = GroupInviteNotification(created=datetime.now(),
-                                                            discriminator="group_invite",
-                                                            user_id=user.id,
-                                                            study_group=study_group)
-        db.add(group_invite_notification)
-        for invite in request.POST['invites']:
-            notification = Notification(user_id=user.id,
-                                        notification_item=group_invite_notification)
+        if 'invites' in request.POST:
+            group_invite_notification = GroupInviteNotification(created=datetime.now(),
+                                                                discriminator="group_invite",
+                                                                user_id=user.id,
+                                                                study_group=study_group)
+            db.add(group_invite_notification)
+            for invite in request.POST['invites']:
+                notification = Notification(user_id=invite,
+                                            notification_item=group_invite_notification)
 
-            db.add(notification)
+                db.add(notification)
 
         db.flush()
         return HTTPFound(location="/groups")

@@ -1,5 +1,17 @@
 #post_index {
     position: relative;
+
+    .post {
+        display: block;
+        overflow: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        .post_name {
+            font-size: 16px;
+            padding-top: 8px;
+        }
+    }
 }
 
 #post_view {
@@ -25,11 +37,6 @@
 
 .post_comment {
     margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.post_comments > .post_comment {
-    margin-left: 30px;
 }
 
 .post_comment_tree {

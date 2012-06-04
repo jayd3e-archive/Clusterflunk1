@@ -83,7 +83,7 @@
         },
 
         initialize: function() {
-            status_comments = this.$el.children(".status_comments");
+            status_comments = this.$el.find(".status_comments");
             this.status_comments = new Comment.Views.StatusComments({el: status_comments});
         },
 
@@ -97,7 +97,7 @@
 
         prompt: function() {
             if (!this.$("> .status_comment_form").length) {
-                actions = this.$el.children(".actions");
+                actions = this.$el.find(".actions");
                 context =  {status_id: this.model.get("id")};
                 $(status_comment_form_template(context)).insertAfter(actions);
             }

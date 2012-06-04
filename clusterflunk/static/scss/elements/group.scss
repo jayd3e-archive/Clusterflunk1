@@ -4,14 +4,24 @@
     #categories {
 
         li {
-            padding: 5px 5px 5px 0px;
+            padding: 2px 5px 2px 0px;
         }
     }
 
     #groups {
 
         .group {
+            font-size: 16px;
             padding: 5px 0px 5px 0px;
+
+            .group_name {
+                font-size: 16px;
+                padding-top: 8px;
+            }
+
+            button {
+                float: right;
+            }
         }
     }
 }

@@ -77,11 +77,11 @@ def main(global_config, **settings):
     config.add_route('groups', '/groups')
     config.add_route('articles', '/articles')
     config.add_route('statuses', '/statuses')
-    config.add_route('profile', '/profile')
     config.add_route('comments_post', '/comments/post')
     config.add_route('comments_status', '/comments/status')
 
     #View Action Routes
+    config.add_route('profile', '/profile/{username}')
     config.add_route('posts_create', '/posts/create')
     config.add_route('posts_view', '/posts/{post_id}')
     config.add_route('articles_view', '/articles/{article_id}')

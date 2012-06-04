@@ -1,4 +1,5 @@
 from pyramid.view import view_config
+from clusterflunk.models.users import User
 
 
 @view_config(
@@ -6,6 +7,6 @@ from pyramid.view import view_config
     renderer='clusterflunk:templates/profile/index.mako',
     permission='view')
 def index(request):
-    user = request.user
-
+    db = request.db
+    user = db.query(User).filter_by(username=request.matchdict['username']).first()
     return {'user': user}

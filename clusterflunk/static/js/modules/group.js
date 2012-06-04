@@ -137,7 +137,7 @@
         className: "chosen",
 
         render: function() {
-            context = {id: this.model.get("id "),
+            context = {id: this.model.get("id"),
                        username: this.model.get('username')};
             content = chosen_user_template(context);
             this.$el.html(content);

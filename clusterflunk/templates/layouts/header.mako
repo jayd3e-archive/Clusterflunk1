@@ -7,6 +7,7 @@
             <a id="notifications_button" href="#" original-title="notifications">&#xe007;</a>
             <div id="notifications">
                 <div class="up_arrow"></div>
+                % if len(notifications) > 0:
                 <ul>
                     % for notification in notifications:
                         <li>
@@ -14,6 +15,9 @@
                         </li>
                     % endfor
                 </ul>
+                % else:
+                <span>There are no notifications</span>
+                % endif
             </div>
         </li>
         <li>
@@ -34,7 +38,7 @@
             <a href="/logout">sign out</a>
         </li>
         <li>
-            <a href="/profile">${user.username}</a>
+            <a href="/profile/${user.username}">${user.username}</a>
         </li>
         <li>
             <a class="avatar" href="/profile">

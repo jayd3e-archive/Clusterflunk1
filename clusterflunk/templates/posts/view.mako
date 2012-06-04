@@ -15,17 +15,20 @@
     </script>
 
     <script id="post_comment_template" type="handlebars-template">
-        <div class="author">
-            <a href="/profile/{{ username }}">{{ username }}</a>
-            <span class="metadata">{{ created_timedelta }}</span>
-        </div>
-        <span>{{body}}</span>
-        <ul class="actions">
-            <li>
-                <a class="add_comment">add comment</a>
-            </li>
-        </ul>
-        <div class="post_comments">
+        <img class="thumbnail" src="/static/img/thumbnail.png"/>
+        <div class="content">
+            <div class="author">
+                <a href="/profile/{{ username }}">{{ username }}</a>
+                <span class="metadata">{{ created_timedelta }}</span>
+            </div>
+            <span>{{body}}</span>
+            <ul class="actions">
+                <li>
+                    <a class="add_comment">add comment</a>
+                </li>
+            </ul>
+            <div class="post_comments">
+            </div>
         </div>
     </script>
 
@@ -57,17 +60,20 @@
                         last_rev = len(comment.history) - 1
                         comment_rev = comment.history[last_rev]
                     %>
-                    <div class="author">
-                        <a href="/profile/${comment_rev.author.username}">${comment_rev.author.username}</a>
-                        <span class="metadata">${comment_rev.created_timedelta}</span>
+                    <img class="thumbnail" src="/static/img/thumbnail.png"/>
+                    <div class="content">
+                        <div class="author">
+                            <a href="/profile/${comment_rev.author.username}">${comment_rev.author.username}</a>
+                            <span class="metadata">${comment_rev.created_timedelta}</span>
+                        </div>
+                        <span>${comment_rev.body}</span>
+                        <ul class="actions">
+                            <li>
+                                <a class="add_comment">add comment</a>
+                            </li>
+                        </ul>
+                        ${children.children(comment, post.id)}
                     </div>
-                    <span>${comment_rev.body}</span>
-                    <ul class="actions">
-                        <li>
-                            <a class="add_comment">add comment</a>
-                        </li>
-                    </ul>
-                    ${children.children(comment, post.id)}
                 </div>
             % endfor
         </div>

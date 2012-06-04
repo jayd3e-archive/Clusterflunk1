@@ -9,7 +9,6 @@ from clusterflunk.models.users import User
     request_param='s')
 def search(request):
     db = request.db
-    user = request.user
     s = request.GET['s']
 
     users_json = []

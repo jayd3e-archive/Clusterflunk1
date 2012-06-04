@@ -35,7 +35,7 @@
     </script>
 
     <script id="status_comment_template" type="handlebars-template">
-        <span>{{ body }}</span>
+        <span>{{ body }}</span> -
         <a href="/profile/{{ username }}">{{ username }}</a>
         <span class="metadata">{{ created_timedelta }}</span>
     </script>
@@ -61,28 +61,31 @@
                         last_status_rev = len(status.history) - 1
                         status_rev = status.history[last_status_rev]
                     %>
-                    <div class="author">
-                        <a href="/profile/${status_rev.author.username}">${status_rev.author.username}</a>
-                        <span class="metadata">${status_rev.created_timedelta}</span>
-                    </div>
-                    <span>${status_rev.body}</span>
-                    <ul class="actions">
-                        <li>
-                            <a class="add_comment">add comment</a>
-                        </li>
-                    </ul>
-                    <div class="status_comments">
-                        % for comment in status.comments:
-                            <div class="status_comment" id="status_comment_${status.id}_${comment.id}">
-                                <%
-                                    last_comment_rev = len(comment.history) - 1
-                                    comment_rev = comment.history[last_comment_rev]
-                                %>
-                                <span>${comment_rev.body}</span> -
-                                <a href="/profile/${comment_rev.author.username}">${comment_rev.author.username}</a>
-                                <span class="metadata">${comment_rev.created_timedelta}</span>
-                            </div>
-                        % endfor
+                    <img class="thumbnail" src="/static/img/thumbnail.png"/>
+                    <div class="content">
+                        <div class="author">
+                            <a href="/profile/${status_rev.author.username}">${status_rev.author.username}</a>
+                            <span class="metadata">${status_rev.created_timedelta}</span>
+                        </div>
+                        <span>${status_rev.body}</span>
+                        <ul class="actions">
+                            <li>
+                                <a class="add_comment">add comment</a>
+                            </li>
+                        </ul>
+                        <div class="status_comments">
+                            % for comment in status.comments:
+                                <div class="status_comment" id="status_comment_${status.id}_${comment.id}">
+                                    <%
+                                        last_comment_rev = len(comment.history) - 1
+                                        comment_rev = comment.history[last_comment_rev]
+                                    %>
+                                    <span>${comment_rev.body}</span> -
+                                    <a href="/profile/${comment_rev.author.username}">${comment_rev.author.username}</a>
+                                    <span class="metadata">${comment_rev.created_timedelta}</span>
+                                </div>
+                            % endfor
+                        </div>
                     </div>
                 </div>
             % endfor

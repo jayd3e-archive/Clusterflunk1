@@ -15,6 +15,20 @@
     display: block;
 }
 
+.avatar {
+    float: left;
+}
+
+.thumbnail {
+    float: left;
+    margin-top: 2px;
+    margin-right: 6px;
+}
+
+.content {
+    display: inline-block;
+}
+
 .chosens {
     width: $clusterflunk-status-input-width + 12px;
     border: 1px solid silver;

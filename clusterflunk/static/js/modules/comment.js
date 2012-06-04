@@ -112,7 +112,8 @@
         },
 
         initialize: function() {
-            post_comments = this.$el.children(".post_comments");
+            this.content = this.$("> .content");
+            post_comments = this.content.children(".post_comments");
             this.post_comments = new Comment.Views.PostComments({el: post_comments});
         },
 
@@ -128,8 +129,8 @@
         prompt: function(event) {
             event.stopPropagation();
 
-            if (!this.$("> .post_comment_form").length) {
-                actions = this.$el.children(".actions");
+            if (!this.content.children(".post_comment_form").length) {
+                actions = this.content.children(".actions");
                 context =  {post_id: this.model.get("post_id"),
                             parent_id: this.model.get("id")};
                 $(post_comment_form_template(context)).insertAfter(actions);
@@ -141,7 +142,7 @@
         persist: function(event) {
             event.stopPropagation();
 
-            var comment_form = this.$el.children(".post_comment_form");
+            var comment_form = this.content.children(".post_comment_form");
 
             var post_id = comment_form.find("input[name|='post_id']").val();
             var parent_id = comment_form.find("input[name|='parent_id']").val();
@@ -153,7 +154,7 @@
 
             var that = this;
             model.save({}, {success: function(model, response) {
-                that.$el.children(".post_comment_form").remove();
+                that.content.children(".post_comment_form").remove();
                 var post_comment = new Comment.Views.PostComment({model: model});
                 that.post_comments.add_comment(post_comment);
             }});
