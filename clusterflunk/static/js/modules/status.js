@@ -83,6 +83,11 @@
         },
 
         initialize: function() {
+            // If the Status hasn't been created, then create it
+            if (!this.$el.html()) {
+                this.render();
+            }
+
             status_comments = this.$el.find(".status_comments");
             this.status_comments = new Comment.Views.StatusComments({el: status_comments});
         },
