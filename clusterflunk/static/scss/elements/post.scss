@@ -7,9 +7,26 @@
         margin-top: 5px;
         margin-bottom: 5px;
 
-        .post_name {
-            font-size: 16px;
-            padding-top: 8px;
+        .content {
+            float: left;
+            display: block;
+            overflow: auto;
+
+            .post_name {
+                float: left;
+                display: block;
+                font-size: 16px;
+                padding-top: 2px;
+            }
+
+            .metadata {
+                float: left;
+                display: block;
+            }
+        }
+
+        .buttons {
+            float: right;
         }
     }
 }

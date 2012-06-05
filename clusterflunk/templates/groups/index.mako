@@ -21,21 +21,25 @@
         <div id="groups">
             % for group in groups:
                 <div class="group" id="group_${group.id}">
-                    <a class="group_name" href="/groups/${group.id}">${group.name}</a>
-                    <span class="metadata">
-                        created by
-                        <a href="/profile/${group.founder.username}">${group.founder.username}</a>
-                        ${group.created_timedelta}
-                    </span>
-                    % if group in user.subscribed_groups:
-                        <button class="dark">
-                            unsubscribe
-                        </button>
-                    % else:
-                        <button class="primary">
-                            subscribe
-                        </button>
-                    % endif
+                    <div class="content">
+                        <a class="group_name" href="/groups/${group.id}">${group.name}</a>
+                        <span class="metadata">
+                            created by
+                            <a href="/profile/${group.founder.username}">${group.founder.username}</a>
+                            ${group.created_timedelta}
+                        </span>
+                    </div>
+                    <div class="buttons">
+                        % if group in user.subscribed_groups:
+                            <button class="dark">
+                                unsubscribe
+                            </button>
+                        % else:
+                            <button class="primary">
+                                subscribe
+                            </button>
+                        % endif
+                    </div>
                 </div>
             % endfor
         </div>

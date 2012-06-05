@@ -12,14 +12,24 @@
 
         .group {
             font-size: 16px;
-            padding: 5px 0px 5px 0px;
+            overflow: auto;
 
-            .group_name {
-                font-size: 16px;
-                padding-top: 8px;
+            .content {
+                float: left;
+
+                .metadata {
+                    display: block;
+                }
+
+                .group_name {
+                    display: block;
+                    font-size: 16px;
+                    padding-top: 8px;
+                }
             }
 
-            button {
+            .buttons {
+                padding-top: 8px;
                 float: right;
             }
         }
