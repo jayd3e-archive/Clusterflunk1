@@ -94,6 +94,7 @@
 
         add_comment: function(status_comment) {
             this.$el.append(status_comment.render().el);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, status_comment.el]);
         }
     });
 
@@ -186,6 +187,7 @@
 
         add_comment: function(post_comment) {
             this.$el.append(post_comment.el);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, post_comment.el]);
         }
 
     });

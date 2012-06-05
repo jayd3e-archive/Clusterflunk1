@@ -164,6 +164,7 @@
 
         add_status: function(status_view) {
             $("#statuses").prepend(status_view.render().el);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, status_view.el]);
         }
 
     });

@@ -33,6 +33,7 @@
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/underscore.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/backbone.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('clusterflunk:static/js/libs/handlebars.js')}"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     <!-- The Frontend -->
     <!-- Main App -->

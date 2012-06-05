@@ -99,6 +99,7 @@
         add_comment: function(post_comment) {
             post_comment = post_comment.render();
             this.post_comment_tree.$el.append(post_comment.el);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, post_comment.el]);
         }
 
     });

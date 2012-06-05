@@ -26,7 +26,10 @@
                             ${post.created_timedelta}
                         </span>
                     </div>
-                    <div class="buttons"></div>
+                    <div class="buttons">
+                        <button class="dark">edit</button>
+                        <button class="danger">delete</button>
+                    </div>
                 </div>
             % endfor
         </div>
