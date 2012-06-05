@@ -54,6 +54,14 @@
 
 .post_comment {
     margin-top: 5px;
+    padding-left: 36px;
+    position: relative;
+
+    .thumbnail {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
 }
 
 .post_comment_tree {
