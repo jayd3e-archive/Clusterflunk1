@@ -3,17 +3,20 @@
 
 <%def name="page()">
     <script id="status_template" type="handlebars-template">
-        <div class="author">
-            <a href="/profile/{{username}}">{{ username }}</a>
-            <span class="metadata">{{ created_timedelta }}</span>
+        <img class="thumbnail" src="/static/img/thumbnail.png"/>
+        <div class="content">
+            <div class="author">
+                <a href="/profile/{{username}}">{{ username }}</a>
+                <span class="metadata">{{ created_timedelta }}</span>
+            </div>
+            <span>{{ body }}</span>
+            <ul class="actions">
+                <li>
+                    <a class="add_comment">add comment</a>
+                </li>
+            </ul>
+            <div class="status_comments"></div>
         </div>
-        <span>{{ body }}</span>
-        <ul class="actions">
-            <li>
-                <a class="add_comment">add comment</a>
-            </li>
-        </ul>
-        <div class="status_comments"></div>
     </script>
 
     <script id="chosen_group_template" type="handlebars-template">

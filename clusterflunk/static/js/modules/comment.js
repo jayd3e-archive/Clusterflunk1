@@ -112,6 +112,12 @@
         },
 
         initialize: function() {
+            // If the PostComment hasn't been created, then create it
+            if (!this.$el.html()) {
+                this.render();
+            }
+
+            // Convenience variables
             this.content = this.$("> .content");
             post_comments = this.content.children(".post_comments");
             this.post_comments = new Comment.Views.PostComments({el: post_comments});
@@ -179,7 +185,7 @@
         },
 
         add_comment: function(post_comment) {
-            this.$el.append(post_comment.render().el);
+            this.$el.append(post_comment.el);
         }
 
     });
