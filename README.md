@@ -112,9 +112,10 @@ Different stylesheet
 INSTALL
 -------
 Clusterflunk uses vagrant to setup a virtualized development environment for working on the site.
-1. Install vagrant per the [getting started](http://vagrantup.com/v1/docs/getting-started/index.html) guide.
-2. cd to '~/boxes'
-3. Clone the [Clusterstack](https://github.com/Clusterflunk/Clusterstack.git) repo into this directory, and 
+
+1.  Install vagrant per the [getting started](http://vagrantup.com/v1/docs/getting-started/index.html) guide.
+2.  Type `mkdir ~/boxes; cd ~/boxes`
+3.  Clone the [Clusterstack](https://github.com/Clusterflunk/Clusterstack.git) repo into this directory, and 
 cd into the created directory.
-4. Run `vagrant box add ubuntu-1110-server-amd64 http://timhuegdon.com/vagrant-boxes/ubuntu-11.10.box`.
-5. Run `vagrant up`.  After this command completes, you can very easily access your new box by typing `vagrant ssh`.
+4.  Run `vagrant box add ubuntu-1110-server-amd64 http://timhuegdon.com/vagrant-boxes/ubuntu-11.10.box`.
+5.  Run `vagrant up`.  After this command completes, you can very easily access your new box by typing `vagrant ssh`.
