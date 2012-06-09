@@ -54,8 +54,7 @@ suggestions, I will update my feature list.
 Feature List:
 -------------
 
-Base Features
-=============
+###Base Features
 -  add questions to main feed page.
 -  list latest questions from subscribed groups.
 -  list latest posts from subscribed groups.
@@ -77,8 +76,7 @@ Base Features
 -  view a group
 -  view a post
 
-Suggested Features:
-===================
+###Suggested Features:
 -  A whitelist(friend’s list/blacklist) where people can add people who they want to hear more from, and not see the people
 they don’t want to hear from.
 -  Ability to attach a resource to everything.  To a post, comment, article, everything.
