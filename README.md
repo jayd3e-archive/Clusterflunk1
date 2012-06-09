@@ -53,31 +53,35 @@ suggestions, I will update my feature list.
  
 Feature List:
 -------------
-Base Features-
--Store user-specific data, such as names, genders, e-mails, and other profile-related information(limited information).
--Allow users to join a "network" for their specific school or multiple networks if they so choose.
--Allow users to create/delete groups public and private within their network. Groups can represent small study groups, 
-a discussion group of 10-20 people, or even an entire class, made up of 300-400 people. Private groups can be used to do
-things like have your friends proof-read a paper.
--Allow users to add “post” to each group, thus creating a "tide" page. This post could be an assignment, a test, a
-project, a lab, or any other obligation that
-a student might have.
--Each post will have meta-data attached to it, such as the due date of the post.
--Allow users to attach resources to a post. This could be a word document of some kind, a pdf, or an excel file.
--Allow users to propose a "solution" to a post.
--Allow users to comment on every element of the "solution".  This includes the post, the solution, and even specific
-lines in the solution.
--Allow users to search all posts on every network in all public(not private) groups.
--Allow users to write articles on specific topics. “Articles” are basically for people who may want to write more
-extensively about a particular topic to teach to other students. Students will be able to link to various articles from
-all over the site to explain topics, thus reducing the amount of times a common topic has to be explained.
--Allow users to comment on articles.
--A feed/timeline to show all of the activity going on in the groups you are subscribed to.
+
+Base Features
+=============
+-  add questions to main feed page.
+-  list latest questions from subscribed groups.
+-  list latest posts from subscribed groups.
+-  add post to subscribed group.
+-  list all groups that a user is subscribed to.
+-  list groups in network <----- limit 500
+-  add a group to a network
+-  subscribe to a group
+-  unsusbscribe from a group
+-  view a profile
+-  login/register to site
+-  logout of site
+-  comment on a post
+-  comment on a post's comment
+-  comment on a status
+-  watch a post
+-  vote a comment up or down
+-  list watched posts
+-  view a group
+-  view a post
 
 Suggested Features:
--------------------
--A whitelist(friend’s list/blacklist) where people can add people who they want to hear more from, and not see the people
+===================
+-  A whitelist(friend’s list/blacklist) where people can add people who they want to hear more from, and not see the people
 they don’t want to hear from.
+-  Ability to attach a resource to everything.  To a post, comment, article, everything.
 
 Development Schedule:
 ---------------------
@@ -85,28 +89,6 @@ High Level:
 5 months for development of two products, the website(clusterflunk.com) and a mobile application(for as many platforms
 as possible in the timeframe). 3 months for testing/quality assurance of the two deliverable products.
 RELEASE DATE: 8/16/12
-
-Low Level:
-Database:
-Database schema
-SQLAlchemy Models
-backbone.js models(get information printing for each model) using Gapvis pattern
-Caching(possibility, not necessarily something that is important up front)
-Pyramid Views:
-Every view returns the same file, but provides a different starting point in the app
-Frontend
-Landing page
-Index/Dashboard
-Agenda Page(advanced calendar)
-Groups Page(add/remove groups from your profile) - Reverse mechanic of Google+ adding groups
-Articles Page - Creating/Deleting/Editing your articles.  Featured articles in a group(highest rated ones etc.)
-Tide Page
-Write library for textareas, that handles all input to the site.  So we can eventually allow users to insert math/science
-symbols
-Testing
-Write tests for models
-Write tests for view code
-Write frontend javascript tests
 
 Stack
 -----
