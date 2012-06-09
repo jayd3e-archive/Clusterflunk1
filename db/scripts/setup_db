@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo -u postgres psql -c "CREATE USER vagrant WITH PASSWORD 'fluffy&Bunny';"
+sudo -u postgres psql -c "CREATE DATABASE clusterflunk;"
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE clusterflunk to vagrant;"
+
+alembic upgrade head
+python db/scripts/base_data.py

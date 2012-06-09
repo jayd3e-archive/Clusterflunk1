@@ -52,7 +52,7 @@ def data():
     num_of_replies = 5
     num_of_statuses = 5
 
-    engine = create_engine('postgresql+psycopg2://jayd3e:sharp7&7@localhost/clusterflunk')
+    engine = create_engine('postgresql+psycopg2://vagrant:fluffy&Bunny@localhost/clusterflunk')
     Session = sessionmaker(bind=engine)
     session = Session()
 
