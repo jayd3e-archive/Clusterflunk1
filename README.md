@@ -111,14 +111,10 @@ Different stylesheet
 
 INSTALL
 -------
-1. Untar this --> http://pypi.python.org/packages/source/v/virtualenv/virtualenv-1.7.tar.gz#md5=dcc105e5a3907a9dcaa978f813a4f526
-2. cd into it and type `python setup.py install`.  This will install a console script into your system python to allow
-you to use virtualenv.
-3. Make a directory to keep your Python install in.
-4. wget http://www.python.org/ftp/python/2.7/Python-2.7.tgz, and untar it.
-5. ./configure, make, make install
-6. Go to your projects directory(i.e. ~/Projects) and type `git clone git@github.com:jayd3e/Clusterflunk.git`.
-7. Install git.
-8. cd into the resulting directory(Clusterflunk) and type `virtualenv --no-site-packages --python=/path/to/Python-2.7/bin/python env`.
-9. Then finally type `source env/bin/activate`, and `python setup.py develop`.
-10. Run `paster serve development.ini` to start the server.
+Clusterflunk uses vagrant to setup a virtualized development environment for working on the site.
+1. Install vagrant per the [getting started](http://vagrantup.com/v1/docs/getting-started/index.html) guide.
+2. cd to '~/boxes'
+3. Clone the [Clusterstack](https://github.com/Clusterflunk/Clusterstack.git) repo into this directory, and 
+cd into the created directory.
+4. Run `vagrant box add ubuntu-1110-server-amd64 http://timhuegdon.com/vagrant-boxes/ubuntu-11.10.box`.
+5. Run `vagrant up`.  After this command completes, you can very easily access your new box by typing `vagrant ssh`.
