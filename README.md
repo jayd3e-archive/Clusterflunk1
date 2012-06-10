@@ -125,3 +125,11 @@ keys into the home directory of your vagrant user, by typing something along the
     git config --global user.email you@example.com` with your own personal data substituted in.
 8.  Clone the Clusterflunk repo, by issuing this command: `cd /opt/webapp; git clone git@github.com:Clusterflunk/Clusterflunk.git`.
 9.  Finally, run the setup script by typing `./setup` in the Clusterflunk directory.
+
+Starting Server
+--------------
+After going through all of the install directions above, you should be able type `pserve development.ini` in your
+'/opt/webapp/Clusterflunk' directory, and the web server will start.  After that, you can go into a browser on your local
+machine, and go to 127.0.0.1:5015 to see the site.  Use the shared directory(~/webapp) to develop in, and your changes will
+take effect on the site.  It is worth noting that you can interact with git on your local machine, but you will always need to 
+start the server on your virtual box.
