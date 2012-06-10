@@ -114,6 +114,14 @@ Clusterflunk uses vagrant to setup a virtualized development environment for wor
 1.  Install vagrant per the [getting started](http://vagrantup.com/v1/docs/getting-started/index.html) guide.
 2.  Type `mkdir ~/boxes; cd ~/boxes`
 3.  Clone the [Clusterstack](https://github.com/Clusterflunk/Clusterstack.git) repo into this directory, and 
-cd into the created directory.
+cd into the created directory.  IMPORTANT: Create a directory in your home directory called 'webapp'.  The file path
+'/opt/webapp' will get mounted to this directory, so you can do all of your development work locally on your own computer.
 4.  Run `vagrant box add ubuntu-1110-server-amd64 http://timhuegdon.com/vagrant-boxes/ubuntu-11.10.box`.
 5.  Run `vagrant up`.  After this command completes, you can very easily access your new box by typing `vagrant ssh`.
+6.  Copy the ssh key pair from your home directory into your shared vagrant directory.  The command should look something
+like so `cp -r ~/.ssh ~/boxes/Clusterstack/`.  Then after sshing into your virtual box(`vagrant ssh`), you can than put those
+keys into the home directory of your vagrant user, by typing something along the lines of `cp -r /vagrant/.ssh ~/`.
+7.  Also add your username and email to git's config, by issueing these two commands: `git config --global user.name "Your Name"
+    git config --global user.email you@example.com` with your own personal data substituted in.
+8.  Clone the Clusterflunk repo, by issuing this command: `cd /opt/webapp; git clone git@github.com:Clusterflunk/Clusterflunk.git`.
+9.  Finally, run the setup script by typing `./setup` in the Clusterflunk directory.
