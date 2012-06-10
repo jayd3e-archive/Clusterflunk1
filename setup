@@ -1,11 +1,17 @@
 #!/bin/bash
 python setup.py develop
+
 sh db/scripts/setup_db
 
 git submodule init
 git submodule update
 
-mkdir clusterflunk/static/slicknasty/css
+if [ ! -d "clusterflunk/static/slicknasty/css" ]; then
+    mkdir clusterflunk/static/slicknasty/css
+fi
 sass clusterflunk/static/slicknasty/scss/bootstrap.scss:clusterflunk/static/slicknasty/css/bootstrap.css
-mkdir clusterflunk/static/css
+
+if [ ! -d "clusterflunk/static/css" ]; then
+    mkdir clusterflunk/static/css
+fi
 sass clusterflunk/static/scss/bootstrap.scss:clusterflunk/static/css/bootstrap.css
