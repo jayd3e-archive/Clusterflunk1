@@ -11,7 +11,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from clusterflunk.models.base import Base
 
 
-class StudyGroup(Base):
+class Group(Base):
     __tablename__ = 'groups'
 
     name = Column(String(100))
@@ -28,4 +28,4 @@ class StudyGroup(Base):
     questions = association_proxy('broadcasts', 'question')
 
     def __repr__(self):
-        return "<StudyGroup('%s')>" % (self.id)
+        return "<Group('%s')>" % (self.id)

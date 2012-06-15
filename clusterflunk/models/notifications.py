@@ -51,7 +51,7 @@ class GroupInviteNotification(NotificationItem):
 
 
 class QuestionCommentNotification(NotificationItem):
-    __tablename__ = 'status_comment_notifications'
+    __tablename__ = 'question_comment_notifications'
 
     id = Column(Integer, ForeignKey('notification_items.id'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
@@ -64,4 +64,4 @@ class QuestionCommentNotification(NotificationItem):
     question = relationship('Question')
 
     def __repr__(self):
-        return "<StatusCommentNotification('%s')>" % (self.id)
+        return "<QuestionCommentNotification('%s')>" % (self.id)
