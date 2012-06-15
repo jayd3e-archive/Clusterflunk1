@@ -90,9 +90,9 @@ class TestModels(unittest.TestCase):
         for pc in [post_comment, post_comment1, post_comment2]:
             session.add(pc)
 
-        category = Tag(id=1,
+        tag = Tag(id=1,
                        name='Test')
-        session.add(category)
+        session.add(tag)
 
         post_tag = PostTag(id=1,
                            post_id=1,
@@ -110,7 +110,7 @@ class TestModels(unittest.TestCase):
         self.assertEqual(comment.post, post)
         self.assertEqual(comment1.post, post)
         self.assertEqual(comment2.post, post)
-        self.assertIn(category, post.tags)
+        self.assertIn(tag, post.tags)
 
     def testPostComments(self):
         session = self.Session()
@@ -248,20 +248,20 @@ class TestModels(unittest.TestCase):
     def testTags(self):
         session = self.Session()
 
-        category = Tag(id=1,
+        tag = Tag(id=1,
                        name='Test')
         post_tag = PostTag(id=1,
                            tag_id=1)
 
-        post_tag.category = category
+        post_tag.tag = tag
         session.add(post_tag)
 
         session.flush()
-        self.assertTrue(str(category).startswith('<Tag'),
+        self.assertTrue(str(tag).startswith('<Tag'),
                         msg="str(Tag) must start with '<Tag'")
         self.assertTrue(str(post_tag).startswith('<PostTag'),
                         msg="str(PostTag) must start with '<PostTag'")
-        self.assertEqual(post_tag.category, category)
+        self.assertEqual(post_tag.tag, tag)
 
     def testModerators(self):
         session = self.Session()
