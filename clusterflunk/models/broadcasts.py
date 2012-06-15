@@ -11,10 +11,10 @@ from clusterflunk.models.base import Base
 class Broadcast(Base):
     __tablename__ = 'broadcasts'
 
-    status_id = Column(Integer, ForeignKey('statuses.id'))
+    question_id = Column(Integer, ForeignKey('questions.id'))
     group_id = Column(Integer, ForeignKey('groups.id'))
 
-    status = relationship('Status', backref='broadcasts')
+    question = relationship('Question', backref='broadcasts')
     group = relationship('Group', backref='broadcasts')
 
     def __repr__(self):

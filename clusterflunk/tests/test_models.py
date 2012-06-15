@@ -11,7 +11,7 @@ from clusterflunk.models.auth import (
     AuthUserGroup,
 )
 from clusterflunk.models.users import User
-from clusterflunk.models.study_groups import StudyGroup
+from clusterflunk.models.groups import Group
 from clusterflunk.models.networks import Network
 from clusterflunk.models.categories import Category
 from clusterflunk.models.categories import PostCategory

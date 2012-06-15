@@ -25,7 +25,7 @@ class StudyGroup(Base):
     posts = relationship('Post', backref='group')
     moderators = association_proxy('moderator', 'user')
     subscribers = association_proxy('subscription', 'user')
-    statuses = association_proxy('broadcasts', 'status')
+    questions = association_proxy('broadcasts', 'question')
 
     def __repr__(self):
         return "<StudyGroup('%s')>" % (self.id)
