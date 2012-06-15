@@ -18,7 +18,7 @@ class Status(Base):
     founder_id = Column(Integer, ForeignKey('users.id'))
 
     founder = relationship('User', backref='statuses')
-    study_groups = association_proxy('broadcasts', 'study_group')
+    groups = association_proxy('broadcasts', 'group')
     history = relationship('StatusHistory', backref='status')
     comments = association_proxy('status_comments', 'comment')
 

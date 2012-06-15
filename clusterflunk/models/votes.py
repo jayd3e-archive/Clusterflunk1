@@ -1,28 +1,24 @@
 from sqlalchemy import (
     Column,
-    DateTime,
     ForeignKey,
-    Integer,
-    String,
+    Integer
 )
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.associationproxy import association_proxy
 
-from .base import Base
-from .users import User
-from .posts import Post
+from clusterflunk.models.base import Base
+from clusterflunk.models.users import User
+from clusterflunk.models.comments import Comment
+
 
 class Vote(Base):
     __tablename__ = 'votes'
 
     user_id = Column(Integer, ForeignKey('users.id'))
-    post_id = Column(Integer, ForeignKey('posts.id'))
+    comment_id = Column(Integer, ForeignKey('comments.id'))
     vote = Column(Integer(1))
 
-    user = relationship(User,
-                        backref="votes")
-    post = relationship(Post,
-                        backref="votes")
-    
+    user = relationship(User, backref="votes")
+    comment = relationship(Comment, backref="votes")
+
     def __repr__(self):
         return "<Vote('%s')>" % (self.id)

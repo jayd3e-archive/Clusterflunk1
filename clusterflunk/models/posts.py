@@ -14,7 +14,7 @@ from clusterflunk.models.base import Base
 class Post(Base):
     __tablename__ = 'posts'
 
-    study_group_id = Column(Integer, ForeignKey('study_groups.id'))
+    group_id = Column(Integer, ForeignKey('groups.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
     score = Column(Integer(100), default=0)
     created = Column(DateTime)
@@ -22,7 +22,7 @@ class Post(Base):
     founder = relationship('User', backref="posts")
     history = relationship('PostHistory', backref='post')
     comments = association_proxy('post_comments', 'comment')
-    categories = association_proxy('post_categories', 'category')
+    tags = association_proxy('post_tags', 'tag')
 
     def __repr__(self):
         return "<Post('%s')>" % (self.id)

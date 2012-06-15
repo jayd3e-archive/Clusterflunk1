@@ -40,11 +40,11 @@ class GroupInviteNotification(NotificationItem):
 
     id = Column(Integer, ForeignKey('notification_items.id'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    study_group_id = Column(Integer, ForeignKey('study_groups.id'))
+    group_id = Column(Integer, ForeignKey('groups.id'))
     __mapper_args__ = {'polymorphic_identity': 'group_invite'}
 
     inviter = relationship('User')
-    study_group = relationship('StudyGroup')
+    group = relationship('Group')
 
     def __repr__(self):
         return "<GroupInviteNotification('%s')>" % (self.id)
