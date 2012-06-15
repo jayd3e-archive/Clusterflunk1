@@ -6,24 +6,22 @@ from clusterflunk.models.networks import Network
 from clusterflunk.models.users import User
 from clusterflunk.models.auth import AuthUser
 from clusterflunk.models.memberships import Membership
-from clusterflunk.models.study_groups import StudyGroup
+from clusterflunk.models.study_groups import Group
 from clusterflunk.models.posts import Post
 from clusterflunk.models.posts import PostComment
 from clusterflunk.models.subscriptions import Subscription
-from clusterflunk.models.articles import Article
-from clusterflunk.models.articles import ArticleHistory
 from clusterflunk.models.posts import PostHistory
 from clusterflunk.models.comments import Comment
 from clusterflunk.models.comments import CommentHistory
-from clusterflunk.models.statuses import Status
-from clusterflunk.models.statuses import StatusHistory
+from clusterflunk.models.questions import Question
+from clusterflunk.models.questions import QuestionHistory
 from clusterflunk.models.broadcasts import Broadcast
 
-statuses = ['I love studying <3',
-            'How do I do this hard problem?',
-            'Can anyone else in this group solve problem 1A?',
-            'Anyone done with the circuits hw yet?',
-            'How do you interpret this piece of art?']
+questions = ['I love studying <3',
+             'How do I do this hard problem?',
+             'Can anyone else in this group solve problem 1A?',
+             'Anyone done with the circuits hw yet?',
+             'How do you interpret this piece of art?']
 
 
 def reply(session, _id):
@@ -46,7 +44,6 @@ def reply(session, _id):
 def data():
     num_of_groups = 3
     num_of_posts = 10
-    num_of_articles = 10
     num_of_histories = 5
     num_of_comments = 5
     num_of_replies = 5
@@ -76,35 +73,35 @@ def data():
     session.add(membership)
 
     for i in range(num_of_groups + 1):
-        study_group = StudyGroup(id=int(i),
-                                 name="Physics 10" + str(i),
-                                 network_id=1,
-                                 created=datetime.now(),
-                                 edited=datetime.now(),
-                                 founder_id=1)
+        group = Group(id=int(i),
+                      name="Physics 10" + str(i),
+                      network_id=1,
+                      created=datetime.now(),
+                      edited=datetime.now(),
+                      founder_id=1)
         subscription = Subscription(user_id=1,
-                                    study_group_id=int(i))
+                                    group_id=int(i))
         session.add(subscription)
-        session.add(study_group)
+        session.add(group)
 
         for j in range(num_of_statuses + 1):
-            status = Status(created=datetime.now(),
-                            founder_id=1)
-            session.add(status)
+            question = Question(created=datetime.now(),
+                                founder_id=1)
+            session.add(question)
             session.flush()
             for k in range(num_of_histories + 1):
-                status_len = len(statuses)
-                status_num = random.randint(0, status_len - 1)
+                question_len = len(questions)
+                question_num = random.randint(0, question_len - 1)
 
-                status_rev = StatusHistory(revision=int(k),
-                                           author_id=1,
-                                           status_id=status.id,
-                                           created=datetime.now(),
-                                           body=statuses[status_num])
-                status.history.append(status_rev)
+                question_rev = QuestionHistory(revision=int(k),
+                                               author_id=1,
+                                               question_id=question.id,
+                                               created=datetime.now(),
+                                               body=questions[question_num])
+                question.history.append(question_rev)
 
-            broadcast = Broadcast(status_id=status.id,
-                                  study_group_id=int(i))
+            broadcast = Broadcast(question_id=question.id,
+                                  group_id=int(i))
             session.add(broadcast)
 
         session.flush()
@@ -112,7 +109,7 @@ def data():
     for i in range(num_of_posts + 1):
         post = Post(id=int(i),
                     founder_id=1,
-                    study_group_id=random.randint(1, num_of_groups),
+                    group_id=random.randint(1, num_of_groups),
                     created=datetime.now())
         session.add(post)
         session.flush()
@@ -143,21 +140,6 @@ def data():
 
             for l in range(num_of_replies + 1):
                 reply(session, comment.id)
-
-    for i in range(num_of_articles + 1):
-        article = Article(id=int(i),
-                          founder_id=1,
-                          created=datetime.now())
-        for j in range(num_of_histories + 1):
-            article_rev = ArticleHistory(title="Awesome Title",
-                                         body="This explains a super complicated \
-                                         topic.  And is revision " + str(j),
-                                         revision=int(j),
-                                         author_id=1,
-                                         article_id=int(i),
-                                         created=datetime.now())
-            article.history.append(article_rev)
-        session.add(article)
 
     session.flush()
     session.commit()
