@@ -3,11 +3,11 @@
 <%namespace name="watchlist" file="aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div id="feed">
+    <div class="feed">
         <h1>Feed</h1>
-        <form class="basic" id="status_form" method="POST" action="">
+        <form class="basic status_form" method="POST" action="">
             <div class="error"></div>
-            <textarea id="status" name="status">Ask something crazy!</textarea>
+            <textarea class="status" name="status">Ask something crazy!</textarea>
             <ul class="chosens">
                 <li class="chosen">
                     Group Name
@@ -21,9 +21,9 @@
                     Group Name
                 </li>
             </ul>
-            <button class="dark" id="status_submit">submit</button>
+            <button class="dark status_submit">submit</button>
         </form>
-        <div id="statuses">
+        <div class="statuses">
             ${ status.status() }
         </div>
     </div>

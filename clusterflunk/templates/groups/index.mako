@@ -3,14 +3,14 @@
 <%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div id="group_index">
+    <div class="group_index">
         <h1>Groups</h1>
-        <ul id="page_actions">
+        <ul class="page_actions">
             <li>
                 <a class="primary" href="/groups/create">Create Group</a>
             </li>
         </ul>
-        <ul id="categories" class="horiz-list">
+        <ul class="horiz-list categories">
             <li>
                 <a href="/groups?category=all">all</a>
             </li>
@@ -19,7 +19,7 @@
                 <a href="/groups?category=mine">mine</a>
             </li>
         </ul>
-        <div id="groups">
+        <div class="groups">
             ${ condensed_group.condensed_group() }
         </div>
     </div>

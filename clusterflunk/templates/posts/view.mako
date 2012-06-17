@@ -3,7 +3,7 @@
 <%namespace name="post_comment" file="../comments/post_comment.mako"/>
 
 <%def name="page()">
-    <div id="post_view">
+    <div class="post_view">
         <h1>Post Name</h1>
         <span class="metadata">
             created in
@@ -12,7 +12,7 @@
             <a href="/profile/jayd3e">jayd3e</a>
             1 day ago
         </span>
-        <div class="post" id="post_1">
+        <div class="post">
             <span>This is a post description.</span>
             <ul class="actions">
                 <li>

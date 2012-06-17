@@ -4,7 +4,7 @@
     margin: 0px $clusterflunk-page-margin;
     overflow: auto;
 
-    #logo {
+    .logo {
         float: left;
         height: 21px;
         width: 116px;
@@ -14,7 +14,7 @@
         background-image: url('../img/clusterflunk_logo.png');
     }
 
-    #main_nav {
+    .main_nav {
         @include horiz-list;
         float: left;
         margin: 6px 10px 0px 0px;
@@ -35,7 +35,7 @@
         }
     }
 
-    #notifications_button {
+    .notifications_button {
         background-color: $clusterflunk-notifications-button-bg-color;
         border-radius: 3px;
         margin-right: 5px;
@@ -53,7 +53,7 @@
         }
     }
 
-    #notifications {
+    .notifications {
             position: absolute;
             top: 50px;
             left: 105px;
@@ -84,7 +84,7 @@
     }
 
 
-    #search {
+    .search {
         float: left;
 
         input {
@@ -116,7 +116,7 @@
         }
     }
 
-    #account {
+    .account {
         float: right;
 
         li {

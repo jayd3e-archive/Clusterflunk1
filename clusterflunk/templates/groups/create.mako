@@ -2,11 +2,11 @@
 <%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div id="group_create">
+    <div class="group_create">
         <form class="basic" action="" method="POST">
             <div class="error"></div>
             <input type="text" class="name" autocomplete="off" value="Group Name" />
-            <ul id="page_actions">
+            <ul class="page_actions">
                 <li>
                     <a class="primary" href="/posts/create">Create Post</a>
                 </li>
@@ -30,7 +30,7 @@
                     Available Group
                 </li>
             </ul>
-            <button class="dark" id="create_submit">submit</button>
+            <button class="dark create_submit">submit</button>
         </form>
     </div>
 </%def>

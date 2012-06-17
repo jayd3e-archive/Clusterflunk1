@@ -1,7 +1,7 @@
 <%namespace name="post_comment_form" file="post_comment_form.mako" />
 
 <%def name="post_comment()">
-    <div class="post_comment" id="post_comment_1_1">
+    <div class="post_comment">
         <img class="thumbnail" src="/static/img/thumbnail.png"/>
         <div class="content">
             <div class="author">

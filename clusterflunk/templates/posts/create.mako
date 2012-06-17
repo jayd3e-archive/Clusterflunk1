@@ -2,7 +2,7 @@
 <%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div id="post_create">
+    <div class="post_create">
         <form class="basic" action="" method="POST">
             <div class="error"></div>
             <input type="text" class="name" autocomplete="off" value="Post Name">
@@ -14,7 +14,7 @@
                 right now
             </span>
             <textarea class="description" autocomplete="off">Description</textarea>
-            <button class="dark" id="create_submit">submit</button>
+            <button class="dark create_submit">submit</button>
         </form>
     </div>
 </%def>

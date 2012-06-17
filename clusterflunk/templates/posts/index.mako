@@ -3,9 +3,9 @@
 <%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div id="post_index">
+    <div class="post_index">
         <h1>HW</h1>
-        <ul id="page_actions">
+        <ul class="page_actions">
             <li>
                 <a class="primary" href="/posts/create">Create Post</a>
             </li>

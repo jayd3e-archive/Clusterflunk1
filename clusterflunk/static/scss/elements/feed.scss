@@ -1,8 +1,8 @@
-#feed {
+.feed {
     margin-top: 5px;
     margin-bottom: 5px;
 
-    #statuses {
+    .statuses {
         padding-top: 5px;
 
         .status {
@@ -34,11 +34,11 @@
             color: #FFF;
         }
 
-        #status {
+        .status {
             width: $clusterflunk-status-input-width;
         }
 
-        #status_submit {
+        .status_submit {
             margin-top: 5px;
         }
 

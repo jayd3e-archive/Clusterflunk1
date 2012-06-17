@@ -1,11 +1,11 @@
 <%namespace name="header_utils" file="../utilities/header.mako"/>
 
 <%def name="header(here)">
-    <a href="/" id="logo"></a>
-    <ul id="main_nav">
+    <a class="logo" href="/"></a>
+    <ul class="main_nav">
         <li>
-            <a id="notifications_button" href="#" original-title="notifications">&#xe007;</a>
-            <div id="notifications">
+            <a class="notifications_button" href="#" original-title="notifications">&#xe007;</a>
+            <div class="notifications">
                 <div class="up_arrow"></div>
                 <ul>
                     <li>
@@ -45,10 +45,10 @@
             <a href="/groups" original-title="groups">&#xe062;</a>
         </li>
     </ul>
-    <div id="search">
+    <div class="search">
         <input type="text" name="search" autocomplete="off"/><button>&#xe074;</button>
     </div>
-    <ul id="account">
+    <ul class="account">
         <li>
             <a href="/logout">sign out</a>
         </li>

@@ -1,4 +1,4 @@
-#post_index {
+.post_index {
     position: relative;
 
     .post {
@@ -31,7 +31,7 @@
     }
 }
 
-#post_view {
+.post_view {
 
     form.basic {
         margin-bottom: 0px;
@@ -46,7 +46,7 @@
     }
 }
 
-#post_create {
+.post_create {
     position: relative;
 
     @include create_pages;
