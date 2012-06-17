@@ -1,4 +1,4 @@
-#header {
+.header {
     height: $clusterflunk-header-height;
     padding: $clusterflunk-header-padding;
     margin: 0px $clusterflunk-page-margin;
@@ -17,7 +17,7 @@
     #main_nav {
         @include horiz-list;
         float: left;
-        margin-top: 6px 10px 0px 0px;
+        margin: 6px 10px 0px 0px;
         display: inline-block;
 
         li {

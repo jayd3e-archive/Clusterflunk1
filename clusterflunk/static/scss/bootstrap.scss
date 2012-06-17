@@ -5,6 +5,7 @@
 *
 */
 @import "vars";
+@import "libs/reset";
 
 // Fonts
 @import "fonts/iconic/iconic_fill";
@@ -18,7 +19,6 @@
 @import "core/lists";
 
 // Libs
-@import "libs/reset";
 @import "libs/tipsy";
 
 // Layout

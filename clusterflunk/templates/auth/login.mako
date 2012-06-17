@@ -1,17 +1,14 @@
 <%inherit file="../layouts/auth.mako"/>
-<%namespace name="util_error" file="../utilities/error.mako"/>
 
 <%def name="page()">
     <h1>Login</h1>
     <form class="basic" method="POST" action="">
-        ${ login_form.username.label }
-        ${ login_form.username() }
-        ${ util_error.error(login_form, 'username') }
+        <label for="username">Username</label>
+        <input name="username" type="text" />
 
-        ${ login_form.password.label }
-        ${ login_form.password() }
-        ${ util_error.error(login_form, 'password') }
-        
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+
         <input class="light" type="submit" name="submit" value="Login"/>
     </form>
 </%def>

@@ -53,7 +53,7 @@
             <a href="/logout">sign out</a>
         </li>
         <li>
-            <a href="/profile/jayd3e">jayd3e</a>
+            <a href="/profile">jayd3e</a>
         </li>
         <li>
             <a class="avatar" href="/profile">

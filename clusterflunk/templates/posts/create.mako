@@ -1,24 +1,24 @@
 <%inherit file="../layouts/base.mako"/>
-<%namespace name="util_side" file="../utilities/side.mako"/>
+<%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
     <div id="post_create">
         <form class="basic" action="" method="POST">
             <div class="error"></div>
-            ${post_create_form.name(class_="name", autocomplete="off")}
+            <input type="text" class="name" autocomplete="off" value="Post Name">
             <span class="metadata">
                 created in
-                ${post_create_form.study_group(class_="study_group", autocomplete="off")}
+                <a href="/groups/1">Group</a>
                 by
-                <a href="/profile/${user.username}">${user.username}</a>
+                <a href="/profile/jayd3e">jayd3e</a>
                 right now
             </span>
-            ${post_create_form.description(class_="description", autocomplete="off")}
+            <textarea class="description" autocomplete="off">Description</textarea>
             <button class="dark" id="create_submit">submit</button>
         </form>
     </div>
 </%def>
 
 <%def name="aside()">
-    ${util_side.due()}
+    ${ watchlist.watchlist() }
 </%def>

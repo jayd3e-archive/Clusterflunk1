@@ -1,20 +1,11 @@
 <%inherit file="../layouts/base.mako"/>
-<%namespace name="util_side" file="../utilities/side.mako"/>
+<%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
-    <script id="chosen_user_template" type="handlebars-template">
-        <input type="hidden" name="invites" value="{{id}}"/>
-        {{ username }}
-    </script>
-
-    <script id="available_user_template" type="handlebars-template">
-        {{ username }}
-    </script>
-
     <div id="group_create">
         <form class="basic" action="" method="POST">
             <div class="error"></div>
-            ${ group_create_form.name(class_="name", autocomplete="off") }
+            <input type="text" class="name" autocomplete="off" value="Group Name" />
             <ul id="page_actions">
                 <li>
                     <a class="primary" href="/posts/create">Create Post</a>
@@ -22,16 +13,22 @@
             </ul>
             <span class="metadata">
                 created by
-                <a href="/profile/${user.username}">${user.username}</a>
+                <a href="/profile/jayd3e">jayd3e</a>
                 right now
             </span>
-            ${ group_create_form.description(class_="description", autocomplete="off") }
+            <textarea class="description" autocomplete="off">Description</textarea>
             <ul class="chosens">
+                <li class="chosen">
+                    Chosen Group
+                </li>
                 <li>
                     <input class="choose_input" type="text" name="user" autocomplete="off"/>
                 </li>
             </ul>
             <ul class="availables">
+                <li class="available">
+                    Available Group
+                </li>
             </ul>
             <button class="dark" id="create_submit">submit</button>
         </form>
@@ -39,5 +36,5 @@
 </%def>
 
 <%def name="aside()">
-    ${util_side.due()}
+    ${ watchlist.watchlist() }
 </%def>

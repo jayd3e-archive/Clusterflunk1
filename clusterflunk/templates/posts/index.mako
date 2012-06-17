@@ -1,5 +1,6 @@
 <%inherit file="../layouts/base.mako"/>
-<%namespace name="util_side" file="../utilities/side.mako"/>
+<%namespace name="condensed_post" file="condensed_post.mako"/>
+<%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
     <div id="post_index">
@@ -10,32 +11,11 @@
             </li>
         </ul>
         <div class="posts">
-            % for post in posts:
-                <%
-                    latest_rev = len(post.history) - 1
-                %>
-                <div class="post">
-                    <img class="thumbnail" src="/static/img/thumbnail.png"/>
-                    <div class="content">
-                        <a class="post_name" href="/posts/${post.id}">${post.history[latest_rev].name}</a>
-                        <span class="metadata">
-                            created in
-                            <a href="/groups/${post.study_group.id}">${post.study_group.name}</a>
-                            by
-                            <a href="/profile/${post.founder.username}">${post.founder.username}</a>
-                            ${post.created_timedelta}
-                        </span>
-                    </div>
-                    <div class="buttons">
-                        <button class="dark">edit</button>
-                        <button class="danger">delete</button>
-                    </div>
-                </div>
-            % endfor
+            ${ condensed_post.condensed_post() }
         </div>
     </div>
 </%def>
 
 <%def name="aside()">
-    ${util_side.due()}
+    ${ watchlist.watchlist() }
 </%def>

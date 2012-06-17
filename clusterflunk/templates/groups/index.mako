@@ -1,5 +1,6 @@
 <%inherit file="../layouts/base.mako"/>
-<%namespace name="util_side" file="../utilities/side.mako"/>
+<%namespace name="condensed_group" file="condensed_group.mako"/>
+<%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
     <div id="group_index">
@@ -19,33 +20,11 @@
             </li>
         </ul>
         <div id="groups">
-            % for group in groups:
-                <div class="group" id="group_${group.id}">
-                    <div class="content">
-                        <a class="group_name" href="/groups/${group.id}">${group.name}</a>
-                        <span class="metadata">
-                            created by
-                            <a href="/profile/${group.founder.username}">${group.founder.username}</a>
-                            ${group.created_timedelta}
-                        </span>
-                    </div>
-                    <div class="buttons">
-                        % if group in user.subscribed_groups:
-                            <button class="dark">
-                                unsubscribe
-                            </button>
-                        % else:
-                            <button class="primary">
-                                subscribe
-                            </button>
-                        % endif
-                    </div>
-                </div>
-            % endfor
+            ${ condensed_group.condensed_group() }
         </div>
     </div>
 </%def>
 
 <%def name="aside()">
-    ${util_side.due()}
+    ${ watchlist.watchlist() }
 </%def>
