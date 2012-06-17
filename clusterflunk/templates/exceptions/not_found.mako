@@ -1,4 +1,4 @@
-<!-- not_found.mako --> 
+<!-- not_found.mako -->
 <DOCTYPE html>
 <html>
     <head>
