@@ -18,6 +18,7 @@ class Comment(Base):
     parent_id = Column(Integer, ForeignKey('comments.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
     created = Column(DateTime)
+    score = Column(Integer(100), default=0)
 
     founder = relationship('User', backref='comments')
     history = relationship('CommentHistory', backref='comment')

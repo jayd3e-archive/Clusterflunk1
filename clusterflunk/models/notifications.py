@@ -40,28 +40,28 @@ class GroupInviteNotification(NotificationItem):
 
     id = Column(Integer, ForeignKey('notification_items.id'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    study_group_id = Column(Integer, ForeignKey('study_groups.id'))
+    group_id = Column(Integer, ForeignKey('groups.id'))
     __mapper_args__ = {'polymorphic_identity': 'group_invite'}
 
     inviter = relationship('User')
-    study_group = relationship('StudyGroup')
+    group = relationship('Group')
 
     def __repr__(self):
         return "<GroupInviteNotification('%s')>" % (self.id)
 
 
-class StatusCommentNotification(NotificationItem):
-    __tablename__ = 'status_comment_notifications'
+class QuestionCommentNotification(NotificationItem):
+    __tablename__ = 'question_comment_notifications'
 
     id = Column(Integer, ForeignKey('notification_items.id'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     comment_id = Column(Integer, ForeignKey('comments.id'))
-    status_id = Column(Integer, ForeignKey('statuses.id'))
+    question_id = Column(Integer, ForeignKey('questions.id'))
     __mapper_args__ = {'polymorphic_identity': 'status_comment'}
 
     commenter = relationship('User')
     comment = relationship('Comment')
-    status = relationship('Status')
+    question = relationship('Question')
 
     def __repr__(self):
-        return "<StatusCommentNotification('%s')>" % (self.id)
+        return "<QuestionCommentNotification('%s')>" % (self.id)

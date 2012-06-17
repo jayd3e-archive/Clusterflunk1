@@ -2,7 +2,6 @@ import os
 from hashlib import sha1
 from sqlalchemy import (
     Column,
-    DateTime,
     ForeignKey,
     Integer,
     String,
@@ -11,6 +10,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
+
 
 class AuthUser(Base):
     __tablename__ = 'auth_users'
@@ -24,13 +24,13 @@ class AuthUser(Base):
     def __init__(self, username, password):
         self.username = username
         self._set_password(password)
-    
+
     def __repr__(self):
         return "<AuthUser('%s')>" % (self.id)
 
     def _set_password(self, password):
         hashed_password = password
-        
+
         if isinstance(password, unicode):
             password_8bit = password.encode('UTF-8')
         else:
@@ -52,6 +52,7 @@ class AuthUser(Base):
         hashed_pass.update(password + self.password[:40])
         return self.password[40:] == hashed_pass.hexdigest()
 
+
 class AuthGroup(Base):
     __tablename__ = 'auth_groups'
 
@@ -61,6 +62,7 @@ class AuthGroup(Base):
 
     def __repr__(self):
         return "<AuthGroup('%s')>" % (self.id)
+
 
 class AuthUserGroup(Base):
     __tablename__ = 'auth_users_groups'

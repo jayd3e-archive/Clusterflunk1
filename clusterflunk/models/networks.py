@@ -15,7 +15,7 @@ class Network(Base):
     name = Column(String(100))
     created = Column(DateTime)
 
-    study_groups = relationship('StudyGroup', backref="network")
+    groups = relationship('Group', backref="network")
     members = association_proxy('membership', 'user')
 
     def __repr__(self):

@@ -12,10 +12,10 @@ class Moderator(Base):
     __tablename__ = 'moderators'
 
     user_id = Column(Integer, ForeignKey('users.id'))
-    study_group_id = Column(Integer, ForeignKey('study_groups.id'))
+    group_id = Column(Integer, ForeignKey('groups.id'))
 
     user = relationship('User', backref="moderator")
-    study_group = relationship('StudyGroup', backref="moderator")
+    group = relationship('Group', backref="moderator")
 
     def __repr__(self):
         return "<Moderator('%s')>" % (self.id)

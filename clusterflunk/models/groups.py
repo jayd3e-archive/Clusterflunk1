@@ -10,8 +10,9 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 from clusterflunk.models.base import Base
 
-class StudyGroup(Base):
-    __tablename__ = 'study_groups'
+
+class Group(Base):
+    __tablename__ = 'groups'
 
     name = Column(String(100))
     description = Column(String(500))
@@ -21,10 +22,10 @@ class StudyGroup(Base):
     founder_id = Column(Integer, ForeignKey('users.id'))
 
     founder = relationship('User', backref='founded_groups')
-    posts = relationship('Post', backref='study_group')
+    posts = relationship('Post', backref='group')
     moderators = association_proxy('moderator', 'user')
     subscribers = association_proxy('subscription', 'user')
-    statuses = association_proxy('broadcasts', 'status')
+    questions = association_proxy('broadcasts', 'question')
 
     def __repr__(self):
-        return "<StudyGroup('%s')>" % (self.id)
+        return "<Group('%s')>" % (self.id)
