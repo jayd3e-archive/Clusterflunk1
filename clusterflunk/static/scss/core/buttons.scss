@@ -1,0 +1,67 @@
+/*
+*
+* This file defines the look of all of the buttons.  This includes dropdown buttons.
+*
+*/
+
+@mixin default_button {
+    @include default_input;
+    padding: 6px;
+    font-size: 11px;
+    border-radius: 5px;
+    border: 0px;
+    text-transform: uppercase;
+}
+
+@mixin hover {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin button {
+    display: inline-block;
+
+    &.dark {
+        @include default_button;
+        @include hover;
+        background-color: $clusterflunk-input-dark-color;
+        color: $clusterflunk-input-dark-text-color;
+    }
+
+    &.light {
+        @include default_button;
+        @include hover;
+        background-color: $clusterflunk-input-light-color;
+
+    }
+
+    &.primary {
+        @include default_button;
+        @include hover;
+        @include gradient($clusterflunk-input-primary-top-color, $clusterflunk-input-primary-bot-color);
+        color: $clusterflunk-input-primary-text-color;
+    }
+
+    &.danger {
+        @include default_button;
+        @include hover;
+        @include gradient($clusterflunk-input-danger-top-color, $clusterflunk-input-danger-bot-color);
+        color: $clusterflunk-input-danger-text-color;
+    }
+
+    &.success {
+        @include default_button;
+        @include hover;
+        @include gradient($clusterflunk-input-success-top-color, $clusterflunk-input-success-bot-color);
+        color: $clusterflunk-input-success-text-color;
+    }
+}
+
+button {
+    @include button;
+}
+
+a {
+    @include button;
+}

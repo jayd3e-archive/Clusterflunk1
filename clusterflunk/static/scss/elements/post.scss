@@ -1,0 +1,72 @@
+#post_index {
+    position: relative;
+
+    .post {
+        display: block;
+        overflow: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        .content {
+            float: left;
+            display: block;
+            overflow: auto;
+
+            .post_name {
+                display: block;
+                font-size: 16px;
+                padding-top: 2px;
+            }
+
+            .metadata {
+                float: left;
+                display: block;
+            }
+        }
+
+        .buttons {
+            padding-top: 5px;
+            float: right;
+        }
+    }
+}
+
+#post_view {
+
+    form.basic {
+        margin-bottom: 0px;
+
+        .dark {
+            display: block;
+        }
+    }
+
+    .post {
+        margin-bottom: 10px;
+    }
+}
+
+#post_create {
+    position: relative;
+
+    @include create_pages;
+}
+
+.post_comment {
+    margin-top: 5px;
+    padding-left: 36px;
+    position: relative;
+
+    .thumbnail {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.post_comment_tree {
+
+    > .post_comment {
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,47 @@
+#feed {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    #statuses {
+        padding-top: 5px;
+
+        .status {
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+            form.basic {
+
+                .dark {
+                    display: block;
+                }
+            }
+
+            .status_comments {
+                padding-left: 20px;
+            }
+        }
+    }
+
+    form.basic {
+        margin-bottom: 0px;
+
+        .error {
+            display: none;
+            @include baseFont;
+            padding: 9px;
+            width: $clusterflunk-status-input-width;
+            background-color: #D95C56;
+            color: #FFF;
+        }
+
+        #status {
+            width: $clusterflunk-status-input-width;
+        }
+
+        #status_submit {
+            margin-top: 5px;
+        }
+
+    }
+
+}

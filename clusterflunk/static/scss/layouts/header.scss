@@ -1,0 +1,150 @@
+#header {
+    height: $clusterflunk-header-height;
+    padding: $clusterflunk-header-padding;
+    margin: 0px $clusterflunk-page-margin;
+    overflow: auto;
+
+    #logo {
+        float: left;
+        height: 21px;
+        width: 116px;
+        margin-top: 6px;
+        margin-right: 10px;
+        cursor: pointer;
+        background-image: url('../img/clusterflunk_logo.png');
+    }
+
+    #main_nav {
+        @include horiz-list;
+        float: left;
+        margin-top: 6px 10px 0px 0px;
+        display: inline-block;
+
+        li {
+
+            > a {
+                font-family: "IconicFill";
+                color: $clusterflunk-nav-link-color;
+                padding: 4px 4px 4px 4px;
+                font-size: 14px;
+
+                &:hover {
+                    color: $clusterflunk-f-color;
+                }
+            }
+        }
+    }
+
+    #notifications_button {
+        background-color: $clusterflunk-notifications-button-bg-color;
+        border-radius: 3px;
+        margin-right: 5px;
+
+        a {
+            color: #FFF;
+            font-family: "IconicFill";
+            font-size: 14px;
+        }
+
+        &:hover, &.active {
+            background-color: $clusterflunk-notifications-hover-bg-color;
+            cursor: pointer;
+            color: $clusterflunk-f-color;
+        }
+    }
+
+    #notifications {
+            position: absolute;
+            top: 50px;
+            left: 105px;
+            background-color: $clusterflunk-notifications-bg-color;
+            width: 300px;
+            padding: 5px;
+            display: none;
+            z-index: 1000;
+            border-radius: 3px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+
+            ul {
+                float: left;
+
+                li {
+                    float: left;
+                    display: block;
+                    @include baseFont;
+                }
+            }
+
+            .up_arrow {
+                @include up_arrow($clusterflunk-notifications-bg-color, 10px);
+                position: absolute;
+                top: -10px;
+                left: 36px;
+            }
+    }
+
+
+    #search {
+        float: left;
+
+        input {
+            width: 150px;
+            height: 20px;
+            border: none;
+            margin: 5px 0px;
+            padding: 2px 10px;
+            float: left;
+            color: #555;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            border: none;
+            padding: 6px;
+            margin: 5px 0px;
+            background-color: #555;
+            font-family: $clusterflunk-icon-font;
+            float: left;
+            color: #FFF;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    #account {
+        float: right;
+
+        li {
+            float: right;
+
+            a {
+                display: block;
+                padding: 9px 5px;
+                font-size: $clusterflunk-header-link-size;
+                color: $clusterflunk-nav-link-color;
+
+                &:hover {
+                    color: $clusterflunk-f-color;
+                }
+            }
+
+            a.avatar {
+                display: block;
+                padding: 5px 2px 5px 2px;
+            }
+
+            span {
+                display: block;
+                padding: 10px 5px;
+                font-family: $clusterflunk-sans-font-family;
+                font-size: $clusterflunk-base-font-size;
+                color: $clusterflunk-account-span-color;
+            }
+        }
+    }
+}
