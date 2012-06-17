@@ -320,7 +320,7 @@ class TestModels(unittest.TestCase):
         self.assertEqual(network, group2.network)
         self.assertEqual(network, group3.network)
 
-    def testQuestiones(self):
+    def testQuestions(self):
         session = self.Session()
 
         question = Question(id=1,
@@ -551,8 +551,8 @@ class TestModels(unittest.TestCase):
         session = self.Session()
 
         question = Question(id=1,
-                        created=datetime.now(),
-                        founder_id=1)
+                            created=datetime.now(),
+                            founder_id=1)
         group = Group(id=1,
                       name="My cool group",
                       created=datetime.now(),
@@ -573,7 +573,7 @@ class TestModels(unittest.TestCase):
         self.assertEqual(question, broadcast.question)
         self.assertEqual(group, broadcast.group)
 
-    def testGroupInviteNotifications(self):
+    def testGroupInviteNotifiions(self):
         session = self.Session()
 
         user = User(id=1,
