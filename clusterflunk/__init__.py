@@ -36,11 +36,6 @@ def main(global_config, **settings):
     config = Configurator(settings=settings,
                           root_factory=Site)
 
-    # Includes
-    # config.include('pyramid_debugtoolbar')
-
-    # Security
-    config.set_default_permission('logged_in')
     config.add_static_view(name='static', path='clusterflunk:static')
 
     # Routes
