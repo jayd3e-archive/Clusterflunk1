@@ -44,6 +44,7 @@ def main(global_config, **settings):
     config.add_static_view(name='static', path='clusterflunk:static')
 
     # Routes
+    config.add_route('index', '/')
 
     #Exception Views
     config.add_view(notFound,
