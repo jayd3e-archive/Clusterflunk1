@@ -1,0 +1,16 @@
+.status {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    .content {
+        display: inline-block;
+
+        .status_comments {
+            padding-left: 20px;
+        }
+
+        .status_comment_form {
+            margin-bottom: 0px;
+        }
+    }
+}
