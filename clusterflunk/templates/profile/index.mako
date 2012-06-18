@@ -1,22 +1,22 @@
 <%inherit file="../layouts/base.mako"/>
-<%namespace name="util_side" file="../utilities/side.mako"/>
+<%namespace name="watchlist" file="../aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div class="profile_pic">
-        <img src="${request.static_url('clusterflunk:static/img/portrait.png')}" />
-    </div>
-    <div class="settings">
-        <h1>${user.username}</h1>
-        <div class="networks">
-            % for network in user.memberships:
-                <div class="network">
-                    <span>${network.name}</span>
-                </div>
-            % endfor
+    <div class="profile">
+        <div class="profile_pic">
+            <img src="/static/img/portrait.png" />
+        </div>
+        <div class="settings">
+            <h1>jayd3e</h1>
+            <ul class="networks">
+                <li class="network">
+                    <span>University of Iowa</span>
+                </li>
+            </ul>
         </div>
     </div>
 </%def>
 
 <%def name="aside()">
-    ${util_side.due()}
+    ${ watchlist.watchlist() }
 </%def>

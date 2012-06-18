@@ -1,0 +1,54 @@
+/*
+*
+* This file handles every tag related to lists.
+*
+*/
+
+@mixin styled_list($type) {
+    line-height: $clusterflunk-base-font-size + 3px;
+    padding-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    @if $type == "ul" { list-style: disc; }
+    @if $type == "ol" { list-style: decimal; }
+
+    li {
+        @include baseFont;
+    }
+}
+
+@mixin horiz-list {
+    display: block;
+    overflow: auto;
+
+    > li {
+        float: left;
+
+        > a {
+            display: block;
+        }
+    }
+}
+
+// Cover all the bases for styling lists
+.styled_lists {
+    ul {
+        @include styled_list("ul");
+    }
+
+    ol {
+        @include styled_list("ol");
+    }
+}
+
+ul.styled_list {
+    @include styled_list("ul");
+}
+
+ol.styled_list {
+    @include styled_list("ol");
+}
+
+.horiz-list {
+    @include horiz-list;
+}

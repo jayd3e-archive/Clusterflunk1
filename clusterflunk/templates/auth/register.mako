@@ -1,20 +1,17 @@
 <%inherit file="../layouts/auth.mako"/>
-<%namespace name="util_error" file="../utilities/error.mako"/>
 
 <%def name="page()">
     <h1>Register</h1>
     <form class="basic" method="POST" action="">
-        ${ register_form.username() }
-        ${ util_error.error(register_form, 'username') }
+        <label for="username">Username</label>
+        <input name="username" type="text" />
 
-        ${ register_form.email() }
-        ${ util_error.error(register_form, 'email') }
+        <label for="password">Password</label>
+        <input name="password" type="password" />
 
-        ${ register_form.password() }
-        ${ util_error.error(register_form, 'password') }
-        
-        ${ register_form.repeat_password() }
-        ${ util_error.error(register_form, 'repeat_password') }
-        <input type="submit" name="submit" value="Register"/>
+        <label for="repeat">Repeat</label>
+        <input name="repeat" type="password" />
+
+        <input class="light" type="submit" name="submit" value="Register"/>
     </form>
 </%def>

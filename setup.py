@@ -17,8 +17,7 @@ requires = [
     'sqlalchemy',
     'psycopg2',
     'alembic',
-    'waitress',
-    'WTForms'
+    'waitress'
 ]
 
 tests_require = requires + [
@@ -34,5 +33,5 @@ setup(name='Clusterflunk',
       url='http://localhost',
       packages=['clusterflunk'],
       test_suite='clusterflunk.tests',
-      entry_points = entry_points
+      entry_points=entry_points
 )

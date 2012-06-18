@@ -3,14 +3,6 @@ python setup.py develop
 
 sh db/scripts/setup_db
 
-git submodule init
-git submodule update
-
-if [ ! -d "clusterflunk/static/slicknasty/css" ]; then
-    mkdir clusterflunk/static/slicknasty/css
-fi
-sass clusterflunk/static/slicknasty/scss/bootstrap.scss:clusterflunk/static/slicknasty/css/bootstrap.css
-
 if [ ! -d "clusterflunk/static/css" ]; then
     mkdir clusterflunk/static/css
 fi

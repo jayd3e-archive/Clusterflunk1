@@ -16,7 +16,6 @@ class Post(Base):
 
     group_id = Column(Integer, ForeignKey('groups.id'))
     founder_id = Column(Integer, ForeignKey('users.id'))
-    score = Column(Integer(100), default=0)
     created = Column(DateTime)
 
     founder = relationship('User', backref="posts")

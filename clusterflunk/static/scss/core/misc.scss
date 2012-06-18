@@ -1,0 +1,37 @@
+/*
+*
+* Gradient
+*
+*/
+
+@mixin gradient($top, $bot, $image:"None") {
+    background-color: $bot;
+    background-image: url($image);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($top), to($bot));
+    background-image: -webkit-linear-gradient(top, $top, $bot);
+    background-image: -moz-linear-gradient(top, $top, $bot);
+    background-image: -ms-linear-gradient(top, $top, $bot);
+    background-image: -o-linear-gradient(top, $top, $bot);
+}
+
+/*
+*
+* Shapes
+*
+*/
+
+@mixin up_arrow($color, $size) {
+    width: 0px;
+    height: 0px;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+}
+
+@mixin down_arrow($color, $size) {
+    width: 0px;
+    height: 0px;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+}

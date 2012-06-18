@@ -1,0 +1,106 @@
+/*
+*
+* This file handles every tag related to forms.
+*
+*/
+
+@mixin default_text_input {
+    @include default_input;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid silver;
+    color: $clusterflunk-input-text-color;
+    background-color: #FFF;
+
+    &:focus {
+        border: $clusterflunk-input-border;
+    }
+}
+
+@mixin form {
+    margin-bottom: 20px;
+    display: inline-block;
+
+    label {
+        font-family: $clusterflunk-sans-font-family;
+        font-size: 11px;
+        color: $clusterflunk-base-font-color;
+        text-transform: capitalize;
+    }
+
+    input {
+        @include default_text_input;
+        @include button;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    textarea {
+        @include default_text_input;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .error {
+        display: none;
+        @include baseFont;
+        padding: 9px;
+        width: $clusterflunk-status-input-width;
+        background-color: #D95C56;
+        color: #FFF;
+    }
+}
+
+form.basic {
+    @include form;
+
+    label {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    input, button {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+form.inline-form {
+    @include form;
+}
+
+form.horiz-form {
+    @include form;
+
+    .input_group {
+        display: block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        label {
+            float: left;
+            display: inline-block;
+            width: 130px;
+            text-align: right;
+            padding: 5px 10px 0px 0px;
+        }
+
+        .inputs {
+            display: inline;
+
+            input {
+                display: inline-block;
+            }
+        }
+    }
+
+    .form_actions {
+        border-top: 1px solid #e1e1e1;
+        padding-top: 5px;
+        padding-left: 143px;
+    }
+}
