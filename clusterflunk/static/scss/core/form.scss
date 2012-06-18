@@ -44,6 +44,15 @@
             outline: none;
         }
     }
+
+    .error {
+        display: none;
+        @include baseFont;
+        padding: 9px;
+        width: $clusterflunk-status-input-width;
+        background-color: #D95C56;
+        color: #FFF;
+    }
 }
 
 form.basic {
@@ -54,7 +63,7 @@ form.basic {
         margin-bottom: 3px;
     }
 
-    input {
+    input, button {
         display: block;
         margin-bottom: 5px;
     }

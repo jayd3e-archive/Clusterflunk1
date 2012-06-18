@@ -1,51 +1,23 @@
-.group_index {
-    position: relative;
+.condensed_group {
+    font-size: 16px;
+    overflow: auto;
+    padding: 5px 0px;
 
-    .categories {
+    .content {
+        float: left;
+        display: block;
 
-        li {
-            padding: 2px 5px 2px 0px;
-        }
-    }
-
-    .condensed_groups {
-
-        .condensed_group {
+        > a {
             font-size: 16px;
-            overflow: auto;
+        }
 
-            .content {
-                float: left;
-
-                .metadata {
-                    display: block;
-                }
-
-                .group_name {
-                    display: block;
-                    font-size: 16px;
-                    padding-top: 8px;
-                }
-            }
-
-            .buttons {
-                padding-top: 8px;
-                float: right;
-            }
+        small {
+            display: block;
         }
     }
-}
 
-.group_view {
-    position: relative;
-
-    .group {
-        margin-bottom: 10px;
+    .buttons {
+        padding-top: 3px;
+        float: right;
     }
-}
-
-.group_create {
-    position: relative;
-
-    @include create_pages;
 }

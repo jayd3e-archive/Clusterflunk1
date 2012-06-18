@@ -1,13 +1,13 @@
 from pyramid.view import view_config
 
 
-@view_config(route_name='groups', renderer='clusterflunk:templates/groups/index.mako')
-def index(request):
+@view_config(route_name='groups', renderer='clusterflunk:templates/groups/groups.mako')
+def groups(request):
     return {}
 
 
-@view_config(route_name='groups_view', renderer='clusterflunk:templates/groups/view.mako')
-def view(request):
+@view_config(route_name='group', renderer='clusterflunk:templates/groups/group.mako')
+def group(request):
     return {}
 
 

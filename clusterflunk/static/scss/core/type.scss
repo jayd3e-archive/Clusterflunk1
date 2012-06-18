@@ -47,6 +47,10 @@ span {
     line-height: $clusterflunk-base-font-size + 3px;
 }
 
+span.block {
+    display: block;
+}
+
 p {
     @include baseFont;
     margin-top: 5px;
@@ -67,4 +71,10 @@ pre {
     border: 1px solid #DDD;
     padding: 10px;
     background-color: #FAFAFA;
+}
+
+small {
+    @include baseFont;
+    color: #666;
+    font-size: 11px;
 }

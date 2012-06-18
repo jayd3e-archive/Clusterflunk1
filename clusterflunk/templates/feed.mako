@@ -4,12 +4,12 @@
 <%namespace name="watchlist" file="aside/watchlist.mako"/>
 
 <%def name="page()">
-    <div class="feed">
+    <div class="page_heading">
         <h1>Feed</h1>
-        ${ status_form.status_form() }
-        <div class="statuses">
-            ${ status.status() }
-        </div>
+    </div>
+    ${ status_form.status_form() }
+    <div class="statuses">
+        ${ status.status() }
     </div>
 </%def>
 

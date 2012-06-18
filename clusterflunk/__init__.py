@@ -44,10 +44,10 @@ def main(global_config, **settings):
     config.add_route('index', '/')
     config.add_route('posts', '/posts')
     config.add_route('posts_create', '/posts/create')
-    config.add_route('posts_view', '/posts/{id}')
+    config.add_route('post', '/posts/{id}')
     config.add_route('groups', '/groups')
     config.add_route('groups_create', '/groups/create')
-    config.add_route('groups_view', '/groups/{id}')
+    config.add_route('group', '/groups/{id}')
     config.add_route('profile', '/profile')
 
     #Exception Views
