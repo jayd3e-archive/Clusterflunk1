@@ -7,7 +7,7 @@
         <div class="content">
             <div class="author">
                 <a href="/profile/jayd3e">jayd3e</a>
-                <span class="metadata">1 day ago</span>
+                <small>1 day ago</small>
             </div>
             <span>This is a question.</span>
             <ul class="actions">
