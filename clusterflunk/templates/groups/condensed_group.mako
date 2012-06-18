@@ -1,5 +1,5 @@
 <%def name="condensed_group()">
-    <div class="group">
+    <div class="condensed_group">
         <div class="content">
             <a class="group_name" href="/groups/1">Group Name</a>
             <span class="metadata">

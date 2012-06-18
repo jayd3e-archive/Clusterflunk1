@@ -1,4 +1,5 @@
-<%namespace name="form" file="form.mako"/>
+<%namespace name="status_comment_form" file="status_comment_form.mako" />
+<%namespace name="status_comment" file="status_comment.mako"/>
 
 <%def name="status()">
     <div class="status">
@@ -14,13 +15,9 @@
                     <a class="add_comment">add comment</a>
                 </li>
             </ul>
-            ${ form.form() }
+            ${ status_comment_form.status_comment_form() }
             <div class="status_comments">
-                <div class="status_comment">
-                    <span>This is a comment.</span> -
-                    <a href="/profile/jayd3e">jayd3e</a>
-                    <span class="metadata">2 days ago</span>
-                </div>
+                ${ status_comment.status_comment() }
             </div>
         </div>
     </div>

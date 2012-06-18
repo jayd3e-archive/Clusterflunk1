@@ -19,7 +19,7 @@
                 <a href="/groups?category=mine">mine</a>
             </li>
         </ul>
-        <div class="groups">
+        <div class="condensed_groups">
             ${ condensed_group.condensed_group() }
         </div>
     </div>

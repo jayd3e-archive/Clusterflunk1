@@ -10,7 +10,7 @@
                 <a class="primary" href="/posts/create">Create Post</a>
             </li>
         </ul>
-        <div class="posts">
+        <div class="condensed_posts">
             ${ condensed_post.condensed_post() }
         </div>
     </div>

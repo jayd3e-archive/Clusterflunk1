@@ -1,32 +1,35 @@
 .post_index {
     position: relative;
 
-    .post {
-        display: block;
-        overflow: auto;
-        margin-top: 5px;
-        margin-bottom: 5px;
+    .condensed_posts {
 
-        .content {
-            float: left;
+        .condensed_post {
             display: block;
             overflow: auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
 
-            .post_name {
-                display: block;
-                font-size: 16px;
-                padding-top: 2px;
-            }
-
-            .metadata {
+            .content {
                 float: left;
                 display: block;
-            }
-        }
+                overflow: auto;
 
-        .buttons {
-            padding-top: 5px;
-            float: right;
+                .post_name {
+                    display: block;
+                    font-size: 16px;
+                    padding-top: 2px;
+                }
+
+                .metadata {
+                    float: left;
+                    display: block;
+                }
+            }
+
+            .buttons {
+                padding-top: 5px;
+                float: right;
+            }
         }
     }
 }
@@ -43,6 +46,10 @@
 
     .post {
         margin-bottom: 10px;
+
+        span {
+            display: block;
+        }
     }
 }
 

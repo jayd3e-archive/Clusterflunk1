@@ -1,5 +1,5 @@
 <%def name="condensed_post()">
-    <div class="post">
+    <div class="condensed_post">
         <img class="thumbnail" src="/static/img/thumbnail.png"/>
         <div class="content">
             <a class="post_name" href="/posts/1">This Is A Post Name</a>
