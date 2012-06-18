@@ -21,7 +21,7 @@
     display: block;
     overflow: auto;
 
-    li {
+    > li {
         float: left;
 
         > a {

@@ -20,7 +20,7 @@
         margin: 6px 10px 0px 0px;
         display: inline-block;
 
-        li {
+        > li {
 
             > a {
                 font-family: "IconicFill";
@@ -54,33 +54,28 @@
     }
 
     .notifications {
+        position: absolute;
+        top: 50px;
+        left: 105px;
+        background-color: $clusterflunk-notifications-bg-color;
+        width: 300px;
+        padding: 5px;
+        display: none;
+        z-index: 1000;
+        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+
+        li {
+            display: block;
+            @include baseFont;
+        }
+
+        .up_arrow {
+            @include up_arrow($clusterflunk-notifications-bg-color, 10px);
             position: absolute;
-            top: 50px;
-            left: 105px;
-            background-color: $clusterflunk-notifications-bg-color;
-            width: 300px;
-            padding: 5px;
-            display: none;
-            z-index: 1000;
-            border-radius: 3px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-
-            ul {
-                float: left;
-
-                li {
-                    float: left;
-                    display: block;
-                    @include baseFont;
-                }
-            }
-
-            .up_arrow {
-                @include up_arrow($clusterflunk-notifications-bg-color, 10px);
-                position: absolute;
-                top: -10px;
-                left: 36px;
-            }
+            top: -10px;
+            left: 36px;
+        }
     }
 
 
@@ -136,14 +131,6 @@
             a.avatar {
                 display: block;
                 padding: 5px 2px 5px 2px;
-            }
-
-            span {
-                display: block;
-                padding: 10px 5px;
-                font-family: $clusterflunk-sans-font-family;
-                font-size: $clusterflunk-base-font-size;
-                color: $clusterflunk-account-span-color;
             }
         }
     }
