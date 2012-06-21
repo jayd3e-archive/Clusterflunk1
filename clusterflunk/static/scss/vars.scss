@@ -4,8 +4,10 @@
 *
 */
 
+$bg: #5A88AC;
+
 // Bootstrap
-$clusterflunk-bg-color: #2D2D2D;
+$clusterflunk-bg-color: $bg;
 $clusterflunk-f-color: #CC3333;
 $clusterflunk-icon-font: 'IconicFill';
 
@@ -13,16 +15,18 @@ $clusterflunk-icon-font: 'IconicFill';
 $clusterflunk-top-top-bg-color: #333;
 $clusterflunk-top-bot-bg-color: #222;
 $clusterflunk-header-padding: 5px;
-$clusterflunk-header-height: 35px;
+$clusterflunk-header-height: 28px;
 $clusterflunk-header-bg-color: #2B608C;
 $clusterflunk-account-span-color: #FFF;
-$clusterflunk-page-margin: 10px;
-$clusterflunk-page-bg-color: #FFF;
+$clusterflunk-page-top-margin: 20px;
+$clusterflunk-page-side-margin: 10px;
+$clusterflunk-page-bottom-margin: 10px;
+$clusterflunk-page-bg-color: $bg;
 $clusterflunk-aside-width: 250px;
 $clusterflunk-aside-padding: 5px;
-$clusterflunk-aside-bg-color: #FFF;
+$clusterflunk-aside-bg-color: $bg;
 $clusterflunk-page-vert-padding: 5px;
-$clusterflunk-page-left-padding: 15px;
+$clusterflunk-page-left-padding: 5px;
 
 // Navigation
 $clusterflunk-nav-link-color: #FFF;
@@ -49,8 +53,8 @@ $clusterflunk-input-light-color: #FFF;
 $clusterflunk-input-primary-top-color: #0580af;
 $clusterflunk-input-primary-bot-color: #026c9a;
 $clusterflunk-input-primary-text-color: #FFF;
-$clusterflunk-input-danger-top-color: #d95c56;
-$clusterflunk-input-danger-bot-color: #b53832;
+$clusterflunk-input-danger-top-color: #E47777;
+$clusterflunk-input-danger-bot-color: #DF5E5E;
 $clusterflunk-input-danger-text-color: #FFF;
 $clusterflunk-input-success-top-color: #5aa600;
 $clusterflunk-input-success-bot-color: #539601;

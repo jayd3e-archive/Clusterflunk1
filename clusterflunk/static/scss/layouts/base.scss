@@ -52,7 +52,7 @@ $right-padding: $clusterflunk-aside-width + (2 * $clusterflunk-aside-padding) + 
     background-color: $clusterflunk-page-bg-color;
     padding: $clusterflunk-page-vert-padding $right-padding $clusterflunk-page-vert-padding $clusterflunk-page-left-padding;
     overflow: hidden;
-    margin: $clusterflunk-page-margin;
+    margin: $clusterflunk-page-top-margin $clusterflunk-page-side-margin $clusterflunk-page-bottom-margin $clusterflunk-page-side-margin;
     text-align: left;
 }
 
@@ -62,7 +62,7 @@ $right-padding: $clusterflunk-aside-width + (2 * $clusterflunk-aside-padding) + 
     background-color: $clusterflunk-aside-bg-color;
     position: absolute;
     top: 0px;
-    right: $clusterflunk-page-margin;
+    right: $clusterflunk-page-side-margin;
     padding: $clusterflunk-aside-padding;
     text-align: left;
 }

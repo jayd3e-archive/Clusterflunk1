@@ -1,33 +1,159 @@
 .condensed_post {
-    display: block;
-    overflow: auto;
-    padding: 5px 0px;
+    position: relative;
 
-    .content {
-        float: left;
-        margin-left: 5px;
-        padding-top: 2px;
-        display: block;
-
-        > a {
-            font-size: 15px;
-        }
-
-        small {
-            display: block;
-        }
+    .up_arrow {
+        @include left_arrow(#FFF, 10px);
+        left: 40px;
+        top: 9px;
+        position: absolute;
     }
 
-    .buttons {
-        padding-top: 3px;
-        float: right;
+    .white_area {
+        background-color: #FFF;
+        display: block;
+        overflow: auto;
+        padding: 5px;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+
+        .content {
+            float: left;
+            margin-left: 5px;
+            padding-top: 7px;
+            padding-bottom: 100px;
+            display: block;
+
+            > a {
+                font-size: 15px;
+            }
+
+            small {
+                display: block;
+            }
+        }
+
+        .buttons {
+            padding-top: 3px;
+            float: right;
+        }
     }
 }
 
 .post_comment_tree {
-    padding-top: 10px;
+    float: left;
 
     > .post_comment {
+        margin-bottom: 5px;
+        border-radius: 3px;
+        padding: 0px 10px 10px 0px;
+        margin-top: 15px;
+        overflow: auto;
+
+        .content {
+            float: left;
+        }
+    }
+
+    .thumbnail {
+        float: left;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+}
+
+.condensed_posts {
+    padding: 0px 5px 0px 0px;
+
+    .thumbnail {
+        margin-right: 20px;
+    }
+}
+
+.add_post {
+    display: block;
+    overflow: auto;
+
+    .thumbnail {
+        margin-top: 0px;
+    }
+
+    .up_arrow {
+        @include left_arrow(#2e2e2e, 10px);
+        left: 56px;
+        top: 10px;
+        position: absolute;
+    }
+
+    .action_area {
+        background-color: #2e2e2e;
+        float: left;
+        padding: 5px 10px;
+        border-radius: 3px 0px 0px 3px;
         margin-bottom: 20px;
+        margin-left: 15px;
+
+        cursor: pointer;
+        span {
+            @include baseFont;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        span._plus {
+            font-size: 21px;
+        }
+
+        &:hover {
+            span {
+                color: $clusterflunk-f-color;
+            }
+        }
+
+        ul {
+            float: left;
+
+            li {
+                line-height: 20px;
+                margin-right: 5px;
+                @include baseFont;
+                color: #FFF;
+
+                a {
+                    color: #FFF;
+
+                    &:hover {
+                        color: $clusterflunk-f-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .sort_area {
+        background-color: #3e3e3e;
+        float: left;
+        padding: 5px 10px;
+        border-radius: 0px 3px 3px 0px;
+        margin-bottom: 20px;
+
+        ul {
+            float: left;
+
+            li {
+                line-height: 20px;
+                margin-right: 5px;
+                @include baseFont;
+                color: #FFF;
+
+                a {
+                    color: #FFF;
+
+                    &:hover {
+                        color: $clusterflunk-f-color;
+                    }
+                }
+            }
+        }
     }
 }

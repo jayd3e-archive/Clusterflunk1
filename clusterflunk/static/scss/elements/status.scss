@@ -1,16 +1,38 @@
 .status {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 
-    .content {
-        display: inline-block;
+    .thumbnail {
+        margin-top: 10px;
+    }
 
-        .status_comments {
-            padding-left: 20px;
-        }
+    .white_area {
+        overflow: auto;
 
-        .status_comment_form {
-            margin-bottom: 0px;
+        .content {
+            padding: 10px;
+            background-color: #FFF;
+            float: left;
+            border-radius: 5px;
+            margin-left: 10px;
+
+            .up_arrow {
+                @include left_arrow(#FFF, 10px);
+                position: absolute;
+                top: 85px;
+                left: 52px;
+            }
+
+            .status_comment_form {
+                margin-bottom: 0px;
+            }
+
+            .status_comments {
+                padding: 10px;
+                margin-left: 20px;
+                margin-top: 10px;
+                background-color: #f2f4f7;
+            }
         }
     }
 }

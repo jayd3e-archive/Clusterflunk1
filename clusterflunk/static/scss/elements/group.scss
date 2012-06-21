@@ -1,23 +1,62 @@
 .condensed_group {
     font-size: 16px;
     overflow: auto;
-    padding: 5px 0px;
+    margin-bottom: 15px;
+    position: relative;
 
-    .content {
+    .up_arrow {
+        @include left_arrow(#FFF, 10px);
+        left: 40px;
+        top: 20px;
+        position: absolute;
+    }
+
+    .thumbnails {
+        margin-right: 15px;
+        margin-top: 3px;
         float: left;
-        display: block;
+        width: 35px;
 
-        > a {
-            font-size: 16px;
-        }
-
-        small {
-            display: block;
+        .thumbnail {
+            float: right;
+            margin: 3px 5px 3px 0px;
+            padding: 0px;
         }
     }
 
-    .buttons {
-        padding-top: 3px;
-        float: right;
+    .white_area {
+        background-color: #FFF;
+        border-radius: 3px;
+        overflow: auto;
+        height: 95px;
+        padding: 10px;
+
+        .content {
+            float: left;
+            display: block;
+
+            > a {
+                font-size: 16px;
+            }
+
+            small {
+                display: block;
+            }
+        }
+
+        .buttons {
+            padding-top: 3px;
+            float: right;
+        }
+    }
+}
+
+.condensed_group.odd {
+    .white_area {
+        background-color: #f2f4f7;
+    }
+
+    .up_arrow {
+        @include left_arrow(#f2f4f7, 10px);
     }
 }

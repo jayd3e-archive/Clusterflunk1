@@ -1,11 +1,31 @@
 .post_comment {
     margin-top: 5px;
-    padding-left: 36px;
     position: relative;
 
-    .thumbnail {
+    .up_arrow {
+        @include left_arrow(#FFF, 10px);
+        left: 40px;
+        top: 15px;
         position: absolute;
-        top: 0px;
-        left: 0px;
+    }
+
+    .thumbnail {
+        float: left;
+        margin-top: 10px;
+    }
+
+    .white_area {
+        overflow: auto;
+        .content {
+            float: left;
+            background-color: #FFF;
+            border-radius: 3px;
+            padding: 10px;
+        }
+    }
+
+    .post_comments {
+        padding-top: 15px;
+        margin-left: 48px;
     }
 }

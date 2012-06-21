@@ -5,8 +5,30 @@
 form.status_form {
     margin-bottom: 0px;
 
+    .up_arrow {
+        @include left_arrow($clusterflunk-notifications-bg-color, 10px);
+        position: absolute;
+        top: 19px;
+        left: 52px;
+    }
+
+    small {
+        display: block;
+    }
+
+    .thumbnail {
+        margin-top: 10px;
+    }
+
     textarea {
-        width: $clusterflunk-status-input-width;
+        margin-left: 10px;
+        width: $clusterflunk-status-input-width - 50px;
+        font-size: 13px;
+        border: 1px solid white;
+
+        &:focus {
+            border: 1px solid white;
+        }
     }
 
     button {

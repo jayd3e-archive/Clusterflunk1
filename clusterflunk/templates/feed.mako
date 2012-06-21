@@ -2,17 +2,18 @@
 <%namespace name="status" file="statuses/status.mako"/>
 <%namespace name="status_form" file="statuses/status_form.mako"/>
 <%namespace name="watchlist" file="aside/watchlist.mako"/>
+<%namespace name="group_toggle" file="aside/group_toggle.mako"/>
 
 <%def name="page()">
-    <div class="page_heading">
-        <h1>Feed</h1>
-    </div>
     ${ status_form.status_form() }
     <div class="statuses">
+        % for i in range(5):
         ${ status.status() }
+        % endfor
     </div>
 </%def>
 
 <%def name="aside()">
+    ${ group_toggle.group_toggle() }
     ${ watchlist.watchlist() }
 </%def>

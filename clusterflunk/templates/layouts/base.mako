@@ -26,4 +26,8 @@
             </div>
         </div>
     </body>
+
+    <script type="text/javascript" charset="utf-8" src="/static/js/libs/jquery-1.7.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/libs/jquery.tipsy.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/wireframes.js"></script>
 </html>

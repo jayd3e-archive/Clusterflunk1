@@ -1,0 +1,61 @@
+.watchlist {
+    background-color: #FFF;
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+
+    .watched {
+        margin-bottom: 15px;
+
+        .timer {
+            @include baseFont();
+            height: 30px;
+
+            li {
+                display: inline;
+            }
+
+            .num {
+                font-size: 25px;
+                color: #DF5E5E;
+            }
+
+            .word {
+                font-size: 17px;
+                margin-right: 10px;
+                margin-left: 5px;
+                color: #666;
+            }
+        }
+    }
+}
+
+.watched_post {
+    .content {
+        > a {
+            display: block;
+        }
+
+        > small {
+            display: block;
+        }
+    }
+}
+
+.group_toggle {
+    background-color: #FFF;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+
+    ul {
+        li {
+            @include baseFont;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+}

@@ -11,6 +11,7 @@
     border: 1px solid silver;
     color: $clusterflunk-input-text-color;
     background-color: #FFF;
+    border-radius: 5px;
 
     &:focus {
         border: $clusterflunk-input-border;
