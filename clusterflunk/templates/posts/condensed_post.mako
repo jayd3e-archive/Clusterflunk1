@@ -1,5 +1,5 @@
-<%def name="condensed_post()">
-    <div class="condensed_post">
+<%def name="condensed_post(odd)">
+    <div class="condensed_post ${odd}">
         <img class="thumbnail" src="/static/img/thumbnail.png"/>
         <div class="up_arrow"></div>
         <div class="white_area">
@@ -14,9 +14,9 @@
                 </small>
             </div>
             <div class="buttons">
-                <button class="primary">follow</button>
-                <button class="dark">edit</button>
-                <button class="danger">delete</button>
+                <a href="#">follow</a>
+                <a href="#">edit</a>
+                <a href="#">delete</a>
             </div>
         </div>
     </div>

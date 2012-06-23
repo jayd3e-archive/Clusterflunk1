@@ -20,9 +20,9 @@
                 </small>
             </div>
             <div class="buttons">
-                <button class="primary">
+                <a href="#">
                     subscribe
-                </button>
+                </a>
             </div>
         </div>
     </div>

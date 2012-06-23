@@ -1,6 +1,16 @@
 .condensed_post {
     position: relative;
 
+    &.odd {
+        .white_area {
+            background-color: #F2F4F7;
+        }
+
+        .up_arrow {
+            @include left_arrow(#F2F4F7, 10px);
+        }
+    }
+
     .up_arrow {
         @include left_arrow(#FFF, 10px);
         left: 40px;
@@ -34,8 +44,16 @@
         }
 
         .buttons {
-            padding-top: 3px;
+            padding-top: 5px;
             float: right;
+
+            a {
+                margin-right: 10px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }
@@ -46,7 +64,7 @@
     > .post_comment {
         margin-bottom: 5px;
         border-radius: 3px;
-        padding: 0px 10px 10px 0px;
+        padding: 0px 0px 10px 0px;
         margin-top: 15px;
         overflow: auto;
 
@@ -122,7 +140,7 @@
                 a {
                     color: #FFF;
 
-                    &:hover {
+                    &:hover, &.active {
                         color: $clusterflunk-f-color;
                     }
                 }

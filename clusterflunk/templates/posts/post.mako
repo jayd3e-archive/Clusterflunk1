@@ -1,6 +1,7 @@
 <%inherit file="../layouts/base.mako"/>
 <%namespace name="watchlist" file="../aside/watchlist.mako"/>
 <%namespace name="post_comment" file="../comments/post_comment.mako"/>
+<%namespace name="online" file="../aside/online.mako"/>
 
 <%def name="page()">
     <div style="background-color: #FFF; padding: 5px 10px 10px 10px; border-radius: 3px;">
@@ -31,4 +32,5 @@
 
 <%def name="aside()">
     ${ watchlist.watchlist() }
+    ${ online.online() }
 </%def>

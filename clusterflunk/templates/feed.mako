@@ -2,6 +2,7 @@
 <%namespace name="status" file="statuses/status.mako"/>
 <%namespace name="status_form" file="statuses/status_form.mako"/>
 <%namespace name="watchlist" file="aside/watchlist.mako"/>
+<%namespace name="followed" file="aside/followed.mako"/>
 <%namespace name="group_toggle" file="aside/group_toggle.mako"/>
 
 <%def name="page()">
@@ -16,4 +17,5 @@
 <%def name="aside()">
     ${ group_toggle.group_toggle() }
     ${ watchlist.watchlist() }
+    ${ followed.followed() }
 </%def>

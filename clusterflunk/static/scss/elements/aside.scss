@@ -1,21 +1,21 @@
 .watchlist {
     background-color: #FFF;
     border-radius: 3px;
-    padding: 5px 10px 5px 10px;
+    padding: 10px 10px 10px 10px;
 
     .watched {
-        margin-bottom: 15px;
+        margin-top: 7px;
 
         .timer {
             @include baseFont();
-            height: 30px;
+            padding-bottom: 4px;
 
             li {
                 display: inline;
             }
 
             .num {
-                font-size: 25px;
+                font-size: 20px;
                 color: #DF5E5E;
             }
 
@@ -31,12 +31,13 @@
 
 .watched_post {
     .content {
-        > a {
-            display: block;
-        }
-
         > small {
             display: block;
+
+            span.red {
+                font-size: 11px;
+                color: $clusterflunk-f-color;
+            }
         }
     }
 }
@@ -50,12 +51,77 @@
     ul {
         li {
             @include baseFont;
+            font-size: 11px;
+            font-weight: 600;
             margin-top: 5px;
             margin-bottom: 5px;
             padding: 5px;
             border-radius: 5px;
-            font-weight: 600;
             cursor: pointer;
+        }
+    }
+}
+
+.followed {
+    background-color: #FFF;
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 10px;
+
+    .follow {
+        overflow: auto;
+        margin-top: 5px;
+
+        a {
+            padding-top: 10px;
+        }
+    }
+}
+
+.fav_tags {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 3px;
+
+    h6 {
+        padding-top: 0px;
+    }
+
+    .tags {
+        margin-top: 3px;
+
+        li {
+            @include baseFont;
+            border-radius: 3px;
+            background-color: #96C663;
+            display: inline-block;
+            padding: 3px;
+            margin: 2px 2px 2px 0px;
+            font-size: 11px;
+            color: #333;
+            font-weight: 600;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #a2d66b;
+            }
+        }
+    }
+}
+
+.online {
+    background-color: #FFF;
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 10px;
+
+    .on {
+        overflow: auto;
+        margin-top: 5px;
+
+        a {
+            padding-top: 10px;
         }
     }
 }

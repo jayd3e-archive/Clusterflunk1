@@ -45,8 +45,14 @@
         }
 
         .buttons {
-            padding-top: 3px;
+            padding-top: 2px;
             float: right;
+
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

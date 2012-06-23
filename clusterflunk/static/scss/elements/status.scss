@@ -8,6 +8,7 @@
 
     .white_area {
         overflow: auto;
+        position: relative;
 
         .content {
             padding: 10px;
@@ -19,8 +20,8 @@
             .up_arrow {
                 @include left_arrow(#FFF, 10px);
                 position: absolute;
-                top: 85px;
-                left: 52px;
+                top: 15px;
+                left: 0px;
             }
 
             .status_comment_form {

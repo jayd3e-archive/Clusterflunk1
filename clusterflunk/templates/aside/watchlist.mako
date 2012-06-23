@@ -2,22 +2,15 @@
 
 <%def name="watchlist()">
     <div class="watchlist">
+        <h6>followed posts</h6>
         % for i in range(4):
             <div class="watched">
-                <ul class="timer horiz-list">
-                    <li class="num">3<span class="word">days</span></li>
-                    <li class="num">4<span class="word">hrs</span></li>
-                    <li class="num">35<span class="word">mins</span></li>
-                </ul>
                 <div class="watched_post">
                     <div class="content">
-                        <a href="/posts/1">This Is A Post Name</a>
+                        <a style="display:block;" href="/posts/1">This Is A Post Name</a>
+                        <a href="/groups/1">Group</a> - <a href="/profile/jayd3e">jayd3e</a>
                         <small>
-                            created in
-                            <a href="/groups/1">Group</a>
-                            by
-                            <a href="/profile/jayd3e">jayd3e</a>
-                            2 days ago
+                            Due in: <span class="red">2</span> days <span class="red">3</span> hrs <span class="red">4</span> mins
                         </small>
                     </div>
                 </div>

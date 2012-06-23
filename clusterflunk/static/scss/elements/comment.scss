@@ -16,7 +16,9 @@
 
     .white_area {
         overflow: auto;
+
         .content {
+            max-width: 900px;
             float: left;
             background-color: #FFF;
             border-radius: 3px;
