@@ -16,6 +16,13 @@ body {
     @include gradient($clusterflunk-top-top-bg-color, $clusterflunk-top-bot-bg-color);
 }
 
+.top_ext {
+    width: 100%;
+    background-color: #F2F4F7;
+    border-top: 1px solid #CFCACA;
+    box-shadow: inset 0 1px white, 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+
 .main {
     width: 100%;
     background-color: $clusterflunk-bg-color;

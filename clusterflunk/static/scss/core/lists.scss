@@ -19,7 +19,6 @@
 
 @mixin horiz-list {
     display: block;
-    overflow: auto;
 
     > li {
         float: left;

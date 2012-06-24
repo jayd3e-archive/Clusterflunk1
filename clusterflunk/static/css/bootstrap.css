@@ -1244,8 +1244,7 @@ ol.styled_list {
     color: #333333; }
 
 .horiz-list {
-  display: block;
-  overflow: auto; }
+  display: block; }
   .horiz-list > li {
     float: left; }
     .horiz-list > li > a {
@@ -1384,6 +1383,12 @@ body {
   background-image: -ms-linear-gradient(top, #333333, #222222);
   background-image: -o-linear-gradient(top, #333333, #222222); }
 
+.top_ext {
+  width: 100%;
+  background-color: #F2F4F7;
+  border-top: 1px solid #CFCACA;
+  box-shadow: inset 0 1px white, 0 1px 3px rgba(34, 25, 25, 0.4); }
+
 .main {
   width: 100%;
   background-color: #5a88ac;
@@ -1410,7 +1415,7 @@ body {
   background-color: #5a88ac;
   padding: 5px 270px 5px 5px;
   overflow: hidden;
-  margin: 20px 10px 10px 10px;
+  margin: 15px 10px 10px 10px;
   text-align: left; }
 
 .aside {
@@ -1438,7 +1443,6 @@ body {
     background-image: url("../img/clusterflunk_logo.png"); }
   .header .main_nav {
     display: block;
-    overflow: auto;
     float: left;
     margin: 3px 10px 0px 0px;
     display: inline-block; }
@@ -1499,7 +1503,8 @@ body {
       margin: 2px 0px;
       padding: 2px 10px;
       float: left;
-      color: #555; }
+      color: #555;
+      border-radius: 3px 0px 0px 3px; }
       .header .search input:focus {
         outline: none; }
     .header .search button {
@@ -1509,7 +1514,8 @@ body {
       background-color: #555;
       font-family: "IconicFill";
       float: left;
-      color: #FFF; }
+      color: #FFF;
+      border-radius: 0px 3px 3px 0px; }
       .header .search button:hover {
         cursor: pointer;
         color: #cc3333;
@@ -1517,7 +1523,8 @@ body {
   .header .account {
     float: right; }
     .header .account li {
-      float: right; }
+      float: right;
+      margin-right: 4px; }
       .header .account li a {
         display: block;
         padding: 6px 5px;
@@ -1525,9 +1532,31 @@ body {
         color: white; }
         .header .account li a:hover {
           color: #cc3333; }
+      .header .account li a.icons {
+        font-family: "IconicFill";
+        color: white;
+        padding: 6px 4px 4px 4px;
+        font-size: 14px; }
+        .header .account li a.icons:hover {
+          color: #cc3333; }
       .header .account li a.avatar {
         display: block;
         padding: 2px 2px 2px 2px; }
+      .header .account li a.add {
+        background-color: #555555;
+        padding: 5px;
+        border-radius: 3px;
+        margin-right: 7px;
+        margin-top: 1px; }
+        .header .account li a.add:hover {
+          background-color: #FFF; }
+
+.subnav {
+  height: 15px;
+  padding: 5px 15px; }
+  .subnav ul li {
+    padding-top: 2px;
+    margin-right: 10px; }
 
 /*
 *
@@ -1557,8 +1586,7 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
 
 .categories {
-  display: block;
-  overflow: auto; }
+  display: block; }
   .categories > li {
     float: left; }
     .categories > li > a {
@@ -1998,7 +2026,7 @@ form.status_form {
 
 .online {
   background-color: #FFF;
-  margin-top: 15px;
+  margin-bottom: 15px;
   border-radius: 3px;
   padding: 10px; }
   .online .on {

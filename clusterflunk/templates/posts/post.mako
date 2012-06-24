@@ -31,6 +31,5 @@
 </%def>
 
 <%def name="aside()">
-    ${ watchlist.watchlist() }
     ${ online.online() }
 </%def>

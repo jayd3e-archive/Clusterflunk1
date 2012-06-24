@@ -32,15 +32,15 @@
     </div>
     <ul class="account">
         <li>
-            <a href="/logout">sign out</a>
-        </li>
-        <li>
             <a href="/profile">jayd3e</a>
         </li>
         <li>
             <a class="avatar" href="/profile">
                 <img src="/static/img/avatar.png"/>
             </a>
+        </li>
+        <li>
+            <a class="add" href="/profile">add</a>
         </li>
     </ul>
 </%def>

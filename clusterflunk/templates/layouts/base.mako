@@ -15,6 +15,15 @@
                 </header>
             </div>
         </div>
+        % if hasattr(self, 'subnav'):
+        <div class="top_ext">
+            <div class="container">
+                <header class="subnav">
+                    ${ self.subnav() }
+                </header>
+            </div>
+        </div>
+        % endif
         <div class="main">
             <div class="container">
                 <article class="page">
