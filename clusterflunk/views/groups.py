@@ -9,8 +9,3 @@ def groups(request):
 @view_config(route_name='group', renderer='clusterflunk:templates/groups/group.mako')
 def group(request):
     return {}
-
-
-@view_config(route_name='groups_create', renderer='clusterflunk:templates/groups/create.mako')
-def create(request):
-    return {}
