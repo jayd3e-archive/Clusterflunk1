@@ -5,7 +5,7 @@
 */
 
 h1, h2, h3, h4, h5, h6 {
-    color: $clusterflunk-dark-text;
+    color: $clusterflunk-base-dark-font-color;
     font-family: $clusterflunk-sans-font-family;
     font-weight: 600;
     padding-top: 5px;
@@ -34,4 +34,10 @@ h5 {
 
 h6 {
     font-size: 14px;
+}
+
+@mixin base_text_light {
+    font-size: $clusterflunk-base-font-size;
+    font-family: $clusterflunk-sans-font-family;
+    color: $clusterflunk-base-light-font-color;
 }

@@ -1,0 +1,58 @@
+.top {
+    background-color: #222;
+
+    .header {
+        padding: 5px 0px;
+        margin: 0 auto;
+        overflow: auto;
+        width: 2410px;
+        min-width: 980px;
+
+        li {
+            a {
+                @include base_text_light;
+            }
+        }
+
+        .logo {
+            float: left;
+            background-image: url('../img/clusterflunk_logo.png');
+            width: 116px;
+            height: 21px;
+        }
+
+        .main_nav {
+            float: left;
+
+            li {
+                float: left;
+            }
+        }
+
+        .search {
+            float: left;
+        }
+
+        .account {
+            float: right;
+
+            .avatar {
+                background-image: url('../img/avatar.png');
+                width: 22px;
+                height: 21px;
+            }
+
+            .groups {
+                @include base_text_light;
+
+                .group_list {
+                    display: none;
+                }
+            }
+
+            li {
+                float: right;
+            }
+        }
+    }
+}
