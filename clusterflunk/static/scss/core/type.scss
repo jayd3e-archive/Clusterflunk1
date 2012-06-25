@@ -4,6 +4,18 @@
 *
 */
 
+@mixin base_text_light {
+    font-size: $clusterflunk-base-font-size;
+    font-family: $clusterflunk-sans-font-family;
+    color: $clusterflunk-base-light-font-color;
+}
+
+@mixin base_text_dark {
+    font-size: $clusterflunk-base-font-size;
+    font-family: $clusterflunk-sans-font-family;
+    color: $clusterflunk-base-dark-font-color;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: $clusterflunk-base-dark-font-color;
     font-family: $clusterflunk-sans-font-family;
@@ -36,8 +48,19 @@ h6 {
     font-size: 14px;
 }
 
-@mixin base_text_light {
-    font-size: $clusterflunk-base-font-size;
-    font-family: $clusterflunk-sans-font-family;
-    color: $clusterflunk-base-light-font-color;
+a {
+    @include base_text_light;
+    text-decoration: none;
+    color: $clusterflunk-link-color;
+    cursor: pointer;
+}
+
+span {
+    @include base_text_dark;
+}
+
+small {
+    @include base_text_dark;
+    color: #666;
+    font-size: 11px;
 }

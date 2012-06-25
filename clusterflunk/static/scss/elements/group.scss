@@ -1,3 +1,17 @@
+.group_view {
+    background-color: #83abd8;
+
+    .inner {
+        margin: 0 auto;
+        min-width: 958px;
+        padding: 10px 0px;
+
+        h1 {
+            font-size: 25px;
+        }
+    }
+}
+
 .groups {
     padding-top: 15px;
     margin: 0 auto;
@@ -9,5 +23,20 @@
         float: left;
         margin-bottom: 10px;
         padding: 5px;
+
+        .title {
+            font-size: 15px;
+        }
+
+        .follow {
+            text-align: center;
+            padding: 5px;
+            margin-top: 5px;
+
+            &:hover {
+                background-color: #f2f4f7;
+                cursor: pointer;
+            }
+        }
     }
 }
