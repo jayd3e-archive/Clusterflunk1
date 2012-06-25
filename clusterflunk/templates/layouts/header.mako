@@ -18,7 +18,7 @@
         <li>
             <div class="avatar"></div>
         </li>
-        <li class="groups">
+        <li class="groups_list_button">
             Groups
             <ul class="group_list">
                 <li>
