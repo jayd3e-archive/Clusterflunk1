@@ -1,11 +1,25 @@
 .top {
     background-color: #222;
+    position: relative;
 
     .header {
         padding: 5px 0px;
         margin: 0 auto;
         overflow: auto;
         min-width: 958px;
+
+        .iconic {
+            color: #FFF;
+            font-size: 15px;
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-right: 10px;
+
+            &:hover {
+                color: #CC3333;
+                cursor: pointer;
+            }
+        }
 
         li {
             a {
@@ -18,6 +32,7 @@
             background-image: url('../img/clusterflunk_logo.png');
             width: 116px;
             height: 21px;
+            margin-right: 10px;
         }
 
         .main_nav {
@@ -30,22 +45,52 @@
 
         .search {
             float: left;
+
+            input {
+                margin-right: 0px;
+                width: 250px;
+            }
         }
 
         .account {
             float: right;
 
+            .add {
+                background-color: #4e4e4e;
+                border-radius: 3px;
+                padding: 5px;
+                border: none;
+                color: #FFF;
+                margin-right: 10px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #6e6e6e;
+                }
+            }
+
+            .profile {
+                margin-top: 4px;
+            }
+
             .avatar {
-                background-image: url('../img/avatar.png');
                 width: 22px;
                 height: 21px;
+                vertical-align: middle;
+                margin-right: 1px;
             }
 
             .groups_list_button {
                 @include base_text_light;
+                margin-right: 10px;
+                margin-top: 2px;
+                padding: 6px;
+                background-color: #4e4e4e;
+                border-radius: 3px;
 
-                .group_list {
-                    display: none;
+                &:hover {
+                    cursor: pointer;
+                    background-color: #6e6e6e;
                 }
             }
 
@@ -53,5 +98,42 @@
                 float: right;
             }
         }
+
+        .group_list {
+            @include base_text_light();
+
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 135px;
+            border-radius: 3px;
+            background-color: #6e6e6e;
+            z-index: 1000;
+            width: 150px;
+            color: #FFF;
+            padding: 5px;
+
+            li {
+                padding: 5px;
+                margin: 5px 0px;
+                background-color: #96C663;
+                border-radius: 3px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
+}
+
+.top {
+    .post_header {
+        padding: 5px 15px;
+    }
+}
+
+.iconic {
+    background: none;
+    border: none;
 }

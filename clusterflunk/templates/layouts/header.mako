@@ -12,28 +12,26 @@
         <button class="iconic magnifying_glass"></button>
     </div>
     <ul class="account">
-        <li>
+        <li class="profile">
+            <img class="avatar" src="/static/img/avatar.png" />
             <a href="#">jayd3e</a>
         </li>
-        <li>
-            <div class="avatar"></div>
-        </li>
         <li class="groups_list_button">
-            Groups
-            <ul class="group_list">
-                <li>
-                    Group 1
-                </li>
-                <li>
-                    Group 2
-                </li>
-                <li>
-                    Group 3
-                </li>
-            </ul>
+            groups
         </li>
         <li>
             <button class="add">add</button>
+        </li>
+    </ul>
+    <ul class="group_list">
+        <li>
+            group 1
+        </li>
+        <li>
+            group 2
+        </li>
+        <li>
+            group 3
         </li>
     </ul>
 </%def>

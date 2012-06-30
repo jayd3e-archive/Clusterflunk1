@@ -57,10 +57,15 @@ a {
 
 span {
     @include base_text_dark;
+    font-size: 11px;
 }
 
 small {
     @include base_text_dark;
     color: #666;
     font-size: 11px;
+}
+
+strong {
+    font-weight: bold;
 }

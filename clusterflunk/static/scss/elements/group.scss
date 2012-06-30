@@ -16,29 +16,40 @@
     padding-top: 15px;
     margin: 0 auto;
     min-width: 958px;
+}
 
-    .group {
-        width: 232px;
-        background-color: #DDD;
-        float: left;
-        margin-bottom: 10px;
+.group {
+    width: 232px;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    box-shadow: 1px 1px 0px #E1E1E1;
+    float: left;
+    margin-bottom: 10px;
+
+    .users {
+        padding: 10px 10px 5px 10px;
+    }
+
+    .title {
+        font-size: 15px;
+        padding: 0px 10px 5px 10px;
+        display: block;
+    }
+
+    small {
+        padding: 0px 10px;
+    }
+
+    .follow {
+        @include base_text_dark;
+        text-align: center;
         padding: 5px;
+        margin-top: 10px;
+        font-size: 14px;
 
-        .title {
-            font-size: 15px;
-        }
-
-        .follow {
-            @include base_text_dark;
-            text-align: center;
-            padding: 5px;
-            margin-top: 5px;
-            font-size: 14px;
-
-            &:hover {
-                background-color: #f2f4f7;
-                cursor: pointer;
-            }
+        &:hover {
+            background-color: #f2f4f7;
+            cursor: pointer;
         }
     }
 }

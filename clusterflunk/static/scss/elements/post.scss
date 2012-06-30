@@ -5,17 +5,119 @@
 
     .post {
         width: 232px;
-        background-color: #DDD;
+        background-color: #FFF;
+        border: 1px solid #DDD;
+        box-shadow: 1px 1px 0px #E1E1E1;
         float: left;
         margin-bottom: 10px;
-        padding: 5px;
 
         .title {
             font-size: 15px;
+            padding: 10px 10px 0px 10px;
+            display: block;
         }
 
         .description {
-            font-size: 11px;
+            padding: 0px 10px;
+            margin: 5px 0px;
         }
+
+        .user_area {
+            background-color: rgba(41, 103, 141, 0.07);
+            padding: 5px 10px;
+
+            img {
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+
+        .comments {
+            background-color: rgba(41, 103, 141, 0.02);
+            padding: 0px 0px 5px 0px;
+        }
+    }
+}
+
+.comment {
+    padding: 10px 10px;
+    border-top: 1px solid #E0E0E0;
+
+    img {
+        float: left;
+        margin-right: 5px;
+    }
+}
+
+.post_view {
+    width: 100%;
+    min-width: 960px;
+    max-width: 1560px;
+    margin: 10px auto;
+    padding-right: 335px;
+    position: relative;
+
+    .content {
+        background-color: #FFF;
+        border: 1px solid #DDD;
+        box-shadow: 1px 1px 0px #E1E1E1;
+
+        .title {
+            padding: 10px 10px 0px 10px;
+            display: block;
+
+            a {
+                font-size: 20px;
+                vertical-align: middle;
+            }
+
+            img {
+                vertical-align: middle;
+            }
+        }
+
+        small {
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .description {
+            padding: 0px 10px 15px 10px;
+        }
+
+        .comments {
+            background-color: rgba(41, 103, 141, 0.02);
+            padding: 0px 0px 5px 0px;
+
+            small {
+                display: inline;
+                padding: 0px;
+            }
+
+            .comment {
+
+                .body {
+                    display: block;
+                }
+            }
+
+            .sub_comments {
+                display: block;
+
+                .comment {
+                    border: none;
+                    box-shadow: none;
+                    padding-left: 30px;
+                    padding-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    aside {
+        width: 325px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
     }
 }

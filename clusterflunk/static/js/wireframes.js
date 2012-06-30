@@ -1,6 +1,12 @@
 $(function() {
-    var width = 232;
-    var gutterWidth = 10;
+    var width = 232,
+        gutterWidth = 10;
+
+    $('.groups_list_button').hover(function() {
+        $('.group_list').show();
+    }, function() {
+        $('.group_list').hide();
+    });
 
     var resize_it = function() {
         var columns = Math.floor( ($(window).width() + 10) / (width + gutterWidth) );
