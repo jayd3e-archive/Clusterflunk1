@@ -32,6 +32,7 @@
                         <img class="thumbnail" src="/static/img/thumbnail.png" />
                         <a href="/profile">jayd3e:</a>
                         <span>${ ' '.join(comment_list[:random.randint(4, c_length)]) }</span>
+                        <div class="clear"></div>
                     </div>
                 % endfor
             </div>
