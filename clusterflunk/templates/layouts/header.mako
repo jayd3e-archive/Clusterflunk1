@@ -23,6 +23,7 @@
             <button class="add">add</button>
         </li>
     </ul>
+    <div class="clear"></div>
     <ul class="group_list">
         <li>
             group 1

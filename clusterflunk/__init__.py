@@ -41,6 +41,7 @@ def main(global_config, **settings):
     # Routes
     config.add_route('login', '/login')
     config.add_route('register', '/register')
+    config.add_route('networks', '/networks')
     config.add_route('index', '/')
     config.add_route('posts', '/posts')
     config.add_route('post', '/posts/{id}')

@@ -1,5 +1,41 @@
 /*
 *
+* Gradient
+*
+*/
+
+@mixin gradient($top, $bot, $image:"None") {
+    background-color: $bot;
+    background-image: url($image);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($top), to($bot));
+    background-image: -webkit-linear-gradient(top, $top, $bot);
+    background-image: -moz-linear-gradient(top, $top, $bot);
+    background-image: -ms-linear-gradient(top, $top, $bot);
+    background-image: -o-linear-gradient(top, $top, $bot);
+}
+
+.primary {
+    @include gradient(#8A241B, #70231C);
+    display: inline-block;
+    padding: 5px;
+    border-radius: 3px;
+    color: #FFF;
+    text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+    font-weight: 600;
+    border: none;
+    outline: none;
+
+    &.big {
+        font-size: 25px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/*
+*
 * Everything dealing with typography.
 *
 */

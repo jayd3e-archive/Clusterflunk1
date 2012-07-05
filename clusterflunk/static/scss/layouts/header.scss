@@ -1,12 +1,11 @@
 .top {
     background-color: #222;
-    position: relative;
 
     .header {
         padding: 5px 0px;
         margin: 0 auto;
-        overflow: auto;
         min-width: 958px;
+        position: relative;
 
         .iconic {
             color: #FFF;
@@ -33,10 +32,12 @@
             width: 116px;
             height: 21px;
             margin-right: 10px;
+            margin-top: 2px;
         }
 
         .main_nav {
             float: left;
+            margin-top: 2px;
 
             li {
                 float: left;
@@ -45,6 +46,7 @@
 
         .search {
             float: left;
+            margin-top: 2px;
 
             input {
                 margin-right: 0px;
@@ -105,7 +107,7 @@
             display: none;
             position: absolute;
             top: 40px;
-            right: 135px;
+            right: 70px;
             border-radius: 3px;
             background-color: #6e6e6e;
             z-index: 1000;

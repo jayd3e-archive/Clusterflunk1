@@ -9,3 +9,8 @@ def login(request):
 @view_config(route_name='register', renderer='clusterflunk:templates/auth/register.mako')
 def register(request):
     return {}
+
+
+@view_config(route_name='networks', renderer='clusterflunk:templates/auth/networks.mako')
+def networks(request):
+    return {}
