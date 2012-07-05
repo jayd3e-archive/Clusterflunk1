@@ -1,0 +1,27 @@
+.large_logo {
+    margin: 0 auto;
+    width: 227px;
+    height: 41px;
+    background-image: url('../img/large_logo.png');
+    margin: 100px auto 15px auto;
+}
+
+.login, .register, .networks {
+    margin: 0 auto;
+    width: 300px;
+
+    input {
+        margin-bottom: 10px;
+    }
+
+    input[type='text'], input[type='password'] {
+        display: block;
+        width: 300px;
+        font-size: 30px;
+        color: #444;
+    }
+}
+
+.networks {
+
+}

@@ -1,0 +1,47 @@
+.profile_view {
+    background-color: #83abd8;
+
+    .inner {
+        @include base_text_dark();
+
+        padding: 15px 0px;
+        margin: 0 auto;
+        min-width: 958px;
+        font-size: 11px;
+
+
+        img {
+            float: left;
+            margin-right: 10px;
+            width: 125px;
+            height: 125px;
+        }
+
+        .account_info {
+
+            h1 {
+                font-size: 25px;
+                padding-top: 0px;
+            }
+
+            .info_piece {
+                margin-bottom: 10px;
+            }
+
+            .network_list {
+                display: inline;
+
+                li {
+                    padding: 3px;
+                    background-color: #96C663;
+                    border-radius: 3px;
+                    display: inline;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

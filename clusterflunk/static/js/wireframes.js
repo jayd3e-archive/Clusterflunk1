@@ -11,8 +11,8 @@ $(function() {
     var resize_it = function() {
         var columns = Math.floor( ($(window).width() + 10) / (width + gutterWidth) );
         var actual_width = (columns * (width + gutterWidth)) - gutterWidth;
-        if ($(".posts, .groups, .header, .group_view > .inner, .profile_view").width() != actual_width) {
-            $(".posts, .groups, .header, .group_view > .inner, .profile_view").width(actual_width);
+        if ($(".posts, .groups, .header, .group_view > .inner, .profile_view > .inner").width() != actual_width) {
+            $(".posts, .groups, .header, .group_view > .inner, .profile_view > .inner").width(actual_width);
         }
     };
 
