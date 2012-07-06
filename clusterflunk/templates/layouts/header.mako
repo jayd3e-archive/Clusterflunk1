@@ -1,7 +1,9 @@
 <%namespace name="header_utils" file="../utilities/header.mako"/>
 
 <%def name="header(here)">
-    <div class="logo"></div>
+    <a href="/">
+        <div class="logo"></div>
+    </a>
     <ul class="main_nav">
         <li>
             <button class="iconic chat_alt_fill"></button>
@@ -14,7 +16,7 @@
     <ul class="account">
         <li class="profile">
             <img class="avatar" src="/static/img/avatar.png" />
-            <a href="#">jayd3e</a>
+            <a href="/profile">jayd3e</a>
         </li>
         <li class="groups_list_button">
             groups

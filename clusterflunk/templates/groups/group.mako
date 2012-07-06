@@ -25,7 +25,7 @@
         %>
         % for i in range(25):
         <div class="post">
-            <a class="title" href="#">${ ' '.join(title_list[:random.randint(4, t_length)]) }</a>
+            <a class="title" href="/posts/1">${ ' '.join(title_list[:random.randint(4, t_length)]) }</a>
             <div class="description">
                 <span>${ ' '.join(description_list[:random.randint(20, d_length)]) }</span>
             </div>

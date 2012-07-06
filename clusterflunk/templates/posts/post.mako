@@ -22,7 +22,7 @@
                 <img class="thumbnail" src="/static/img/thumbnail.png" />
                 <a href="/posts/1">${ ' '.join(title_list[:random.randint(4, t_length)]) }</a>
             </div>
-            <small><a href="/profile">jayd3e</a> into <a href="/group">Group</a></small>
+            <small><a href="/profile">jayd3e</a> into <a href="/groups/1">Group</a></small>
             <div class="description">
                 <span>${ ' '.join(description_list[:random.randint(20, d_length)]) }</span>
             </div>
@@ -31,7 +31,7 @@
                     <%
                         tier = 1
                     %>
-                    <div class="comment">
+                    <div id="solution_${i}" class="comment">
                         <div class="body">
                             <img class="thumbnail" src="/static/img/thumbnail.png" />
                             <a href="/profile">jayd3e:</a>
@@ -57,7 +57,7 @@
                 % endfor
                 -->
                 </div>
-                <a class="title" href="#">${ ' '.join(title_list[:random.randint(4, t_length)]) }</a>
+                <a class="title" href="/groups/1">${ ' '.join(title_list[:random.randint(4, t_length)]) }</a>
                 <small style="display: block;">286 members - updated 2 minutes ago</small>
                 <div class="follow">
                     follow

@@ -25,7 +25,7 @@
             <h1>Posts (20)</h1>
             <ul class="posted">
                 % for i in range(10):
-                    <li><a href="#">Post #${i}</a></li>
+                    <li><a href="/posts/1">Post #${i}</a></li>
                 % endfor
             </ul>
         </div>
@@ -33,7 +33,7 @@
             <h1>Groups (12)</h1>
             <ul class="grouped">
                 % for i in range(10):
-                    <li><a href="#">Group #${i}</a></li>
+                    <li><a href="/groups/1">Group #${i}</a></li>
                 % endfor
             </ul>
         </div>
@@ -44,7 +44,7 @@
             <h1>Solutions (35)</h1>
             <ul class="solutioned">
                 % for i in range(10):
-                    <li><a href="#">Solution #${i}</a></li>
+                    <li><a href="/posts/1#solution_1">Solution #${i}</a></li>
                 % endfor
             </ul>
         </div>
@@ -52,7 +52,7 @@
             <h1>Comments (3)</h1>
             <ul class="commented">
                 % for i in range(10):
-                    <li><a href="#">Comment #${i}</a></li>
+                    <li><a href="/posts/1#comment_1">Comment #${i}</a></li>
                 % endfor
             </ul>
         </div>
