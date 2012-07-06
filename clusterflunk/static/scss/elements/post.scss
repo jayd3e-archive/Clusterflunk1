@@ -85,8 +85,33 @@
             padding: 0px 10px 15px 10px;
         }
 
+        > .comments {
+            background-color:  #eff4f6;
+
+            > .comment {
+                padding: 10px 0px 0px 0px;
+
+                > .body {
+                    padding: 0px 10px;
+                }
+
+                > .sub_comments {
+                    padding: 0px 10px 0px 40px;
+                }
+            }
+
+            > .comment > .sub_comments {
+                margin-top: 10px;
+                padding-bottom: 10px;
+                background-color: #f9fbfc;
+
+                > .comment {
+                    padding-left: 0px;
+                }
+            }
+        }
+
         .comments {
-            background-color: rgba(41, 103, 141, 0.02);
             padding: 0px 0px 5px 0px;
 
             small {

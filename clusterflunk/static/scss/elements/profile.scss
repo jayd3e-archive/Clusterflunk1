@@ -1,5 +1,6 @@
 .profile_view {
     background-color: #83abd8;
+    padding: 0px 15px;
 
     .inner {
         @include base_text_dark();
@@ -9,39 +10,81 @@
         min-width: 958px;
         font-size: 11px;
 
-
-        img {
-            float: left;
-            margin-right: 10px;
-            width: 125px;
-            height: 125px;
-        }
-
-        .account_info {
-
-            h1 {
-                font-size: 25px;
-                padding-top: 0px;
+        .main_info {
+            img {
+                float: left;
+                margin-right: 10px;
+                width: 125px;
+                height: 125px;
             }
 
-            .info_piece {
-                margin-bottom: 10px;
-            }
+            .account_info {
 
-            .network_list {
-                display: inline;
+                h1 {
+                    font-size: 25px;
+                    padding-top: 0px;
+                }
 
-                li {
-                    padding: 3px;
-                    background-color: #96C663;
-                    border-radius: 3px;
+                .info_piece {
+                    margin-bottom: 10px;
+                }
+
+                .network_list {
                     display: inline;
 
-                    &:hover {
-                        cursor: pointer;
+                    li {
+                        padding: 3px;
+                        background-color: #96C663;
+                        border-radius: 3px;
+                        display: inline;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+.top_section {
+    height: 300px;
+    min-width: 958px;
+
+    .posts_section {
+        float: left;
+        width: 50%;
+        padding: 5px 15px;
+    }
+
+    .groups_section {
+        float: left;
+        width: 50%;
+        padding: 5px 15px;
+    }
+}
+
+.bottom_section {
+    height: 300px;
+    min-width: 958px;
+
+    .solutions_section {
+        float: left;
+        width: 50%;
+        padding: 5px 15px;
+    }
+
+    .comments_section {
+        float: left;
+        width: 50%;
+        padding: 5px 15px;
+    }
+}
+
+.posted, .solutioned, .commented, .grouped {
+
+    li a {
+        font-size: 15px;
     }
 }

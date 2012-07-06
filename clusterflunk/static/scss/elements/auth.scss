@@ -24,4 +24,16 @@
 
 .networks {
 
+    .network_list {
+        margin-bottom: 10px;
+
+        li {
+            @include base_text_dark();
+
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            background-color: #96C663;
+        }
+    }
 }
