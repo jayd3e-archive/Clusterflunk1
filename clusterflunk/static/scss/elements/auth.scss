@@ -6,9 +6,33 @@
     margin: 100px auto 15px auto;
 }
 
+.social_connects {
+
+    .facebook {
+        margin-bottom: 15px;
+        margin-right: 10px;
+        float: left;
+        width: 138px;
+        height: 36px;
+        display: block;
+        background-position: 0px 0px;
+        background-image: url('/static/img/social-connect.png');
+    }
+
+    .twitter {
+        margin-bottom: 15px;
+        float: right;
+        width: 124px;
+        height: 36px;
+        display: block;
+        background-position: 124px 0px;
+        background-image: url('/static/img/social-connect.png');
+    }
+}
+
 .login, .register, .networks {
     margin: 0 auto;
-    width: 300px;
+    width: 280px;
 
     input {
         margin-bottom: 10px;
@@ -16,7 +40,7 @@
 
     input[type='text'], input[type='password'] {
         display: block;
-        width: 300px;
+        width: 280px;
         font-size: 30px;
         color: #444;
     }
