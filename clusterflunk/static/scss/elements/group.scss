@@ -1,23 +1,13 @@
-.condensed_group {
-    font-size: 16px;
-    overflow: auto;
-    padding: 5px 0px;
+.groups {
+    padding-top: 15px;
+    margin: 0 auto;
+    min-width: 958px;
 
-    .content {
+    .group {
+        width: 232px;
+        background-color: #DDD;
         float: left;
-        display: block;
-
-        > a {
-            font-size: 16px;
-        }
-
-        small {
-            display: block;
-        }
-    }
-
-    .buttons {
-        padding-top: 3px;
-        float: right;
+        margin-bottom: 10px;
+        padding: 5px;
     }
 }

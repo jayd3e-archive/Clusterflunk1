@@ -1,2 +1,0 @@
-<%def name="footer()">
-</%def>

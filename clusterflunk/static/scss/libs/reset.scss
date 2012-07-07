@@ -49,3 +49,8 @@ table {
 tt, code, kbd, samp {
     font-family: monospace;
 }
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

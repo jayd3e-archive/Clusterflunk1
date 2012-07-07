@@ -11,25 +11,12 @@
 @import "fonts/iconic/iconic_fill";
 
 // Core
-@import "core/misc";
-@import "core/common";
-@import "core/buttons";
 @import "core/type";
-@import "core/form";
-@import "core/lists";
-
-// Libs
-@import "libs/tipsy";
 
 // Layout
 @import "layouts/base";
 @import "layouts/header";
 
 // Elements
-@import "elements/common";
-@import "elements/feed";
-@import "elements/status";
-@import "elements/post";
-@import "elements/comment";
 @import "elements/group";
-@import "elements/profile";
+@import "elements/post";

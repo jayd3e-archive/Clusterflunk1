@@ -1,46 +1,39 @@
 <%namespace name="header_utils" file="../utilities/header.mako"/>
 
 <%def name="header(here)">
-    <a class="logo" href="/"></a>
+    <div class="logo"></div>
     <ul class="main_nav">
         <li>
-            <a class="notifications_button" href="#" original-title="notifications">&#xe007;</a>
-            <ul class="notifications">
-                <div class="up_arrow"></div>
-                <li class="notification">
-                    <a href="/profile/jayd3e">jayd3e</a>
-                    invited you to
-                    <a href="/groups/1">group</a>
+            <button class="iconic chat_alt_fill"></button>
+        </li>
+    </ul>
+    <div class="search">
+        <input type="text" name="search"/>
+        <button class="iconic magnifying_glass"></button>
+    </div>
+    <ul class="account">
+        <li>
+            <a href="#">jayd3e</a>
+        </li>
+        <li>
+            <div class="avatar"></div>
+        </li>
+        <li class="groups_list_button">
+            Groups
+            <ul class="group_list">
+                <li>
+                    Group 1
                 </li>
-                <li class="notification">
-                    <a href="/profile/jayd3e">jayd3e</a>
-                    commented on a
-                    <a href="/statuses/1">status</a>
-                    you interacted with.
+                <li>
+                    Group 2
+                </li>
+                <li>
+                    Group 3
                 </li>
             </ul>
         </li>
         <li>
-            <a href="/posts" original-title="posts">&#xe005;</a>
-        </li>
-        <li>
-            <a href="/groups" original-title="groups">&#xe062;</a>
-        </li>
-    </ul>
-    <div class="search">
-        <input type="text" name="search" autocomplete="off"/><button>&#xe074;</button>
-    </div>
-    <ul class="account">
-        <li>
-            <a href="/logout">sign out</a>
-        </li>
-        <li>
-            <a href="/profile">jayd3e</a>
-        </li>
-        <li>
-            <a class="avatar" href="/profile">
-                <img src="/static/img/avatar.png"/>
-            </a>
+            <button class="add">add</button>
         </li>
     </ul>
 </%def>
