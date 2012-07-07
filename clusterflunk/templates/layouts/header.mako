@@ -22,7 +22,7 @@
             groups
         </li>
         <li>
-            <button class="add">add</button>
+            <button class="post">post</button>
         </li>
     </ul>
     <div class="clear"></div>
